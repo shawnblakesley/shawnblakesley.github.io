@@ -4,18 +4,14 @@
   <title>Shawn Blakesley's Example Page (Updates imminent)</title>
   <style>canvas { width: 100%; height: 100%; } </style>
   </head>
-  <body>
-  <p style="font-family:helvetica; position: fixed; padding: 20px; color: #FFFFFF;">
-    Shawn Blakesley's Example Page (Updates imminent).<br>
-    <a href='about.html'>About Me</a> <br>
-    <a href='index.html'>Homepage</a>
-  </p>
-<!--  <p style="font-family:helvetica; position: fixed; padding: 60px; color: #FFFFFF;"><a href='about.html'>About Me</a></p>
-  <p style="font-family:helvetica; position: fixed; padding: 90px; color: #FFFFFF;"><a href='samples.html'>Sample Work</a></p> -->
-  <script src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
-  <script src="https://rawgithub.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
-  <script src="scripts/uclass_TeapotGeometry.js"></script>
-  <script type="x-shader/x-vertex" id="vertexShader">
+  <body bgcolor="#000000">
+  <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
+  <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+  <script type="text/javascript" src="lib/dat.gui.min.js"></script>
+  <script type="text/javascript" src="lib/uclass_TeapotGeometry.js"></script>
+  
+  <!--Shaders for toon shading based loosly off udacity course lectures for interactive 3d graphics-->
+  <script type="x-shader/x-vertex" id="toon_shader_vertex">
   varying vec3 vNormal;
   varying vec3 vViewPosition;
   varying vec3 surfacePos;
@@ -29,7 +25,7 @@
     vViewPosition = -mvPosition.xyz;
   }
   </script>
-  <script type="x-shader/x-fragment" id="fragmentShader">
+  <script type="x-shader/x-fragment" id="toon_shader_fragment">
   uniform vec3 uMaterialColor;
 
   uniform vec3 uDirLightPos;
@@ -72,6 +68,20 @@
     diffuse = diffuse > uBorder ? 1.0 : diffuse > uBorder - 0.2 ? 0.4 : 0.1;
 
     gl_FragColor = vec4( uKd * color * uDirLightColor * diffuse, 1.0 );
+  }
+  </script>
+
+  <!--Shaders for environment mapping-->
+  <script type="x-shader/x-vertex" id="env_shader_vertex">
+  void main()
+  {
+    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+  }
+  </script>
+  <script type="x-shader/x-fragment" id="env_shader_fragment">
+  void main()
+  {
+    gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
   }
   </script>
   <script src="scripts/shaders.js"></script>
