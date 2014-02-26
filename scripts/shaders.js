@@ -26,6 +26,10 @@ var shaderTypes = {
       uBorder: {
         type: "f",
         value: 0.4
+      },
+      checker_size: {
+        type: "f",
+        value: 0.2
       }
     }
   },
@@ -36,8 +40,22 @@ var shaderTypes = {
   }
 };
 
+if (!window.WebGLRenderingContext) {
+  // the browser doesn't even know what WebGL is
+  window.location.href = "http://get.webgl.org";
+} else {
+  /* This is currently not working
+  var canvas = document.getElementsByTagName("canvas");
+  var context = canvas.item(0).getContext("webgl");
+  if (!context) {
+    // browser supports WebGL but initialization failed.
+    window.location = "http://get.webgl.org/troubleshooting";
+  }//*/
+}
+
 /**
- *  
+ *  Responsible for all of the initialization routines
+ *  Sets up the scene, renderer, camera, lights and objects
  */
 function init()
 {
@@ -73,11 +91,18 @@ function init()
   cameraControls.target.set(0, 0, 0);
 }
 
+/*
+ *  Loads the text of a given shader
+ */
 function loadShader(shadertype) 
 {
   return document.getElementById(shadertype).textContent;
 }
 
+/*
+ *  Creates and loads custom shaders
+ *  Based on code provided in Udacity's Interactive 3D Programming Course
+ */
 function createShaderMaterial(id, light, materialColor) 
 {
   var shader = shaderTypes[id];
@@ -96,7 +121,12 @@ function createShaderMaterial(id, light, materialColor)
   {
     //Do anything specific for env shader
     //currently not implemented
-    alert("This shader is not yet implemented");
+    var is_chrome = window.chrome;
+    if(is_chrome)
+    {
+      //alert only seems to work correctly on chrome
+      alert("This shader is not yet implemented");
+    }
   }
   else
   {
@@ -105,12 +135,17 @@ function createShaderMaterial(id, light, materialColor)
   return material;
 }
 
+/*
+ *  Sets up the gui elements using dat.GUI
+ *  This includes a selector for shaders, sliders for uniforms, and movement controls for the teapot
+ */
 function createGui()
 {
   guiController = {
     shader: "toon_shader",
     kd: 0.7,
     border: 0.4,
+    checker_size: 0.2,
     rot_x: 0.0,
     rot_y: 0.005,
     rot_z: 0.0
@@ -119,12 +154,18 @@ function createGui()
   gui.add(guiController, 'shader', ['toon_shader', 'env_shader']);
   gui.add(guiController, 'border', 0.0, 1.0);
   gui.add(guiController, 'kd', 0.0, 1.0);
+  gui.add(guiController, 'checker_size', 0.0, 1.0);
   var folder = gui.addFolder('Movement');
   folder.add(guiController, 'rot_x', -0.01, 0.01);
   folder.add(guiController, 'rot_y', -0.01, 0.01);
   folder.add(guiController, 'rot_z', -0.01, 0.01);
 }
 
+/*
+ *  Renders the scene, and handles updates based on which shader is in use.
+ *  Will probably extract each update type into it's own method for readability
+ *  as this program expands in size.
+ */
 function render()
 {
   requestAnimationFrame(render);
@@ -145,18 +186,21 @@ function render()
     teapot_material.uniforms.uDirLightPos.value = light.position;
     teapot_material.uniforms.uKd.value = guiController.kd;
     teapot_material.uniforms.uBorder.value = guiController.border;
+    teapot_material.uniforms.checker_size.value = guiController.checker_size;
   }
-  //TODO: add a slider for checker size
 
   renderer.render(scene, camera);
 }
 
-/*document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+//The following code exists in case I want to add some clicking/mouse tracking
+/*
+document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 function onDocumentMouseMove(event)
 {
 
 }//*/
-/*document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+/*
+document.addEventListener( 'mousedown', onDocumentMouseDown, false );
 function onDocumentMouseDown(event)
 {
 

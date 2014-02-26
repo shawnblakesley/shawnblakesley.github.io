@@ -2,7 +2,7 @@
 <html>
   <head>
   <title>Shawn Blakesley's Example Page (Updates imminent)</title>
-  <style>canvas { width: 100%; height: 100%; } </style>
+  <style>canvas { width: 100%; height: 100%;} </style>
   </head>
   <body bgcolor="#000000">
   <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
@@ -33,14 +33,14 @@
 
   uniform float uKd;
   uniform float uBorder;
+  uniform float checker_size;
 
   varying vec3 vNormal;
   varying vec3 vViewPosition;
   varying vec3 surfacePos;
-  const float checkSize = 0.2;
 
   void main() {
-    vec3 position = surfacePos / checkSize;
+    vec3 position = surfacePos / checker_size;
     vec3 color = uMaterialColor;
     if(fract(position.x) < 0.5 && fract(position.z) < 0.5){
       color *= 2.0;
