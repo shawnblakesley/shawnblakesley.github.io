@@ -33,7 +33,7 @@ var shaderTypes = {
       }
     }
   },
-  'env_shader' : {
+  'placeholder_shader' : {
     uniforms: {
 
     }
@@ -59,13 +59,14 @@ if (!window.WebGLRenderingContext) {
  */
 function init()
 {
+  document.getElementById( "shader" );
   scene = new THREE.Scene();
   scene.fog = new THREE.Fog(0x000000, 0.5, 6);
   camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
   renderer = new THREE.WebGLRenderer({antialias: true});
   renderer.setSize( window.innerWidth, window.innerHeight );
-  document.body.appendChild( renderer.domElement );
+  document.getElementById( "shader" ).appendChild( renderer.domElement );
 
   projector = new THREE.Projector();
 
@@ -117,9 +118,9 @@ function createShaderMaterial(id, light, materialColor)
     material.uniforms.uDirLightColor.value = light.color;
     material.uniforms.uMaterialColor.value.copy(materialColor);
   }
-  else if(id === 'env_shader')
+  else if(id === 'placeholder_shader')
   {
-    //Do anything specific for env shader
+    //Do anything specific for placeholder shader
     //currently not implemented
     var is_chrome = window.chrome;
     if(is_chrome)
@@ -150,15 +151,17 @@ function createGui()
     rot_y: 0.005,
     rot_z: 0.0
   }
-  var gui = new dat.GUI();
-  gui.add(guiController, 'shader', ['toon_shader', 'env_shader']);
+  var gui = new dat.GUI({autoPlace: false});
+  gui.add(guiController, 'shader', ['toon_shader', 'placeholder_shader']);
   gui.add(guiController, 'border', 0.0, 1.0);
   gui.add(guiController, 'kd', 0.0, 1.0);
-  gui.add(guiController, 'checker_size', 0.0, 1.0);
+  gui.add(guiController, 'checker_size', 0.0, 4.0);
   var folder = gui.addFolder('Movement');
   folder.add(guiController, 'rot_x', -0.01, 0.01);
   folder.add(guiController, 'rot_y', -0.01, 0.01);
   folder.add(guiController, 'rot_z', -0.01, 0.01);
+  var customContainer = document.getElementById('shader-controls');
+  customContainer.appendChild(gui.domElement);
 }
 
 /*
@@ -206,6 +209,6 @@ function onDocumentMouseDown(event)
 
 }//*/
 
-init();
 createGui();
+init();
 render();

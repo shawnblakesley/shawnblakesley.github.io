@@ -1,12 +1,157 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Shawn Blakesley's Homepage (under construction)</title>
-    <style>canvas { width: 100%; height: 100%; } </style>
+    <title>Shawn Blakesley's Homepage</title>
+    <style>
+    canvas { 
+      width: 100%; 
+      height: 100%; 
+    } 
+    </style>
   </head>
-  <body bgcolor="#000000">
-    <script src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
-    <script src="https://rawgithub.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
-    <script src="scripts/index.js"></script>
+  <body style="width: 1280px; background: #000; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
+    <div style="width: 1280px; background: #000; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
+      <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="628"><img src="images/static_name.png" width="628" height="56" border="0" /></td>
+          <td height="64">&nbsp;</td>
+          <td width="78"><a href="downloads/shawn_blakesley_resume.pdf"><img src="images/button_resume.png" alt="Download pdf Resume" width="120" height="56" border="0" /></a></td>
+          <td width="92"><a href="mailto:shawnblakesley@gmail.com"><img src="images/button_email.png" alt="Contact Me" width="92" height="56" border="0" /></a></td>
+          <td width="70"><a href="https://www.linkedin.com/in/shawnblakesley"><img src="images/button_linkedin.png" alt="LinkedIn Profile" width="66" height="56" border="0" /></a></td>
+        </tr>
+      </table>
+      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+        <h2><i>Previous Employers</i></h2>
+      </div>
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="310" height="210" align="center" bgcolor="#FFF">
+            <a href="http://www.volcanocorp.com/">
+              <img src="images/volcano_logo.png" alt="Volcano Logo" width="260" height="100" border="0" />
+            </a>
+          </td>
+          <td width="10"></td>
+          <td valign="top">
+            <h3>Volcano Corporation: <i>Software Engineer 2</i></h3>
+            Had the opportunity to work with a group of highly skilled engineers developing modern C++ applications for medical devices. Worked with the build team on an automated test system, and the CMake Macros used by the software team. Spent the majority of my time on the Maestro team (which was the newest platform being developed at Volcano).
+          </td>
+        </tr>
+        <tr>
+          <td width="310" height="210" align="center" bgcolor="#FFF">
+            <a href="https://www.ecs.csus.edu/itest/">
+              <img src="images/itest.jpg" alt="ITest Picture" width="300" height="200" border="0" />
+            </a>
+          </td>
+          <td width="10"></td>
+          <td valign="top">
+            <h3>ITest CSUS: <i>Head Instructor</i></h3>
+            Taught game programming to high school students in a summer-long program. Used the <a href="http://www.greenfoot.org/overview">Greenfoot</a> IDE/Game Engine whose code is written in Java.
+          </td>
+        </tr>
+        <tr>
+          <td width="310" height="210" align="center" bgcolor="#FFF">
+            <a href="http://www.csus.edu/parc/">
+              <img src="images/csus_logo.jpg" alt="CSUS Logo" width="200" height="201" border="0" />
+            </a>
+          </td>
+          <td width="10"></td>
+          <td valign="top">
+            <h3>CSUS Peer and Academic Resource Center: <i>Adjunct Instructor</i></h3>
+            Taught introductory java courses as a supplement to college courses.
+          </td>
+        </tr>
+      </table>
+      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+        <h2><i>Sample Work</i></h2>
+      </div>
+      General description and details about sample work.<br />
+      <br />
+      <i>Note: </i>To see some of these examples, you need <a href="http://get.webgl.org">WebGL</a>
+      <div id="shader-controls" style="position: absolute;"></div>
+      <div id="shader"></div>
+      Description for work done on shaders.
+    </div>
+
+
+    <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
+    <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+    <script type="text/javascript" src="lib/dat.gui.min.js"></script>
+    <script type="text/javascript" src="lib/uclass_TeapotGeometry.js"></script>
+    
+    <!--Shaders for toon shading based loosly off udacity course lectures for interactive 3d graphics-->
+    <script type="x-shader/x-vertex" id="toon_shader_vertex">
+    varying vec3 vNormal;
+    varying vec3 vViewPosition;
+    varying vec3 surfacePos;
+
+    void main() {
+      surfacePos = position;
+
+      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+      vNormal = normalize( normalMatrix * normal );
+      vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+      vViewPosition = -mvPosition.xyz;
+    }
+    </script>
+    <script type="x-shader/x-fragment" id="toon_shader_fragment">
+    uniform vec3 uMaterialColor;
+
+    uniform vec3 uDirLightPos;
+    uniform vec3 uDirLightColor;
+
+    uniform float uKd;
+    uniform float uBorder;
+    uniform float checker_size;
+
+    varying vec3 vNormal;
+    varying vec3 vViewPosition;
+    varying vec3 surfacePos;
+
+    void main() {
+      vec3 position = surfacePos / checker_size;
+      vec3 color = uMaterialColor;
+      if(fract(position.x) < 0.5 && fract(position.z) < 0.5){
+        color *= 2.0;
+      }
+      else if(fract(position.z) < 0.5){
+        color *= 1.5;
+        color.rg = vec2(0.0, 0.0);
+      }
+      else if(fract(position.x) < 0.5)
+      {
+        color *= 1.0;
+      }
+      else{
+        color *= 0.0;
+      }
+      // compute direction to light
+      vec4 lDirection = viewMatrix * vec4( uDirLightPos, 0.0 );
+      vec3 lVector = normalize( lDirection.xyz );
+
+      // diffuse: N * L. Normal must be normalized, since it's interpolated.
+      vec3 normal = normalize( vNormal );
+      
+      float diffuse = dot( normal, lVector );
+      //Create a cartoon look with 3 intensities
+      diffuse = diffuse > uBorder ? 1.0 : diffuse > uBorder - 0.2 ? 0.4 : 0.1;
+
+      gl_FragColor = vec4( uKd * color * uDirLightColor * diffuse, 1.0 );
+    }
+    </script>
+
+    <!--Placeholder shaders-->
+    <script type="x-shader/x-vertex" id="placeholder_shader_vertex">
+    void main()
+    {
+      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    }
+    </script>
+    <script type="x-shader/x-fragment" id="placeholder_shader_fragment">
+    void main()
+    {
+      gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
+    }
+    </script>
+    <script src="scripts/shaders.js"></script>
   </body>
 </html>
