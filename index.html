@@ -64,12 +64,22 @@
       <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
         <h2><i>Sample Work</i></h2>
       </div>
-      General description and details about sample work.<br />
-      <br />
+      The following is a selection of sample work created for the website.<br />
       <i>Note: </i>To see some of these examples, you need <a href="http://get.webgl.org">WebGL</a>
       <div id="shader-controls" style="position: absolute;"></div>
       <div id="shader"></div>
-      Description for work done on shaders.
+      <table>
+        <tr>
+          <td width="200">
+            <a title="JavaScript"><img src="images/javascript_logo.png" alt="JavaScript" width="50" height="50" border="0"/></a>
+            <a title="OpenGL"><img src="images/opengl_logo.png" alt="JavaScript" width="50" height="50" border="0"/></a>
+            <a title="GLSL"><img src="images/glsl_logo.png" alt="JavaScript" width="50" height="50" border="0"/></a>
+          </td>
+          <td valign="top">
+          The code was written in JavaScript using Three.js. The code was written while learning Three.js from the Interactive 3D Graphics Udacity course <a href="https://www.udacity.com/course/cs291">(here)</a>.
+          </td>
+        </tr>
+      </table>
     </div>
 
 
@@ -95,34 +105,35 @@
     </script>
     <script type="x-shader/x-fragment" id="toon_shader_fragment">
     uniform vec3 uMaterialColor;
-
     uniform vec3 uDirLightPos;
     uniform vec3 uDirLightColor;
 
-    uniform float uKd;
+    uniform vec3 uPrimaryColor;
+    uniform vec3 uSecondaryColor;
+
     uniform float uBorder;
-    uniform float checker_size;
+    uniform float uCheckerSize;
+    uniform float uShine;
 
     varying vec3 vNormal;
     varying vec3 vViewPosition;
     varying vec3 surfacePos;
 
     void main() {
-      vec3 position = surfacePos / checker_size;
+      vec3 position = surfacePos / uCheckerSize;
       vec3 color = uMaterialColor;
       if(fract(position.x) < 0.5 && fract(position.z) < 0.5){
-        color *= 2.0;
+        color *= uPrimaryColor;
       }
       else if(fract(position.z) < 0.5){
-        color *= 1.5;
-        color.rg = vec2(0.0, 0.0);
+        color *= uSecondaryColor;
       }
       else if(fract(position.x) < 0.5)
       {
-        color *= 1.0;
+        color *= 0.01;
       }
       else{
-        color *= 0.0;
+        color *= 0.01;
       }
       // compute direction to light
       vec4 lDirection = viewMatrix * vec4( uDirLightPos, 0.0 );
@@ -135,7 +146,7 @@
       //Create a cartoon look with 3 intensities
       diffuse = diffuse > uBorder ? 1.0 : diffuse > uBorder - 0.2 ? 0.4 : 0.1;
 
-      gl_FragColor = vec4( uKd * color * uDirLightColor * diffuse, 1.0 );
+      gl_FragColor = vec4( color * uDirLightColor * diffuse, 1.0 );
     }
     </script>
 

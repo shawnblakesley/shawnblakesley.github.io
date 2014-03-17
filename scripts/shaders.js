@@ -16,18 +16,19 @@ var shaderTypes = {
 
       "uDirLightPos": { type: "v3", value: new THREE.Vector3() },
       "uDirLightColor": { type: "c", value: new THREE.Color( 0xFFFFFF ) },
-
       "uMaterialColor": { type: "c", value: new THREE.Color( 0xFFFFFF ) },
+      "uPrimaryColor": { type: "v3", value: new THREE.Vector3(2.0, 0.0, 0.0)},
+      "uSecondaryColor": { type: "v3", value: new THREE.Vector3(1.5, 1.0, 0.0)},
 
-      uKd: {
+      uShine: {
         type: "f",
-        value: 0.7
+        value:0.1
       },
       uBorder: {
         type: "f",
         value: 0.4
       },
-      checker_size: {
+      uCheckerSize: {
         type: "f",
         value: 0.2
       }
@@ -144,19 +145,33 @@ function createGui()
 {
   guiController = {
     shader: "toon_shader",
-    kd: 0.7,
     border: 0.4,
     checker_size: 0.2,
+    shininess: 0.1,
+    primary_r: 2.0,    
+    primary_g: 0.0,
+    primary_b: 0.0,
+    secondary_r: 1.5,
+    secondary_g: 1.0,
+    secondary_b: 0.0,    
     rot_x: 0.0,
     rot_y: 0.005,
     rot_z: 0.0
-  }
+  };
+  //guiController = new GuiController();
   var gui = new dat.GUI({autoPlace: false});
   gui.add(guiController, 'shader', ['toon_shader', 'placeholder_shader']);
   gui.add(guiController, 'border', 0.0, 1.0);
-  gui.add(guiController, 'kd', 0.0, 1.0);
   gui.add(guiController, 'checker_size', 0.0, 4.0);
-  var folder = gui.addFolder('Movement');
+  gui.add(guiController, 'shininess', 0.0, 1.0);
+  var folder = gui.addFolder('Color');
+  folder.add(guiController, 'primary_r', 0.0, 2.0);
+  folder.add(guiController, 'primary_g', 0.0, 2.0);
+  folder.add(guiController, 'primary_b', 0.0, 2.0);
+  folder.add(guiController, 'secondary_r', 0.0, 2.0);
+  folder.add(guiController, 'secondary_g', 0.0, 2.0);
+  folder.add(guiController, 'secondary_b', 0.0, 2.0);
+  folder = gui.addFolder('Movement');
   folder.add(guiController, 'rot_x', -0.01, 0.01);
   folder.add(guiController, 'rot_y', -0.01, 0.01);
   folder.add(guiController, 'rot_z', -0.01, 0.01);
@@ -187,9 +202,11 @@ function render()
   if(teapot_material.name === 'toon_shader')
   {
     teapot_material.uniforms.uDirLightPos.value = light.position;
-    teapot_material.uniforms.uKd.value = guiController.kd;
     teapot_material.uniforms.uBorder.value = guiController.border;
-    teapot_material.uniforms.checker_size.value = guiController.checker_size;
+    teapot_material.uniforms.uShine.value = guiController.shininess;
+    teapot_material.uniforms.uCheckerSize.value = guiController.checker_size;
+    teapot_material.uniforms.uPrimaryColor.value = new THREE.Vector3(guiController.primary_r, guiController.primary_g, guiController.primary_b);
+    teapot_material.uniforms.uSecondaryColor.value = new THREE.Vector3(guiController.secondary_r, guiController.secondary_g, guiController.secondary_b);
   }
 
   renderer.render(scene, camera);
