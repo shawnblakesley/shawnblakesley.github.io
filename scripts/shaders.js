@@ -203,7 +203,7 @@ function render()
   {
     teapot_material.uniforms.uDirLightPos.value = light.position;
     teapot_material.uniforms.uBorder.value = guiController.border;
-    teapot_material.uniforms.uShine.value = guiController.shininess;
+    teapot_material.uniforms.uShine.value = guiController.shininess;  //TODO: Make shininess actually do something
     teapot_material.uniforms.uCheckerSize.value = guiController.checker_size;
     teapot_material.uniforms.uPrimaryColor.value = new THREE.Vector3(guiController.primary_r, guiController.primary_g, guiController.primary_b);
     teapot_material.uniforms.uSecondaryColor.value = new THREE.Vector3(guiController.secondary_r, guiController.secondary_g, guiController.secondary_b);
