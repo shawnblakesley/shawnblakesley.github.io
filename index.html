@@ -3,14 +3,28 @@
   <head>
     <title>Shawn Blakesley's Homepage</title>
     <style>
-    canvas { 
-      width: 100%; 
-      height: 100%; 
-    } 
+      canvas { 
+        width: 100%; 
+        height: 100%; 
+      } 
+      a:link {color:#0B7;}
+      a:visited {color:#052;}
+      a:hover {color:#0D8;}
+      a:active {color:#0B7;}
+      a:hover, a:visited, a:link, a:active
+      {
+        text-decoration: none;
+      }
+      .footer a:hover, a:visited, a:link, a:active
+      {
+        color: #FFF;
+      }
+      h1 {display: inline}
     </style>
   </head>
   <body style="width: 1280px; background: #000; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
     <div style="width: 1280px; background: #000; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
+      <!-- TODO: Add a section selector to jump to each section -->
       <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
           <td width="628"><img src="images/static_name.png" width="628" height="56" border="0" /></td>
@@ -25,7 +39,7 @@
       </div>
       <table border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="310" height="210" align="center" bgcolor="#FFF">
+          <td width="300" height="210" align="center" bgcolor="#FFF">
             <a href="http://www.volcanocorp.com/">
               <img src="images/volcano_logo.png" alt="Volcano Logo" width="260" height="100" border="0" />
             </a>
@@ -33,11 +47,11 @@
           <td width="10"></td>
           <td valign="top">
             <h3>Volcano Corporation: <i>Software Engineer 2</i></h3>
-            Had the opportunity to work with a group of highly skilled engineers developing modern C++ applications for medical devices. Worked with the build team on an automated test system, and the CMake Macros used by the software team. Spent the majority of my time on the Maestro team (which was the newest platform being developed at Volcano).
+            Had the opportunity to work with a group of highly skilled, awesome people developing modern C++ applications for medical devices. Worked with the build team on an automated test system, and the CMake Macros used by the software team. Spent the majority of my time on the Maestro team (which was the newest platform being developed at Volcano).
           </td>
         </tr>
         <tr>
-          <td width="310" height="210" align="center" bgcolor="#FFF">
+          <td width="300" height="210" align="center" bgcolor="#000">
             <a href="https://www.ecs.csus.edu/itest/">
               <img src="images/itest.jpg" alt="ITest Picture" width="300" height="200" border="0" />
             </a>
@@ -49,7 +63,7 @@
           </td>
         </tr>
         <tr>
-          <td width="310" height="210" align="center" bgcolor="#FFF">
+          <td width="300" height="210" align="center" bgcolor="#FFF">
             <a href="http://www.csus.edu/parc/">
               <img src="images/csus_logo.jpg" alt="CSUS Logo" width="200" height="201" border="0" />
             </a>
@@ -66,22 +80,101 @@
       </div>
       The following is a selection of sample work created for the website.<br />
       <i>Note: </i>To see some of these examples, you need <a href="http://get.webgl.org">WebGL</a>
-      <div id="shader-controls" style="position: absolute;"></div>
-      <div id="shader"></div>
+      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+        <h4><i>Simple Unity Platformer</i></h4>
+      </div>
       <table>
         <tr>
-          <td width="200">
-            <a title="JavaScript"><img src="images/JavaScript_logo.png" alt="JavaScript" width="50" height="50" border="0"/></a>
-            <a title="OpenGL"><img src="images/opengl_logo.png" alt="OpenGL" width="50" height="50" border="0"/></a>
-            <a title="GLSL"><img src="images/glsl_logo.png" alt="GLSL" width="50" height="50" border="0"/></a>
+          <td width="1080">
+            <center><h1><i>COMING SOON!</i></h1><br><font size="2">Note: language/library/tool choices are subject to change</font></center>
           </td>
-          <td valign="top">
-          The code was written in JavaScript using Three.js. The code was written while learning Three.js from the Interactive 3D Graphics Udacity course <a href="https://www.udacity.com/course/cs291">(here)</a>.
+          <td width="200" valign="top">
+            <a title="Unity"><img src="images/unity_logo.png" alt="Unity" width="50" height="50" border="0"/></a>
+            <a title="C#"><img src="images/csharp_logo.png" alt="C#" width="50" height="50" border="0"/></a>
+            <br>
+            This simple platformer was developed using C# and Unity
           </td>
         </tr>
       </table>
+      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+        <h4><i>Dynamic Slicing a Square Demo</i></h4>
+      </div>
+      <table>
+        <tr>
+          <td width="200" valign="top">
+            <a title="C++"><img src="images/cpp_logo.png" alt="C++" width="50" height="50" border="0"/></a>
+            <a title="SFML"><img src="images/sfml_logo.png" alt="SFML" width="50" height="50" border="0"/></a>
+            <a title="OpenGL"><img src="images/opengl_logo.png" alt="OpenGL" width="50" height="50" border="0"/></a>
+            <br>
+            This sample uses the Sutherland-Hodgman clipping routine to dynamically slice a square (in theory the algorithm will work with a more complex shape as well).
+          </td>
+          <td width="1080">
+            <center><h1><i>COMING SOON!</i></h1><br><font size="2">Note: language/library/tool choices are subject to change</font></center>
+          </td>
+        </tr>
+      </table>
+      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+        <h4><i>Three.js/WebGL Shader Demo</i></h4>
+      </div>
+      <table>
+        <tr>
+          <td width="1080">
+            <div id="shader-controls" style="position: absolute;"></div>
+            <div id="shader"></div>
+          </td>
+          <td width="200" valign="top">
+            <a title="JavaScript"><img src="images/JavaScript_logo.png" alt="JavaScript" width="50" height="50" border="0"/></a>
+            <a title="OpenGL"><img src="images/opengl_logo.png" alt="OpenGL" width="50" height="50" border="0"/></a>
+            <a title="GLSL"><img src="images/glsl_logo.png" alt="GLSL" width="50" height="50" border="0"/></a>
+            <br>
+            The code was written in JavaScript using Three.js. <br><br>
+            The code was written while learning Three.js from the Interactive 3D Graphics Udacity course (<a href="https://www.udacity.com/course/cs291">here</a>).<br><br>
+            The GLSL source code is located in the source of this webpage (Note: WebGL's GLSL is limited compared to actual GLSL).<br><br>
+            JavaScript code for the remainder of the project can be foud (<a href="scripts/shaders.js">here</a>)
+          </td>
+        </tr>
+      </table>
+      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+        <h4><i>More to Come...</i></h4>
+      </div><br><br>
+      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+        <h2><i>About Me</i></h2>
+      </div>
+        Coming Soon
+        
+        <br><br><br><br><br>
+        <center><div class="footer"><table>
+            <tr>
+                <td>
+                    <font size="2"><a href="downloads/shawn_blakesley_resume.pdf">-resume-</a></font>
+                </td>
+                <td width="30">
+                    &nbsp;
+                </td>
+                <td>
+                    <font size="2"><a href="mailto:shawnblakesley@gmail.com">-contact-</a></font>
+                </td>
+                <td width="30">
+                    &nbsp;
+                </td>
+                <td>
+                    <font size="2">Shawn Blakesley</font>
+                </td>
+                <td width="30">
+                    &nbsp;
+                </td>
+                <td>
+                    <font size="2"><a href="https://careers.stackoverflow.com/shawnblakesley">-stack_overflow-</a></font>
+                </td>
+                <td width="30">
+                    &nbsp;
+                </td>
+                <td>
+                    <font size="2"><a href="https://www.linkedin.com/in/shawnblakesley">-linkedin-</a></font>
+                </td>
+            </tr>
+        </table></div></center>
     </div>
-
 
     <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
     <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
