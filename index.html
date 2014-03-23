@@ -1,240 +1,341 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Shawn Blakesley's Homepage</title>
-    <style>
-      canvas { 
-        width: 100%; 
-        height: 100%; 
-      } 
-      a:link {color:#0B7;}
-      a:visited {color:#052;}
-      a:hover {color:#0D8;}
-      a:active {color:#0B7;}
-      a:hover, a:visited, a:link, a:active
-      {
-        text-decoration: none;
-      }
-      .footer a:hover, .footer a:visited, .footer a:link, .footer a:active
-      {
-        color: #FFF;
-      }
-      h1 {display: inline}
-    </style>
-  </head>
-  <body style="width: 1280px; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
-    <div style="width: 1280px; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
-      <!-- TODO: Add a section selector to jump to each section -->
-      <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
-        <tr>
-          <td width="628"><img src="images/static_name.png" width="628" height="56" border="0" /></td>
-          <td>&nbsp;</td>
-          <td width="56"><a href="downloads/shawn_blakesley_resume.pdf"><img src="images/cv-logo.png" alt="Download pdf Resume" width="56" height="56" border="0" /></a></td>
-          <td width="56"><a href="mailto:shawnblakesley@gmail.com"><img src="images/gmail-logo.png" alt="Contact Me" width="56" height="56" border="0" /></a></td>
-          <td width="56"><a href="https://careers.stackoverflow.com/shawnblakesley"><img src="images/stackoverflow_logo.png" alt="Stack Overflow" width="56" height="56" border="0" /></a></td>
-          <td width="70"><a href="https://www.linkedin.com/in/shawnblakesley"><img src="images/button_linkedin.png" alt="LinkedIn Profile" width="66" height="56" border="0" /></a></td>
-        </tr>
-      </table>
-      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
-        <h2><i>Previous Employers</i></h2>
-      </div>
-      <table border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td width="300" height="210" align="center" bgcolor="#FFF">
-            <a href="http://www.volcanocorp.com/">
-              <img src="images/volcano_logo.png" alt="Volcano Logo" width="260" height="100" border="0" />
-            </a>
-          </td>
-          <td width="10"></td>
-          <td valign="top">
-            <h3>Volcano Corporation: <i>Software Engineer 2</i></h3>
-            Had the opportunity to work with a group of highly skilled, awesome people developing modern C++ applications for medical devices. Worked with the build team on an automated test system, and the CMake Macros used by the software team. Spent the majority of my time on the Maestro team (which was the newest platform being developed at Volcano).
-          </td>
-        </tr>
-        <tr>
-          <td width="300" height="210" align="center" bgcolor="#000">
-            <a href="https://www.ecs.csus.edu/itest/">
-              <img src="images/itest.jpg" alt="ITest Picture" width="300" height="200" border="0" />
-            </a>
-          </td>
-          <td width="10"></td>
-          <td valign="top">
-            <h3>ITest CSUS: <i>Head Instructor</i></h3>
-            Taught game programming to high school students in a summer-long program. Used the <a href="http://www.greenfoot.org/overview">Greenfoot</a> IDE/Game Engine whose code is written in Java.
-          </td>
-        </tr>
-        <tr>
-          <td width="300" height="210" align="center" bgcolor="#FFF">
-            <a href="http://www.csus.edu/parc/">
-              <img src="images/csus_logo.jpg" alt="CSUS Logo" width="200" height="201" border="0" />
-            </a>
-          </td>
-          <td width="10"></td>
-          <td valign="top">
-            <h3>CSUS Peer and Academic Resource Center: <i>Adjunct Instructor</i></h3>
-            Taught introductory java courses as a supplement to college courses.
-          </td>
-        </tr>
-      </table>
-      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
-        <h2><i>Sample Work</i></h2>
-      </div>
-      The following is a selection of sample work created for the website.<br />
-      <i>Note: </i>To see some of these examples, you may need <a href="http://get.webgl.org">WebGL</a>, Unity Web Player, and possibly other things (Coming Soon)
-      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
-        <h4><i>Simple Unity Platformer</i></h4>
-      </div>
-      <table>
-        <tr>
-          <td width="1080">
-            <center><h1><i>COMING SOON!</i></h1><br><font size="2">Note: language/library/tool choices are subject to change</font></center>
-          </td>
-          <td width="200" valign="top">
-            <a title="Unity"><img src="images/unity_logo.png" alt="Unity" width="50" height="50" border="0"/></a>
-            <a title="C#"><img src="images/csharp_logo.png" alt="C#" width="50" height="50" border="0"/></a>
-            <br>
-            This simple platformer was developed using C# and Unity
-          </td>
-        </tr>
-      </table>
-      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
-        <h4><i>Dynamic Slicing a Square Demo</i></h4>
-      </div>
-      <table>
-        <tr>
-          <td width="200" valign="top">
-            <a title="C++"><img src="images/cpp_logo.png" alt="C++" width="50" height="50" border="0"/></a>
-            <a title="SFML"><img src="images/sfml_logo.png" alt="SFML" width="50" height="50" border="0"/></a>
-            <a title="OpenGL"><img src="images/opengl_logo.png" alt="OpenGL" width="50" height="50" border="0"/></a>
-            <br>
-            This sample uses the Sutherland-Hodgman clipping routine to dynamically slice a square (in theory the algorithm will work with a more complex shape as well).
-          </td>
-          <td width="1080">
-            <center><h1><i>COMING SOON!</i></h1><br><font size="2">Note: language/library/tool choices are subject to change</font></center>
-          </td>
-        </tr>
-      </table>
-      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
-        <h4><i>Three.js/WebGL Shader Demo</i></h4>
-      </div>
-      <table>
-        <tr>
-          <td width="1080">
-            <div id="shader-controls" style="position: absolute;"></div>
-            <div id="shader"></div>
-          </td>
-          <td width="200" valign="top">
-            <a title="JavaScript"><img src="images/javascript_logo.png" alt="JavaScript" width="50" height="50" border="0"/></a>
-            <a title="OpenGL"><img src="images/opengl_logo.png" alt="OpenGL" width="50" height="50" border="0"/></a>
-            <a title="GLSL"><img src="images/glsl_logo.png" alt="GLSL" width="50" height="50" border="0"/></a>
-            <br>
-            The code was written in JavaScript using Three.js. <br><br>
-            The code was written while learning Three.js from the Interactive 3D Graphics Udacity course (<a href="https://www.udacity.com/course/cs291">here</a>).<br><br>
-            The GLSL source code is located in the source of this webpage (Note: WebGL's GLSL is limited compared to actual GLSL).<br><br>
-            JavaScript code for the remainder of the project may be found (<a href="scripts/shaders.js">here</a>)
-          </td>
-        </tr>
-      </table>
-      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
-        <h4><i>More to Come...</i></h4>
-      </div><br><br>
-      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
-        <h2><i>About Me</i></h2>
-      </div>
-        <table>
-        <tr>
-            <td width="100" valign="top"><center><img src="https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7" /></center></td>
-            <td>I got started programming back in high school by making tiny games using flash actionscript. I've been programming ever since. I quickly fell in love with Java once I got to college (because that was the language of the school). When I started using C++11 and boost at Volcano, I became hooked instantly. <br><br>
-I feel at home with many different languages, and I find learning a new language to be one of the most entertaining parts of programming. There are so many ways to say hello world!<br><br>
-            Coming Soon: details about my nerdy interests</td>
-        </tr>
-        </table>        
-        <br><br><br><br><br>
-        <center><div class="footer"><table>
-            <tr>
-                <td>
-                    <font size="2"><a href="downloads/shawn_blakesley_resume.pdf">-resume-</a></font>
-                </td>
-                <td width="30">
-                    &nbsp;
-                </td>
-                <td>
-                    <font size="2"><a href="mailto:shawnblakesley@gmail.com">-contact-</a></font>
-                </td>
-                <td width="30">
-                    &nbsp;
-                </td>
-                <td>
-                    <font size="2">Shawn Blakesley</font>
-                </td>
-                <td width="30">
-                    &nbsp;
-                </td>
-                <td>
-                    <font size="2"><a href="https://careers.stackoverflow.com/shawnblakesley">-stack_overflow-</a></font>
-                </td>
-                <td width="30">
-                    &nbsp;
-                </td>
-                <td>
-                    <font size="2"><a href="https://www.linkedin.com/in/shawnblakesley">-linkedin-</a></font>
-                </td>
-            </tr>
-        </table></div></center>
-    </div>
-
-    <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
-    <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
-    <script type="text/javascript" src="lib/dat.gui.min.js"></script>
-    <script type="text/javascript" src="lib/uclass_TeapotGeometry.js"></script>
-    
-    <!--Shaders for toon shading based loosly off udacity course lectures for interactive 3d graphics-->
-    <script type="x-shader/x-vertex" id="toon_shader_vertex">
-    varying vec3 vNormal;
-    varying vec3 vViewPosition;
-    varying vec3 surfacePos;
-
-    void main() {
-      surfacePos = position;
-
-      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-      vNormal = normalize( normalMatrix * normal );
-      vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
-      vViewPosition = -mvPosition.xyz;
+<html ng-app="homepage">
+<head>
+  <title>Shawn Blakesley's Homepage</title>
+  <style>
+    canvas { 
+      width: 100%; 
+      height: 100%; 
+    } 
+    a:link {color:#0B7;}
+    a:visited {color:#052;}
+    a:hover {color:#0D8;}
+    a:active {color:#0B7;}
+    a:hover, a:visited, a:link, a:active
+    {
+      text-decoration: none;
     }
-    </script>
-    <script type="x-shader/x-fragment" id="toon_shader_fragment">
-    uniform vec3 uMaterialColor;
-    uniform vec3 uDirLightPos;
-    uniform vec3 uDirLightColor;
-
-    uniform vec3 uPrimaryColor;
-    uniform vec3 uSecondaryColor;
-
-    uniform float uBorder;
-    uniform float uCheckerSize;
-    uniform float uShine;
-
-    varying vec3 vNormal;
-    varying vec3 vViewPosition;
-    varying vec3 surfacePos;
-
-    void main() {
-      vec3 position = surfacePos / uCheckerSize;
-      vec3 color = uMaterialColor;
-      if(fract(position.x) < 0.5 && fract(position.z) < 0.5){
-        color *= uPrimaryColor;
+    .footer a:hover, .footer a:visited, .footer a:link, .footer a:active
+    {
+      color: #FFF;
+    }
+    popover {
+      background-color: red; 
+    }
+    h1,h2,h3,h4 {display: inline}
+  </style>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.js"></script>
+  <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+  <script>
+    angular.module('homepage',['ui.bootstrap']);
+    function Collapsible($scope) {
+      $scope.isCollapsed = false;
+      $scope.text = 'collapse';
+      $scope.coll = function(){
+        $scope.isCollapsed = !$scope.isCollapsed;
+        if($scope.isCollapsed)
+        {
+          $scope.text = 'expand';
+        }
+        else{
+          $scope.text = 'collapse';
+        }
       }
-      else if(fract(position.z) < 0.5){
-        color *= uSecondaryColor;
-      }
-      else if(fract(position.x) < 0.5)
-      {
-        color *= 0.01;
-      }
-      else{
-        color *= 0.01;
-      }
+    }
+  </script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="width: 1280px; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
+  <div style="width: 1280px; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
+    <!-- TODO: Add a section selector to jump to each section -->
+    <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="628"><img src="images/static_name.png" width="628" height="56" border="0" /></td>
+        <td>&nbsp;</td>
+        <td width="56"><a href="downloads/shawn_blakesley_resume.pdf"><img src="images/cv-logo.png" alt="Download pdf Resume" width="56" height="56" border="0" /></a></td>
+        <td width="56"><a href="mailto:shawnblakesley@gmail.com"><img src="images/gmail-logo.png" alt="Contact Me" width="56" height="56" border="0" /></a></td>
+        <td width="56"><a href="https://careers.stackoverflow.com/shawnblakesley"><img src="images/stackoverflow_logo.png" alt="Stack Overflow" width="56" height="56" border="0" /></a></td>
+        <td width="70"><a href="https://www.linkedin.com/in/shawnblakesley"><img src="images/button_linkedin.png" alt="LinkedIn Profile" width="66" height="56" border="0" /></a></td>
+      </tr>
+    </table>
+    <div ng-controller="Collapsible">
+      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+        <table>
+          <tr>
+            <td width="1000"><h2><i>Previous Employers</i></h2></td>
+            <td width="280" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+          </tr>
+        </table>
+      </div>
+      <div  collapse="isCollapsed">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="300" height="210" align="center" bgcolor="#FFF">
+              <a href="http://www.volcanocorp.com/">
+                <img src="images/volcano_logo.png" alt="Volcano Logo" width="260" height="100" border="0" />
+              </a>
+            </td>
+            <td width="10"></td>
+            <td valign="top">
+              <h3>Volcano Corporation: <i>Software Engineer 2</i></h3><br>
+              Had the opportunity to work with a group of highly skilled, awesome people developing modern C++ applications for medical devices. Worked with the build team on an automated test system, and the CMake Macros used by the software team. Spent the majority of my time on the Maestro team (which was the newest platform being developed at Volcano).
+            </td>
+          </tr>
+          <tr>
+            <td width="300" height="210" align="center" bgcolor="#000">
+              <a href="https://www.ecs.csus.edu/itest/">
+                <img src="images/itest.jpg" alt="ITest Picture" width="300" height="200" border="0" />
+              </a>
+            </td>
+            <td width="10"></td>
+            <td valign="top">
+              <h3>ITest CSUS: <i>Head Instructor</i></h3><br>
+              Taught game programming to high school students in a summer-long program. Used the <a href="http://www.greenfoot.org/overview">Greenfoot</a> IDE/Game Engine whose code is written in Java.
+            </td>
+          </tr>
+          <tr>
+            <td width="300" height="210" align="center" bgcolor="#FFF">
+              <a href="http://www.csus.edu/parc/">
+                <img src="images/csus_logo.jpg" alt="CSUS Logo" width="200" height="201" border="0" />
+              </a>
+            </td>
+            <td width="10"></td>
+            <td valign="top">
+              <h3>CSUS Peer and Academic Resource Center: <i>Adjunct Instructor</i></h3><br>
+              Taught introductory java courses as a supplement to college courses.
+            </td>
+          </tr>
+        </table>
+        <br>
+      </div>
+    </div>
+    <div ng-controller="Collapsible">
+      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+        <table>
+          <tr>
+            <td width="1000"><h2><i>Sample Work</i></h2></td>
+            <td width="280" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+          </tr>
+        </table>
+      </div>
+      <div collapse="isCollapsed">
+        The following is a selection of sample work created for the website.<br />
+        <i>Note: </i>To see some of these examples, you may need <a href="http://get.webgl.org">WebGL</a>, Unity Web Player, and possibly other things (Coming Soon)
+        
+        <div ng-controller="Collapsible">
+          <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+            <table>
+              <tr>
+                <td width="1000"><h4><i>Simple Unity Platformer</i></h4></td>
+                <td width="280" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+              </tr>
+            </table>
+          </div>
+          <div collapse="isCollapsed">
+            <table>
+              <tr>
+                <td width="1080">
+                  <center><h1><i>COMING SOON!</i></h1><br><font size="2">Note: language/library/tool choices are subject to change</font></center>
+                </td>
+                <td width="200" valign="top">
+                  <font style="color:#000;"> 
+                    <span popover-placement="top" popover-title="Unity" popover="Coming Soon: Details about Unity in this example." popover-trigger="mouseenter">
+                      <img src="images/unity_logo.png" alt="Unity" width="50" height="50" border="0"/>
+                    </span>
+                    <span popover-placement="top" popover-title="C#" popover="Coming Soon: Details about C# in this example." popover-trigger="mouseenter">
+                      <img src="images/csharp_logo.png" alt="C#" width="50" height="50" border="0"/>
+                    </span>
+                  </font>
+                  <br>
+                  This simple platformer was developed using C# and Unity
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div ng-controller="Collapsible">
+          <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+            <table>
+              <tr>
+                <td width="1000"><h4><i>Dynamic Slicing a Square Demo</i></h4></td>
+                <td width="280" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+              </tr>
+            </table>
+          </div>
+          <div collapse="isCollapsed">
+            <table>
+              <tr>
+                <td width="200" valign="top">
+                  <font style="color:#000;">
+                    <span popover-placement="right" popover-title="C++" popover="Coming Soon: Details about C++ in this example." popover-trigger="mouseenter">
+                      <img src="images/cpp_logo.png" alt="C++" width="50" height="50" border="0"/>
+                    </span>
+                    <span popover-placement="top" popover-title="SFML" popover="Coming Soon: Details about SFML in this example." popover-trigger="mouseenter">
+                      <img src="images/sfml_logo.png" alt="SFML" width="50" height="50" border="0"/>
+                    </span>
+                    <span popover-placement="top" popover-title="OpenGL" popover="Coming Soon: Details about OpenGL in this example." popover-trigger="mouseenter">
+                      <img src="images/opengl_logo.png" alt="OpenGL" width="50" height="50" border="0"/>
+                    </span>
+                  </font>
+                  <br>
+                  This sample uses the Sutherland-Hodgman clipping routine to dynamically slice a square (in theory the algorithm will work with a more complex shape as well).
+                </td>
+                <td width="1080">
+                  <center><h1><i>COMING SOON!</i></h1><br><font size="2">Note: language/library/tool choices are subject to change</font></center>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div ng-controller="Collapsible">
+          <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+            <table>
+              <tr>
+                <td width="1000"><h4><i>Three.js/WebGL Shader Demo</i></h4></td>
+                <td width="280" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+              </tr>
+            </table>
+          </div>
+          <div collapse="isCollapsed">
+            <table>
+              <tr>
+                <td width="1080">
+                  <div id="shader-controls" style="position: absolute;"></div>
+                  <div id="shader"></div>
+                </td>
+                <td width="200" valign="top">
+                  <font style="color:#000;">
+                    <span popover-placement="top" popover-title="JavaScript" popover="Coming Soon: Details about JavaScript in this example." popover-trigger="mouseenter">
+                      <img src="images/javascript_logo.png" alt="JavaScript" width="50" height="50" border="0"/>
+                    </span>
+                    <span popover-placement="top" popover-title="OpenGL" popover="Coming Soon: Details about OpenGL in this example." popover-trigger="mouseenter">
+                      <img src="images/opengl_logo.png" alt="OpenGL" width="50" height="50" border="0"/>
+                    </span>
+                    <span popover-placement="top" popover-title="GLSL" popover="Coming Soon: Details about GLSL in this example." popover-trigger="mouseenter">
+                      <img src="images/glsl_logo.png" alt="GLSL" width="50" height="50" border="0"/>
+                    </span>
+                  </font>
+                  <br>
+                  The code was written in JavaScript using Three.js. <br><br>
+                  The code was written while learning Three.js from the Interactive 3D Graphics Udacity course (<a href="https://www.udacity.com/course/cs291">here</a>).<br><br>
+                  The GLSL source code is located in the source of this webpage (Note: WebGL's GLSL is limited compared to actual GLSL).<br><br>
+                  JavaScript code for the remainder of the project may be found (<a href="scripts/shaders.js">here</a>)
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+          <h4><i>More to Come...</i></h4>
+        </div><br><br>
+      </div>
+      <div ng-controller="Collapsible">
+        <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+          <table>
+            <tr>
+              <td width="1000"><h2><i>About Me</i></h2></td>
+              <td width="280" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+            </tr>
+          </table>
+        </div>
+        <div collapse="isCollapsed">
+          <table>
+            <tr>
+              <td width="100" valign="top"><center><img src="https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7" /></center></td>
+              <td>I got started programming back in high school by making tiny games using flash actionscript. I've been programming ever since. I quickly fell in love with Java once I got to college (because that was the language of the school). When I started using C++11 and boost at Volcano, I became hooked instantly. <br><br>
+                I feel at home with many different languages, and I find learning a new language to be one of the most entertaining parts of programming. There are so many ways to say hello world!<br><br>
+                Coming Soon: details about my nerdy interests</td>
+              </tr>
+            </table> 
+            <br><br><br>
+          </div>
+          <br><br>
+          <center><div class="footer"><table>
+            <tr>
+              <td>
+                <font size="2"><a href="downloads/shawn_blakesley_resume.pdf">-resume-</a></font>
+              </td>
+              <td width="30">
+                &nbsp;
+              </td>
+              <td>
+                <font size="2"><a href="mailto:shawnblakesley@gmail.com">-contact-</a></font>
+              </td>
+              <td width="30">
+                &nbsp;
+              </td>
+              <td>
+                <font size="2">Shawn Blakesley</font>
+              </td>
+              <td width="30">
+                &nbsp;
+              </td>
+              <td>
+                <font size="2"><a href="https://careers.stackoverflow.com/shawnblakesley">-stack_overflow-</a></font>
+              </td>
+              <td width="30">
+                &nbsp;
+              </td>
+              <td>
+                <font size="2"><a href="https://www.linkedin.com/in/shawnblakesley">-linkedin-</a></font>
+              </td>
+            </tr>
+          </table></div></center>
+        </div>
+      </div>
+
+      <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
+      <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+      <script type="text/javascript" src="lib/dat.gui.min.js"></script>
+      <script type="text/javascript" src="lib/uclass_TeapotGeometry.js"></script>
+      
+      <!--Shaders for toon shading based loosly off udacity course lectures for interactive 3d graphics-->
+      <script type="x-shader/x-vertex" id="toon_shader_vertex">
+        varying vec3 vNormal;
+        varying vec3 vViewPosition;
+        varying vec3 surfacePos;
+
+        void main() {
+          surfacePos = position;
+
+          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+          vNormal = normalize( normalMatrix * normal );
+          vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+          vViewPosition = -mvPosition.xyz;
+        }
+      </script>
+      <script type="x-shader/x-fragment" id="toon_shader_fragment">
+        uniform vec3 uMaterialColor;
+        uniform vec3 uDirLightPos;
+        uniform vec3 uDirLightColor;
+
+        uniform vec3 uPrimaryColor;
+        uniform vec3 uSecondaryColor;
+
+        uniform float uBorder;
+        uniform float uCheckerSize;
+        uniform float uShine;
+
+        varying vec3 vNormal;
+        varying vec3 vViewPosition;
+        varying vec3 surfacePos;
+
+        void main() {
+          vec3 position = surfacePos / uCheckerSize;
+          vec3 color = uMaterialColor;
+          if(fract(position.x) < 0.5 && fract(position.z) < 0.5){
+            color *= uPrimaryColor;
+          }
+          else if(fract(position.z) < 0.5){
+            color *= uSecondaryColor;
+          }
+          else if(fract(position.x) < 0.5)
+          {
+            color *= 0.01;
+          }
+          else{
+            color *= 0.01;
+          }
       // compute direction to light
       vec4 lDirection = viewMatrix * vec4( uDirLightPos, 0.0 );
       vec3 lVector = normalize( lDirection.xyz );
@@ -248,21 +349,21 @@ I feel at home with many different languages, and I find learning a new language
 
       gl_FragColor = vec4( color * uDirLightColor * diffuse, 1.0 );
     }
-    </script>
+  </script>
 
-    <!--Placeholder shaders-->
-    <script type="x-shader/x-vertex" id="placeholder_shader_vertex">
+  <!--Placeholder shaders-->
+  <script type="x-shader/x-vertex" id="placeholder_shader_vertex">
     void main()
     {
       gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
     }
-    </script>
-    <script type="x-shader/x-fragment" id="placeholder_shader_fragment">
+  </script>
+  <script type="x-shader/x-fragment" id="placeholder_shader_fragment">
     void main()
     {
       gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
     }
-    </script>
-    <script src="scripts/shaders.js"></script>
-  </body>
+  </script>
+  <script src="scripts/shaders.js"></script>
+</body>
 </html>
