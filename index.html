@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="homepage">
+<!-- Note to self: Use pre tag to share preformatted code (code snippets)-->
 <head>
   <title>Shawn Blakesley's Homepage</title>
   <style>
@@ -45,12 +46,12 @@
   </script>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="width: 1280px; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
-  <div style="width: 1280px; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
+<body style="width: 98%; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
+  <div style="width: 100%; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
     <!-- TODO: Add a section selector to jump to each section -->
-    <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+    <table style="width: 100%" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="628"><img src="images/static_name.png" width="628" height="56" border="0" /></td>
+        <td width="373"><img src="images/static_name.png" width="373" height="56" border="0" /></td>
         <td>&nbsp;</td>
         <td width="56"><a href="downloads/shawn_blakesley_resume.pdf"><img src="images/cv-logo.png" alt="Download pdf Resume" width="56" height="56" border="0" /></a></td>
         <td width="56"><a href="mailto:shawnblakesley@gmail.com"><img src="images/gmail-logo.png" alt="Contact Me" width="56" height="56" border="0" /></a></td>
@@ -59,16 +60,17 @@
       </tr>
     </table>
     <div ng-controller="Collapsible">
-      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
-        <table>
+      <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+        <table style="width: 100%;">
           <tr>
-            <td width="1000"><h2><i>Previous Employers</i></h2></td>
-            <td width="280" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+            <td style="width: 80%;"><h2><i>Previous Employers</i></h2></td>
+            <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
           </tr>
         </table>
       </div>
       <div  collapse="isCollapsed">
-        <table border="0" cellpadding="0" cellspacing="0">
+        <hr>
+        <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="300" height="210" align="center" bgcolor="#FFF">
               <a href="http://www.volcanocorp.com/">
@@ -90,7 +92,7 @@
             <td width="10"></td>
             <td valign="top">
               <h3>ITest CSUS: <i>Head Instructor</i></h3><br>
-              Taught game programming to high school students in a summer-long program. Used the <a href="http://www.greenfoot.org/overview">Greenfoot</a> IDE/Game Engine whose code is written in Java.
+              In summer 2013, I was chosen to be the head instructor of a collaborative effort between CSU Sacramento and the surrounding school districts to teach game programming to inner city high school students. Under my supervision and assistance, the McClatchy High School students successfully created an educational computer game in <a href="http://www.greenfoot.org/overview">Greenfoot</a>, and the game was deployed to local elementary schools in the same district. 
             </td>
           </tr>
           <tr>
@@ -106,38 +108,88 @@
             </td>
           </tr>
         </table>
-        <br>
+        
       </div>
+        <hr>
     </div>
     <div ng-controller="Collapsible">
-      <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
-        <table>
+      <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+        <table style="width: 100%;">
           <tr>
-            <td width="1000"><h2><i>Sample Work</i></h2></td>
-            <td width="280" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+            <td style="width: 80%;"><h2><i>Education</i></h2></td>
+            <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+          </tr>
+        </table>
+      </div>
+      <div  collapse="isCollapsed">
+          <hr>
+        <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="300" height="210" align="center" bgcolor="#FFF">
+              <a href="http://www.volcanocorp.com/">
+                <img src="images/csus_logo.png" alt="CSUS Logo" width="264" height="272" border="0" />
+              </a>
+            </td>
+            <td width="10"></td>
+            <td valign="top">
+                <h3>Masters Coursework: <i>Computer Science</i> (2011-2013)</h3><br>
+                <ul>
+                    <li>Designed graphical representation and AI for 2D Java zombie path-finding project</li>
+                    <li>Developed algorithms and interface for Java steganographic encoder</li>
+                </ul>
+                <h3>BS: <i>Computer Science</i> (2007-2011)</h3><br>
+                <ul>
+                    <li>Programmed Java OpenGL 3D Engine</li>
+                    <li>Headed UI and graphics for 3D Candy Collector Game using Java and OpenGL</li>
+                    <li>Project lead on Crime Event Mapping System for Sacramento Homicide Department (as Senior Project) using C# and Bing Maps API</li>
+                    <li>Created Schmesh (chess-like) game playing AI and placed 7 in class competition</li>
+                </ul>
+                <h3>Minor: <i>Physics</i></h3><br>
+                <ul>
+                    <li>Used Wolfram Mathematica to solve complex physics problems</li>
+                    <li>Wrote Fortran code to solve parametric equations</li>
+                </ul>
+                <h3>Self-Education</h3>
+                <ul>
+                    <li>Enrolled in and attending numerous <a href="http://en.wikipedia.org/wiki/Massive_open_online_course" title="Massive Open Online Course">MOOC</a> courses (Udacity, Microsoft Virtual Academy, and Coursera)</li>
+                    <li>Working to develop an indie game through use of online tutorials and prior experience</li>
+                </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+        <hr>
+    </div>
+    <div ng-controller="Collapsible">
+      <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+        <table style="width: 100%;">
+          <tr>
+            <td style="width: 80%;"><h2><i>Sample Work</i></h2></td>
+            <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
           </tr>
         </table>
       </div>
       <div collapse="isCollapsed">
+          <hr>
         The following is a selection of sample work created for the website.<br />
         <i>Note: </i>To see some of these examples, you may need <a href="http://get.webgl.org">WebGL</a>, Unity Web Player, and possibly other things (Coming Soon)
         
         <div ng-controller="Collapsible">
-          <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
-            <table>
+          <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+            <table style="width: 100%;">
               <tr>
-                <td width="1000"><h4><i>Simple Unity Platformer</i></h4></td>
-                <td width="280" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+                <td style="width: 80%;"><h4><i>Simple Unity Platformer</i></h4></td>
+                <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
               </tr>
             </table>
           </div>
           <div collapse="isCollapsed">
-            <table>
+            <table style="width: 100%;">
               <tr>
-                <td width="1080">
-                  <center><h1><i>COMING SOON!</i></h1><br><font size="2">Note: language/library/tool choices are subject to change</font></center>
+                <td style="width: 70%;">
+                  <center><h1><i>COMING SOON!</i></h1><br></center>
                 </td>
-                <td width="200" valign="top">
+                <td style="width: 30%;" valign="top">
                   <font style="color:#000;"> 
                     <span popover-placement="top" popover-title="Unity" popover="Coming Soon: Details about Unity in this example." popover-trigger="mouseenter">
                       <img src="images/unity_logo.png" alt="Unity" width="50" height="50" border="0"/>
@@ -154,20 +206,20 @@
           </div>
         </div>
         <div ng-controller="Collapsible">
-          <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
-            <table>
+          <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+            <table style="width: 100%;">
               <tr>
-                <td width="1000"><h4><i>Dynamic Slicing a Square Demo</i></h4></td>
-                <td width="280" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+                <td style="width: 80%;"><h4><i>Dynamic Slicing a Square Demo</i></h4></td>
+                <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
               </tr>
             </table>
           </div>
           <div collapse="isCollapsed">
             <table>
               <tr>
-                <td width="200" valign="top">
+                <td style="width: 30%;" valign="top">
                   <font style="color:#000;">
-                    <span popover-placement="right" popover-title="C++" popover="Coming Soon: Details about C++ in this example." popover-trigger="mouseenter">
+                    <span popover-placement="top" popover-title="C++" popover="Coming Soon: Details about C++ in this example." popover-trigger="mouseenter">
                       <img src="images/cpp_logo.png" alt="C++" width="50" height="50" border="0"/>
                     </span>
                     <span popover-placement="top" popover-title="SFML" popover="Coming Soon: Details about SFML in this example." popover-trigger="mouseenter">
@@ -180,30 +232,30 @@
                   <br>
                   This sample uses the Sutherland-Hodgman clipping routine to dynamically slice a square (in theory the algorithm will work with a more complex shape as well).
                 </td>
-                <td width="1080">
-                  <center><h1><i>COMING SOON!</i></h1><br><font size="2">Note: language/library/tool choices are subject to change</font></center>
+                <td style="width: 70%;">
+                  <center><h1><i>COMING SOON!</i></h1><br></center>
                 </td>
               </tr>
             </table>
           </div>
         </div>
         <div ng-controller="Collapsible">
-          <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
-            <table>
+          <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+            <table style="width: 100%;">
               <tr>
-                <td width="1000"><h4><i>Three.js/WebGL Shader Demo</i></h4></td>
-                <td width="280" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+                <td style="width: 80%;"><h4><i>Three.js/WebGL Shader Demo</i></h4></td>
+                <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
               </tr>
             </table>
           </div>
           <div collapse="isCollapsed">
-            <table>
+            <table style="width: 100%;">
               <tr>
-                <td width="1080">
+                <td style="width: 70%;">
                   <div id="shader-controls" style="position: absolute;"></div>
                   <div id="shader"></div>
                 </td>
-                <td width="200" valign="top">
+                <td style="width: 30%;" valign="top">
                   <font style="color:#000;">
                     <span popover-placement="top" popover-title="JavaScript" popover="Coming Soon: Details about JavaScript in this example." popover-trigger="mouseenter">
                       <img src="images/javascript_logo.png" alt="JavaScript" width="50" height="50" border="0"/>
@@ -225,25 +277,28 @@
             </table>
           </div>
         </div>
-        <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+        <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
           <h4><i>More to Come...</i></h4>
-        </div><br><br>
+        </div><br>
       </div>
+        <hr>
       <div ng-controller="Collapsible">
-        <div style="width: 1280px; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
-          <table>
+        <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+          <table style="width: 100%;">
             <tr>
-              <td width="1000"><h2><i>About Me</i></h2></td>
-              <td width="280" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+              <td style="width: 80%;"><h2><i>About Me</i></h2></td>
+              <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
             </tr>
           </table>
         </div>
         <div collapse="isCollapsed">
+            <hr>
           <table>
             <tr>
               <td width="100" valign="top"><center><img src="https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7" /></center></td>
-              <td>I got started programming back in high school by making tiny games using flash actionscript. I've been programming ever since. I quickly fell in love with Java once I got to college (because that was the language of the school). When I started using C++11 and boost at Volcano, I became hooked instantly. <br><br>
-                I feel at home with many different languages, and I find learning a new language to be one of the most entertaining parts of programming. There are so many ways to say hello world!<br><br>
+              <td>Programming is my passion.<br><br>
+                  It all started ten years ago (queue film noir setting), I taught myself how to program using flash actionscript to make tiny games and share them with friends. When I started college, I quickly fell in love with Java (because that was the language of the school), and I competed in and won two of the local programming contests. When I started using C++11 and boost at Volcano, I became hooked instantly. I am passionate about sharing my love of code and problem solving with future generations of programmers, and I take every opportunity to share that love.<br><br>
+                I feel at home with many different languages, and I find learning a new language to be one of the most entertaining parts of programming. There are so many ways to say <span style="font-family:monospace;">hello world!</span><br><br>
                 Coming Soon: details about my nerdy interests</td>
               </tr>
             </table> 
