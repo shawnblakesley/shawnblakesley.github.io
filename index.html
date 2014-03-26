@@ -22,6 +22,7 @@
     }
     h1,h2,h3,h4 {display: inline}
   </style>
+  <!-- Scripts for Angular and nice formatting things -->
   <script src="scripts/angular.min.js"></script>
   <script src="scripts/ui-bootstrap-tpls-0.10.0.min.js"></script>
   <script>
@@ -42,10 +43,18 @@
     }
   </script>
   <link href="scripts/bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Include Three.js (TODO: need to change this to a local copy)-->
+  <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
+  <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+  <!-- Dat Gui for controlling the shaders demo-->
+  <script type="text/javascript" src="lib/dat.gui.min.js"></script>
+  <!-- Teapot geometry from Udacity's Interactive 3D Graphics Course -->
+  <script type="text/javascript" src="lib/uclass_TeapotGeometry.js"></script>
 </head>
 <body style="width: 98%; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
   <div style="width: 100%; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
-    <!-- TODO: Add a section selector to jump to each section -->
+    <!-- Heading -->
     <table style="width: 100%" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
         <td style="width: 373px;"><img src="images/static_name.png" width="373" height="56" border="0" /></td>
@@ -56,7 +65,21 @@
         <td width="70"><a href="https://www.linkedin.com/in/shawnblakesley"><img src="images/button_linkedin.png" alt="LinkedIn Profile" width="66" height="56" border="0" /></a></td>
       </tr>
     </table>
-    <div ng-controller="Collapsible">
+
+    <!-- Navbar -->
+    <nav id="navbar-main" class="navbar navbar-inverse navbar-static" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#about">About Me</a>
+          <a class="navbar-brand" href="#employers">Previous Employment</a>
+          <a class="navbar-brand" href="#education">Education</a>
+          <a class="navbar-brand" href="#samples">Sample Work</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- About Me -->
+    <div id="about" ng-controller="Collapsible">
       <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
         <table style="width: 100%;">
           <tr>
@@ -79,7 +102,9 @@
         </div>
         <hr>
       </div>
-      <div ng-controller="Collapsible">
+
+      <!-- Previous Employers -->
+      <div id="employers" ng-controller="Collapsible">
         <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
           <table style="width: 100%;">
             <tr>
@@ -131,7 +156,9 @@
         </div>
         <hr>
       </div>
-      <div ng-controller="Collapsible">
+
+      <!-- Education -->
+      <div id="education" ng-controller="Collapsible">
         <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
           <table style="width: 100%;">
             <tr>
@@ -179,7 +206,9 @@
         </div>
         <hr>
       </div>
-      <div ng-controller="Collapsible">
+
+      <!-- Sample Work -->
+      <div id="samples" ng-controller="Collapsible">
         <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
           <table style="width: 100%;">
             <tr>
@@ -193,6 +222,7 @@
           The following is a selection of sample work created for the website.<br />
           <i>Note: </i>To see some of these examples, you may need <a href="http://get.webgl.org">WebGL</a>, Unity Web Player, and possibly other things (Coming Soon)
           
+          <!-- Platformer -->
           <div ng-controller="Collapsible">
             <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
               <table style="width: 100%;">
@@ -224,6 +254,8 @@
               </table>
             </div>
           </div>
+
+          <!-- Dynamic Slicing -->
           <div ng-controller="Collapsible">
             <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
               <table style="width: 100%;">
@@ -258,6 +290,8 @@
               </table>
             </div>
           </div>
+
+          <!-- WebGL Shader -->
           <div ng-controller="Collapsible">
             <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
               <table style="width: 100%;">
@@ -301,43 +335,41 @@
           </div><br>
         </div>
         <hr>
-        <center><div class="footer"><table>
-          <tr>
-            <td>
-              <font size="2"><a href="downloads/shawn_blakesley_resume.pdf">-resume-</a></font>
-            </td>
-            <td width="30">
-              &nbsp;
-            </td>
-            <td>
-              <font size="2"><a href="mailto:shawnblakesley@gmail.com">-contact-</a></font>
-            </td>
-            <td width="30">
-              &nbsp;
-            </td>
-            <td>
-              <font size="2">Shawn Blakesley</font>
-            </td>
-            <td width="30">
-              &nbsp;
-            </td>
-            <td>
-              <font size="2"><a href="https://careers.stackoverflow.com/shawnblakesley">-stack_overflow-</a></font>
-            </td>
-            <td width="30">
-              &nbsp;
-            </td>
-            <td>
-              <font size="2"><a href="https://www.linkedin.com/in/shawnblakesley">-linkedin-</a></font>
-            </td>
-          </tr>
-        </table></div></center>
+        <!-- FOOTER -->
+        <center><div class="footer">
+          <table>
+            <tr>
+              <td>
+                <font size="2"><a href="downloads/shawn_blakesley_resume.pdf">-resume-</a></font>
+              </td>
+              <td width="30">
+                &nbsp;
+              </td>
+              <td>
+                <font size="2"><a href="mailto:shawnblakesley@gmail.com">-contact-</a></font>
+              </td>
+              <td width="30">
+                &nbsp;
+              </td>
+              <td>
+                <font size="2">Shawn Blakesley</font>
+              </td>
+              <td width="30">
+                &nbsp;
+              </td>
+              <td>
+                <font size="2"><a href="https://careers.stackoverflow.com/shawnblakesley">-stack_overflow-</a></font>
+              </td>
+              <td width="30">
+                &nbsp;
+              </td>
+              <td>
+                <font size="2"><a href="https://www.linkedin.com/in/shawnblakesley">-linkedin-</a></font>
+              </td>
+            </tr>
+          </table>
+        </div></center>
       </div>
-
-      <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
-      <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
-      <script type="text/javascript" src="lib/dat.gui.min.js"></script>
-      <script type="text/javascript" src="lib/uclass_TeapotGeometry.js"></script>
       
       <!--Shaders for toon shading based loosly off udacity course lectures for interactive 3d graphics-->
       <script type="x-shader/x-vertex" id="toon_shader_vertex">
