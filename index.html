@@ -21,6 +21,14 @@
       color: #FFF;
     }
     h1,h2,h3,h4 {display: inline}
+    td.header{width: 80%;font-weight:bold;font-size:200%;}
+    div.header
+    {
+      width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;
+      border-radius: 10px;-moz-border-radius: 10px;-webkit-border-radius: 10px;
+      box-shadow: 0px 0px 8px 0px #0B7;
+      text-shadow: 1px 1px 3px #888;
+    }
   </style>
   <!-- Scripts for Angular and nice formatting things -->
   <script src="scripts/angular.min.js"></script>
@@ -53,11 +61,11 @@
   <script type="text/javascript" src="lib/uclass_TeapotGeometry.js"></script>
 </head>
 <body style="width: 98%; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
-  <div style="width: 100%; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
+  <div style="width: 100%; background: #0c0c0c; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
     <!-- Heading -->
     <table style="width: 100%" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
-        <td style="width: 373px;"><img src="images/static_name.png" width="373" height="56" border="0" /></td>
+        <td style="width: 373px; text-shadow: 1px 1px 3px #0B7;font-weight:bold;font-size:320%;">Shawn Blakesley</td>
         <td>&nbsp;</td>
         <td width="56"><a href="downloads/shawn_blakesley_resume.pdf"><img src="images/cv-logo.png" alt="Download pdf Resume" width="56" height="56" border="0" /></a></td>
         <td width="56"><a href="mailto:shawnblakesley@gmail.com"><img src="images/gmail-logo.png" alt="Contact Me" width="56" height="56" border="0" /></a></td>
@@ -80,16 +88,16 @@
 
     <!-- About Me -->
     <div id="about" ng-controller="Collapsible">
-      <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+      <div class="header">
         <table style="width: 100%;">
           <tr>
-            <td style="width: 80%;"><h2><i>About Me</i></h2></td>
-            <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+            <td class="header">&nbsp;About Me</td>
+            <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button>&nbsp;</td>
           </tr>
         </table>
       </div>
       <div collapse="isCollapsed">
-        <hr>
+          <hr>
         <table>
           <tr>
             <td style="width: 300px; vertical-align: top; text-align: center;"><img src="https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=200" /></td>
@@ -105,11 +113,11 @@
 
       <!-- Previous Employers -->
       <div id="employers" ng-controller="Collapsible">
-        <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+        <div class="header">
           <table style="width: 100%;">
             <tr>
-              <td style="width: 80%;"><h2><i>Previous Employers</i></h2></td>
-              <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+              <td class="header">&nbsp;Previous Employers</td>
+              <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button>&nbsp;</td>
             </tr>
           </table>
         </div>
@@ -159,11 +167,11 @@
 
       <!-- Education -->
       <div id="education" ng-controller="Collapsible">
-        <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+        <div class="header">
           <table style="width: 100%;">
             <tr>
-              <td style="width: 80%;"><h2><i>Education</i></h2></td>
-              <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+              <td class="header">&nbsp;Education</td>
+              <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button>&nbsp;</td>
             </tr>
           </table>
         </div>
@@ -209,11 +217,11 @@
 
       <!-- Sample Work -->
       <div id="samples" ng-controller="Collapsible">
-        <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+        <div class="header">
           <table style="width: 100%;">
             <tr>
-              <td style="width: 80%;"><h2><i>Sample Work</i></h2></td>
-              <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+              <td class="header">&nbsp;Sample Work</td>
+              <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button>&nbsp;</td>
             </tr>
           </table>
         </div>
@@ -324,7 +332,7 @@
                     The code was written in JavaScript using Three.js. <br><br>
                     The code was written while learning Three.js from the Interactive 3D Graphics Udacity course (<a href="https://www.udacity.com/course/cs291">here</a>).<br><br>
                     The GLSL source code is located in the source of this webpage (Note: WebGL's GLSL is limited compared to actual GLSL).<br><br>
-                    JavaScript code for the remainder of the project may be found (<a href="scripts/shaders.js">here</a>)
+                    JavaScript code for the remainder of the project may be found (<a href="scripts/shaders.js">here</a>)<br>
                   </td>
                 </tr>
               </table>
