@@ -8,17 +8,14 @@
       width: 100%; 
       height: 100%; 
     } 
-    a:link {color:#0B7;}
-    a:visited {color:#052;}
-    a:hover {color:#0D8;}
-    a:active {color:#0B7;}
-    a:hover, a:visited, a:link, a:active
-    {
-      text-decoration: none;
-    }
+    a:link {color:#05B;}
+    a:visited {color:#118;}
+    a:hover {color:#22D;}
+    a:active {color:#22B;}
     .footer a:hover, .footer a:visited, .footer a:link, .footer a:active
     {
-      color: #FFF;
+      color: #000;
+      text-decoration: none;
     }
     h1,h2,h3,h4 {display: inline}
     td.header{width: 80%;font-weight:bold;font-size:200%;}
@@ -26,7 +23,15 @@
     {
       width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;
       border-radius: 10px;-moz-border-radius: 10px;-webkit-border-radius: 10px;
-      box-shadow: 0px 0px 8px 0px #0B7;
+      box-shadow: 0px 0px 8px 0px #000;
+      text-shadow: 1px 1px 3px #888;
+    }
+    td.subheader{width: 80%;font-style:italic;font-size:150%;}
+    div.subheader
+    {
+      width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #222;
+      border-radius: 4px;-moz-border-radius: 4px;-webkit-border-radius: 4px;
+      box-shadow: 0px 0px 4px 0px #888;
       text-shadow: 1px 1px 3px #888;
     }
   </style>
@@ -60,12 +65,12 @@
   <!-- Teapot geometry from Udacity's Interactive 3D Graphics Course -->
   <script type="text/javascript" src="lib/uclass_TeapotGeometry.js"></script>
 </head>
-<body style="width: 98%; background: #0C0C0C; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
-  <div style="width: 100%; background: #0c0c0c; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #FFF;">
+<body style="width: 98%; background: #222; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+  <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
     <!-- Heading -->
     <table style="width: 100%" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
-        <td style="width: 373px; text-shadow: 1px 1px 3px #0B7;font-weight:bold;font-size:320%;">Shawn Blakesley</td>
+        <td style="width: 400px; text-shadow: 1px 1px 3px #CCF;font-weight:bold;font-size:320%;">&nbsp;Shawn Blakesley</td>
         <td>&nbsp;</td>
         <td width="56"><a href="downloads/shawn_blakesley_resume.pdf"><img src="images/cv-logo.png" alt="Download pdf Resume" width="56" height="56" border="0" /></a></td>
         <td width="56"><a href="mailto:shawnblakesley@gmail.com"><img src="images/gmail-logo.png" alt="Contact Me" width="56" height="56" border="0" /></a></td>
@@ -75,7 +80,7 @@
     </table>
 
     <!-- Navbar -->
-    <nav id="navbar-main" class="navbar navbar-inverse navbar-static" role="navigation">
+    <nav id="navbar-main" class="navbar navbar-default navbar-static" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#about">About Me</a>
@@ -100,6 +105,7 @@
           <hr>
         <table>
           <tr>
+            <td width="10"></td>
             <td style="width: 300px; vertical-align: top; text-align: center;"><img src="https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=200" /></td>
             <td style="width: 10px"></td>
             <td><h3>Programming is my passion.</h3><br><br>
@@ -125,6 +131,7 @@
           <hr>
           <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0">
             <tr>
+              <td width="10"></td>
               <td style="background: #FFF;" width="300" height="210" align="center">
                 <a href="http://www.volcanocorp.com/">
                   <img src="images/volcano_logo.png" alt="Volcano Logo" width="260" height="100" border="0" />
@@ -137,6 +144,7 @@
               </td>
             </tr>
             <tr>
+              <td width="10"></td>
               <td style="background: #000;" width="300" height="210" align="center">
                 <a href="https://www.ecs.csus.edu/itest/">
                   <img src="images/itest.jpg" alt="ITest Picture" width="300" height="200" border="0" />
@@ -149,6 +157,7 @@
               </td>
             </tr>
             <tr>
+              <td width="10"></td>
               <td style="background: #FFF;" width="300" height="210" align="center">
                 <a href="http://www.csus.edu/parc/">
                   <img src="images/csus_logo.jpg" alt="CSUS Logo" width="200" height="201" border="0" />
@@ -232,22 +241,22 @@
           
           <!-- Platformer -->
           <div ng-controller="Collapsible">
-            <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+            <div class="subheader">
               <table style="width: 100%;">
                 <tr>
-                  <td style="width: 80%;"><h4><i>Unity Platformer</i></h4></td>
-                  <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+                  <td class="subheader">&nbsp;Unity Platformer</td>
+                  <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}&nbsp;</button></td>
                 </tr>
               </table>
             </div>
             <div collapse="isCollapsed">
               <table style="width: 100%;">
                 <tr>
-                  <td style="width: 70%;">
-                    <center><h1><i><a href="unityPlatformer.html">COMING SOON!</a></i></h1><br></center>
+                  <td style="width: 70%;text-align:center;font-style:italic;font-size:250%;">
+                    <a href="unityPlatformer.html">COMING SOON!</a><br>
                   </td>
                   <td style="width: 30%; margin:auto;" valign="top">
-                    <div style="text-align: center; color:#000000;">
+                    <div style="text-align: center;">
                       <span popover-placement="top" popover-title="Unity" popover="Coming Soon: Details about Unity in this example." popover-trigger="mouseenter">
                         <img src="images/unity_logo.png" alt="Unity" width="50" height="50" border="0"/>
                       </span>
@@ -265,11 +274,11 @@
 
           <!-- Dynamic Slicing -->
           <div ng-controller="Collapsible">
-            <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+            <div class="subheader">
               <table style="width: 100%;">
                 <tr>
-                  <td style="width: 80%;"><h4><i>Dynamic Slicing a Square Demo</i></h4></td>
-                  <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+                  <td class="subheader">&nbsp;Dynamic Slicing a Square Demo</td>
+                  <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}&nbsp;</button></td>
                 </tr>
               </table>
             </div>
@@ -277,7 +286,7 @@
               <table>
                 <tr>
                   <td style="width: 30%; margin:auto;" valign="top">
-                    <div style="text-align: center; color:#000000;">
+                    <div style="text-align: center;">
                       <span popover-placement="top" popover-title="C++" popover="Coming Soon: Details about C++ in this example." popover-trigger="mouseenter">
                         <img src="images/cpp_logo.png" alt="C++" width="50" height="50" border="0"/>
                       </span>
@@ -291,8 +300,8 @@
                     <br>
                     This sample uses the Sutherland-Hodgman clipping routine to dynamically slice a square (in theory the algorithm will work with a more complex shape as well).
                   </td>
-                  <td style="width: 70%;">
-                    <center><h1><i>COMING SOON!</i></h1><br></center>
+                  <td style="width: 70%;text-align:center;font-style:italic;font-size:250%;">
+                    COMING SOON!
                   </td>
                 </tr>
               </table>
@@ -301,11 +310,11 @@
 
           <!-- WebGL Shader -->
           <div ng-controller="Collapsible">
-            <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
+            <div class="subheader">
               <table style="width: 100%;">
                 <tr>
-                  <td style="width: 80%;"><h4><i>Three.js/WebGL Shader Demo</i></h4></td>
-                  <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}</button></td>
+                  <td class="subheader">&nbsp;Three.js/WebGL Shader Demo</td>
+                  <td style="width: 20%;" align="right"><button class="btn btn-default" ng-click="coll()">{{text}}&nbsp;</button></td>
                 </tr>
               </table>
             </div>
@@ -338,8 +347,8 @@
               </table>
             </div>
           </div>
-          <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #052;">
-            <h4><i>More to Come...</i></h4>
+          <div class="subheader">
+            More to Come...
           </div><br>
         </div>
         <hr>
