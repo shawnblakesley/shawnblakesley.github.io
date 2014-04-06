@@ -17,22 +17,48 @@
       color: #000;
       text-decoration: none;
     }
+    .footer
+    {
+      text-align:center;
+      margin:auto auto;
+      font-size:90%;
+    }
     h1,h2,h3,h4 {display: inline}
     td.header{width: 80%;font-weight:bold;font-size:200%;}
     div.header
     {
-      width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;
+      width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:georgia, serif; color: #000;
       border-radius: 10px;-moz-border-radius: 10px;-webkit-border-radius: 10px;
-      box-shadow: 0px 0px 8px 0px #000;
+      box-shadow: 0px 4px 8px 0px #000;
       text-shadow: 1px 1px 3px #888;
     }
-    td.subheader{width: 80%;font-style:italic;font-size:150%;}
+    td.subheader{width: 80%;font-size:150%;}
     div.subheader
     {
-      width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #222;
+      width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:georgia, serif; color: #222;
       border-radius: 4px;-moz-border-radius: 4px;-webkit-border-radius: 4px;
-      box-shadow: 0px 0px 4px 0px #888;
+      box-shadow: 0px 0px 4px 0px #999;
       text-shadow: 1px 1px 3px #888;
+    }
+    body.main
+    {
+      width: 98%; 
+      background: #222; 
+      margin:0 auto; 
+      padding:0; 
+      border:0;
+      font-family:georgia, serif; 
+      color: #000;
+    }
+    div.main
+    {
+      width: 100%; 
+      background: #FFF; 
+      margin:0 auto; 
+      padding:0; 
+      border=0;
+      font-family:georgia, serif; 
+      color: #000;
     }
   </style>
   <!-- Scripts for Angular and nice formatting things -->
@@ -64,13 +90,96 @@
   <script type="text/javascript" src="lib/dat.gui.min.js"></script>
   <!-- Teapot geometry from Udacity's Interactive 3D Graphics Course -->
   <script type="text/javascript" src="lib/uclass_TeapotGeometry.js"></script>
+
+  <!--Shaders for toon shading based loosly off udacity course lectures for interactive 3d graphics-->
+  <script type="x-shader/x-vertex" id="toon_shader_vertex">
+    varying vec3 vNormal;
+    varying vec3 vViewPosition;
+    varying vec3 surfacePos;
+
+    void main() {
+      surfacePos = position;
+
+      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+      vNormal = normalize( normalMatrix * normal );
+      vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+      vViewPosition = -mvPosition.xyz;
+    }
+  </script>
+  <script type="x-shader/x-fragment" id="toon_shader_fragment">
+    uniform vec3 uMaterialColor;
+    uniform vec3 uDirLightPos;
+    uniform vec3 uDirLightColor;
+
+    uniform vec3 uPrimaryColor;
+    uniform vec3 uSecondaryColor;
+
+    uniform float uBorder;
+    uniform float uCheckerSize;
+    uniform float uShine;
+
+    varying vec3 vNormal;
+    varying vec3 vViewPosition;
+    varying vec3 surfacePos;
+
+    void main() {
+      vec3 position = surfacePos / uCheckerSize;
+      vec3 color = uMaterialColor;
+      if(fract(position.x) < 0.5 && fract(position.z) < 0.5){
+        color *= uPrimaryColor;
+      }
+      else if(fract(position.z) < 0.5){
+        color *= uSecondaryColor;
+      }
+      else if(fract(position.x) < 0.5)
+      {
+        color *= 0.01;
+      }
+      else{
+        color *= 0.01;
+      }
+      // compute direction to light
+      vec4 lDirection = viewMatrix * vec4( uDirLightPos, 0.0 );
+      vec3 lVector = normalize( lDirection.xyz );
+
+      // diffuse: N * L. Normal must be normalized, since it's interpolated.
+      vec3 normal = normalize( vNormal );
+      
+      float diffuse = dot( normal, lVector );
+      //Specular highlighting
+      vec3 eye = vec3(0,0,1);
+      vec3 H = normalize(lVector + eye);
+      float specular = max(0.0, dot(normal, H));
+      float shine = uShine * 195.0 + 5.0;
+      specular = pow(specular, shine);
+      specular = step(0.5, specular);
+      //Create a cartoon look with 3 intensities
+      diffuse = diffuse > uBorder ? 1.0 : diffuse > uBorder - 0.2 ? 0.4 : 0.1;
+      gl_FragColor = vec4( color * uDirLightColor * diffuse + color * specular, 1.0 );
+      //gl_FragColor = vec4( color * uDirLightColor * diffuse, 1.0 );
+    }
+  </script>
+
+  <!--Placeholder shaders-->
+  <script type="x-shader/x-vertex" id="placeholder_shader_vertex">
+    void main()
+    {
+      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    }
+  </script>
+  <script type="x-shader/x-fragment" id="placeholder_shader_fragment">
+    void main()
+    {
+      gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
+    }
+  </script>
 </head>
-<body style="width: 98%; background: #222; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
-  <div style="width: 100%; background: #FFF; margin:0 auto; padding:0; border=0;font-family:helvetica; color: #000;">
+<body class="main">
+  <div class="main">
     <!-- Heading -->
     <table style="width: 100%" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
-        <td style="width: 400px; text-shadow: 1px 1px 3px #CCF;font-weight:bold;font-size:320%;">&nbsp;Shawn Blakesley</td>
+        <td style="width: 400px; text-shadow: 2px 5px 10px #777;font-weight:bold;font-size:320%;">&nbsp;Shawn Blakesley</td>
         <td>&nbsp;</td>
         <td width="56"><a href="downloads/shawn_blakesley_resume.pdf"><img src="images/cv-logo.png" alt="Download pdf Resume" width="56" height="56" border="0" /></a></td>
         <td width="56"><a href="mailto:shawnblakesley@gmail.com"><img src="images/gmail-logo.png" alt="Contact Me" width="56" height="56" border="0" /></a></td>
@@ -102,13 +211,13 @@
         </table>
       </div>
       <div collapse="isCollapsed">
-          <hr>
+        <hr>
         <table>
           <tr>
-            <td width="10"></td>
-            <td style="width: 300px; vertical-align: top; text-align: center;"><img src="https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=200" /></td>
-            <td style="width: 10px"></td>
-            <td><h3>Programming is my passion.</h3><br><br>
+            <td style="width: 25%; vertical-align: top; text-align: center;">
+              <img style="height:auto;width:60%;" src="https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=200" />
+            </td>
+            <td style="vertical-align: top;"><h3>Programming is my passion.</h3><br><br>
               It all started ten years ago (cue film noir setting) when I taught myself how to program using flash actionscript in order to make games and share them with friends. When I started college, I quickly fell in love with Java (because that was the language of the school), and I competed in and won two of the local programming contests. When I started using C++11 and boost at Volcano, I became hooked instantly. I am passionate about sharing my love of code and problem-solving with future generations of programmers, and I take every opportunity to share that love.<br><br>
               I feel at home with many different languages, and I find learning a new language to be one of the most entertaining parts of programming. There are so many ways to say <span style="font-family:monospace;">hello world!</span><br><br></td>
             </tr>
@@ -131,39 +240,33 @@
           <hr>
           <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="10"></td>
-              <td style="background: #FFF;" width="300" height="210" align="center">
+              <td style="background: #FFF;width:25%;" height="210" align="center">
                 <a href="http://www.volcanocorp.com/">
-                  <img src="images/volcano_logo.png" alt="Volcano Logo" width="260" height="100" border="0" />
+                  <img style="height:auto;width:80%;" src="images/volcano_logo.png" alt="Volcano Logo" width="260" height="100" border="0" />
                 </a>
               </td>
-              <td width="10"></td>
               <td valign="top">
                 <h3>Volcano Corporation: <i>Software Engineer 2</i> (June 2012 - January 2014)</h3><br>
                 I had the opportunity to work with a group of highly skilled, awesome people developing modern C++ applications for intravascular ultrasounds. My primary role was as a developer on the Maestro team (which was the newest platform being developed at Volcano) and as the sole owner of the CMake Macros. I also collaborated with the build team on an automated test system and the company's CMake Macros. In November, a principle software engineer recognized me with a company-wide "Heads Up" award nomination for finding a solution for optimizing the design of our statechart library.
               </td>
             </tr>
-            <tr>
-              <td width="10"></td>
-              <td style="background: #000;" width="300" height="210" align="center">
+            <tr style="background: #F0F0F0;">
+              <td style="width:25%;" height="210" align="center">
                 <a href="https://www.ecs.csus.edu/itest/">
-                  <img src="images/itest.jpg" alt="ITest Picture" width="300" height="200" border="0" />
+                  <img style="height:auto;width:80%;" src="images/itest.jpg" alt="ITest Picture" width="300" height="200" border="0" />
                 </a>
               </td>
-              <td width="10"></td>
               <td valign="top">
                 <h3>ITest CSUS: <i>Head Instructor</i> (Summer 2013)</h3><br>
                 I was chosen by one of my previous professors to be the head instructor of a collaborative effort between CSU Sacramento and the surrounding school districts to teach game programming to inner city high school students. Under my supervision and assistance, the McClatchy High School students successfully created an educational computer game in <a href="http://www.greenfoot.org/overview">Greenfoot</a>, and the game was deployed to local elementary schools in the same district. 
               </td>
             </tr>
             <tr>
-              <td width="10"></td>
-              <td style="background: #FFF;" width="300" height="210" align="center">
+              <td style="background: #FFF;width:25%;" height="210" align="center">
                 <a href="http://www.csus.edu/parc/">
-                  <img src="images/csus_logo.jpg" alt="CSUS Logo" width="200" height="201" border="0" />
+                  <img style="height:auto;width:60%;" src="images/csus_logo.jpg" alt="CSUS Logo" width="200" height="201" border="0" />
                 </a>
               </td>
-              <td width="10"></td>
               <td valign="top">
                 <h3>CSUS Peer and Academic Resource Center: <i>Adjunct Instructor</i> (Fall 2011 - Spring 2013)</h3><br>
                 I was selected by professors at CSUS to teach a pair of introductory java adjunct courses. Students enrolled in Proramming Concepts and Methodology I and II had the option of signing up for a concurrent course taught by myself. For five semesters, I created dynamic lessons to supplement the professors' lectures, worked one-on-one with students during office hours, and collaborated with faculty to achieve maximum student comprehension. I also worked with Computer Science department faculty to promote diversity and inclusivity within the engineering culture at CSUS.
@@ -188,9 +291,9 @@
           <hr>
           <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td style="background: #FFF;" width="300" height="210" align="center">
+              <td style="background: #FFF;width: 25%; text-align:center">
                 <a href="http://www.volcanocorp.com/">
-                  <img src="images/csus_logo.png" alt="CSUS Logo" width="264" height="272" border="0" />
+                  <img style="width:80%;height:auto;" src="images/csus_logo.png" alt="CSUS Logo" width="264" height="272" border="0" />
                 </a>
               </td>
               <td width="10"></td>
@@ -238,7 +341,7 @@
           <hr>
           The following is a selection of sample work created for the website.<br />
           <i>Note: </i>To see some of these examples, you may need <a href="http://get.webgl.org">WebGL</a>, Unity Web Player, and possibly other things (Coming Soon)
-          
+
           <!-- Platformer -->
           <div ng-controller="Collapsible">
             <div class="subheader">
@@ -353,123 +456,19 @@
         </div>
         <hr>
         <!-- FOOTER -->
-        <center><div class="footer">
-          <table>
-            <tr>
-              <td>
-                <font size="2"><a href="downloads/shawn_blakesley_resume.pdf">-resume-</a></font>
-              </td>
-              <td width="30">
-                &nbsp;
-              </td>
-              <td>
-                <font size="2"><a href="mailto:shawnblakesley@gmail.com">-contact-</a></font>
-              </td>
-              <td width="30">
-                &nbsp;
-              </td>
-              <td>
-                <font size="2">Shawn Blakesley</font>
-              </td>
-              <td width="30">
-                &nbsp;
-              </td>
-              <td>
-                <font size="2"><a href="https://careers.stackoverflow.com/shawnblakesley">-stack_overflow-</a></font>
-              </td>
-              <td width="30">
-                &nbsp;
-              </td>
-              <td>
-                <font size="2"><a href="https://www.linkedin.com/in/shawnblakesley">-linkedin-</a></font>
-              </td>
-            </tr>
-          </table>
-        </div></center>
+        <div class="footer">
+          <a href="downloads/shawn_blakesley_resume.pdf">-resume-</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="mailto:shawnblakesley@gmail.com">-contact-</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          Shawn Blakesley
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://careers.stackoverflow.com/shawnblakesley">-stack_overflow-</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://www.linkedin.com/in/shawnblakesley">-linkedin-</a>
+        </div>
       </div>
-      
-      <!--Shaders for toon shading based loosly off udacity course lectures for interactive 3d graphics-->
-      <script type="x-shader/x-vertex" id="toon_shader_vertex">
-        varying vec3 vNormal;
-        varying vec3 vViewPosition;
-        varying vec3 surfacePos;
-
-        void main() {
-          surfacePos = position;
-
-          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-          vNormal = normalize( normalMatrix * normal );
-          vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
-          vViewPosition = -mvPosition.xyz;
-        }
-      </script>
-      <script type="x-shader/x-fragment" id="toon_shader_fragment">
-        uniform vec3 uMaterialColor;
-        uniform vec3 uDirLightPos;
-        uniform vec3 uDirLightColor;
-
-        uniform vec3 uPrimaryColor;
-        uniform vec3 uSecondaryColor;
-
-        uniform float uBorder;
-        uniform float uCheckerSize;
-        uniform float uShine;
-
-        varying vec3 vNormal;
-        varying vec3 vViewPosition;
-        varying vec3 surfacePos;
-
-        void main() {
-          vec3 position = surfacePos / uCheckerSize;
-          vec3 color = uMaterialColor;
-          if(fract(position.x) < 0.5 && fract(position.z) < 0.5){
-            color *= uPrimaryColor;
-          }
-          else if(fract(position.z) < 0.5){
-            color *= uSecondaryColor;
-          }
-          else if(fract(position.x) < 0.5)
-          {
-            color *= 0.01;
-          }
-          else{
-            color *= 0.01;
-          }
-          // compute direction to light
-          vec4 lDirection = viewMatrix * vec4( uDirLightPos, 0.0 );
-          vec3 lVector = normalize( lDirection.xyz );
-
-          // diffuse: N * L. Normal must be normalized, since it's interpolated.
-          vec3 normal = normalize( vNormal );
-          
-          float diffuse = dot( normal, lVector );
-          //Specular highlighting
-          vec3 eye = vec3(0,0,1);
-          vec3 H = normalize(lVector + eye);
-          float specular = max(0.0, dot(normal, H));
-          float shine = uShine * 195.0 + 5.0;
-          specular = pow(specular, shine);
-          specular = step(0.5, specular);
-          //Create a cartoon look with 3 intensities
-          diffuse = diffuse > uBorder ? 1.0 : diffuse > uBorder - 0.2 ? 0.4 : 0.1;
-          gl_FragColor = vec4( color * uDirLightColor * diffuse + color * specular, 1.0 );
-          //gl_FragColor = vec4( color * uDirLightColor * diffuse, 1.0 );
-        }
-      </script>
-
-      <!--Placeholder shaders-->
-      <script type="x-shader/x-vertex" id="placeholder_shader_vertex">
-        void main()
-        {
-          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-        }
-      </script>
-      <script type="x-shader/x-fragment" id="placeholder_shader_fragment">
-        void main()
-        {
-          gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
-        }
-      </script>
-      <script src="scripts/shaders.js"></script>
-    </body>
-    </html>
+    </div>
+    <script src="scripts/shaders.js"></script>
+  </body>
+  </html>
