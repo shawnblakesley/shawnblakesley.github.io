@@ -81,7 +81,7 @@ function init()
   scene.add(light);
 
   var materialColor = new THREE.Color();
-  materialColor.setRGB(0.6, 0.8, 1.0);
+  materialColor.setRGB(1.0, 1.0, 1.0);
   teapot_material = createShaderMaterial("toon_shader", light, materialColor);
 
   teapot = new THREE.Mesh(teapot_geometry, teapot_material);
