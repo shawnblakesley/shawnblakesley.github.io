@@ -114,7 +114,7 @@
               </p>
               <p ng-if="item.summary" ng-repeat="para in item.summary">{{ para.text }}</p>
               
-              <md-button ng-if="item.links" ng-repeat="link in item.links" target="_blank" ng-href="{{link.url}}" style="width:45%;display: block;margin-left: auto;margin-right: auto;" class="md-primary md-raised">
+              <md-button ng-if="item.links" ng-repeat="link in item.links" target="_blank" ng-href="{{link.url}}" style="width:80%;display: block;margin-left: auto;margin-right: auto;" class="md-primary md-raised">
                 {{ link.name }}
               </md-button>
             </md-content>
@@ -179,7 +179,7 @@
               {{item.summary}}
               <br>
               <br>
-              <md-button target="_blank" ng-href="{{item.link}}" style="width:45%;display: block;margin-left: auto;margin-right: auto;" class="md-primary md-raised">
+              <md-button target="_blank" ng-href="{{item.link}}" style="width:80%;display: block;margin-left: auto;margin-right: auto;" class="md-primary md-raised">
                 {{ item.launchText }}
               </md-button>
             </md-content>
