@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.11.1/angular-material.min.css">
     <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="initial-scale=1" />
+    
+    <!-- Angular Material Dependencies -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.0/angular.min.js"></script> 
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.0/angular-animate.min.js"></script> 
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.0/angular-aria.min.js"></script> 
+    
+    <!-- Angular Material Javascript now available via Google CDN; version 0.11.1 used here -->
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.11.1/angular-material.min.js"></script>
+    <script src="scripts/homepage.js"></script>
   </head>
   
   <body ng-app="homepage">
@@ -158,6 +167,7 @@
               <br>
               {{item.summary}}
               <br>
+              <br>
               <md-button target="_blank" ng-href="{{item.link}}" style="width:45%;display: block;margin-left: auto;margin-right: auto;" class="md-primary md-raised">
                 {{ item.launchText }}
               </md-button>
@@ -168,15 +178,5 @@
     </section>
     
     <md-divider class="md-padding"></md-divider>
-    
-    <!-- Angular Material Dependencies -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.0/angular.min.js"></script> 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.0/angular-animate.min.js"></script> 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.0/angular-aria.min.js"></script> 
-    
-    <!-- Angular Material Javascript now available via Google CDN; version 0.11.1 used here -->
-    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.11.1/angular-material.min.js"></script> 
-    
-    <script src="scripts/homepage.js"></script>
   </body>
 </html>

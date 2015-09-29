@@ -10,9 +10,9 @@ app.controller('AboutCtrl', function($scope) {
     $scope.info = [
       {
         section : 'Summary',
-        image : 'https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=200',
-        width : 200, 
-        height : 200,
+        image : 'https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=300',
+        width : 300, 
+        height : 300,
         tooltip : 'Hello there',
         summary : [
           { text : 'It all started twelve years ago (cue film noir setting) when I taught myself how to program using flash actionscript in order to make games and share them with friends. When I started college, I quickly fell in love with Java (because that was the language of the school), and I competed in and won two of the local programming contests. When I started using C++11 and boost at Volcano, I became hooked instantly.'},
@@ -223,9 +223,9 @@ app.controller('SamplesCtrl', function($scope) {
       {
         title : 'This Website',
         link : 'https://shawnblakesley.github.com',
-        image : 'https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=200',
-        width : 200, 
-        height : 200,
+        image : 'https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=300',
+        width : 300, 
+        height : 300,
         summary : 'Designed and developed with Angular Material because I\'m a big fan of material design. I\'m not predominantly a web developer, but I don\'t like leaving gaps in my knowledge. I\'ve always tried to keep up with the web as much as possible in my free time.',
         launchText : 'Launch',
         chips : [
