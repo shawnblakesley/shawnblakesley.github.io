@@ -17,7 +17,6 @@ html,body
   background-color: transparent !important; 
 }
 .dynamicTabs md-tabs {
-  background: #f6f6f6;
   border: 1px solid #e1e1e1; 
 }
 .dynamicTabs md-content md-tabs md-tabs-wrapper {

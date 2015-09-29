@@ -1,6 +1,6 @@
 var app = angular.module('homepage', ['ngMaterial']);
 
-app.config(function($mdThemingProvider) { $mdThemingProvider.theme('default') .accentPalette('deep-orange'); });
+app.config(function($mdThemingProvider) { $mdThemingProvider.theme('default') .warnPalette('deep-orange') .accentPalette('deep-orange'); });
 
 var onClick = function(url) {
   window.open(url);
@@ -130,7 +130,7 @@ app.controller('JobsCtrl', function($scope) {
       },
       {
         company : 'PARC CSU Sacramento',
-        title : 'Adjunct instructor',
+        title : 'Adjunct Instructor',
         dates : '(Fall 2011 - Spring 2013)',
         url : 'http://www.csus.edu/parc',
         tooltip : 'Peer and Academic Resource Center',
