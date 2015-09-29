@@ -1,0 +1,22 @@
+
+
+.dynamicTabs md-content {
+  background-color: transparent !important; 
+}
+.dynamicTabs md-tabs {
+  background: #f6f6f6;
+  border: 1px solid #e1e1e1; 
+}
+.dynamicTabs md-content md-tabs md-tabs-wrapper {
+  background: white; 
+}
+.dynamicTabs md-content h3:first-child {
+  margin-top: 0; 
+}
+
+custom-button {
+  width:25%;
+  height:auto;
+  valign:center;
+  vertical-align: middle;
+}
