@@ -11,19 +11,65 @@ app.controller('AboutCtrl', function($scope) {
       {
         section : 'Summary',
         image : 'https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=200',
-        width : 196, 
-        height : 206,
+        width : 200, 
+        height : 200,
         tooltip : 'Hello there',
         summary : [
-          { text : 'It all started ten years ago (cue film noir setting) when I taught myself how to program using flash actionscript in order to make games and share them with friends. When I started college, I quickly fell in love with Java (because that was the language of the school), and I competed in and won two of the local programming contests. When I started using C++11 and boost at Volcano, I became hooked instantly.'},
+          { text : 'It all started twelve years ago (cue film noir setting) when I taught myself how to program using flash actionscript in order to make games and share them with friends. When I started college, I quickly fell in love with Java (because that was the language of the school), and I competed in and won two of the local programming contests. When I started using C++11 and boost at Volcano, I became hooked instantly.'},
           { text : 'I am passionate about sharing my love of code and problem-solving with future generations of programmers, and I take every opportunity to share that love. I feel at home with many different languages, and I find learning a new language to be one of the most entertaining parts of programming.'},
-        ] 
+        ], 
       },
       {
         section : 'Skills',
         summary : [
-          { text : 'C++11/14, Java, OpenGL, FFMpeg, JavaScript, CSS, HTML, '},
-        ] 
+          { text : 'I find different languages and libraries to be the best for different situations, so I have used many. This list only includes languages and libraries I multiple years of experience in.'},
+        ],
+        chips : [
+            {
+              name : 'C++11/14'
+            },
+            {
+              name : 'Java'
+            },
+            {
+              name : 'JavaScript'
+            },
+            {
+              name : 'OpenGL'
+            },
+            {
+              name : 'GLSL'
+            },
+            {
+              name : 'FFMpeg'
+            },
+            {
+              name : 'Android SDK'
+            },
+            {
+              name : 'OpenCV'
+            },
+            {
+              name : 'Boost C++'
+            },
+          ],
+      },
+      {
+        section : 'Trivia',
+        bullets : [
+            {
+              detail : 'Undefeated CSUS programming contest champion for two years'
+            },
+            {
+              detail : 'My picture appears in Marie Claire UK April 2015'
+            },
+            {
+              detail : 'Married on Ultimate Pi Day (3/14/15)'
+            },
+            {
+              detail : 'Fan of Dungeons & Dragons, board games, musicals, star trek, doctor who, and many more'
+            },
+          ],
       },
     ];
 });
@@ -34,49 +80,67 @@ app.controller('JobsCtrl', function($scope) {
         company : 'Enplug',
         title : 'Senior Software Engineer',
         dates : '(April 2014 - September 2015)',
-        link : 'https://www.enplug.com',
+        url : 'https://www.enplug.com/',
         logo : 'images/enplug_logo.png',
-        alt : 'Enplug Logo',
-        tooltip : 'Enplug',
+        alt : 'Enplug Spotlight',
+        tooltip : 'Enplug Spotlight',
         width : 196, 
         height : 206,
-        summary : 'As a Senior Software Engineering at Enplug, I was responsible for creating and maintaining software for the Enplug Display Unit. This ranged from refactoring the android-specific platform the player ran on top of to creating new applications to be displayed on the screen.'
+        summary : [
+          { text : 'As a Senior Software Engineering at Enplug, I was responsible for creating and maintaining software for the Enplug Display Unit. This ranged from refactoring the android-specific platform the player ran on top of to creating new applications to be displayed on the screen.'},
+        ], 
+        links : [
+            {
+              url : 'https://www.enplug.com/blog/enplug-spotlight-shawn-software-engineer',
+              name : 'Employee Spotlight',
+            },
+            {
+              url : 'https://www.linkedin.com/pulse/8-real-ways-we-built-family-culture-our-company-nanxi-liu',
+              name : 'Company Culture',
+            },
+          ],
       },
       {
         company : 'Volcano',
         title : 'Software Engineer 2',
         dates : '(June 2012 - January 2014)',
-        link : 'http://www.volcanocorp.com',
+        url : 'http://www.volcanocorp.com',
         tooltip : 'Volcano',
         logo : 'images/volcano_logo.png',
         alt : 'Volcano Logo', 
         width : 243,
         height : 46,
-        summary : 'I had the opportunity to work with a group of highly skilled, awesome people developing modern C++ applications for intravascular ultrasounds. My primary role was as a developer on the Maestro team (which was the newest platform being developed at Volcano) and as the sole owner of the CMake Macros. I also collaborated with the build team on an automated test system and the company\'s CMake Macros. In November, a principle software engineer recognized me with a company-wide "Heads Up" award nomination for finding a solution for optimizing the design of our statechart library.'
+        summary : [
+          { text : 'I had the opportunity to work with a group of highly skilled, awesome people developing modern C++ applications for intravascular ultrasounds. My primary role was as a developer on the Maestro team (which was the newest platform being developed at Volcano) and as the sole owner of the CMake Macros. I also collaborated with the build team on an automated test system and the company\'s CMake Macros. In November, a principle software engineer recognized me with a company-wide "Heads Up" award nomination for finding a solution for optimizing the design of our statechart library.',}
+        ]
       },
       {
         company : 'ITest',
         title : 'Head Instructor',
         dates : '(Summer 2013)',
-        link : 'https://www.ecs.csus.edu/itest',
+        url : 'https://www.ecs.csus.edu/itest',
         tooltip : 'ITest',
         logo : 'images/itest.jpg',
         alt : 'ITest Picture', 
         width : 300,
         height : 200,
-        summary : 'I was chosen by one of my professors to be the head instructor of a collaborative effort between CSU Sacramento and the surrounding school districts to teach game programming to inner city high school students. Under my supervision and assistance, the McClatchy High School students successfully created an educational computer game in Greenfoot, and the game was deployed to local elementary schools in the same district.'
+        summary : [
+          { text : 'I was chosen by one of my professors to be the head instructor of a collaborative effort between CSU Sacramento and the surrounding school districts to teach game programming to inner city high school students. Under my supervision and assistance, the McClatchy High School students successfully created an educational computer game in Greenfoot, and the game was deployed to local elementary schools in the same district.',}
+        ]
       },
       {
         company : 'PARC CSU Sacramento',
         title : 'Adjunct instructor',
         dates : '(Fall 2011 - Spring 2013)',
-        link : 'http://www.csus.edu/parc',
+        url : 'http://www.csus.edu/parc',
         tooltip : 'Peer and Academic Resource Center',
         logo : 'images/csus_logo.png',
         alt : 'CSUS Logo', 
         width : 121,
         height : 184,
-        summary : 'I was selected by professors at CSUS to teach a pair of introductory java adjunct courses. Students enrolled in Proramming Concepts and Methodology I and II had the option of signing up for a concurrent course taught by myself. For five semesters, I created dynamic lessons to supplement the professors\' lectures, worked one-on-one with students during office hours, and collaborated with faculty to achieve maximum student comprehension. I also worked with Computer Science department faculty to promote diversity and inclusivity within the engineering culture at CSUS.'
+        summary : [
+          { text : 'I was selected by professors at CSUS to teach a pair of introductory java adjunct courses. Students enrolled in Proramming Concepts and Methodology I and II had the option of signing up for a concurrent course taught by myself. For five semesters, I created dynamic lessons to supplement the professors\' lectures, worked one-on-one with students during office hours, and collaborated with faculty to achieve maximum student comprehension. I also worked with Computer Science department faculty to promote diversity and inclusivity within the engineering culture at CSUS.',}
+        ]
       },
     ];
 });
@@ -157,12 +221,12 @@ app.controller('EduCtrl', function($scope) {
 app.controller('SamplesCtrl', function($scope) {
     $scope.samples = [
       {
-        title : 'My Website',
+        title : 'This Website',
         link : 'https://shawnblakesley.github.com',
-        image : 'images/website.png',
-        width : 196, 
-        height : 206,
-        summary : 'TODO',
+        image : 'https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=200',
+        width : 200, 
+        height : 200,
+        summary : 'Designed and developed with Angular Material because I\'m a big fan of material design. I\'m not predominantly a web developer, but I don\'t like leaving gaps in my knowledge. I\'ve always tried to keep up with the web as much as possible in my free time.',
         launchText : 'Launch',
         chips : [
             {
@@ -174,16 +238,38 @@ app.controller('SamplesCtrl', function($scope) {
             {
               name : 'CSS'
             },
+            {
+              name : 'AngularJS'
+            },
+          ],
+      },
+      {
+        title : 'Three.js WebGL Shader Demo',
+        link : 'webgl.html',
+        image : 'images/webgl.png',
+        width : 960, 
+        height : 540,
+        summary : 'A quick demo of a glsl shader I wrote using webGL for rendering.',
+        launchText : 'Launch',
+        chips : [
+            {
+              name : 'JavaScript'
+            },
+            {
+              name : 'WebGL'
+            },
+            {
+              name : 'GLSL'
+            },
           ],
       },
       {
         title : 'Unity Platformer',
         link : 'unityPlatformer.html',
-        image : 'images/platformer.png',
         width : 196, 
         height : 206,
-        summary : 'TODO',
-        launchText : 'Coming Soon',
+        summary : 'Still under development, but a simple demo is available here.',
+        launchText : 'Launch',
         chips : [
             {
               name : 'Unity'
@@ -194,22 +280,17 @@ app.controller('SamplesCtrl', function($scope) {
           ],
       },
       {
-        title : 'Three.js WebGL Shader Demo',
-        link : 'webgl.html',
-        image : 'images/webgl.png',
-        width : 196, 
-        height : 206,
-        summary : 'TODO',
-        launchText : 'Converting from old website',
+        title : 'C++ Demo',
+        width : 200, 
+        height : 200,
+        summary : 'Still planning a C++ Demo',
+        launchText : 'Coming Soon',
         chips : [
             {
-              name : 'JavaScript'
+              name : 'C++11/14'
             },
             {
-              name : 'WebGL'
-            },
-            {
-              name : 'GLSL'
+              name : 'OpenGL'
             },
           ],
       },
