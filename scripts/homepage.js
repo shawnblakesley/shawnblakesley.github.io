@@ -150,8 +150,8 @@ app.controller('JobsCtrl', function($scope) {
 app.controller('EduCtrl', function($scope) {
     $scope.education = [
       {
-        school : 'CSU Sacramento',
-        degree : 'Masters Coursework in Computer Science',
+        school : 'CSUS',
+        degree : 'CS Masters Coursework',
         dates : '(2011 - 2013)',
         link : 'http://www.csus.edu/',
         logo : 'images/csus_logo.png',
@@ -171,8 +171,8 @@ app.controller('EduCtrl', function($scope) {
           ],
       },
       {
-        school : 'CSU Sacramento',
-        degree : 'Bachelors in Computer Science',
+        school : 'CSUS',
+        degree : 'Bachelors in CS',
         dates : '(2007-2011)',
         link : 'http://www.csus.edu/',
         logo : 'images/csus_logo.png',
