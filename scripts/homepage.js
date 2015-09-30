@@ -155,8 +155,8 @@ app.controller('EduCtrl', function($scope) {
         dates : '(2011 - 2013)',
         link : 'http://www.csus.edu/',
         logo : 'images/csus_logo.png',
-        alt : 'CSUS Logo', 
-        width : 200,
+        alt : 'CSUS Logo',
+        width : 121,
         height : 184,
         bullets : [
             {
@@ -176,8 +176,8 @@ app.controller('EduCtrl', function($scope) {
         dates : '(2007-2011)',
         link : 'http://www.csus.edu/',
         logo : 'images/csus_logo.png',
-        alt : 'CSUS Logo', 
-        width : 200,
+        alt : 'CSUS Logo',
+        width : 121,
         height : 184,
         bullets : [
             {
@@ -203,8 +203,8 @@ app.controller('EduCtrl', function($scope) {
         dates : '(2007-2011)',
         link : 'http://www.csus.edu/',
         logo : 'images/csus_logo.png',
-        alt : 'CSUS Logo', 
-        width : 200,
+        alt : 'CSUS Logo',
+        width : 121,
         height : 184,
         bullets : [
             {
@@ -212,6 +212,9 @@ app.controller('EduCtrl', function($scope) {
             },
             {
               detail : 'Wrote Fortran code to solve parametric equations'
+            },
+            {
+              detail : 'Took advanced courses in simulations, optics and modern physics'
             },
           ],
       },
@@ -244,7 +247,7 @@ app.controller('SamplesCtrl', function($scope) {
           ],
       },
       {
-        title : 'Three.js WebGL Shader Demo',
+        title : 'WebGL Shader',
         link : 'webgl.html',
         image : 'images/webgl.png',
         width : 960, 
@@ -260,6 +263,9 @@ app.controller('SamplesCtrl', function($scope) {
             },
             {
               name : 'GLSL'
+            },
+            {
+              name : 'Three.js'
             },
           ],
       },
