@@ -40,11 +40,20 @@
             </md-button>
               
             <md-content style="width:100%;valign:center;" class="md-padding right" layout="column">
-              <p ng-if="item.summary" ng-repeat="para in item.summary">{{ para.text }}</p>
+              <div ng-if="item.summary" ng-repeat="para in item.summary">{{ para.text }}<br><br></div>
               
               <ul ng-if="item.bullets">
                 <li ng-repeat="bullet in item.bullets">{{ bullet.detail }}</li>
               </ul>
+              
+              <div class="frame">
+                <div style="min-width:100px;" class="md-padding" ng-if="item.projects" ng-repeat="project in item.projects">
+                  {{ project.title }}<br><i>{{ project.detail }}</i>
+                  <md-chips ng-if="project.chips" ng-model="project.chips" readonly="true">
+                    <md-chip-template>{{$chip.name}}</md-chip-template>
+                  </md-chips>
+                </div>
+              </div>
               
               <md-chips ng-if="item.chips" ng-model="item.chips"  readonly="true">
                 <md-chip-template>{{$chip.name}}</md-chip-template>
@@ -106,7 +115,7 @@
                   
             <md-content style="width:100%;valign:center;" class="md-padding right" layout="column">
               <p style="text-align:left;padding-bottom:12px;">
-                <b>{{ item.degree }}</b>
+                <b>{{ item.degree }} in {{ item.field }}</b>
                 <span style="float:right;">{{ item.dates }}</span>
               </p>
               <ul>

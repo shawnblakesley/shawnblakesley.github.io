@@ -15,8 +15,9 @@ app.controller('AboutCtrl', function($scope) {
         height : 300,
         tooltip : 'Hello there',
         summary : [
-          { text : 'It all started twelve years ago (cue film noir setting) when I taught myself how to program using flash actionscript in order to make games and share them with friends. When I started college, I quickly fell in love with Java (because that was the language of the school), and I competed in and won two of the local programming contests. When I started using C++11 and boost at Volcano, I became hooked instantly.'},
-          { text : 'I am passionate about sharing my love of code and problem-solving with future generations of programmers, and I take every opportunity to share that love. I feel at home with many different languages, and I find learning a new language to be one of the most entertaining parts of programming.'},
+          { text : 'I\'ve been programming professionally for 4 years, and non-professionally for 12 years now.'},
+          { text : 'It all started twelve years ago (cue film noir setting) when I taught myself how to program using flash actionscript in order to make games and share them with friends. When I started college, I quickly fell in love with Java (because that was the language of the school), and I competed in and won two of the local programming contests. When I started using C++11 & 14 with Boost C++ at Volcano, it quickly became my favorite language. I started at Enplug with no experience in Android, and I developed multiple Android apps for digital signage. I also developed the OpenGL Video Player and Browser Support using the Java Native Interface to integrate C libraries into Java for the Enplug SDK.'},
+          { text : 'I am passionate about sharing my love of programming and problem-solving with novice programmers, and I take every opportunity to help others to learn. I feel at home with many different languages, and I am constantly learning new ones for fun.'},
         ], 
       },
       {
@@ -55,6 +56,290 @@ app.controller('AboutCtrl', function($scope) {
           ],
       },
       {
+        section : 'Projects',
+        summary : [
+          { text : 'A list of projects and my contributions from work and education'},
+        ],
+        projects : [
+            {
+              title : 'Browser Support (Windows)',
+              detail : 'Designed and developed JNI interface to render browsers in OpenGL',
+              chips : [
+                  {
+                    name : 'C++'
+                  },
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'JNI'
+                  },
+                  {
+                    name : 'LibGDX'
+                  },
+                  {
+                    name : 'OpenGL'
+                  },
+                ],
+            },
+            {
+              title : 'Browser Support (Android)',
+              detail : 'Designed and developed interface to render Android WebViews in OpenGL',
+              chips : [
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'Android'
+                  },
+                  {
+                    name : 'LibGDX'
+                  },
+                  {
+                    name : 'OpenGL'
+                  },
+                ],
+            },
+            {
+              title : 'LibGDX Video Renderer (Windows)',
+              detail : 'Designed and developed video renderer using ffmpeg and libgdx',
+              chips : [
+                  {
+                    name : 'C'
+                  },
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'FFmpeg'
+                  },
+                  {
+                    name : 'LibGDX'
+                  },
+                  {
+                    name : 'OpenGL'
+                  },
+                ],
+            },
+            {
+              title : 'LibGDX Video Renderer (Android)',
+              detail : 'Designed and developed video renderer using ffmpeg and libgdx',
+              chips : [
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'Android'
+                  },
+                  {
+                    name : 'LibGDX'
+                  },
+                  {
+                    name : 'OpenGL'
+                  },
+                ],
+            },
+            {
+              title : 'LibGDX Video Renderer (Mac)',
+              detail : 'Designed and developed video renderer using OpenCV and libgdx',
+              chips : [
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'OpenCV'
+                  },
+                  {
+                    name : 'LibGDX'
+                  },
+                  {
+                    name : 'OpenGL'
+                  },
+                ],
+            },
+            {
+              title : 'Enplug Splashscreen',
+              detail : 'Designed and developed splashscreen',
+              chips : [
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'LibGDX'
+                  },
+                ],
+            },
+            {
+              title : 'RSS App',
+              detail : 'Sole ownership of app for Enplug displays',
+              chips : [
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'LibGDX'
+                  },
+                  {
+                    name : 'JSON'
+                  },
+                ],
+            },
+            {
+              title : 'Webpage App',
+              detail : 'Sole ownership of app for Enplug displays',
+              chips : [
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'LibGDX'
+                  },
+                ],
+            },
+            {
+              title : 'Natives Loader',
+              detail : 'Created system for updating and loading native libraries',
+              chips : [
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'DLLs'
+                  },
+                ],
+            },
+            {
+              title : 'Android Control App',
+              detail : 'App to control Enplug displays on Android',
+              chips : [
+                  {
+                    name : 'Android'
+                  },
+                  {
+                    name : 'Java'
+                  },
+                ],
+            },
+            {
+              title : 'Build Server',
+              detail : 'Set up, maintained and ran build servers for Enplug',
+              chips : [
+                  {
+                    name : 'Deployment'
+                  },
+                  {
+                    name : 'Automation'
+                  },
+                  {
+                    name : 'Testing'
+                  },
+                ],
+            },
+            {
+              title : 'Webpage Extension Apps',
+              detail : 'Developed SDK used by multiple apps for Enplug displays',
+              chips : [
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'Android'
+                  },
+                ],
+            },
+            {
+              title : 'IVUS on OFact',
+              detail : 'Statechart design and implementation',
+              chips : [
+                  {
+                    name : 'C++11/14'
+                  },
+                  {
+                    name : 'Boost C++'
+                  },
+                ],
+            },
+            {
+              title : 'Automated Test System',
+              detail : 'Design, documentation and implementation',
+              chips : [
+                  {
+                    name : 'Perl'
+                  },
+                  {
+                    name : 'C++'
+                  },
+                ],
+            },
+            {
+              title : 'Build System',
+              detail : 'Maintained and extended CMake macros',
+              chips : [
+                  {
+                    name : 'CMake'
+                  },
+                ],
+            },
+            {
+              title : 'ZLife: 2D Zombie Path-finding',
+              detail : 'Designed graphical representation and path-finding AI',
+              chips : [
+                  {
+                    name : 'Java'
+                  },
+                ],
+            },
+            {
+              title : 'CSUS Senior Project',
+              detail : 'Project Lead',
+              chips : [
+                  {
+                    name : 'C#'
+                  },
+                ],
+            },
+            {
+              title : '3D Candy Collector Game',
+              detail : 'Headed UI and 3D graphics engine',
+              chips : [
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'JOGL'
+                  },
+                  {
+                    name : 'OpenGL'
+                  },
+                ],
+            },
+            {
+              title : 'OpenGL 3D Engine',
+              detail : 'Created engine using JOGL',
+              chips : [
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'JOGL'
+                  },
+                  {
+                    name : 'OpenGL'
+                  },
+                ],
+            },
+            {
+              title : 'Steganographic Encoder',
+              detail : 'Developed user interface and encoding algorithm',
+              chips : [
+                  {
+                    name : 'Java'
+                  },
+                ],
+            },
+          ],
+      },
+      {
         section : 'Trivia',
         bullets : [
             {
@@ -67,7 +352,10 @@ app.controller('AboutCtrl', function($scope) {
               detail : 'Married on Ultimate Pi Day (3/14/15)'
             },
             {
-              detail : 'Fan of Dungeons & Dragons, board games, musicals, star trek, doctor who, and many more'
+              detail : 'Fan of Dungeons & Dragons, board games, musicals, Star Trek, Doctor Who, and many more'
+            },
+            {
+              detail : 'Earned the nicknames \'Batman\' and \'Sunshine\' for working at extremely late hours and still being peppy in the morning meetings'
             },
           ],
       },
@@ -151,7 +439,8 @@ app.controller('EduCtrl', function($scope) {
     $scope.education = [
       {
         school : 'CSUS',
-        degree : 'CS Masters Coursework',
+        degree : 'Masters Coursework',
+        field : 'Computer Science',
         dates : '(2011 - 2013)',
         link : 'http://www.csus.edu/',
         logo : 'images/csus_logo.png',
@@ -172,7 +461,8 @@ app.controller('EduCtrl', function($scope) {
       },
       {
         school : 'CSUS',
-        degree : 'Bachelors in CS',
+        degree : 'Bachelors',
+        field : 'Computer Science',
         dates : '(2007-2011)',
         link : 'http://www.csus.edu/',
         logo : 'images/csus_logo.png',
@@ -198,8 +488,9 @@ app.controller('EduCtrl', function($scope) {
           ],
       },
       {
-        school : 'CSU Sacramento',
-        degree : 'Minor in Physics',
+        school : 'CSUS',
+        degree : 'Minor',
+        field : 'Physics',
         dates : '(2007-2011)',
         link : 'http://www.csus.edu/',
         logo : 'images/csus_logo.png',
