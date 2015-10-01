@@ -375,18 +375,26 @@ app.controller('JobsCtrl', function($scope) {
         width : 196, 
         height : 206,
         summary : [
-          { text : 'As a Senior Software Engineering at Enplug, I was responsible for creating and maintaining software for the Enplug Display Unit. This ranged from refactoring the android-specific platform the player ran on top of to creating new applications to be displayed on the screen.'},
+          { 
+            text : 'Enplug Inc. is a Los Angeles startup that provides an app-based digital signage solution. Enplug has been recognized by Time, Fortune, Marie Claire, Inc., and Money magazines along with many more print and internet publications for being a leader in the field of digital signage.',
+          },
+          {
+            text : 'As a Senior Software Engineer at Enplug, I had a high-expectation job with a wide range of responsibilities. I enjoyed the fast-paced startup nature because there was never a lack of tasks to focus on. My primary responsibility was to develop new technologies for the Enplug SDK such as the video renderer and adding browser support. On top of that, I designed, developed and deployed two apps, maintained a third, ran the build system, worked on the android mobile control app, supported the development of all webpage-based external apps and many more tasks. Because we had a small engineering team with a high-visibility product that needs to run smoothly 24/7, I had a hand in too many tasks to list.',
+          },
+          {
+            text : 'While 95% of my work was done remotely from Northern California, I was also recognized for my contributions to company life. I was highlighted in an employee spotlight blog post and mentioned by Nanxi Liu (the CEO) in an article about company culture. I invited the entire team to my wedding, and half of them (including Nanxi) drove up to San Francisco for the celebration.',
+          },
         ], 
         links : [
-            {
-              url : 'https://www.enplug.com/blog/enplug-spotlight-shawn-software-engineer',
-              name : 'Employee Spotlight',
-            },
-            {
-              url : 'https://www.linkedin.com/pulse/8-real-ways-we-built-family-culture-our-company-nanxi-liu',
-              name : 'Company Culture',
-            },
-          ],
+          {
+            url : 'https://www.enplug.com/blog/enplug-spotlight-shawn-software-engineer',
+            name : 'Employee Spotlight',
+          },
+          {
+            url : 'https://www.linkedin.com/pulse/8-real-ways-we-built-family-culture-our-company-nanxi-liu',
+            name : 'Company Culture',
+          },
+        ],
       },
       {
         company : 'Volcano',
@@ -520,7 +528,7 @@ app.controller('SamplesCtrl', function($scope) {
         image : 'https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=300',
         width : 300, 
         height : 300,
-        summary : 'Designed and developed with Angular Material because I\'m a big fan of material design. I\'m not predominantly a web developer, but I don\'t like leaving gaps in my knowledge. I\'ve always tried to keep up with the web as much as possible in my free time.',
+        summary : 'Designed and developed with Angular Material because I\'m a big fan of material design. Feel free to browse the code on Github. I\'m not predominantly a web developer, but I don\'t like leaving gaps in my knowledge. I\'ve always tried to keep up with the web as much as possible in my free time.',
         launchText : 'Launch',
         chips : [
             {
@@ -543,7 +551,7 @@ app.controller('SamplesCtrl', function($scope) {
         image : 'images/webgl.png',
         width : 960, 
         height : 540,
-        summary : 'A quick demo of a glsl shader I wrote using webGL for rendering.',
+        summary : 'A procedurally generated texture using a glsl shader in webGL. I made this using my knowledge of shaders, and a Udacity tutorial to learn how to incorporate that into WebGL. Given time I plan to add more shaders to this example.',
         launchText : 'Launch',
         chips : [
             {
@@ -561,12 +569,12 @@ app.controller('SamplesCtrl', function($scope) {
           ],
       },
       {
-        title : 'Unity Platformer',
+        title : 'Unity Game',
         link : 'unityPlatformer.html',
         width : 196, 
         height : 206,
-        summary : 'Still under development, but a simple demo is available here.',
-        launchText : 'Launch',
+        summary : 'Currently making a small game to get better acquainted with Unity.',
+        launchText : 'Coming Soon',
         chips : [
             {
               name : 'Unity'
