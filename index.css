@@ -9,19 +9,18 @@ html,body
 
 #my-speed-dial {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 4px;
+  right: 4px;
 }
 
 .dynamicTabs md-content {
   background-color: transparent !important; 
 }
+
 .dynamicTabs md-tabs {
   border-bottom: 1px solid #e1e1e1; 
 }
-.dynamicTabs md-content md-tabs md-tabs-wrapper {
-  background: white; 
-}
+
 .dynamicTabs md-content h3:first-child {
   margin-top: 0; 
 }

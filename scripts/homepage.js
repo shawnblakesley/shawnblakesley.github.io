@@ -1,6 +1,6 @@
 var app = angular.module('homepage', ['ngMaterial']);
 
-app.config(function($mdThemingProvider) { $mdThemingProvider.theme('default') .warnPalette('deep-orange') .accentPalette('deep-orange'); });
+app.config(function($mdThemingProvider) { $mdThemingProvider.theme('default') .warnPalette('red') .accentPalette('deep-orange'); });
 
 var onClick = function(url) {
   window.open(url);
@@ -14,6 +14,7 @@ app.controller('AboutCtrl', function($scope) {
         width : 300, 
         height : 300,
         tooltip : 'Hello there',
+        subheader : "Shawn Blakesley: Software Engineer",
         summary : [
           { text : 'I\'ve been programming professionally for 4 years, and non-professionally for 12 years now.'},
           { text : 'It all started twelve years ago (cue film noir setting) when I taught myself how to program using flash actionscript in order to make games and share them with friends. When I started college, I quickly fell in love with Java (because that was the language of the school), and I competed in and won two of the local programming contests. When I started using C++11 & 14 with Boost C++ at Volcano, it quickly became my favorite language. I started at Enplug with no experience in Android, and I developed multiple Android apps for digital signage. I also developed the OpenGL Video Player and Browser Support using the Java Native Interface to integrate C libraries into Java for the Enplug SDK.'},
@@ -526,29 +527,6 @@ app.controller('EduCtrl', function($scope) {
 app.controller('SamplesCtrl', function($scope) {
     $scope.samples = [
       {
-        title : 'This Website',
-        link : 'https://shawnblakesley.github.com',
-        image : 'https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=300',
-        width : 300, 
-        height : 300,
-        summary : 'Designed and developed with Angular Material because I\'m a big fan of material design. Feel free to browse the code on Github. I\'m not predominantly a web developer, but I don\'t like leaving gaps in my knowledge. I\'ve always tried to keep up with the web as much as possible in my free time.',
-        launchText : 'Launch',
-        chips : [
-            {
-              name : 'JavaScript'
-            },
-            {
-              name : 'HTML'
-            },
-            {
-              name : 'CSS'
-            },
-            {
-              name : 'AngularJS'
-            },
-          ],
-      },
-      {
         title : 'WebGL Shader',
         link : 'webgl.html',
         image : 'images/webgl.png',
@@ -568,6 +546,29 @@ app.controller('SamplesCtrl', function($scope) {
             },
             {
               name : 'Three.js'
+            },
+          ],
+      },
+      {
+        title : 'This Website',
+        link : 'https://shawnblakesley.github.com',
+        image : 'https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=300',
+        width : 300, 
+        height : 300,
+        summary : 'Designed and developed with Angular Material because I\'m a big fan of material design. Feel free to browse the code on Github. I\'m not predominantly a web developer, but I don\'t like leaving gaps in my knowledge. I\'ve always tried to keep up with the web as much as possible in my free time.',
+        launchText : 'Launch',
+        chips : [
+            {
+              name : 'JavaScript'
+            },
+            {
+              name : 'HTML'
+            },
+            {
+              name : 'CSS'
+            },
+            {
+              name : 'AngularJS'
             },
           ],
       },
