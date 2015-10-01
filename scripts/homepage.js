@@ -448,7 +448,7 @@ app.controller('EduCtrl', function($scope) {
       {
         school : 'CSUS',
         degree : 'Masters Coursework',
-        field : 'Computer Science (concentrations in AI and security)',
+        field : 'Computer Science',
         dates : '(2011 - 2013)',
         link : 'http://www.csus.edu/',
         logo : 'images/csus_logo.png',
@@ -457,7 +457,7 @@ app.controller('EduCtrl', function($scope) {
         height : 184,
         bullets : [
             {
-              detail : 'Primary focus on artificial intelligence with a secondary focus on security'  
+              detail : 'Primary concentration in artificial intelligence with a secondary concentration in security'  
             },
             {
               detail : 'Designed graphical representation and AI for 2D Java zombie path-finding project'
