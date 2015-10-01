@@ -17,7 +17,7 @@ html,body
   background-color: transparent !important; 
 }
 .dynamicTabs md-tabs {
-  border: 1px solid #e1e1e1; 
+  border-bottom: 1px solid #e1e1e1; 
 }
 .dynamicTabs md-content md-tabs md-tabs-wrapper {
   background: white; 
@@ -27,7 +27,6 @@ html,body
 }
 
 custom-button {
-  width:25%;
   height:auto;
   valign:center;
   vertical-align: middle;

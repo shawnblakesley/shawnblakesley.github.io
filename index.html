@@ -31,7 +31,7 @@
         </div>
       </md-toolbar>
   
-      <md-tabs md-dynamic-height="true" md-border-bottom="true">
+      <md-tabs class="md-primary" md-dynamic-height="true" md-border-bottom="true">
         <md-tab ng-repeat="item in info" label="{{item.section}}">
           <md-content class="md-padding frame" layout="row">
             <md-button style="max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.image" style="text-align:left" class="md-primary left" aria-label="{{item.tooltip}}">
@@ -73,7 +73,7 @@
         </div>
       </md-toolbar>
     
-      <md-tabs md-dynamic-height="true" md-border-bottom="true">
+      <md-tabs class="md-primary" md-dynamic-height="true" md-border-bottom="true">
         <md-tab ng-repeat="item in jobs" label="{{item.company}} - {{item.title}}">
           <md-content class="md-padding frame" layout="row">
             <md-button style="max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.logo" target="_blank" ng-href="{{item.url}}" class="md-primary custom-button left" aria-label="{{item.company}}">
@@ -105,7 +105,7 @@
         </div>
       </md-toolbar>
     
-      <md-tabs md-dynamic-height="true" md-border-bottom="true">
+      <md-tabs class="md-primary" md-dynamic-height="true" md-border-bottom="true">
         <md-tab ng-repeat="item in education" label="{{item.school}} - {{item.degree}}">
           <md-content class="md-padding frame" layout="row">
             <md-button style="max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.logo" target="_blank" ng-href="{{item.link}}" class="md-primary custom-button left" aria-label="{{item.school}}">
@@ -136,7 +136,7 @@
         </div>
       </md-toolbar>
     
-      <md-tabs md-dynamic-height="true" md-border-bottom="true">
+      <md-tabs class="md-primary" md-dynamic-height="true" md-border-bottom="true">
         <md-tab ng-repeat="item in samples" label="{{item.title}}">
           <md-content class="md-padding frame" layout="row">
             <md-button  style="max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.image" target="_blank" ng-href="{{item.link}}" style="text-align:left" class="md-primary custom-button left" aria-label="{{item.title}}">
