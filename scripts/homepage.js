@@ -37,10 +37,19 @@ app.controller('AboutCtrl', function($scope) {
               name : 'JavaScript'
             },
             {
+              name : 'Perl'
+            },
+            {
               name : 'OpenGL'
             },
             {
               name : 'GLSL'
+            },
+            {
+              name : 'Qt'
+            },
+            {
+              name : 'CMake'
             },
             {
               name : 'FFMpeg'
@@ -54,6 +63,18 @@ app.controller('AboutCtrl', function($scope) {
             {
               name : 'Boost C++'
             },
+            {
+              name : 'Unity 3D'
+            },
+            {
+              name : 'Graphics'
+            },
+            {
+              name : 'Artificial Intelligence'
+            },
+            {
+              name : 'Security'
+            },
           ],
       },
       {
@@ -63,7 +84,7 @@ app.controller('AboutCtrl', function($scope) {
         ],
         projects : [
             {
-              title : 'Browser Support (Windows)',
+              title : 'Browser Support (Windows & Android)',
               detail : 'Designed and developed JNI interface to render browsers in OpenGL',
               chips : [
                   {
@@ -81,28 +102,13 @@ app.controller('AboutCtrl', function($scope) {
                   {
                     name : 'OpenGL'
                   },
-                ],
-            },
-            {
-              title : 'Browser Support (Android)',
-              detail : 'Designed and developed interface to render Android WebViews in OpenGL',
-              chips : [
-                  {
-                    name : 'Java'
-                  },
                   {
                     name : 'Android'
                   },
-                  {
-                    name : 'LibGDX'
-                  },
-                  {
-                    name : 'OpenGL'
-                  },
                 ],
             },
             {
-              title : 'LibGDX Video Renderer (Windows)',
+              title : 'LibGDX Video Renderer (Windows & Android & Mac)',
               detail : 'Designed and developed video renderer using ffmpeg and libgdx',
               chips : [
                   {
@@ -120,41 +126,11 @@ app.controller('AboutCtrl', function($scope) {
                   {
                     name : 'OpenGL'
                   },
-                ],
-            },
-            {
-              title : 'LibGDX Video Renderer (Android)',
-              detail : 'Designed and developed video renderer using ffmpeg and libgdx',
-              chips : [
-                  {
-                    name : 'Java'
-                  },
                   {
                     name : 'Android'
                   },
                   {
-                    name : 'LibGDX'
-                  },
-                  {
-                    name : 'OpenGL'
-                  },
-                ],
-            },
-            {
-              title : 'LibGDX Video Renderer (Mac)',
-              detail : 'Designed and developed video renderer using OpenCV and libgdx',
-              chips : [
-                  {
-                    name : 'Java'
-                  },
-                  {
                     name : 'OpenCV'
-                  },
-                  {
-                    name : 'LibGDX'
-                  },
-                  {
-                    name : 'OpenGL'
                   },
                 ],
             },
@@ -532,7 +508,7 @@ app.controller('SamplesCtrl', function($scope) {
         image : 'images/webgl.png',
         width : 960, 
         height : 540,
-        summary : 'A procedurally generated texture using a glsl shader in webGL. I made this using my knowledge of shaders, and a Udacity tutorial to learn how to incorporate that into WebGL. Given time I plan to add more shaders to this example.',
+        summary : 'A toon-shaded procedurally generated texture using a glsl shader in webGL. I made this using my knowledge of shaders, and a Udacity tutorial to learn how to incorporate that into WebGL. Given time I plan to add more shaders to this example.',
         launchText : 'Launch',
         chips : [
             {
