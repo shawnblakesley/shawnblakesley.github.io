@@ -95,9 +95,13 @@
                 </md-card>
               </div>
               
-              <md-chips ng-if="item.chips" ng-model="item.chips"  readonly="true">
-                <md-chip-template>{{$chip.name}}</md-chip-template>
-              </md-chips>
+              <div ng-if="item.skills" ng-repeat="skill in item.skills">
+                <md-subheader>{{ skill.name }}</md-subheader>
+              
+                <md-chips ng-if="skill.chips" ng-model="skill.chips"  readonly="true">
+                  <md-chip-template>{{$chip.name}}</md-chip-template>
+                </md-chips>
+              </div>
             </md-content>
           </md-content>
         </md-tab>

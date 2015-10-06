@@ -23,57 +23,133 @@ app.controller('AboutCtrl', function($scope) {
       },
       {
         section : 'Skills',
-        summary : [
-          { text : 'I find different languages and libraries to be the best for different situations, so I have used many. This list only includes languages and libraries I multiple years of experience in.'},
-        ],
-        chips : [
+        // summary : [
+        //   { text : 'I find different languages and libraries to be the best for different situations, so I have used many. This list only includes languages and libraries I multiple years of experience in.'},
+        // ],
+        skills : [
             {
-              name : 'C++11/14'
+              name : 'Languages',
+              chips : [
+                  {
+                    name : 'C++11/14'
+                  },
+                  {
+                    name : 'Java'
+                  },
+                  {
+                    name : 'C#'
+                  },
+                  {
+                    name : 'C'
+                  },
+                  {
+                    name : 'JavaScript'
+                  },
+                  {
+                    name : 'Perl'
+                  },
+                  {
+                    name : 'Python'
+                  },
+                  {
+                    name : 'GLSL'
+                  },
+                  {
+                    name : 'CMake'
+                  },
+                ],
             },
             {
-              name : 'Java'
+              name : 'Libraries',
+              chips : [
+                  {
+                    name : 'OpenGL'
+                  },
+                  {
+                    name : 'Qt'
+                  },
+                  {
+                    name : 'FFMpeg'
+                  },
+                  {
+                    name : 'Android SDK'
+                  },
+                  {
+                    name : 'OpenCV'
+                  },
+                  {
+                    name : 'Boost C++'
+                  },
+                  {
+                    name : 'AngularJS'
+                  },
+                  {
+                    name : 'NodeJS'
+                  },
+                  {
+                    name : 'LibGDX'
+                  },
+                ],
             },
             {
-              name : 'JavaScript'
+              name : 'Tools',
+              chips : [
+                  {
+                    name : 'Visual Studio'
+                  },
+                  {
+                    name : 'Unity 3D'
+                  },
+                  {
+                    name : 'IntelliJ'
+                  },
+                  {
+                    name : 'Android Studio'
+                  },
+                  {
+                    name : 'Eclipse'
+                  },
+                  {
+                    name : 'Cygwin'
+                  },
+                  {
+                    name : 'Github'
+                  },
+                  {
+                    name : 'Perforce'
+                  },
+                ],
             },
             {
-              name : 'Perl'
+              name : 'Operating Systems',
+              chips : [
+                  {
+                    name : 'Windows',
+                  },
+                  {
+                    name : 'Linux',
+                  },
+                  {
+                    name : 'Android',
+                  },
+                ],
             },
             {
-              name : 'OpenGL'
-            },
-            {
-              name : 'GLSL'
-            },
-            {
-              name : 'Qt'
-            },
-            {
-              name : 'CMake'
-            },
-            {
-              name : 'FFMpeg'
-            },
-            {
-              name : 'Android SDK'
-            },
-            {
-              name : 'OpenCV'
-            },
-            {
-              name : 'Boost C++'
-            },
-            {
-              name : 'Unity 3D'
-            },
-            {
-              name : 'Graphics'
-            },
-            {
-              name : 'Artificial Intelligence'
-            },
-            {
-              name : 'Security'
+              name : 'Concentrations',
+              chips : [
+                  {
+                    name : 'Graphics'
+                  },
+                  {
+                    name : 'Game Programming'
+                  },
+                  {
+                    name : 'Artificial Intelligence'
+                  },
+                  {
+                    name : 'Security'
+                  },
+                ],
             },
           ],
       },
