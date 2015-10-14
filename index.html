@@ -36,7 +36,7 @@
       <md-tabs class="md-primary" md-dynamic-height="true" md-border-bottom="true">
         <md-tab ng-repeat="item in info" label="{{item.section}}">
           <md-content class="md-padding frame" layout="row">
-            <md-button style="max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.image" style="text-align:left" class="md-primary left" aria-label="{{item.tooltip}}">
+            <md-button style="overflow:hidden; max-height: {{ item.height }}px;max-width: {{ item.width }}px;" ng-if="item.image" style="text-align:left" class="md-primary left" aria-label="{{item.tooltip}}">
               <md-tooltip md-direction="bottom">{{ item.tooltip }}</md-tooltip>
               <img style="width: 100%; height: 100%;" src="{{item.image}}" alt="{{item.alt}}"/>
             </md-button>
@@ -84,7 +84,7 @@
       <md-tabs class="md-primary" md-dynamic-height="true" md-border-bottom="true">
         <md-tab ng-repeat="item in jobs" label="{{item.company}} - {{item.title}}">
           <md-content class="md-padding frame" layout="row">
-            <md-button style="max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.logo" target="_blank" ng-href="{{item.url}}" class="md-primary custom-button left" aria-label="{{item.company}}">
+            <md-button style="overflow:hidden; max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.logo" target="_blank" ng-href="{{item.url}}" class="md-primary custom-button left" aria-label="{{item.company}}">
               <md-tooltip md-direction="bottom">{{ item.tooltip }}</md-tooltip>
               <img style="width: 100%; height: 100%;" src="{{item.logo}}" alt="{{item.alt}}"/>
             </md-button>
@@ -116,7 +116,7 @@
       <md-tabs class="md-primary" md-dynamic-height="true" md-border-bottom="true">
         <md-tab ng-repeat="item in education" label="{{item.school}} - {{item.degree}}">
           <md-content class="md-padding frame" layout="row">
-            <md-button style="max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.logo" target="_blank" ng-href="{{item.link}}" class="md-primary custom-button left" aria-label="{{item.school}}">
+            <md-button style="overflow:hidden; max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.logo" target="_blank" ng-href="{{item.link}}" class="md-primary custom-button left" aria-label="{{item.school}}">
               <md-tooltip md-direction="bottom">{{ item.school }}</md-tooltip>
               <img style="width: 100%; height: 100%;" src="{{item.logo}}" alt="{{item.alt}}"/>
             </md-button>
@@ -147,7 +147,7 @@
       <md-tabs class="md-primary" md-dynamic-height="true" md-border-bottom="true">
         <md-tab ng-repeat="item in samples" label="{{item.title}}">
           <md-content class="md-padding frame" layout="row">
-            <md-button  style="max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.image" target="_blank" ng-href="{{item.link}}" style="text-align:left" class="md-primary custom-button left" aria-label="{{item.title}}">
+            <md-button  style="overflow:hidden; max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.image" target="_blank" ng-href="{{item.link}}" style="text-align:left" class="md-primary custom-button left" aria-label="{{item.title}}">
               <md-tooltip md-direction="bottom">{{ item.title }}</md-tooltip>
               <img style="width: 100%; height: 100%;" src="{{item.image}}" alt="{{item.title}}" width="{{item.width}}" height="{{item.height}}"/>
             </md-button>

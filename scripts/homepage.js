@@ -655,5 +655,20 @@ app.controller('SamplesCtrl', function($scope) {
             },
           ],
       },
+      {
+        title : 'Python Demo',
+        width : 200, 
+        height : 200,
+        summary : 'Still planning a Python Demo',
+        launchText : 'Coming Soon',
+        chips : [
+            {
+              name : 'Python'
+            },
+            {
+              name : 'Pygame'
+            },
+          ],
+      },
     ];
 });
