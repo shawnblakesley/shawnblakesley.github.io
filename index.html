@@ -51,7 +51,7 @@
               </ul>
               
               <div class="frame" ng-if="item.projects">
-                <md-card class="md-padding" ng-repeat="project in item.projects">
+                <md-card class="md-padding hover" ng-repeat="project in item.projects">
                   {{ project.title }}<br><i>{{ project.detail }}</i>
                   <md-chips ng-if="project.chips" ng-model="project.chips" readonly="true">
                     <md-chip-template>{{$chip.name}}</md-chip-template>
@@ -95,7 +95,7 @@
               </p>
               <p ng-if="item.summary" ng-repeat="para in item.summary">{{ para.text }}</p>
               
-              <md-button ng-if="item.links" ng-repeat="link in item.links" target="_blank" ng-href="{{link.url}}" style="width:80%;display: block;margin-left: auto;margin-right: auto;" class="md-primary md-raised">
+              <md-button ng-if="item.links" ng-repeat="link in item.links" target="_blank" ng-href="{{link.url}}" style="width:80%;display: block;margin-left: auto;margin-right: auto;" class="md-primary md-raised hover">
                 {{ link.name }}
               </md-button>
             </md-content>
@@ -160,7 +160,7 @@
               {{item.summary}}
               <br>
               <br>
-              <md-button target="_blank" ng-href="{{item.link}}" style="width:80%;display: block;margin-left: auto;margin-right: auto;" class="md-primary md-raised">
+              <md-button target="_blank" ng-href="{{item.link}}" style="width:80%;display: block;margin-left: auto;margin-right: auto;" class="md-primary md-raised hover">
                 {{ item.launchText }}
               </md-button>
             </md-content>
