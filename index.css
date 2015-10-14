@@ -7,10 +7,19 @@ html,body
     overflow-x: hidden; 
 }
 
+@keyframes drop-in {
+    0% {top: -50px;}
+    100% {top: 4px;}
+}
+
 #my-speed-dial {
   position: absolute;
   top: 4px;
   right: 4px;
+  transition: all .2s ease-in-out;
+  animation-name: drop-in;
+  animation-duration: .75s;
+  animation-timing-function: ease-out;
 }
 
 .dynamicTabs md-content {
@@ -56,6 +65,16 @@ custom-button {
     margin: auto;
 }
 
+@keyframes slide-left {
+    0% {left: -50px; opacity: 0;}
+    100% {left: 0px; opacity: 1;}
+}
+
+@keyframes slide-right {
+    0% {right: -50px; opacity: 0;}
+    100% {right: 0px; opacity: 1;}
+}
+
 .left {    
   -ms-flex-order: 1;     
   -webkit-order: 1;
@@ -67,8 +86,12 @@ custom-button {
   -ms-flex: 2;              /* IE 10 */
   flex: 2;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
   margin: auto;
-  
   width: auto;
+  
+  transition: all .2s ease-in-out;
+  animation-name: slide-left;
+  animation-duration: .75s;
+  animation-timing-function: ease-out;
 }
 
 .right {    
@@ -91,6 +114,11 @@ custom-button {
   order: 2;                       /* NEW, Spec - Opera 12.1, Firefox 20+ */
   margin-left: auto;
   margin-right: auto;
+  
+  transition: all .2s ease-in-out;
+  animation-name: slide-right;
+  animation-duration: .75s;
+  animation-timing-function: ease-out;
 }
 
 @media screen and (max-width: 700px) {
