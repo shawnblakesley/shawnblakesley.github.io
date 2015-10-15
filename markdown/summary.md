@@ -1,8 +1,8 @@
 ### Shawn Blakesley: Software Engineer
 #### *The quick version*
-I love programming. I've taught programming, I've developed medical software, and I've coded at a startup. I love all forms of software development, and most of all I love to learn new languages and frameworks. I would be a strong asset to an engineering team that is looking to be on the cutting-edge, and likes to produce high-quality software at a fast pace.
-#### *My backround*
-I earned a B.S. in Computer Science with a Minor in Physics from CSU Sacramento in 4 years. I like to seek out and overcome challenges, and am a natural problem-solver. I thrive in challenging work environments where we're trying to solve problems that haven't been solved yet, and I like to solve those challenges with clean and efficient code. My school career was focused primarily on artificial intelligence and security, and my work career has covered a range from teaching to medical imaging.
+I love programming. I've taught programming, I've developed medical software, and I've coded at a startup. I love all forms of software development, and most of all I love to learn new languages and frameworks. I would be a strong asset to an engineering team that is looking to be on the cutting-edge and likes to produce high-quality software at a fast pace.
+#### *My background*
+I earned a B.S. in Computer Science with a Minor in Physics from CSU Sacramento in 4 years. I like to seek out and overcome challenges, and I am a natural problem-solver. I thrive in challenging work environments where we're trying to solve problems that haven't been solved yet, and I like to solve those challenges with clean and efficient code. My school career was focused primarily on artificial intelligence and security, and my work career has covered a range from teaching to medical imaging.
 #### *I’m really good at*
 I gain expertise in new languages and frameworks very quickly. I am adept at working in teams with both programmers and non-programmers. I enjoy working with mentors and mentoring others. I focus on creating high-performance software, and writing high-quality code. 
 #### *What I’m looking to do*
