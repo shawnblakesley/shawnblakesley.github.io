@@ -1,0 +1,5 @@
+- Undefeated CSUS programming contest champion for two years
+- My picture appears in Marie Claire UK April 2015
+- Married on Ultimate Pi Day (3/14/15)
+- Fan of Dungeons & Dragons, board games, musicals, Star Trek, Doctor Who, and many more
+- Earned the nicknames 'Batman' and 'Sunshine' for working at extremely late hours and still being peppy in the morning meetings

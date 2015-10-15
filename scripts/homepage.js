@@ -1,4 +1,4 @@
-var app = angular.module('homepage', ['ngMaterial']);
+var app = angular.module('homepage', ['ngMaterial', 'yaru22.md']);
 
 app.config(function($mdThemingProvider) { $mdThemingProvider.theme('default') .warnPalette('red') .accentPalette('deep-orange'); });
 
@@ -14,18 +14,10 @@ app.controller('AboutCtrl', function($scope) {
         width : 300, 
         height : 300,
         tooltip : 'Hello there',
-        subheader : "Shawn Blakesley: Software Engineer",
-        summary : [
-          { text : 'I\'ve been programming professionally for 4 years, and non-professionally for 12 years now.'},
-          { text : 'It all started twelve years ago (cue film noir setting) when I taught myself how to program using flash actionscript in order to make games and share them with friends. When I started college, I quickly fell in love with Java (because that was the language of the school), and I competed in and won two of the local programming contests. When I started using C++11 & 14 with Boost C++ at Volcano, it quickly became my favorite language. I started at Enplug with no experience in Android, and I developed multiple Android apps for digital signage. I also developed the OpenGL Video Player and Browser Support using the Java Native Interface to integrate C libraries into Java for the Enplug SDK.'},
-          { text : 'I am passionate about sharing my love of programming and problem-solving with novice programmers, and I take every opportunity to help others to learn. I feel at home with many different languages, and I am constantly learning new ones for fun.'},
-        ], 
+        markdown : 'markdown/summary.md',
       },
       {
         section : 'Skills',
-        // summary : [
-        //   { text : 'I find different languages and libraries to be the best for different situations, so I have used many. This list only includes languages and libraries I multiple years of experience in.'},
-        // ],
         skills : [
             {
               name : 'Languages',
@@ -155,9 +147,6 @@ app.controller('AboutCtrl', function($scope) {
       },
       {
         section : 'Projects',
-        summary : [
-          { text : 'A list of projects and my contributions from work and education'},
-        ],
         projects : [
             {
               title : 'Browser Support (Windows & Android)',
@@ -394,23 +383,7 @@ app.controller('AboutCtrl', function($scope) {
       },
       {
         section : 'Trivia',
-        bullets : [
-            {
-              detail : 'Undefeated CSUS programming contest champion for two years'
-            },
-            {
-              detail : 'My picture appears in Marie Claire UK April 2015'
-            },
-            {
-              detail : 'Married on Ultimate Pi Day (3/14/15)'
-            },
-            {
-              detail : 'Fan of Dungeons & Dragons, board games, musicals, Star Trek, Doctor Who, and many more'
-            },
-            {
-              detail : 'Earned the nicknames \'Batman\' and \'Sunshine\' for working at extremely late hours and still being peppy in the morning meetings'
-            },
-          ],
+        markdown : 'markdown/trivia.md',
       },
     ];
 });
