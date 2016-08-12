@@ -1,211 +1,351 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Shawn Blakesley</title>
-    <meta name="author" content="Shawn Blakesley" />
-    <meta name="description" content="Portfolio website for Shawn Blakesley" />
-    <meta name="keywords" content="Shawn Blakesley, portfolio, programmer, software engineer" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@BlakesleyShawn" />
-    <meta name="twitter:creator" content="@BlakesleyShawn" />
-    <meta property="og:url" content="https://shawnblakesley.github.io" />
-    <meta property="og:title" content="Shawn Blakesley's Portfolio" />
-    <meta property="og:description" content="A software engineering portfolio website for Shawn Blakesley" />
-    <meta property="og:image" content="https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=320" />
-    <meta property="og:type" content="website" />
-    
-    <link rel="icon" type="image/png" href="https://www.gravatar.com/avatar/4d57fcd9437881455dbfd1921556d8b7?s=16"></link>
-    <!-- Angular Material CSS now available via Google CDN; version 0.11.2 used here -->
-    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.css">
-    <link rel="stylesheet" href="index.css">
-    <meta name="viewport" content="initial-scale=1" />
-    
-    <!-- Angular Material Dependencies -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script> 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script> 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
-    <script src="lib/marked.min.js"></script>
-    <script src="lib/angular-md.min.js"></script> 
-    
-    <!-- Angular Material Javascript now available via Google CDN; version 0.11.2 used here -->
-    <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.js"></script>
-    <script src="scripts/homepage.js"></script>
-  </head>
-  
-  <body ng-app="homepage">
-    <md-toolbar class="md-hue-2" layout="row">
-      <div class="md-toolbar-tools title-bar">
-        <h1 class="typing">Shawn Blakesley</h1>
-      </div>
-    </md-toolbar>
-    
-    <section class="dynamicTabs" ng-controller="AboutCtrl">
-      <md-toolbar class="md-hue-2">
-        <div class="md-toolbar-tools">
-          <h3 class="typing">About Me</h3>
-        </div>
-      </md-toolbar>
-  
-      <md-tabs class="md-primary" md-dynamic-height="true" md-border-bottom="true">
-        <md-tab ng-repeat="item in info" label="{{item.section}}">
-          <md-content class="md-padding frame" layout="row">
-            <md-button style="overflow:hidden; max-height: {{ item.height }}px;max-width: {{ item.width }}px;" ng-if="item.image" class="md-primary left" aria-label="{{item.tooltip}}">
-              <md-tooltip md-direction="bottom">{{ item.tooltip }}</md-tooltip>
-              <img style="width: 100%; height: 100%;" src="{{item.image}}" alt="{{item.alt}}"/>
-            </md-button>
-              
-            <md-content style="width:100%;valign:center;" class="md-padding right" layout="column">
-              
-              <md class="ng-pristine ng-valid" ng-if="item.markdown" ng-include="item.markdown"></md>
-              
-              <div class="frame" ng-if="item.projects">
-                <md-card class="md-padding hover" ng-repeat="project in item.projects">
-                  {{ project.title }}<br><i>{{ project.detail }}</i>
-                  <md-chips ng-if="project.chips" ng-model="project.chips" readonly="true">
-                    <md-chip-template>{{$chip.name}}</md-chip-template>
-                  </md-chips>
-                </md-card>
-              </div>
-              
-              <div ng-if="item.skills" ng-repeat="skill in item.skills">
-                <md-subheader>{{ skill.name }}</md-subheader>
-              
-                <md-chips ng-if="skill.chips" ng-model="skill.chips"  readonly="true">
-                  <md-chip-template>{{$chip.name}}</md-chip-template>
-                </md-chips>
-              </div>
-            </md-content>
-          </md-content>
-        </md-tab>
-      </md-tabs>
-    </section>
-        
-    <section class="dynamicTabs" ng-controller="JobsCtrl">
-      <md-toolbar class="md-hue-2">
-        <div class="md-toolbar-tools">
-          <h3 class="typing">Previous Employers</h3>
-        </div>
-      </md-toolbar>
-    
-      <md-tabs class="md-primary" md-dynamic-height="true" md-border-bottom="true">
-        <md-tab ng-repeat="item in jobs" label="{{item.company}} - {{item.title}}">
-          <md-content class="md-padding frame" layout="row">
-            <md-button style="overflow:hidden; max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.logo" target="_blank" ng-href="{{item.url}}" class="md-primary custom-button left" aria-label="{{item.company}}">
-              <md-tooltip md-direction="bottom">{{ item.tooltip }}</md-tooltip>
-              <img style="width: 100%; height: 100%;" src="{{item.logo}}" alt="{{item.alt}}"/>
-            </md-button>
-            <md-content style="width:100%;valign:center;" class="md-padding right" layout="column">
-              <p style="text-align:left;padding-bottom:12px;">
-                <b>{{ item.title }}</b>
-                <span style="float:right;">{{ item.dates }}</span>
-              </p>
-              <p ng-if="item.summary" ng-repeat="para in item.summary">{{ para.text }}</p>
-              
-              <md-button ng-if="item.links" ng-repeat="link in item.links" target="_blank" ng-href="{{link.url}}" style="width:80%;display: block;margin-left: auto;margin-right: auto;" class="md-primary md-raised hover">
-                {{ link.name }}
-              </md-button>
-            </md-content>
-          </md-content>
-        </md-tab>
-      </md-tabs>
-    </section>
-    
-    <section class="dynamicTabs" ng-controller="EduCtrl">
-      <md-toolbar class="md-hue-2">
-        <div class="md-toolbar-tools">
-          <h3 class="typing">Education</h3>
-        </div>
-      </md-toolbar>
-    
-      <md-tabs class="md-primary" md-dynamic-height="true" md-border-bottom="true">
-        <md-tab ng-repeat="item in education" label="{{item.school}} - {{item.degree}}">
-          <md-content class="md-padding frame" layout="row">
-            <md-button style="overflow:hidden; max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.logo" target="_blank" ng-href="{{item.link}}" class="md-primary custom-button left" aria-label="{{item.school}}">
-              <md-tooltip md-direction="bottom">{{ item.school }}</md-tooltip>
-              <img style="width: 100%; height: 100%;" src="{{item.logo}}" alt="{{item.alt}}"/>
-            </md-button>
-                  
-            <md-content style="width:100%;valign:center;" class="md-padding right" layout="column">
-              <p style="text-align:left;padding-bottom:12px;">
-                <b>{{ item.degree }} in {{ item.field }}</b>
-                <span style="float:right;">{{ item.dates }}</span>
-              </p>
-              <ul>
-                <li ng-repeat="bullet in item.bullets">{{ bullet.detail }}</li>
-              </ul>
-            </md-content>
-          </md-content>
-        </md-tab>
-      </md-tabs>
-    </section>
-    
-    <section class="dynamicTabs" ng-controller="SamplesCtrl">
-      <md-toolbar class="md-hue-2">
-        <div class="md-toolbar-tools">
-          <h3 class="typing">Sample Work</h3>
-        </div>
-      </md-toolbar>
-    
-      <md-tabs class="md-primary" md-dynamic-height="true" md-border-bottom="true">
-        <md-tab ng-repeat="item in samples" label="{{item.title}}">
-          <md-content class="md-padding frame" layout="row">
-            <md-button  style="overflow:hidden; max-height: {{item.height}}px;max-width: {{item.width}}px;" ng-if="item.image" target="_blank" ng-href="{{item.link}}" style="text-align:left" class="md-primary custom-button left" aria-label="{{item.title}}">
-              <md-tooltip md-direction="bottom">{{ item.title }}</md-tooltip>
-              <img style="width: 100%; height: 100%;" src="{{item.image}}" alt="{{item.title}}" width="{{item.width}}" height="{{item.height}}"/>
-            </md-button>
-                
-            <md-content class="md-padding right" style="width:100%;" layout="column">
-              <md-chips ng-model="item.chips"  readonly="true">
-                <md-chip-template>{{$chip.name}}</md-chip-template>
-              </md-chips>
-              <br>
-              {{item.summary}}
-              <br>
-              <br>
-              <md-button target="_blank" ng-href="{{item.link}}" style="width:80%;display: block;margin-left: auto;margin-right: auto;" class="md-primary md-raised hover">
-                {{ item.launchText }}
-              </md-button>
-            </md-content>
-          </md-content>
-        </md-tab>
-      </md-tabs>
-    </section>
-    
-    <md-fab-speed-dial id="my-speed-dial" md-open="false" md-direction="down" ng-class="{ 'md-fling': true, 'md-scale': true }">
-      <md-fab-trigger>
-        <md-button aria-label="menu" class="md-fab md-warn md-hue-2 md-raised">
-          <md-tooltip md-direction="left">Menu</md-tooltip>
-          <md-icon md-svg-src="images/icons/menu.svg"></md-icon>
-        </md-button>
-      </md-fab-trigger>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Parallax Template - Materialize</title>
 
-      <md-fab-actions>
-        <md-button class="md-fab md-mini md-raised md-warn" aria-label="Resume" target="_blank" ng-href="downloads/shawn_blakesley_resume.pdf" >
-          <md-tooltip md-direction="left">Resume</md-tooltip>
-          <md-icon md-svg-src="images/icons/resume.svg"></md-icon>
-        </md-button>
-        
-        <md-button class="md-fab md-mini md-raised md-warn" aria-label="Email" target="_blank" ng-href='mailto:shawnblakesley@gmail.com'>
-          <md-tooltip md-direction="left">Email</md-tooltip>
-          <md-icon md-svg-src="images/icons/email.svg" ></md-icon>
-        </md-button>
-        
-        <md-button class="md-fab md-mini md-raised md-warn" aria-label="Stack Overflow" target="_blank" ng-href='https://careers.stackoverflow.com/shawnblakesley'>
-          <md-tooltip md-direction="left">Stack Overflow</md-tooltip>
-          <md-icon md-svg-src="images/icons/stack_overflow.svg" ></md-icon>
-        </md-button>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/hover-min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" class="brand-logo">Shawn Blakesley</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="samples.html">Samples</a></li>
+        <li><a href="downloads/shawn_blakesley_resume.pdf">Resume</a></li>
+        <li><a href="https://www.linkedin.com/in/shawnblakesley">Github</a></li>
+        <li><a href="https://www.github.com/shawnblakesley">LinkedIn</a></li>
+        <li><a href="https://careers.stackoverflow.com/shawnblakesley">Stack Overflow</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><div class="userView">
+          <img class="background" src="images/teacups.jpg">
+          <br><br>
+          <a href="#!name"><span class="white-text name">Shawn Blakesley</span></a>
+          <a href="#!email"><span class="white-text email">shawnblakesley@gmail.com</span></a>
+        </div></li>
+        <li><a href="samples.html"><img style="width:30px; height:30px;align:left;vertical-align: middle; margin-left:20px;margin-right:20px;" src="images/icons/cogs.svg"/>Samples</a></li><hr style="height:0pt; visibility:hidden;" />
+        <li><a href="downloads/shawn_blakesley_resume.pdf"><img style="width:30px; height:30px;align:left;vertical-align: middle; margin-left:20px;margin-right:20px;" src="images/icons/tasks.svg"/>Resume</a></li><hr style="height:0pt; visibility:hidden;" />
+        <li><a href="https://www.linkedin.com/in/shawnblakesley"><img style="width:30px; height:30px;align:left;vertical-align: middle; margin-left:20px;margin-right:20px;" src="images/icons/github_circle.svg"/>Github</a></li><hr style="height:0pt; visibility:hidden;" />
+        <li><a href="https://www.github.com/shawnblakesley"><img style="width:30px; height:30px;align:left;vertical-align: middle; margin-left:20px;margin-right:20px;" src="images/icons/linkedin.svg"/>LinkedIn</a></li><hr style="height:0pt; visibility:hidden;" />
+        <li><a href="https://careers.stackoverflow.com/shawnblakesley"><img style="width:30px; height:30px;align:left;vertical-align: middle; margin-left:20px;margin-right:20px;" src="images/icons/stack_overflow.svg"/>Stack Overflow</a></li><hr style="height:0pt; visibility:hidden;" />
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons pink-text text-darken-2">menu</i></a>
+    </div>
+  </nav>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot white-text">
+      <h1 class="header center white-text" style="text-shadow:-2px -2px 0 #000, 2px -2px 0 #000, -1px 1px 0 #880e4f, 2px 2px 0 #000;">Software Engineer</h1>
+      <div class="container">
+        <br><br>
+        <div class="row center">
+          <h5 class="header col s12 light">Programming polyglut with a passion for doing cool things</h5>
+        </div>
+        <div class="row center">
+          <a href="mailto:shawnblakesley@gmail.com" id="download-button" class="btn-large waves-effect waves-light grey darken-3">Contact Me</a>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="images/teacups.jpg" alt="Riding the teacups at disneyland"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center pink-text text-darken-2"><i class="material-icons">code</i></h2>
+            <h5 class="center">Expertise</h5>
+            <p class="light">
+              Professional experience with a wide range of languages, libraries and frameworks, and a drive to learn more of each.<br>
+              In the past I taught intro courses and have worked with Medical Software, Games and SAAS companies of all different shapes and sizes.
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center pink-text text-darken-2"><i class="material-icons">loyalty</i></h2>
+            <h5 class="center">Passion</h5>
+
+            <p class="light">
+              A passion for programming, and a desire to share that passion with others.<br>
+              Whether teaching high-school students or helping colleages, I find my passion for programming is always growing.<br>
+              Solving complex problems brings me great joy.<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center pink-text text-darken-2"><i class="material-icons">high_quality</i></h2>
+            <h5 class="center">Quality</h5>
+
+            <p class="light">
+              Focused on delivering high quality code and design.<br> 
+              I'm always looking to make the best software I can, and to keep my skills up to date with the latest standards.<br>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">A modern programmer with varied, deep expertise</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="images/gdc.jpg" alt="My first GDC"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <h5 class="header">Experience</h2>
+        <ul class="collapsible popout" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">games</i>ToyTalk / PullString: Infrastructure Engineer <span style="float:right;">November 2015 - Present</span></div>
+            <div class="collapsible-body light">
+              <p>PullString Inc. is a San Francisco startup that started by bringing conversational entertainment to kids under the name ToyTalk.
+              Then we changed focus to provide the tools necessary for others to build similar conversational entertainment through advanced AI-controlled bots.<br><br>
+              As the Infrastructure Engineer at PullString, I contributed to a wide range of projects, and supported the team to make building a seamless process. 
+              The first thing I did when I started at PullString was to set up a Bamboo build server to provide a repeatable build environment, and to catch breaking code changes as soon as possible.
+              I also branched out from the typical infrastructure engineer role and helped to develop the Hello House Companion App for Android, and single-handedly converted our 4-year-old code base to also build & run on Windows.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">hd</i>Enplug: Senior Software Engineer <span style="float:right;">April 2014 - September 2015</span></div>
+            <div class="collapsible-body light">
+              <p>Enplug Inc. is a Los Angeles startup that provides an app-based digital signage solution. 
+              Enplug has been recognized by Time, Fortune, Marie Claire, Inc., and Money magazines along with many more print and internet publications for being a leader in the field of digital signage.<br><br>
+              As a Senior Software Engineer at Enplug, I had a high-expectation job with a wide range of responsibilities. 
+              I enjoyed the fast-paced startup nature because there was never a lack of tasks to focus on. 
+              My primary responsibility was to develop new technologies for the Enplug SDK such as the video renderer and adding browser support. 
+              On top of that, I designed, developed and deployed two apps, maintained a third, ran the build system, worked on the android mobile control app, supported the development of all webpage-based external apps and many more tasks. 
+              Because we had a small engineering team with a high-visibility product that needs to run smoothly 24/7, I had a hand in too many tasks to list.<br><br>
+              While 95% of my work was done remotely from Northern California, I was also recognized for my contributions to company life. 
+              I was highlighted in an <a class="blue-text text-lighten-3" href="https://www.enplug.com/blog/enplug-spotlight-shawn-software-engineer">employee spotlight</a> blog post and mentioned by Nanxi Liu (the CEO) in an <a class="blue-text text-lighten-3" href="https://www.linkedin.com/pulse/8-real-ways-we-built-family-culture-our-company-nanxi-liu">article about company culture</a>. 
+              I invited the entire team to my wedding, and half of them (including Nanxi) drove up to San Francisco for the celebration.</p>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">code</i>Volcano: Software Engineer 2 <span style="float:right;">June 2012 - January 2014</span></div>
+            <div class="collapsible-body light"><p>I had the opportunity to work with a group of highly skilled, awesome people developing modern C++ applications for intravascular ultrasounds. 
+              My primary role was as a developer on the Maestro team (which was the newest platform being developed at Volcano) and as the sole owner of the CMake Macros. 
+              I also collaborated with the build team on an automated test system and the company's CMake Macros. 
+              In November, a principle software engineer recognized me with a company-wide "Heads Up" award nomination for finding a solution for optimizing the design of our statechart library.</p>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">class</i>ITEST: Head Instructor <span style="float:right;">Summer 2013</span></div>
+            <div class="collapsible-body light"><p>I was chosen by one of my professors to be the head instructor of a collaborative effort between CSU Sacramento and the surrounding school districts to teach game programming to inner city high school students. 
+              Under my supervision and assistance, the McClatchy High School students successfully created an educational computer game in Greenfoot, and the game was deployed to local elementary schools in the same district.</p>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">question_answer</i>PARC CSU Sacramento: Adjunct Facilitator <span style="float:right;">Fall 2011 - Spring 2013</span></div>
+            <div class="collapsible-body light"><p>I was selected by professors at CSUS to teach a pair of introductory java adjunct courses. 
+              Students enrolled in Proramming Concepts and Methodology I and II had the option of signing up for a concurrent course taught by myself. 
+              For five semesters, I created dynamic lessons to supplement the professors' lectures, worked one-on-one with students during office hours, and collaborated with faculty to achieve maximum student comprehension.
+              I also worked with Computer Science department faculty to promote diversity and inclusivity within the engineering culture at CSUS.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <h5 class="header">Education</h2>
+        <ul class="collapsible popout" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">turned_in_not</i>CSUS: Computer Science Masters Coursework <span style="float:right;">Fall 2011 - Fall 2013</span></div>
+            <div class="collapsible-body light"><p>Primary concentration in artificial intelligence with a secondary concentration in security<br>
+              Designed graphical representation and AI for 2D Java zombie path-finding project<br>
+              Developed algorithms and interface for Java steganographic encoder<br>
+              Taught summer programming course to high school students for masters project</p>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">turned_in</i>CSUS: Computer Science Bachelors <span style="float:right;">Fall 2007 - Spring 2011</span></div>
+            <div class="collapsible-body light"><p>Programmed Java OpenGL 3D Engine<br>
+              Headed UI and graphics for 3D Candy Collector Game using Java and OpenGL<br>
+              Project lead on Crime Event Mapping System for Sacramento Homicide Department (as Senior Project) using C# and Bing Maps API<br>
+              Created Schmesh (chess-like) game playing AI and placed 7 in class competition<br>
+              Undefeated champion of the acm programming contest for two years</p>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">turned_in</i>CSUS: Physics Minor <span style="float:right;">Fall 2007 - Spring 2011</span></div>
+            <div class="collapsible-body light"><p>Used Wolfram Mathematica to solve complex physics problems.<br>
+              Wrote Fortran code to solve parametric equations.<br>
+              Took advanced courses in simulations, optics and modern physics.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 black-text light">Looking forward to the future</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="images/windy.jpg" alt="Very windy San Francisco wedding"></div>
+  </div>
   
-        <md-button class="md-fab md-mini md-raised md-warn" aria-label="LinkedIn" target="_blank" ng-href='https://www.linkedin.com/in/shawnblakesley'>
-          <md-tooltip md-direction="left">LinkedIn</md-tooltip>
-          <md-icon md-svg-src="images/icons/linkedin.svg" ></md-icon>
-        </md-button>
-  
-        <md-button class="md-fab md-mini md-raised md-warn" aria-label="Github" target="_blank" ng-href='https://www.github.com/shawnblakesley'>
-          <md-tooltip md-direction="left">Github</md-tooltip>
-          <md-icon md-svg-src="images/icons/github_circle.svg" ></md-icon>
-        </md-button>
-      </md-fab-actions>
-    </md-fab-speed-dial>
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <h5 class="header">Skills</h2>
+        <ul class="collapsible popout" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">code</i>Languages</div>
+            <div class="collapsible-body light"><p>C++11/14<br> Java<br> C#<br> C<br> JavaScript<br> Perl<br> Python<br> GLSL<br> CMake</p>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">web</i>Libraries</div>
+            <div class="collapsible-body light"><p>OpenGL<br> Qt<br> FFMpeg<br> OpenCV<br> Boost C++<br> AngularJS<br> NodeJS<br> LibGDX</p>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">aspect_ratio</i>Tools</div>
+            <div class="collapsible-body light"><p>Visual Studio<br> Unity 3D<br> IntelliJ<br> Android Studio<br> Eclipse<br> Cygwin<br> Github<br> Perforce<br> XCode</p>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">system_update_alt</i>Operating Systems</div>
+            <div class="collapsible-body light"><p>Windows<br> Linux<br> Android<br> Mac OSX</p>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">class</i>Concentrations</div>
+            <div class="collapsible-body light"><p>Graphics<br> Game Programming<br> Artificial Intelligence<br> Security</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <h5 class="header">Samples</h2>
+        <ul class="collapsible popout" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">star</i>Procedurally Generated Texture <span style="float:right;">WebGL / GLSL / JavaScript</span></div>
+            <div class="collapsible-body light">
+              <p>This procedurally generated texture on a teapot is done using WebGL after taking an Udacity course on the subject.
+              I've taken many courses on Computer Graphics over the years, and really enjoy being creative with shaders.
+              Specifically, I have experience with GLSL fragment and vertex shaders, but want to find an excuse to use geometry shaders.
+              View the demo in your browser <a class="blue-text text-lighten-3" href="samples/webgl.html">here</a>
+              <a href="samples/webgl.html"><img src="images/webgl.png" style="max-width:55%; display: block; margin: 0 auto;"/></a></p>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">web</i>This Website <span style="float:right;">HTML / JavaScript / Materialize</span></div>
+            <div class="collapsible-body light">
+              <p>Made using JavaScript, CSS and HTML. 
+              This redesign converted from using the JavaScript-heavy Angular 1 Framework to using the CSS-heavy Materialize library.</p>
+            </div>
+          </li>
+          <!--<li>-->
+          <!--  <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">games</i>TODO Unity Game <span style="float:right;">Unity / C#</span></div>-->
+          <!--  <div class="collapsible-body light"><p>TODO: fill this in</p>-->
+          <!--  </div>-->
+          <!--</li>-->
+          <!--<li>-->
+          <!--  <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">code</i>TODO Demo <span style="float:right;">C++14 / Boost</span></div>-->
+          <!--  <div class="collapsible-body light"><p>TODO: fill this in</p>-->
+          <!--  </div>-->
+          <!--</li>-->
+          <!--<li>-->
+          <!--  <div class="collapsible-header collapsible-header-sweep"><i class="material-icons">code</i>TODO Demo <span style="float:right;">Python 3</span></div>-->
+          <!--  <div class="collapsible-body light"><p>TODO: fill this in</p>-->
+          <!--  </div>-->
+          <!--</li>-->
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="page-footer pink darken-2">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Fun Facts</h5>
+          <ul>
+            <li class="grey-text text-lighten-4">
+              - Undefeated CSUS programming contest champion for two years
+            </li>
+            <li class="grey-text text-lighten-4">
+              - My picture appears in Marie Claire UK April 2015
+            </li>
+            <li class="grey-text text-lighten-4">
+              - Married on Ultimate Pi Day (3/14/15)
+            </li>
+            <li class="grey-text text-lighten-4">
+              - Fan of Star Trek, Star Wars, Game of Thrones, Dungeons & Dragons, board games, musicals, and so much more
+            </li>
+            <li class="grey-text text-lighten-4">
+              - Earned the nicknames 'Batman' and 'Sunshine' for working at extremely late hours and still being peppy in the morning meetings
+            </li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Contact</h5>
+          <ul>
+            <li><a class="white-text" href="mailto:shawnblakesley@gmail.com">Email</a></li>
+            <li><a class="white-text" href="downloads/shawn_blakesley_resume.pdf">Resume</a></li>
+            <li><a class="white-text" href="samples.html">Samples</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Social</h5>
+          <ul>
+            <li><a class="white-text" href="https://www.github.com/shawnblakesley">Github</a></li>
+            <li><a class="white-text" href="https://www.linkedin.com/in/shawnblakesley">LinkedIn</a></li>
+            <li><a class="white-text" href="https://careers.stackoverflow.com/shawnblakesley">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made with <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a> based on their <a class="brown-text text-lighten-3" href="http://materializecss.com">Parallax Template</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
   </body>
 </html>
