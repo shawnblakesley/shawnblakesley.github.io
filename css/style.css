@@ -49,6 +49,14 @@ p {
     background-color: #ffff99;
 }
 
+.extra {
+  float: right;
+}
+
+.inner {
+  display: none;
+}
+
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
@@ -56,6 +64,18 @@ p {
   }
   #index-banner .section {
     top: 10%;
+  }
+  .extra {
+    display: none;
+  }
+  
+  .inner {
+    color:#c2185b;
+    width:100%;
+    margin:10px 10px 0 0;
+    padding:5px 0px;
+    display: inline-block;
+    text-align: center;
   }
 }
 
