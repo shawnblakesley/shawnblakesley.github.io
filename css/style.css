@@ -77,6 +77,11 @@ p {
     display: inline-block;
     text-align: center;
   }
+  
+  .collapsible-header {
+    padding-top:10px;
+    padding-bottom:10px;
+  }
 }
 
 @media only screen and (max-width : 600px) {
