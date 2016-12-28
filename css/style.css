@@ -6,6 +6,10 @@
  * Made By MaterializeCSS.com
  */
 
+* {
+  font-family: 'Inconsolata', monospace;
+}
+
 nav ul a,
 nav .brand-logo {
   color: #444;
