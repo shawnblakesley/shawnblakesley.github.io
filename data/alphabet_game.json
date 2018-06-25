@@ -1,0 +1,83 @@
+{
+  "A": [
+    { "name": "Apple", "phonetic": "ˈæpəl" }
+  ],
+  "B": [
+    { "name": "Bear", "phonetic": "bɛr" },
+    { "name": "Boat", "phonetic": "boʊt" }
+  ],
+  "C": [
+    { "name": "Cat", "phonetic": "kæt" }
+  ],
+  "D": [
+    { "name": "Dog", "phonetic": "dɔg" }
+  ],
+  "E": [
+    { "name": "Elephant", "phonetic": "ˈɛləfənt" }
+  ],
+  "F": [
+    { "name": "Fish", "phonetic": "fɪʃ" }
+  ],
+  "G": [
+    { "name": "Goat", "phonetic": "goʊt" }
+  ],
+  "H": [
+    { "name": "Hippo", "phonetic": "ˈhɪpoʊ" }
+  ],
+  "I": [
+    { "name": "Ice_Cream", "phonetic": "aɪs krim" }
+  ],
+  "J": [
+    { "name": "Jump", "phonetic": "ʤʌmp" }
+  ],
+  "K": [
+    { "name": "Kangaroo", "phonetic": "ˌkæŋgəˈru" }
+  ],
+  "L": [
+    { "name": "Lion", "phonetic": "ˈlaɪən" }
+  ],
+  "M": [
+    { "name": "Monkey", "phonetic": "ˈmʌŋki" }
+  ],
+  "N": [
+    { "name": "Newt", "phonetic": "nut" }
+  ],
+  "O": [
+    { "name": "Octopus", "phonetic": "ˈɑktəˌpʊs" }
+  ],
+  "P": [
+    { "name": "Puppy", "phonetic": "ˈpʌpi" }
+  ],
+  "Q": [
+    { "name": "Queen", "phonetic": "kwin" }
+  ],
+  "R": [
+    { "name": "Robot", "phonetic": "ˈroʊˌbɑt", "type": "gif" },
+    { "name": "Robot", "phonetic": "ˈroʊˌbɑt" }
+  ],
+  "S": [
+    { "name": "Snake", "phonetic": "sneɪk" }
+  ],
+  "T": [
+    { "name": "Toucan", "phonetic": "ˈtuːkæn" }
+  ],
+  "U": [
+    { "name": "Umbrella", "phonetic": "əmˈbrɛlə" }
+  ],
+  "V": [
+    { "name": "Van", "phonetic": "væn" }
+  ],
+  "W": [
+    { "name": "Whale", "phonetic": "weɪl" },
+    { "name": "Walrus", "phonetic": "ˈwɔlrəs" }
+  ],
+  "X": [
+    { "name": "Xylophone", "phonetic": "ˈzaɪləˌfoʊn" }
+  ],
+  "Y": [
+    { "name": "Yak", "phonetic": "jæk" }
+  ],
+  "Z": [
+    { "name": "Zebra", "phonetic": "ˈzibrə" }
+  ]
+}
