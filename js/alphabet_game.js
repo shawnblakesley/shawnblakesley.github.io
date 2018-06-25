@@ -30,9 +30,9 @@
     var name_obj = document.getElementById("letter-name");
     var phonetic_obj = document.getElementById("letter-phonetic");
 
-    header.innerHTML = letter + " is for...";
+    header.innerHTML = "<b>" + letter + "</b> <i>is for...</i>";
     name_obj.innerHTML = name;
-    phonetic_obj.innerHTML = "(/" + phonetic + "/)";
+    phonetic_obj.innerHTML = "<i>(/" + phonetic + "/)</i>";
     var image = new Image();
     image.onload = function(){
       picture.src = this.src;
