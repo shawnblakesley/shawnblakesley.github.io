@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Sedgwick+Ave+Display');
 
 :root {
-  --box-shadow: 0px 21px 32px 0px rgba(8, 40, 34, 0.89);
+  --box-shadow: 0px 21px 32px 0px rgba(8, 40, 34, 0.40);
+  --far-box-shadow: 0px 21px 12px 2px rgba(18, 40, 34, 0.13);
   --color-bg: #801d79;
   --gradient: linear-gradient(-55deg, #1493f1 0%, #8fc2f9 100%);
   --fig-width: 50%;
@@ -31,12 +32,11 @@ body{
 img{
   width: 100%;
   height: auto;
-  border-radius: 2px 34px;
+  border-radius: 42px 42px;
   box-shadow: var(--box-shadow);
   animation: popInImg 700ms var(--acc-back) 1 forwards;
   animation-delay: var(--delay-base);
   opacity: 0;
-  transform: skewY(1deg);
 }
 
 figure{
@@ -47,7 +47,7 @@ figure{
 }
 
 figure:hover{
-  transform: scale(1.05) skewY(-1deg);
+  transform: scale(1.05)
 }
 
 figcaption{
@@ -60,9 +60,8 @@ figcaption{
   opacity: 1;
 }
 
-figure:hover figcaption{
-  transform: scale(.91);
-  opacity: 1;
+figure:hover img{
+  box-shadow: var(--far-box-shadow);
 }
 
 @keyframes popInImg{
@@ -99,24 +98,24 @@ figcaption span{
 }
 
 figcaption span:nth-of-type(1){
-  top: -134px; left: -21px;
+  top: 0px; left: 20px;
   font-size: 89px;
   font-family: var(--font-display);
   animation-delay: calc(var(--delay-base) + 2 * var(--delay-added));
 }
 
 figcaption span:nth-of-type(2){
-  bottom: -138px; right: -21px;
+  bottom: 10px; right: 20px;
   font-size: 89px;
   font-family: var(--font-display);
   animation-delay: calc(var(--delay-base) + 3 * var(--delay-added));
 }
 
 figcaption span:nth-of-type(3){
-  bottom: -150px; right: -21px;
-  font-size: 21px;
+  bottom: -24px; right: 20px;
+  font-size: 36px;
   animation-delay: calc(var(--delay-base) + 4 * var(--delay-added)); 
-  -webkit-text-stroke-width: 0px;
+  -webkit-text-stroke-width: 0.75px;
 }
 
 @media screen and (max-width: 539px){
