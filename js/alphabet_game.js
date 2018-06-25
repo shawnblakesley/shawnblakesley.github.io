@@ -5,6 +5,7 @@
 
   var is_debug = false;
   var dict;
+  var next_letter = "A";
 
   function loadJSON(callback) {   
     var xobj = new XMLHttpRequest();
@@ -36,7 +37,7 @@
       header.innerHTML = "<b>" + letter + "</b> <i>is for...</i>";
       name_obj.innerHTML = name;
       phonetic_obj.innerHTML = "<i>(/" + phonetic + "/)</i>";
-      fade_in()
+      fade_in();
     };
     image.src = url;
   }
@@ -45,10 +46,35 @@
     // TODO: add a fade in
   }
 
+  function random_least_recent(items) {
+    var min_count = items[0].count;
+    for (var i = 0; i < items.length; i++) {
+      var c = items[i].count;
+      if (c < min_count) {
+        min_count = c;
+      }
+    }
+    var min_list = items.filter(item => item.count === min_count);
+    if (min_list.length === 1) {
+      min_list[0].count += 1;
+    }
+    var result = min_list[Math.floor(Math.random()*min_list.length)];
+    return result;
+  }
+
+  function set_next_letter(letter) {
+    if (letter !== 'Z') {
+      next_letter = String.fromCharCode(letter.charCodeAt(0) + 1);
+    } else {
+      next_letter = "A";
+    }
+  }
+
   function update_image(letter) {
     if (letter in dict) {
-      var items = dict[letter]
-      var item = items[Math.floor(Math.random()*items.length)]; // TODO: change to randomly pick from least recently used
+      set_next_letter(letter);
+      var items = dict[letter];
+      var item = random_least_recent(items);
       var type = "jpg";
       if (item.type) {
         type = item.type;
@@ -59,16 +85,35 @@
         console.log(letter, "is for", item.name, "(/" + item.phonetic + "/)", ":", url);
       }
 
-      set_image(url, letter, item.name.replace("_", " "), item.phonetic);
+      console.log(item);
+      item.count += 1;
+      set_image(url, letter, item.name.replace("_", " ").replace(/[0-9]/g, "").trim(), item.phonetic);
     }
   }
+
+  window.onclick = _.throttle(function(event){
+    update_image(next_letter);
+  }, 250);
+
+  window.ontouchstart = _.throttle(function(event){
+    update_image(next_letter);
+  }, 250);
 
   window.onkeypress = _.throttle(function(event){
     update_image(event.key.toUpperCase());
   }, 250);
 
+  function make_count() {
+    for (var key in dict) {
+      for (var index in dict[key]) {
+        dict[key][index].count = 0;
+      }
+    }
+  }
+
   loadJSON(function(response) {
     dict = JSON.parse(response);
+    make_count();
   });
 
 })();

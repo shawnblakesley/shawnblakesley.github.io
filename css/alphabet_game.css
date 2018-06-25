@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Lato|Sedgwick+Ave+Display');
-
 :root {
   --box-shadow: 0px 21px 32px 0px rgba(8, 40, 34, 0.40);
   --far-box-shadow: 0px 21px 12px 2px rgba(18, 40, 34, 0.13);
   --color-bg: #801d79;
   --gradient: linear-gradient(-55deg, #1493f1 0%, #8fc2f9 100%);
-  --fig-width: 50%;
-  --fig-height: 50%;
+  --fig-max-width: 60%;
+  --fig-max-height: 60%;
+  --fig-min-width: 50%;
+  --fig-min-height: 35%;
   --delay-base: 500ms;
   --delay-added: 100ms;
   --acc-back: cubic-bezier(0.175, 0.885, 0.320, 1.275);
@@ -20,13 +20,20 @@
 }
 
 body{
-  width: 100vw; height: 100vh;
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   padding: 0;
   background: var(--color-bg);
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 img{
@@ -34,15 +41,21 @@ img{
   height: auto;
   border-radius: 42px 42px;
   box-shadow: var(--box-shadow);
-  animation: popInImg 700ms var(--acc-back) 1 forwards;
-  animation-delay: var(--delay-base);
-  opacity: 0;
+  /* animation: popInImg 700ms var(--acc-back) 1 forwards; */
+  /* animation-delay: var(--delay-base); */
+  opacity: 1;
 }
 
 figure{
   position: relative;
-  width: var(--fig-width);
-  height: var(--fig-height);
+  max-width: var(--fig-max-width);
+  max-height: var(--fig-max-height);
+  min-width: var(--fig-min-width);
+  min-height: var(--fig-minheight);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  margin-bottom: auto;
   transition: transform 600ms var(--acc-back);
 }
 
@@ -54,7 +67,8 @@ figcaption{
   transition: transform 600ms var(--acc-back), opacity 100ms ease-in;
   height: inherit;
   position: absolute;
-  top: 0; left; 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   opacity: 1;
@@ -107,36 +121,26 @@ figcaption span:nth-of-type(1){
 figcaption span:nth-of-type(2){
   bottom: 10px; right: 20px;
   font-size: 89px;
+  font-weight: 900;
   font-family: var(--font-display);
   animation-delay: calc(var(--delay-base) + 3 * var(--delay-added));
 }
 
 figcaption span:nth-of-type(3){
-  bottom: -24px; right: 20px;
-  font-size: 36px;
-  animation-delay: calc(var(--delay-base) + 4 * var(--delay-added)); 
-  -webkit-text-stroke-width: 0.75px;
+  bottom: -48px; right: 20px;
+  font-size: 48px;
+  font-weight: 300;
+  animation-delay: calc(var(--delay-base) + 4 * var(--delay-added));
+  -webkit-text-stroke-width: 1px;
 }
 
 @media screen and (max-width: 539px){
-  figure{
-    max-width: var(--fig-width);
-    max-height: var(--fig-height);
-    width: auto;
-    height: auto;
-  }
-  
-  figcaption span:nth-of-type(1),
-  figcaption span:nth-of-type(4){
+  figcaption span:nth-of-type(3){
     font-size: 14px;
   }
   
-  figcaption span:nth-of-type(2),
-  figcaption span:nth-of-type(3){
+  figcaption span:nth-of-type(1),
+  figcaption span:nth-of-type(2){
     font-size: 70px;
-  }
-  
-  figcaption span:nth-of-type(4){
-    bottom: -44px;
   }
 }

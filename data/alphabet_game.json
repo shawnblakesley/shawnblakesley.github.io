@@ -1,83 +1,126 @@
 {
   "A": [
-    { "name": "Apple", "phonetic": "ˈæpəl" }
+    { "name": "Apple", "phonetic": "ˈæpəl" },
+    { "name": "Apple_1", "phonetic": "ˈæpəl" },
+    { "name": "Apple_2", "phonetic": "ˈæpəl" },
+    { "name": "Apple_3", "phonetic": "ˈæpəl" },
+    { "name": "Alligator", "phonetic": "ˈæləˌgeɪtər" },
+    { "name": "Alligator_1", "phonetic": "ˈæləˌgeɪtər" },
+    { "name": "Anteater", "phonetic": "ˈænˌtitər" },
+    { "name": "Airplane", "phonetic": "ˈɛrˌpleɪn" }
   ],
   "B": [
     { "name": "Bear", "phonetic": "bɛr" },
-    { "name": "Boat", "phonetic": "boʊt" }
+    { "name": "Boat", "phonetic": "boʊt" },
+    { "name": "beaver", "phonetic":	"ˈbivər" }, 
+    { "name": "bus", "phonetic":	"bʌs" }, 
+    { "name": "basket", "phonetic":	"ˈbæskət" }, 
+    { "name": "blanket", "phonetic":	"ˈblæŋkət" }
   ],
   "C": [
-    { "name": "Cat", "phonetic": "kæt" }
+    { "name": "Cat", "phonetic": "kæt" },
+    { "name": "Cuttlefish", "phonetic": "ˈkʌtəlˌfɪʃ" },
+    { "name": "Cactus", "phonetic": "ˈkæktəs" }
   ],
   "D": [
-    { "name": "Dog", "phonetic": "dɔg" }
+    { "name": "Dog", "phonetic": "dɔg" },
+    { "name": "Door", "phonetic": "dɔr" }
   ],
   "E": [
-    { "name": "Elephant", "phonetic": "ˈɛləfənt" }
+    { "name": "Elephant", "phonetic": "ˈɛləfənt" },
+    { "name": "Egg", "phonetic": "ɛg" }
   ],
   "F": [
-    { "name": "Fish", "phonetic": "fɪʃ" }
+    { "name": "Fish", "phonetic": "fɪʃ" },
+    { "name": "Fish_1", "phonetic": "fɪʃ" },
+    { "name": "Fish_2", "phonetic": "fɪʃ" },
+    { "name": "Fish_3", "phonetic": "fɪʃ" },
+    { "name": "Frog", "phonetic": "frɑg" },
+    { "name": "Frog_1", "phonetic": "frɑg" },
+    { "name": "Feather", "phonetic": "ˈfɛðər" }
   ],
   "G": [
-    { "name": "Goat", "phonetic": "goʊt" }
+    { "name": "Goat", "phonetic": "goʊt" },
+    { "name": "Green", "phonetic": "grin" },
+    { "name": "Girl", "phonetic": "gɜrl" },
+    { "name": "Grass", "phonetic": "græs" }
   ],
   "H": [
-    { "name": "Hippo", "phonetic": "ˈhɪpoʊ" }
+    { "name": "Hippo", "phonetic": "ˈhɪpoʊ" },
+    { "name": "Horse", "phonetic": "hɔrs" }
   ],
   "I": [
-    { "name": "Ice_Cream", "phonetic": "aɪs krim" }
+    { "name": "Ice_Cream", "phonetic": "aɪs krim" },
+    { "name": "Iguana", "phonetic": "aɪˈgwɑnə" }
   ],
   "J": [
-    { "name": "Jump", "phonetic": "ʤʌmp" }
+    { "name": "Jump", "phonetic": "ʤʌmp" },
+    { "name": "Jar", "phonetic": "ʤɑr" }
   ],
   "K": [
-    { "name": "Kangaroo", "phonetic": "ˌkæŋgəˈru" }
+    { "name": "Kangaroo", "phonetic": "ˌkæŋgəˈru" },
+    { "name": "Kookaburra", "phonetic": "kʊkʌbɜrʌ" },
+    { "name": "Key", "phonetic": "ki" }
   ],
   "L": [
-    { "name": "Lion", "phonetic": "ˈlaɪən" }
+    { "name": "Lion", "phonetic": "ˈlaɪən" },
+    { "name": "Lemur", "phonetic": "ˈlimər" }
   ],
   "M": [
-    { "name": "Monkey", "phonetic": "ˈmʌŋki" }
+    { "name": "Monkey", "phonetic": "ˈmʌŋki" },
+    { "name": "Mouse", "phonetic": "maʊs" }
   ],
   "N": [
-    { "name": "Newt", "phonetic": "nut" }
+    { "name": "Newt", "phonetic": "nut" },
+    { "name": "Nickel", "phonetic": "ˈnɪkəl" }
   ],
   "O": [
-    { "name": "Octopus", "phonetic": "ˈɑktəˌpʊs" }
+    { "name": "Octopus", "phonetic": "ˈɑktəˌpʊs" },
+    { "name": "Orange", "phonetic": "ˈɔrənʤ" }
   ],
   "P": [
-    { "name": "Puppy", "phonetic": "ˈpʌpi" }
+    { "name": "Puppy", "phonetic": "ˈpʌpi" },
+    { "name": "Panda", "phonetic": "ˈpændə" }
   ],
   "Q": [
-    { "name": "Queen", "phonetic": "kwin" }
+    { "name": "Queen", "phonetic": "kwin" },
+    { "name": "Quail", "phonetic": "kweɪl" }
   ],
   "R": [
     { "name": "Robot", "phonetic": "ˈroʊˌbɑt", "type": "gif" },
-    { "name": "Robot", "phonetic": "ˈroʊˌbɑt" }
+    { "name": "Robot", "phonetic": "ˈroʊˌbɑt" },
+    { "name": "Rabbit", "phonetic": "ˈræbət" }
   ],
   "S": [
-    { "name": "Snake", "phonetic": "sneɪk" }
+    { "name": "Snake", "phonetic": "sneɪk" },
+    { "name": "Stop", "phonetic": "stɑp" }
   ],
   "T": [
-    { "name": "Toucan", "phonetic": "ˈtuːkæn" }
+    { "name": "Toucan", "phonetic": "ˈtuːkæn" },
+    { "name": "Teddy_Bear", "phonetic": "ˈtɛdi bɛr" }
   ],
   "U": [
-    { "name": "Umbrella", "phonetic": "əmˈbrɛlə" }
+    { "name": "Umbrella", "phonetic": "əmˈbrɛlə" },
+    { "name": "Upside_Down", "phonetic": "ˈʌpˈsaɪd daʊn" }
   ],
   "V": [
-    { "name": "Van", "phonetic": "væn" }
+    { "name": "Van", "phonetic": "væn" },
+    { "name": "Vase", "phonetic": "veɪs" }
   ],
   "W": [
     { "name": "Whale", "phonetic": "weɪl" },
     { "name": "Walrus", "phonetic": "ˈwɔlrəs" }
   ],
   "X": [
-    { "name": "Xylophone", "phonetic": "ˈzaɪləˌfoʊn" }
+    { "name": "Xylophone", "phonetic": "ˈzaɪləˌfoʊn" },
+    { "name": "X-Ray", "phonetic": "ˈɛksˌreɪ" }
   ],
   "Y": [
-    { "name": "Yak", "phonetic": "jæk" }
+    { "name": "Yak", "phonetic": "jæk" },
+    { "name": "Yo-Yo", "phonetic": "joʊ-joʊ" }
   ],
   "Z": [
-    { "name": "Zebra", "phonetic": "ˈzibrə" }
+    { "name": "Zebra", "phonetic": "ˈzibrə" },
+    { "name": "Zoo", "phonetic": "zu" }
   ]
 }
