@@ -101,15 +101,17 @@
   var throttled_click = _.throttle(function(event){
     if (event.clientX != null){
       window.ontouchstart = null;
-      if (previous_letter !== null && event.clientX < event.screenX / 2) {
+      if (previous_letter !== null &&
+          event.clientX < event.view.innerWidth / 4) { // prefer forward
         update_image(previous_letter);
       } else {
         update_image(next_letter);
       }
     } else {
+      console.log(event);
       window.onclick = null;
       if (previous_letter !== null && 
-          event.touches[0].clientX < event.touches[0].screenX / 2) {
+          event.touches[0].clientX < event.view.innerWidth / 4) { // prefer forward
         update_image(previous_letter);
       } else {
         update_image(next_letter);
