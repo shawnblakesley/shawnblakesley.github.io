@@ -4,10 +4,11 @@
   --color-bg: #801d79;
   --color-dark: #600d59;
   --color-darkest: #400029;
+  --bg-gradient: linear-gradient(301deg, #ce055c, #f0ba13, #bd00db);
   --gradient: linear-gradient(-55deg, #1493f1 0%, #8fc2f9 100%);
-  --fig-max-width: 60%;
-  --fig-max-height: 60%;
-  --fig-min-width: 50%;
+  --fig-max-width: 80%;
+  --fig-max-height: 80%;
+  --fig-min-width: 30%;
   --fig-min-height: 35%;
   --delay-base: 500ms;
   --delay-added: 100ms;
@@ -21,12 +22,46 @@
   -webkit-tap-highlight-color: rgba(255,255,255,0);
 }
 
+
+@-webkit-keyframes background_colors {
+    0%{background-position:0% 86%}
+    50%{background-position:100% 15%}
+    100%{background-position:0% 86%}
+}
+@-moz-keyframes background_colors {
+    0%{background-position:0% 86%}
+    50%{background-position:100% 15%}
+    100%{background-position:0% 86%}
+}
+@-o-keyframes background_colors {
+    0%{background-position:0% 86%}
+    50%{background-position:100% 15%}
+    100%{background-position:0% 86%}
+}
+@keyframes background_colors { 
+    0%{background-position:0% 86%}
+    50%{background-position:100% 15%}
+    100%{background-position:0% 86%}
+}
+html, body {
+  height: 100%;
+}
+
 body{
+  overflow: hidden;
+  background: var(--bg-gradient);
+  background-size: 600% 600%;
+
+  -webkit-animation: background_colors 11s ease infinite;
+  -moz-animation: background_colors 11s ease infinite;
+  -o-animation: background_colors 11s ease infinite;
+  animation: background_colors 11s ease infinite;
+
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: var(--color-bg);
+  /* background: var(--color-bg); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,8 +74,6 @@ body{
 }
 
 img{
-  border-top: 4px solid var(--color-dark);
-  border-bottom: 4px solid var(--color-darhest);
   width: 100%;
   height: auto;
   margin-top: 0;
@@ -52,21 +85,24 @@ img{
 }
 
 figure{
-  position: relative;
+  position: fixed;
   max-width: var(--fig-max-width);
   max-height: var(--fig-max-height);
   min-width: var(--fig-min-width);
-  min-height: var(--fig-minheight);
+  min-height: var(--fig-min-height);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
   margin-bottom: auto;
-  transition: transform 600ms var(--acc-back);
+  /* transition: transform 600ms var(--acc-back); */
 }
 
-figure:hover{
+/* figure:hover{
   transform: scale(1.05)
-}
+} */
 
 figcaption{
   transition: transform 600ms var(--acc-back), opacity 100ms ease-in;
@@ -89,7 +125,7 @@ figure:hover img{
     opacity: 0;
   }
   100%{
-    opacity: 1;    
+    opacity: 1;
   }
 }
 

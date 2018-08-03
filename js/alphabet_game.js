@@ -6,6 +6,7 @@
   var is_debug = false;
   var dict;
   var next_letter = "A";
+  var previous_letter = null;
 
   function loadJSON(callback) {   
     var xobj = new XMLHttpRequest();
@@ -63,11 +64,20 @@
   }
 
   function set_next_letter(letter) {
+    console.log("letter: ", letter);
     if (letter !== 'Z') {
       next_letter = String.fromCharCode(letter.charCodeAt(0) + 1);
     } else {
       next_letter = "A";
     }
+    console.log("next_letter: ", next_letter);
+
+    if (letter !== 'A') {
+      previous_letter = String.fromCharCode(letter.charCodeAt(0) - 1);
+    } else {
+      previous_letter = "Z";
+    }
+    console.log("previous_letter: ", previous_letter);
   }
 
   function update_image(letter) {
@@ -91,13 +101,30 @@
     }
   }
 
-  window.onclick = _.throttle(function(event){
-    update_image(next_letter);
+  var throttled_click = _.throttle(function(event){
+    console.log(event);
+    console.log(event.touches[0].clientX);
+    if (event.clientX != null){
+      // window.ontouchstart = null;
+      // if (previous_letter !== null && event.clientX < event.screenX / 2) {
+      //   update_image(previous_letter);
+      // } else {
+      //   update_image(next_letter);
+      // }
+    } else {
+      window.onclick = null;
+      if (previous_letter !== null && 
+          event.touches[0].clientX < event.touches[0].screenX / 2) {
+        update_image(previous_letter);
+      } else {
+        update_image(next_letter);
+      }
+    }
   }, 250);
 
-  window.ontouchstart = _.throttle(function(event){
-    update_image(next_letter);
-  }, 250);
+  window.onclick = throttled_click;
+
+  window.ontouchstart = throttled_click;
 
   window.onkeypress = _.throttle(function(event){
     update_image(event.key.toUpperCase());
