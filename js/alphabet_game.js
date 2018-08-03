@@ -64,20 +64,17 @@
   }
 
   function set_next_letter(letter) {
-    console.log("letter: ", letter);
     if (letter !== 'Z') {
       next_letter = String.fromCharCode(letter.charCodeAt(0) + 1);
     } else {
       next_letter = "A";
     }
-    console.log("next_letter: ", next_letter);
 
     if (letter !== 'A') {
       previous_letter = String.fromCharCode(letter.charCodeAt(0) - 1);
     } else {
       previous_letter = "Z";
     }
-    console.log("previous_letter: ", previous_letter);
   }
 
   function update_image(letter) {
@@ -102,8 +99,6 @@
   }
 
   var throttled_click = _.throttle(function(event){
-    console.log(event);
-    console.log(event.touches[0].clientX);
     if (event.clientX != null){
       window.ontouchstart = null;
       if (previous_letter !== null && event.clientX < event.screenX / 2) {
