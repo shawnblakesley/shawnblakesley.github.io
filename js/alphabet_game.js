@@ -105,12 +105,12 @@
     console.log(event);
     console.log(event.touches[0].clientX);
     if (event.clientX != null){
-      // window.ontouchstart = null;
-      // if (previous_letter !== null && event.clientX < event.screenX / 2) {
-      //   update_image(previous_letter);
-      // } else {
-      //   update_image(next_letter);
-      // }
+      window.ontouchstart = null;
+      if (previous_letter !== null && event.clientX < event.screenX / 2) {
+        update_image(previous_letter);
+      } else {
+        update_image(next_letter);
+      }
     } else {
       window.onclick = null;
       if (previous_letter !== null && 
