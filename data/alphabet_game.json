@@ -24,7 +24,8 @@
   ],
   "D": [
     { "name": "Dog", "phonetic": "dɔg" },
-    { "name": "Door", "phonetic": "dɔr" }
+    { "name": "Door", "phonetic": "dɔr" },
+    { "name": "Duck", "phonetic": "dək" }
   ],
   "E": [
     { "name": "Elephant", "phonetic": "ˈɛləfənt" },
@@ -80,7 +81,8 @@
   ],
   "P": [
     { "name": "Puppy", "phonetic": "ˈpʌpi" },
-    { "name": "Panda", "phonetic": "ˈpændə" }
+    { "name": "Panda", "phonetic": "ˈpændə" },
+    { "name": "Penguin", "phonetic": "pɛŋgwən" }
   ],
   "Q": [
     { "name": "Queen", "phonetic": "kwin" },
