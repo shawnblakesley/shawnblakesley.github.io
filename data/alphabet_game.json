@@ -12,10 +12,10 @@
   "B": [
     { "name": "Bear", "phonetic": "bɛr" },
     { "name": "Boat", "phonetic": "boʊt" },
-    { "name": "beaver", "phonetic":	"ˈbivər" }, 
-    { "name": "bus", "phonetic":	"bʌs" }, 
-    { "name": "basket", "phonetic":	"ˈbæskət" }, 
-    { "name": "blanket", "phonetic":	"ˈblæŋkət" }
+    { "name": "Beaver", "phonetic":	"ˈbivər" }, 
+    { "name": "Bus", "phonetic":	"bʌs" }, 
+    { "name": "Basket", "phonetic":	"ˈbæskət" }, 
+    { "name": "Blanket", "phonetic":	"ˈblæŋkət" }
   ],
   "C": [
     { "name": "Cat", "phonetic": "kæt" },

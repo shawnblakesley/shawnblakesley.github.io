@@ -133,23 +133,13 @@ figcaption span{
   position: absolute;
   display: block;
   background: var(--gradient);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: var(--font-sans-serif);
   text-shadow: var(--box-shadow);
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
-}
-
-@keyframes popIn{
-  0%,13%{
-    transform: scaleX(.89) scaleY(.75);
-    opacity: 0;
-  }
-  100%{
-    transform: skewY(-13deg);
-    opacity: 1;    
-  }
 }
 
 figcaption span:nth-of-type(1){
@@ -175,13 +165,60 @@ figcaption span:nth-of-type(3){
   -webkit-text-stroke-width: 1px;
 }
 
-@media screen and (max-width: 539px){
+@media screen and (max-width: 768px){
+  figcaption span{
+    -webkit-text-stroke-width: 1px;
+  }
+
   figcaption span:nth-of-type(3){
-    font-size: 14px;
+    font-size: 24px;
   }
   
   figcaption span:nth-of-type(1),
   figcaption span:nth-of-type(2){
-    font-size: 70px;
+    font-size: 45px;
   }
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+  border-radius: 5px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s;
+  animation: fadein 0.5s, fadeout 0.5s 1.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
 }

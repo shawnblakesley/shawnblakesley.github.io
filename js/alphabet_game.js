@@ -119,11 +119,39 @@
     }
   }, 250);
 
+  function toast(text) {
+    var x = document.getElementById("snackbar");
+    if (!x.className.includes("show")) {
+      x.innerHTML = text;
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2000);
+      return true;
+    }
+    return false;
+  }
+
   window.onclick = throttled_click;
 
   window.ontouchstart = throttled_click;
 
   window.onkeypress = _.throttle(function(event){
+    if (event.key === '\\') {
+      if (window.onclick !== null) {
+        if (toast("click disabled")) {
+          window.onclick = null;
+        }
+      } else {
+        if (toast("click enabled")) {
+          window.onclick = throttled_click;
+        }
+      }
+      return;
+    }
+    if (event.key === '?') {
+      toast("<p>HELP MESSAGE</p>" +
+            "<p>Press '\\' to disable clicking</p>" +
+            "<p>Click left edge to go backwards</p>");
+    }
     update_image(event.key.toUpperCase());
   }, 250);
 
