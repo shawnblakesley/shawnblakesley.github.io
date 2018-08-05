@@ -53,12 +53,25 @@ p {
     background-color: #ffff99;
 }
 
+.cmain {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 0px;
+}
+
 .extra {
-  float: right;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: 0px;
 }
 
 .inner {
   display: none;
+}
+
+.footer-radial {
+  background: radial-gradient(circle at top left, #c2185b, #b2084b 84%, #a2003b 84%, #a2003b 85%, #b2084b 85%, #b2084b 85.5%, #a2003b 85.5%);
 }
 
 @media only screen and (max-width : 992px) {
@@ -107,7 +120,8 @@ footer.page-footer {
 
 /* Sweep To Right */
 .collapsible-header-sweep {
-  display: inline-block
+  width: 100%;
+  display: inline-flex;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
