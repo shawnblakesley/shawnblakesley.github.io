@@ -39,6 +39,14 @@
     {
       "name": "Alphabet",
       "phonetic": ""
+    },
+    {
+      "name": "Ants",
+      "phonetic": ""
+    },
+    {
+      "name": "Antelope",
+      "phonetic": ""
     }
   ],
   "B": [
@@ -84,6 +92,38 @@
     },
     {
       "name": "Big_Bird",
+      "phonetic": ""
+    },
+    {
+      "name": "Butterfly",
+      "phonetic": ""
+    },
+    {
+      "name": "Birthday",
+      "phonetic": ""
+    },
+    {
+      "name": "Book_Store",
+      "phonetic": ""
+    },
+    {
+      "name": "Basketball_Hoop",
+      "phonetic": ""
+    },
+    {
+      "name": "Basketball",
+      "phonetic": ""
+    },
+    {
+      "name": "Bob",
+      "phonetic": ""
+    },
+    {
+      "name": "Birthday_Presents",
+      "phonetic": ""
+    },
+    {
+      "name": "Brush_Teeth",
       "phonetic": ""
     }
   ],
@@ -140,6 +180,38 @@
     {
       "name": "Cold",
       "phonetic": ""
+    },
+    {
+      "name": "Caterpillar",
+      "phonetic": ""
+    },
+    {
+      "name": "Chicken",
+      "phonetic": ""
+    },
+    {
+      "name": "Cup",
+      "phonetic": ""
+    },
+    {
+      "name": "Chips",
+      "phonetic": ""
+    },
+    {
+      "name": "Cheese",
+      "phonetic": ""
+    },
+    {
+      "name": "Chalkboard",
+      "phonetic": ""
+    },
+    {
+      "name": "Couch",
+      "phonetic": ""
+    },
+    {
+      "name": "C3P0",
+      "phonetic": ""
     }
   ],
   "D": [
@@ -183,6 +255,22 @@
     {
       "name": "Down",
       "phonetic": ""
+    },
+    {
+      "name": "Dodger",
+      "phonetic": ""
+    },
+    {
+      "name": "Donald_Duck",
+      "phonetic": ""
+    },
+    {
+      "name": "Dino_Land",
+      "phonetic": ""
+    },
+    {
+      "name": "Darth_Vader",
+      "phonetic": ""
     }
   ],
   "E": [
@@ -204,6 +292,22 @@
     },
     {
       "name": "Eve",
+      "phonetic": ""
+    },
+    {
+      "name": "Elsa",
+      "phonetic": ""
+    },
+    {
+      "name": "Earth",
+      "phonetic": ""
+    },
+    {
+      "name": "Eggs",
+      "phonetic": ""
+    },
+    {
+      "name": "Ewok",
       "phonetic": ""
     }
   ],
@@ -247,6 +351,10 @@
     {
       "name": "Friends",
       "phonetic": ""
+    },
+    {
+      "name": "Football",
+      "phonetic": ""
     }
   ],
   "G": [
@@ -280,6 +388,18 @@
     },
     {
       "name": "Gym",
+      "phonetic": ""
+    },
+    {
+      "name": "Georgette",
+      "phonetic": ""
+    },
+    {
+      "name": "Goofy",
+      "phonetic": ""
+    },
+    {
+      "name": "Golf",
       "phonetic": ""
     }
   ],
@@ -330,6 +450,34 @@
     {
       "name": "Iguana",
       "phonetic": "a\u026a\u02c8gw\u0251n\u0259"
+    },
+    {
+      "name": "Igloo",
+      "phonetic": ""
+    },
+    {
+      "name": "Insects",
+      "phonetic": ""
+    },
+    {
+      "name": "Island",
+      "phonetic": ""
+    },
+    {
+      "name": "Ink",
+      "phonetic": ""
+    },
+    {
+      "name": "Ink",
+      "phonetic": ""
+    },
+    {
+      "name": "Impala",
+      "phonetic": ""
+    },
+    {
+      "name": "Ice",
+      "phonetic": ""
     }
   ],
   "J": [
@@ -340,6 +488,34 @@
     {
       "name": "Jar",
       "phonetic": "\u02a4\u0251r"
+    },
+    {
+      "name": "Jaguar",
+      "phonetic": ""
+    },
+    {
+      "name": "Jellybeans",
+      "phonetic": ""
+    },
+    {
+      "name": "Jacket",
+      "phonetic": ""
+    },
+    {
+      "name": "Juggle",
+      "phonetic": ""
+    },
+    {
+      "name": "Juice",
+      "phonetic": ""
+    },
+    {
+      "name": "Jungle",
+      "phonetic": ""
+    },
+    {
+      "name": "Jingle_Bells",
+      "phonetic": ""
     }
   ],
   "K": [
@@ -358,6 +534,14 @@
     {
       "name": "Kiss",
       "phonetic": ""
+    },
+    {
+      "name": "Koala",
+      "phonetic": ""
+    },
+    {
+      "name": "Kittens",
+      "phonetic": ""
     }
   ],
   "L": [
@@ -371,6 +555,18 @@
     },
     {
       "name": "Little",
+      "phonetic": ""
+    },
+    {
+      "name": "Lollipop",
+      "phonetic": ""
+    },
+    {
+      "name": "Lobster",
+      "phonetic": ""
+    },
+    {
+      "name": "Love",
       "phonetic": ""
     }
   ],
@@ -398,6 +594,22 @@
     {
       "name": "Minnie_Mouse",
       "phonetic": ""
+    },
+    {
+      "name": "Mufasa",
+      "phonetic": ""
+    },
+    {
+      "name": "Max_Train",
+      "phonetic": ""
+    },
+    {
+      "name": "Moose",
+      "phonetic": ""
+    },
+    {
+      "name": "Meeps",
+      "phonetic": ""
     }
   ],
   "N": [
@@ -421,6 +633,15 @@
     {
       "name": "Nest",
       "phonetic": ""
+    },
+    {
+      "name": "Noodles",
+      "phonetic": ""
+    },
+    {
+      "name": "Numbers",
+      "phonetic": "",
+      "type": "png"
     }
   ],
   "O": [
@@ -438,6 +659,10 @@
     },
     {
       "name": "Ostrich",
+      "phonetic": ""
+    },
+    {
+      "name": "Owl",
       "phonetic": ""
     }
   ],
@@ -460,6 +685,30 @@
     },
     {
       "name": "Potty",
+      "phonetic": ""
+    },
+    {
+      "name": "Pluto",
+      "phonetic": ""
+    },
+    {
+      "name": "Plate",
+      "phonetic": ""
+    },
+    {
+      "name": "Paintbrush",
+      "phonetic": ""
+    },
+    {
+      "name": "Pig",
+      "phonetic": ""
+    },
+    {
+      "name": "Potato_Head",
+      "phonetic": ""
+    },
+    {
+      "name": "Princess",
       "phonetic": ""
     }
   ],
@@ -494,6 +743,18 @@
     {
       "name": "Raccoon",
       "phonetic": ""
+    },
+    {
+      "name": "Reindeer",
+      "phonetic": ""
+    },
+    {
+      "name": "Rock",
+      "phonetic": ""
+    },
+    {
+      "name": "R2d2",
+      "phonetic": ""
     }
   ],
   "S": [
@@ -520,6 +781,56 @@
     {
       "name": "Shark",
       "phonetic": ""
+    },
+    {
+      "name": "Stamps",
+      "phonetic": ""
+    },
+    {
+      "name": "Soccer_Ball",
+      "phonetic": "",
+      "type": "png"
+    },
+    {
+      "name": "Simba",
+      "phonetic": ""
+    },
+    {
+      "name": "Socks",
+      "phonetic": ""
+    },
+    {
+      "name": "Shoes",
+      "phonetic": ""
+    },
+    {
+      "name": "Superwhy",
+      "phonetic": ""
+    },
+    {
+      "name": "Spiderman",
+      "phonetic": ""
+    },
+    {
+      "name": "Superman",
+      "phonetic": "",
+      "type": "png"
+    },
+    {
+      "name": "Santa",
+      "phonetic": ""
+    },
+    {
+      "name": "Snow",
+      "phonetic": ""
+    },
+    {
+      "name": "Shawn_Train",
+      "phonetic": ""
+    },
+    {
+      "name": "Snowglobe",
+      "phonetic": ""
     }
   ],
   "T": [
@@ -542,6 +853,42 @@
     {
       "name": "Thomas",
       "phonetic": ""
+    },
+    {
+      "name": "Tennis",
+      "phonetic": ""
+    },
+    {
+      "name": "Turkey",
+      "phonetic": ""
+    },
+    {
+      "name": "Tree",
+      "phonetic": ""
+    },
+    {
+      "name": "Teepee",
+      "phonetic": ""
+    },
+    {
+      "name": "Top_Hat",
+      "phonetic": ""
+    },
+    {
+      "name": "Tickle",
+      "phonetic": ""
+    },
+    {
+      "name": "Target",
+      "phonetic": ""
+    },
+    {
+      "name": "Table",
+      "phonetic": ""
+    },
+    {
+      "name": "Train_Tracks",
+      "phonetic": ""
     }
   ],
   "U": [
@@ -556,6 +903,23 @@
     {
       "name": "Up",
       "phonetic": ""
+    },
+    {
+      "name": "Unicorn",
+      "phonetic": "",
+      "type": "png"
+    },
+    {
+      "name": "Underwater",
+      "phonetic": ""
+    },
+    {
+      "name": "Underwear",
+      "phonetic": ""
+    },
+    {
+      "name": "Urchin",
+      "phonetic": ""
     }
   ],
   "V": [
@@ -566,6 +930,26 @@
     {
       "name": "Vase",
       "phonetic": "ve\u026as"
+    },
+    {
+      "name": "Vampire",
+      "phonetic": ""
+    },
+    {
+      "name": "Vulture",
+      "phonetic": ""
+    },
+    {
+      "name": "Vegetables",
+      "phonetic": ""
+    },
+    {
+      "name": "Violin",
+      "phonetic": ""
+    },
+    {
+      "name": "Vacuum",
+      "phonetic": ""
     }
   ],
   "W": [
@@ -583,6 +967,38 @@
     },
     {
       "name": "Walmart",
+      "phonetic": ""
+    },
+    {
+      "name": "Wood",
+      "phonetic": ""
+    },
+    {
+      "name": "Woodpecker",
+      "phonetic": ""
+    },
+    {
+      "name": "Waffles",
+      "phonetic": ""
+    },
+    {
+      "name": "Winnie_The_Pooh",
+      "phonetic": ""
+    },
+    {
+      "name": "Windmills",
+      "phonetic": ""
+    },
+    {
+      "name": "Witch",
+      "phonetic": ""
+    },
+    {
+      "name": "Wizard",
+      "phonetic": ""
+    },
+    {
+      "name": "Wookie",
       "phonetic": ""
     }
   ],
@@ -608,6 +1024,22 @@
     {
       "name": "Yo-Yo",
       "phonetic": "jo\u028a-jo\u028a"
+    },
+    {
+      "name": "Yarn",
+      "phonetic": ""
+    },
+    {
+      "name": "Yellow",
+      "phonetic": ""
+    },
+    {
+      "name": "Yogurt",
+      "phonetic": ""
+    },
+    {
+      "name": "Yawn",
+      "phonetic": ""
     }
   ],
   "Z": [
@@ -618,6 +1050,11 @@
     {
       "name": "Zoo",
       "phonetic": "zu"
+    },
+    {
+      "name": "Zigzag",
+      "phonetic": "",
+      "type": "png"
     }
   ]
 }
