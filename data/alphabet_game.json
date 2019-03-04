@@ -1,128 +1,1060 @@
 {
   "A": [
-    { "name": "Apple", "phonetic": "ˈæpəl" },
-    { "name": "Apple_1", "phonetic": "ˈæpəl" },
-    { "name": "Apple_2", "phonetic": "ˈæpəl" },
-    { "name": "Apple_3", "phonetic": "ˈæpəl" },
-    { "name": "Alligator", "phonetic": "ˈæləˌgeɪtər" },
-    { "name": "Alligator_1", "phonetic": "ˈæləˌgeɪtər" },
-    { "name": "Anteater", "phonetic": "ˈænˌtitər" },
-    { "name": "Airplane", "phonetic": "ˈɛrˌpleɪn" }
+    {
+      "name": "Apple",
+      "phonetic": "\u02c8\u00e6p\u0259l"
+    },
+    {
+      "name": "Apple_1",
+      "phonetic": "\u02c8\u00e6p\u0259l"
+    },
+    {
+      "name": "Apple_2",
+      "phonetic": "\u02c8\u00e6p\u0259l"
+    },
+    {
+      "name": "Apple_3",
+      "phonetic": "\u02c8\u00e6p\u0259l"
+    },
+    {
+      "name": "Alligator",
+      "phonetic": "\u02c8\u00e6l\u0259\u02ccge\u026at\u0259r"
+    },
+    {
+      "name": "Alligator_1",
+      "phonetic": "\u02c8\u00e6l\u0259\u02ccge\u026at\u0259r"
+    },
+    {
+      "name": "Anteater",
+      "phonetic": "\u02c8\u00e6n\u02cctit\u0259r"
+    },
+    {
+      "name": "Airplane",
+      "phonetic": "\u02c8\u025br\u02ccple\u026an"
+    },
+    {
+      "name": "Abby",
+      "phonetic": ""
+    },
+    {
+      "name": "Alphabet",
+      "phonetic": ""
+    },
+    {
+      "name": "Ants",
+      "phonetic": ""
+    },
+    {
+      "name": "Antelope",
+      "phonetic": ""
+    }
   ],
   "B": [
-    { "name": "Bear", "phonetic": "bɛr" },
-    { "name": "Boat", "phonetic": "boʊt" },
-    { "name": "Beaver", "phonetic":	"ˈbivər" }, 
-    { "name": "Bus", "phonetic":	"bʌs" }, 
-    { "name": "Basket", "phonetic":	"ˈbæskət" }, 
-    { "name": "Blanket", "phonetic":	"ˈblæŋkət" }
+    {
+      "name": "Bear",
+      "phonetic": "b\u025br"
+    },
+    {
+      "name": "Boat",
+      "phonetic": "bo\u028at"
+    },
+    {
+      "name": "Beaver",
+      "phonetic": "\u02c8biv\u0259r"
+    },
+    {
+      "name": "Bus",
+      "phonetic": "b\u028cs"
+    },
+    {
+      "name": "Basket",
+      "phonetic": "\u02c8b\u00e6sk\u0259t"
+    },
+    {
+      "name": "Blanket",
+      "phonetic": "\u02c8bl\u00e6\u014bk\u0259t"
+    },
+    {
+      "name": "Baby",
+      "phonetic": ""
+    },
+    {
+      "name": "Bathtub",
+      "phonetic": ""
+    },
+    {
+      "name": "Blippi",
+      "phonetic": ""
+    },
+    {
+      "name": "Big",
+      "phonetic": ""
+    },
+    {
+      "name": "Big_Bird",
+      "phonetic": ""
+    },
+    {
+      "name": "Butterfly",
+      "phonetic": ""
+    },
+    {
+      "name": "Birthday",
+      "phonetic": ""
+    },
+    {
+      "name": "Book_Store",
+      "phonetic": ""
+    },
+    {
+      "name": "Basketball_Hoop",
+      "phonetic": ""
+    },
+    {
+      "name": "Basketball",
+      "phonetic": ""
+    },
+    {
+      "name": "Bob",
+      "phonetic": ""
+    },
+    {
+      "name": "Birthday_Presents",
+      "phonetic": ""
+    },
+    {
+      "name": "Brush_Teeth",
+      "phonetic": ""
+    }
   ],
   "C": [
-    { "name": "Cat", "phonetic": "kæt" },
-    { "name": "Cuttlefish", "phonetic": "ˈkʌtəlˌfɪʃ" },
-    { "name": "Cactus", "phonetic": "ˈkæktəs" }
+    {
+      "name": "Cat",
+      "phonetic": "k\u00e6t"
+    },
+    {
+      "name": "Cuttlefish",
+      "phonetic": "\u02c8k\u028ct\u0259l\u02ccf\u026a\u0283"
+    },
+    {
+      "name": "Cactus",
+      "phonetic": "\u02c8k\u00e6kt\u0259s"
+    },
+    {
+      "name": "Christmas_Tree",
+      "phonetic": ""
+    },
+    {
+      "name": "Circle_Time",
+      "phonetic": ""
+    },
+    {
+      "name": "Clean_Up",
+      "phonetic": ""
+    },
+    {
+      "name": "Clothes",
+      "phonetic": ""
+    },
+    {
+      "name": "Computer",
+      "phonetic": ""
+    },
+    {
+      "name": "Cooking",
+      "phonetic": ""
+    },
+    {
+      "name": "Cookie_Monster",
+      "phonetic": ""
+    },
+    {
+      "name": "Candy",
+      "phonetic": ""
+    },
+    {
+      "name": "Car",
+      "phonetic": "",
+      "type": "png"
+    },
+    {
+      "name": "Cold",
+      "phonetic": ""
+    },
+    {
+      "name": "Caterpillar",
+      "phonetic": ""
+    },
+    {
+      "name": "Chicken",
+      "phonetic": ""
+    },
+    {
+      "name": "Cup",
+      "phonetic": ""
+    },
+    {
+      "name": "Chips",
+      "phonetic": ""
+    },
+    {
+      "name": "Cheese",
+      "phonetic": ""
+    },
+    {
+      "name": "Chalkboard",
+      "phonetic": ""
+    },
+    {
+      "name": "Couch",
+      "phonetic": ""
+    },
+    {
+      "name": "C3P0",
+      "phonetic": ""
+    }
   ],
   "D": [
-    { "name": "Dog", "phonetic": "dɔg" },
-    { "name": "Door", "phonetic": "dɔr" },
-    { "name": "Duck", "phonetic": "dək" }
+    {
+      "name": "Dog",
+      "phonetic": "d\u0254g"
+    },
+    {
+      "name": "Door",
+      "phonetic": "d\u0254r"
+    },
+    {
+      "name": "Duck",
+      "phonetic": "d\u0259k"
+    },
+    {
+      "name": "Dance",
+      "phonetic": "",
+      "type": "gif"
+    },
+    {
+      "name": "Dollhouse",
+      "phonetic": ""
+    },
+    {
+      "name": "Donut",
+      "phonetic": ""
+    },
+    {
+      "name": "Drink",
+      "phonetic": ""
+    },
+    {
+      "name": "Dory",
+      "phonetic": ""
+    },
+    {
+      "name": "Disneyland",
+      "phonetic": ""
+    },
+    {
+      "name": "Down",
+      "phonetic": ""
+    },
+    {
+      "name": "Dodger",
+      "phonetic": ""
+    },
+    {
+      "name": "Donald_Duck",
+      "phonetic": ""
+    },
+    {
+      "name": "Dino_Land",
+      "phonetic": ""
+    },
+    {
+      "name": "Darth_Vader",
+      "phonetic": ""
+    }
   ],
   "E": [
-    { "name": "Elephant", "phonetic": "ˈɛləfənt" },
-    { "name": "Egg", "phonetic": "ɛg" }
+    {
+      "name": "Elephant",
+      "phonetic": "\u02c8\u025bl\u0259f\u0259nt"
+    },
+    {
+      "name": "Egg",
+      "phonetic": "\u025bg"
+    },
+    {
+      "name": "Eat",
+      "phonetic": ""
+    },
+    {
+      "name": "Elmo",
+      "phonetic": ""
+    },
+    {
+      "name": "Eve",
+      "phonetic": ""
+    },
+    {
+      "name": "Elsa",
+      "phonetic": ""
+    },
+    {
+      "name": "Earth",
+      "phonetic": ""
+    },
+    {
+      "name": "Eggs",
+      "phonetic": ""
+    },
+    {
+      "name": "Ewok",
+      "phonetic": ""
+    }
   ],
   "F": [
-    { "name": "Fish", "phonetic": "fɪʃ" },
-    { "name": "Fish_1", "phonetic": "fɪʃ" },
-    { "name": "Fish_2", "phonetic": "fɪʃ" },
-    { "name": "Fish_3", "phonetic": "fɪʃ" },
-    { "name": "Frog", "phonetic": "frɑg" },
-    { "name": "Frog_1", "phonetic": "frɑg" },
-    { "name": "Feather", "phonetic": "ˈfɛðər" }
+    {
+      "name": "Fish",
+      "phonetic": "f\u026a\u0283"
+    },
+    {
+      "name": "Fish_1",
+      "phonetic": "f\u026a\u0283"
+    },
+    {
+      "name": "Fish_2",
+      "phonetic": "f\u026a\u0283"
+    },
+    {
+      "name": "Fish_3",
+      "phonetic": "f\u026a\u0283"
+    },
+    {
+      "name": "Frog",
+      "phonetic": "fr\u0251g"
+    },
+    {
+      "name": "Frog_1",
+      "phonetic": "fr\u0251g"
+    },
+    {
+      "name": "Feather",
+      "phonetic": "\u02c8f\u025b\u00f0\u0259r"
+    },
+    {
+      "name": "Family",
+      "phonetic": ""
+    },
+    {
+      "name": "Fish_Sticks",
+      "phonetic": ""
+    },
+    {
+      "name": "Friends",
+      "phonetic": ""
+    },
+    {
+      "name": "Football",
+      "phonetic": ""
+    }
   ],
   "G": [
-    { "name": "Goat", "phonetic": "goʊt" },
-    { "name": "Green", "phonetic": "grin" },
-    { "name": "Girl", "phonetic": "gɜrl" },
-    { "name": "Grass", "phonetic": "græs" }
+    {
+      "name": "Goat",
+      "phonetic": "go\u028at"
+    },
+    {
+      "name": "Green",
+      "phonetic": "grin"
+    },
+    {
+      "name": "Girl",
+      "phonetic": "g\u025crl"
+    },
+    {
+      "name": "Grass",
+      "phonetic": "gr\u00e6s"
+    },
+    {
+      "name": "Grover",
+      "phonetic": ""
+    },
+    {
+      "name": "Gloves",
+      "phonetic": ""
+    },
+    {
+      "name": "Goldfish",
+      "phonetic": ""
+    },
+    {
+      "name": "Gym",
+      "phonetic": ""
+    },
+    {
+      "name": "Georgette",
+      "phonetic": ""
+    },
+    {
+      "name": "Goofy",
+      "phonetic": ""
+    },
+    {
+      "name": "Golf",
+      "phonetic": ""
+    }
   ],
   "H": [
-    { "name": "Hippo", "phonetic": "ˈhɪpoʊ" },
-    { "name": "Horse", "phonetic": "hɔrs" }
+    {
+      "name": "Hippo",
+      "phonetic": "\u02c8h\u026apo\u028a"
+    },
+    {
+      "name": "Horse",
+      "phonetic": "h\u0254rs"
+    },
+    {
+      "name": "Halloween",
+      "phonetic": ""
+    },
+    {
+      "name": "Hands",
+      "phonetic": ""
+    },
+    {
+      "name": "Happy",
+      "phonetic": ""
+    },
+    {
+      "name": "Hug",
+      "phonetic": ""
+    },
+    {
+      "name": "Heart",
+      "phonetic": "",
+      "type": "png"
+    },
+    {
+      "name": "House",
+      "phonetic": ""
+    },
+    {
+      "name": "Hot",
+      "phonetic": ""
+    }
   ],
   "I": [
-    { "name": "Ice_Cream", "phonetic": "aɪs krim" },
-    { "name": "Iguana", "phonetic": "aɪˈgwɑnə" }
+    {
+      "name": "Ice_Cream",
+      "phonetic": "a\u026as krim"
+    },
+    {
+      "name": "Iguana",
+      "phonetic": "a\u026a\u02c8gw\u0251n\u0259"
+    },
+    {
+      "name": "Igloo",
+      "phonetic": ""
+    },
+    {
+      "name": "Insects",
+      "phonetic": ""
+    },
+    {
+      "name": "Island",
+      "phonetic": ""
+    },
+    {
+      "name": "Ink",
+      "phonetic": ""
+    },
+    {
+      "name": "Ink",
+      "phonetic": ""
+    },
+    {
+      "name": "Impala",
+      "phonetic": ""
+    },
+    {
+      "name": "Ice",
+      "phonetic": ""
+    }
   ],
   "J": [
-    { "name": "Jump", "phonetic": "ʤʌmp" },
-    { "name": "Jar", "phonetic": "ʤɑr" }
+    {
+      "name": "Jump",
+      "phonetic": "\u02a4\u028cmp"
+    },
+    {
+      "name": "Jar",
+      "phonetic": "\u02a4\u0251r"
+    },
+    {
+      "name": "Jaguar",
+      "phonetic": ""
+    },
+    {
+      "name": "Jellybeans",
+      "phonetic": ""
+    },
+    {
+      "name": "Jacket",
+      "phonetic": ""
+    },
+    {
+      "name": "Juggle",
+      "phonetic": ""
+    },
+    {
+      "name": "Juice",
+      "phonetic": ""
+    },
+    {
+      "name": "Jungle",
+      "phonetic": ""
+    },
+    {
+      "name": "Jingle_Bells",
+      "phonetic": ""
+    }
   ],
   "K": [
-    { "name": "Kangaroo", "phonetic": "ˌkæŋgəˈru" },
-    { "name": "Kookaburra", "phonetic": "kʊkʌbɜrʌ" },
-    { "name": "Key", "phonetic": "ki" }
+    {
+      "name": "Kangaroo",
+      "phonetic": "\u02cck\u00e6\u014bg\u0259\u02c8ru"
+    },
+    {
+      "name": "Kookaburra",
+      "phonetic": "k\u028ak\u028cb\u025cr\u028c"
+    },
+    {
+      "name": "Key",
+      "phonetic": "ki"
+    },
+    {
+      "name": "Kiss",
+      "phonetic": ""
+    },
+    {
+      "name": "Koala",
+      "phonetic": ""
+    },
+    {
+      "name": "Kittens",
+      "phonetic": ""
+    }
   ],
   "L": [
-    { "name": "Lion", "phonetic": "ˈlaɪən" },
-    { "name": "Lemur", "phonetic": "ˈlimər" }
+    {
+      "name": "Lion",
+      "phonetic": "\u02c8la\u026a\u0259n"
+    },
+    {
+      "name": "Lemur",
+      "phonetic": "\u02c8lim\u0259r"
+    },
+    {
+      "name": "Little",
+      "phonetic": ""
+    },
+    {
+      "name": "Lollipop",
+      "phonetic": ""
+    },
+    {
+      "name": "Lobster",
+      "phonetic": ""
+    },
+    {
+      "name": "Love",
+      "phonetic": ""
+    }
   ],
   "M": [
-    { "name": "Monkey", "phonetic": "ˈmʌŋki" },
-    { "name": "Mouse", "phonetic": "maʊs" }
+    {
+      "name": "Monkey",
+      "phonetic": "\u02c8m\u028c\u014bki"
+    },
+    {
+      "name": "Mouse",
+      "phonetic": "ma\u028as"
+    },
+    {
+      "name": "Moon",
+      "phonetic": ""
+    },
+    {
+      "name": "Mat",
+      "phonetic": ""
+    },
+    {
+      "name": "Mickey",
+      "phonetic": ""
+    },
+    {
+      "name": "Minnie_Mouse",
+      "phonetic": ""
+    },
+    {
+      "name": "Mufasa",
+      "phonetic": ""
+    },
+    {
+      "name": "Max_Train",
+      "phonetic": ""
+    },
+    {
+      "name": "Moose",
+      "phonetic": ""
+    },
+    {
+      "name": "Meeps",
+      "phonetic": ""
+    }
   ],
   "N": [
-    { "name": "Newt", "phonetic": "nut" },
-    { "name": "Nickel", "phonetic": "ˈnɪkəl" }
+    {
+      "name": "Newt",
+      "phonetic": "nut"
+    },
+    {
+      "name": "Nickel",
+      "phonetic": "\u02c8n\u026ak\u0259l"
+    },
+    {
+      "name": "No",
+      "phonetic": ""
+    },
+    {
+      "name": "Nemo",
+      "phonetic": "",
+      "type": "png"
+    },
+    {
+      "name": "Nest",
+      "phonetic": ""
+    },
+    {
+      "name": "Noodles",
+      "phonetic": ""
+    },
+    {
+      "name": "Numbers",
+      "phonetic": "",
+      "type": "png"
+    }
   ],
   "O": [
-    { "name": "Octopus", "phonetic": "ˈɑktəˌpʊs" },
-    { "name": "Orange", "phonetic": "ˈɔrənʤ" }
+    {
+      "name": "Octopus",
+      "phonetic": "\u02c8\u0251kt\u0259\u02ccp\u028as"
+    },
+    {
+      "name": "Orange",
+      "phonetic": "\u02c8\u0254r\u0259n\u02a4"
+    },
+    {
+      "name": "Oliver",
+      "phonetic": ""
+    },
+    {
+      "name": "Ostrich",
+      "phonetic": ""
+    },
+    {
+      "name": "Owl",
+      "phonetic": ""
+    }
   ],
   "P": [
-    { "name": "Puppy", "phonetic": "ˈpʌpi" },
-    { "name": "Panda", "phonetic": "ˈpændə" },
-    { "name": "Penguin", "phonetic": "pɛŋgwən" }
+    {
+      "name": "Puppy",
+      "phonetic": "\u02c8p\u028cpi"
+    },
+    {
+      "name": "Panda",
+      "phonetic": "\u02c8p\u00e6nd\u0259"
+    },
+    {
+      "name": "Penguin",
+      "phonetic": "p\u025b\u014bgw\u0259n"
+    },
+    {
+      "name": "Pancakes",
+      "phonetic": ""
+    },
+    {
+      "name": "Potty",
+      "phonetic": ""
+    },
+    {
+      "name": "Pluto",
+      "phonetic": ""
+    },
+    {
+      "name": "Plate",
+      "phonetic": ""
+    },
+    {
+      "name": "Paintbrush",
+      "phonetic": ""
+    },
+    {
+      "name": "Pig",
+      "phonetic": ""
+    },
+    {
+      "name": "Potato_Head",
+      "phonetic": ""
+    },
+    {
+      "name": "Princess",
+      "phonetic": ""
+    }
   ],
   "Q": [
-    { "name": "Queen", "phonetic": "kwin" },
-    { "name": "Quail", "phonetic": "kweɪl" }
+    {
+      "name": "Queen",
+      "phonetic": "kwin"
+    },
+    {
+      "name": "Quail",
+      "phonetic": "kwe\u026al"
+    }
   ],
   "R": [
-    { "name": "Robot", "phonetic": "ˈroʊˌbɑt", "type": "gif" },
-    { "name": "Robot", "phonetic": "ˈroʊˌbɑt" },
-    { "name": "Rabbit", "phonetic": "ˈræbət" }
+    {
+      "name": "Robot",
+      "phonetic": "\u02c8ro\u028a\u02ccb\u0251t",
+      "type": "gif"
+    },
+    {
+      "name": "Robot",
+      "phonetic": "\u02c8ro\u028a\u02ccb\u0251t"
+    },
+    {
+      "name": "Rabbit",
+      "phonetic": "\u02c8r\u00e6b\u0259t"
+    },
+    {
+      "name": "Rat",
+      "phonetic": ""
+    },
+    {
+      "name": "Raccoon",
+      "phonetic": ""
+    },
+    {
+      "name": "Reindeer",
+      "phonetic": ""
+    },
+    {
+      "name": "Rock",
+      "phonetic": ""
+    },
+    {
+      "name": "R2d2",
+      "phonetic": ""
+    }
   ],
   "S": [
-    { "name": "Snake", "phonetic": "sneɪk" },
-    { "name": "Stop", "phonetic": "stɑp" }
+    {
+      "name": "Snake",
+      "phonetic": "sne\u026ak"
+    },
+    {
+      "name": "Stop",
+      "phonetic": "st\u0251p"
+    },
+    {
+      "name": "Smile",
+      "phonetic": ""
+    },
+    {
+      "name": "Storybots",
+      "phonetic": ""
+    },
+    {
+      "name": "Seal",
+      "phonetic": ""
+    },
+    {
+      "name": "Shark",
+      "phonetic": ""
+    },
+    {
+      "name": "Stamps",
+      "phonetic": ""
+    },
+    {
+      "name": "Soccer_Ball",
+      "phonetic": "",
+      "type": "png"
+    },
+    {
+      "name": "Simba",
+      "phonetic": ""
+    },
+    {
+      "name": "Socks",
+      "phonetic": ""
+    },
+    {
+      "name": "Shoes",
+      "phonetic": ""
+    },
+    {
+      "name": "Superwhy",
+      "phonetic": ""
+    },
+    {
+      "name": "Spiderman",
+      "phonetic": ""
+    },
+    {
+      "name": "Superman",
+      "phonetic": "",
+      "type": "png"
+    },
+    {
+      "name": "Santa",
+      "phonetic": ""
+    },
+    {
+      "name": "Snow",
+      "phonetic": ""
+    },
+    {
+      "name": "Shawn_Train",
+      "phonetic": ""
+    },
+    {
+      "name": "Snowglobe",
+      "phonetic": ""
+    }
   ],
   "T": [
-    { "name": "Toucan", "phonetic": "ˈtuːkæn" },
-    { "name": "Teddy_Bear", "phonetic": "ˈtɛdi bɛr" }
+    {
+      "name": "Toucan",
+      "phonetic": "\u02c8tu\u02d0k\u00e6n"
+    },
+    {
+      "name": "Teddy_Bear",
+      "phonetic": "\u02c8t\u025bdi b\u025br"
+    },
+    {
+      "name": "Tsum_Tsum",
+      "phonetic": ""
+    },
+    {
+      "name": "Train",
+      "phonetic": ""
+    },
+    {
+      "name": "Thomas",
+      "phonetic": ""
+    },
+    {
+      "name": "Tennis",
+      "phonetic": ""
+    },
+    {
+      "name": "Turkey",
+      "phonetic": ""
+    },
+    {
+      "name": "Tree",
+      "phonetic": ""
+    },
+    {
+      "name": "Teepee",
+      "phonetic": ""
+    },
+    {
+      "name": "Top_Hat",
+      "phonetic": ""
+    },
+    {
+      "name": "Tickle",
+      "phonetic": ""
+    },
+    {
+      "name": "Target",
+      "phonetic": ""
+    },
+    {
+      "name": "Table",
+      "phonetic": ""
+    },
+    {
+      "name": "Train_Tracks",
+      "phonetic": ""
+    }
   ],
   "U": [
-    { "name": "Umbrella", "phonetic": "əmˈbrɛlə" },
-    { "name": "Upside_Down", "phonetic": "ˈʌpˈsaɪd daʊn" }
+    {
+      "name": "Umbrella",
+      "phonetic": "\u0259m\u02c8br\u025bl\u0259"
+    },
+    {
+      "name": "Upside_Down",
+      "phonetic": "\u02c8\u028cp\u02c8sa\u026ad da\u028an"
+    },
+    {
+      "name": "Up",
+      "phonetic": ""
+    },
+    {
+      "name": "Unicorn",
+      "phonetic": "",
+      "type": "png"
+    },
+    {
+      "name": "Underwater",
+      "phonetic": ""
+    },
+    {
+      "name": "Underwear",
+      "phonetic": ""
+    },
+    {
+      "name": "Urchin",
+      "phonetic": ""
+    }
   ],
   "V": [
-    { "name": "Van", "phonetic": "væn" },
-    { "name": "Vase", "phonetic": "veɪs" }
+    {
+      "name": "Van",
+      "phonetic": "v\u00e6n"
+    },
+    {
+      "name": "Vase",
+      "phonetic": "ve\u026as"
+    },
+    {
+      "name": "Vampire",
+      "phonetic": ""
+    },
+    {
+      "name": "Vulture",
+      "phonetic": ""
+    },
+    {
+      "name": "Vegetables",
+      "phonetic": ""
+    },
+    {
+      "name": "Violin",
+      "phonetic": ""
+    },
+    {
+      "name": "Vacuum",
+      "phonetic": ""
+    }
   ],
   "W": [
-    { "name": "Whale", "phonetic": "weɪl" },
-    { "name": "Walrus", "phonetic": "ˈwɔlrəs" }
+    {
+      "name": "Whale",
+      "phonetic": "we\u026al"
+    },
+    {
+      "name": "Walrus",
+      "phonetic": "\u02c8w\u0254lr\u0259s"
+    },
+    {
+      "name": "Wall-E",
+      "phonetic": ""
+    },
+    {
+      "name": "Walmart",
+      "phonetic": ""
+    },
+    {
+      "name": "Wood",
+      "phonetic": ""
+    },
+    {
+      "name": "Woodpecker",
+      "phonetic": ""
+    },
+    {
+      "name": "Waffles",
+      "phonetic": ""
+    },
+    {
+      "name": "Winnie_The_Pooh",
+      "phonetic": ""
+    },
+    {
+      "name": "Windmills",
+      "phonetic": ""
+    },
+    {
+      "name": "Witch",
+      "phonetic": ""
+    },
+    {
+      "name": "Wizard",
+      "phonetic": ""
+    },
+    {
+      "name": "Wookie",
+      "phonetic": ""
+    }
   ],
   "X": [
-    { "name": "Xylophone", "phonetic": "ˈzaɪləˌfoʊn" },
-    { "name": "X-Ray", "phonetic": "ˈɛksˌreɪ" }
+    {
+      "name": "Xylophone",
+      "phonetic": "\u02c8za\u026al\u0259\u02ccfo\u028an"
+    },
+    {
+      "name": "X-Ray",
+      "phonetic": "\u02c8\u025bks\u02ccre\u026a"
+    },
+    {
+      "name": "X-Ray_Fish",
+      "phonetic": ""
+    }
   ],
   "Y": [
-    { "name": "Yak", "phonetic": "jæk" },
-    { "name": "Yo-Yo", "phonetic": "joʊ-joʊ" }
+    {
+      "name": "Yak",
+      "phonetic": "j\u00e6k"
+    },
+    {
+      "name": "Yo-Yo",
+      "phonetic": "jo\u028a-jo\u028a"
+    },
+    {
+      "name": "Yarn",
+      "phonetic": ""
+    },
+    {
+      "name": "Yellow",
+      "phonetic": ""
+    },
+    {
+      "name": "Yogurt",
+      "phonetic": ""
+    },
+    {
+      "name": "Yawn",
+      "phonetic": ""
+    }
   ],
   "Z": [
-    { "name": "Zebra", "phonetic": "ˈzibrə" },
-    { "name": "Zoo", "phonetic": "zu" }
+    {
+      "name": "Zebra",
+      "phonetic": "\u02c8zibr\u0259"
+    },
+    {
+      "name": "Zoo",
+      "phonetic": "zu"
+    },
+    {
+      "name": "Zigzag",
+      "phonetic": "",
+      "type": "png"
+    }
   ]
 }
