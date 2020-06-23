@@ -8,10 +8,12 @@ import shutil
 from rich import print
 from watchgod import awatch
 
+
 async def run(command):
     print(f"Running [purple4]{command}[/purple4]")
     proc = await asyncio.create_subprocess_shell(command)
     await proc.communicate()
+
 
 def clean(*paths):
     for path in paths:
@@ -19,9 +21,13 @@ def clean(*paths):
         shutil.rmtree(path, ignore_errors=True)
         os.makedirs(path)
 
+
 def copy_from(path, subpath):
-    print(f"Copying {subpath} from [green]{path}/{subpath}/[/green] to [green]./dist/{subpath}/[/green]")
+    print(
+        f"Copying {subpath} from [green]{path}/{subpath}/[/green] to [green]./dist/{subpath}/[/green]"
+    )
     shutil.copytree(f"{path}/{subpath}/", f"./dist/{subpath}/")
+
 
 async def build(path):
     clean("./dist", "./build")
@@ -35,6 +41,7 @@ async def build(path):
     # npx pug -P -O build/data.json src/index.pug --out dist
     await run(f"npx pug -s -O build/data.json {path}/index.pug --out dist")
 
+
 async def main(path):
     print(f"Building [bold deep_pink3]{path}[/bold deep_pink3]...")
     await build(path)
@@ -47,10 +54,21 @@ async def main(path):
         await build(path)
         print(f"\nWatching [bold blue]{path}[/bold blue]...")
 
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('-w', '--watch', action='store_true',
-                        help='watch the files for local development')
+    import os
+
+    abspath = os.path.abspath(__file__)
+    dname = os.path.dirname(abspath)
+    os.chdir(dname)
+
+    parser = argparse.ArgumentParser(description="Process some integers.")
+    parser.add_argument(
+        "-w",
+        "--watch",
+        action="store_true",
+        help="watch the files for local development",
+    )
 
     args = parser.parse_args()
     loop = asyncio.get_event_loop()
