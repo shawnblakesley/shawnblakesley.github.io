@@ -1,7 +1,5 @@
 ---
 icons:
-  - class: fas fa-blog
-    link: /blog
   - class: fab fa-github
     link: https://www.github.com/shawnblakesley
   - class: fab fa-linkedin
@@ -9,7 +7,7 @@ icons:
   - class: fab fa-stack-overflow
     link: https://careers.stackoverflow.com/shawnblakesley
 values:
-  - image: ballpit.webp
+  - image: carousel.jpg
     title: expertise
     subtitle: programming polyglot
     lines:
@@ -22,9 +20,9 @@ values:
       - A passion for programming, and a desire to share that passion with others.
       - Whether teaching high-school students or helping colleages, I find my passion for programming is always growing.
       - Solving complex problems brings me great joy.
-  - image: teacups_new.jpg
+  - image: ballpit.webp
     title: quality
-    subtitle: holding myself to high standards
+    subtitle: high personal standards
     lines:
       - Focused on delivering high quality code and clear, concise designs.
       - I'm always looking to make the best software I can, and to keep my skills up to date with the latest standards.
@@ -32,18 +30,18 @@ skills:
   - title: Concentrations
     subtitle: / Major Interests
     list:
-      - Graphics
       - Machine Learning
       - Distributed Systems
       - Embedded Systems
       - Security
+      - 3D Graphics
       - Game Design
   - title: Languages
     subtitle: With Professional Experience
     list:
-      - C++
       - Python
       - Go
+      - C++
       - Java
       - JavaScript
       - GLSL
@@ -52,21 +50,13 @@ skills:
     subtitle: With Deep Knowledge
     list:
       - Docker
-      - Boost C++
       - OpenGL
       - Qt
       - FFMpeg
       - OpenCV
-      - Angular JS
-      - NodeJS
-  - title: Tools
-    subtitle: With Strong Familiarity
-    list:
-      - Visual Studio Code
-      - Unity 3D
-      - IntelliJ
-      - Android Studio
-      - Github
+      - Node
+      - Spring
+      - Kubernetes
   - title: Operating Systems
     subtitle: Used Professionally
     list:
@@ -75,92 +65,93 @@ skills:
       - Ubuntu Linux
       - Alpine Linux
       - Android
-      - iOS
 jobs:
   - company: Sonos
     title: Sr. Cloud Platform
     start: Jun. 2019
-    end: Present
-    icon: sonos
+    end: Jun. 2020
+    image: sonos.webp
     description:
       - >
-        TODO
-    image: sonos.webp
+        - Worked in a strike team to migrate our API gateway from Layer7
+        to Apigee.
+      - >
+        - Began the process of moving existing Platform Team services over to Docker.
   - company: Anki
     title: Cloud NLP Specialist
     start: Feb. 2019
     end: May 2019
-    icon: adb
+    image: vector.jpg
     description:
       - >
-        As part of a hack week, I developed a laughter detector
-        for Cozmo as a proof of concept for what would later become
-        Vector.
+        - Developed a laughter detector for Cozmo during hackweek
+        as a proof of concept for what would later become Vector.
       - >
-        I then moved to the Cloud AI team as the Cloud NLP Specialist,
+        - Moved to the Cloud AI team as the Cloud NLP Specialist,
         and began work to migrate Vector's NLU from third party
         tools to open source Rasa NLU.
-    image: vector.jpg
   - company: Anki
     title: Vector SDK Engineer
     start: Sept. 2017
     end: Feb. 2019
-    icon: adb
+    image: vector.webp
     description:
       - >
-        Upon joining Anki, I worked on the Cozmo Code Lab,
-        and made quality of life improvements to the Cozmo
-        Python SDK.
+        - Worked on the Cozmo Code Lab, and made quality of life
+        improvements to the Cozmo Python SDK.
       - >
-        Later, I became the primary architect of the Vector Python
+        - Became primary architect of the Vector Python
         SDK and developed on the SDK server running on
         the robot.
-
-    image: vector.webp
   - company: PullString
     title: Infrastructure Engineer
     start: Nov. 2015
     end: Sept. 2017
-    icon: gamepad
-    description:
-      - >
-        TODO
     image: barbie.jpg
+    description:
+      - - Set up and managed a Bamboo build server.
+      - - Joined the cloud team and migrated existing services to Docker.
+      - - Joined the AI Research group and began exploring future Cloud NLP options.
   - company: Enplug
     title: Senior Software Engineer
     start: Apr. 2014
     end: Sept. 2015
-    icon: stack
-    description:
-      - >
-        TODO
     image: enplug.jpg
+    description:
+      - - Developed new technologies for the Enplug SDK such as the video renderer and browser support.
+      - - Designed, developed and deployed two apps and maintained a third.
+      - - Owned the build system, the android mobile app, and external app support.
   - company: Volcano
     title: Software Engineer 2
-    start: June 2012
+    start: Jun. 2012
     end: Jan. 2014
-    icon: mountain
+    image: volcano.png
     description:
       - >
-        TODO
-    image: volcano.png
+        - Developer on the Maestro team (cutting-edge, touchscreen software platform) and
+        as the sole owner of the CMake Macros.
+      - >
+        - Collaborated with the build team on an automated test system.
+      - >
+        - Recognized in November with a company-wide "Heads Up" award by a principle software engineer.
   - company: ITEST
     title: Head Instructor
     end: Summer 2013
-    icon: notebook
-    description:
-      - >
-        TODO
     image: scratch.png
+    description:
+      - - Taught game programming to McClatchy High School students.
+      - >
+        - Provided an educational math game for elementary school students
+        in the same district.
   - company: PARC CSUS Sacramento
     title: Adjunct Facilitator
     start: Fall 2011
     end: Spring 2013
-    icon: speech
-    description:
-      - >
-        TODO
     image: matrix.webp
+    description:
+      - - Created dynamic lessons to supplement the professors' lectures.
+      - - Worked one-on-one with students during office hours.
+      - - Collaborated with faculty to achieve maximum student comprehension.
 education:
   - school: Masters Coursework at CSUS
     major: Computer Science
@@ -168,53 +159,58 @@ education:
     end: Fall 2013
     image: campus-bridge.jpg
     description:
-      - >
-        TODO
+      - - Primary concentration in artificial intelligence with a secondary concentration in security.
+      - - Designed graphical representation and AI for 2D Java zombie path-finding project.
+      - - Developed algorithms and interface for Java steganographic encoder.
   - school: Bachelors from CSUS
     major: Computer Science
     start: Fall 2007
     end: Spring 2011
     image: computer-science.jpg
     description:
-      - >
-        TODO
+      - - Programmed Java OpenGL 3D Engine.
+      - - Headed UI and graphics for 3D Candy Collector Game using Java and OpenGL.
+      - - Created Schmesh (chess-like) game playing AI and placed 7 in class competition.
+      - - Undefeated champion of the ACM programming contest for two years.
   - school: Minor from CSUS
     major: Physics
     start: Fall 2007
     end: Spring 2011
     image: physics.jpg
     description:
-      - >
-        TODO
+      - - Used Wolfram Mathematica to solve complex physics problems.
+      - - Wrote Fortran code to solve parametric equations.
+      - - Took advanced courses in simulations, optics and modern physics.
   - school: Udacity Nanodegree
     major: Deep Learning
     end: Jan. 2018
     image: udacity.jpg
     description:
-      - >
-        TODO
+      - - Used this course as a refresher to keep up to date with the Deep Learning world.
+      - - Completed in free time while working full-time at Anki.
 projects:
   - title: This Website
     subtitle: Pug / Sass / Go / Docker
-    date: June 2020
+    date: Jun. 2020
     image: inception.webp
-    description:
-      - >
-        TODO
     link: index.html
+    description:
+      - - Redesigned this website from scratch over one weekend.
+      - - Made the main page generated from a template and data so adding content is purely data-driven.
   - title: Alphabet Game
     subtitle: HTML / JavaScript / CSS
     date: 2018
     image: alphabet.gif
-    description:
-      - >
-        TODO
     link: samples/alphabet_game.html
+    description:
+      - - Created an alphabet game for my autistic son.
+      - - The first of hopefully many games I can make to help bridge the communication gap with him.
   - title: Procedurally Texture
     subtitle: WebGL / GLSL / JavaScript
     date: ~2013
     image: webgl.jpg
-    description:
-      - >
-        TODO
     link: samples/webgl.html
+    description:
+      - - Used WebGL after taking an Udacity course on the subject.
+      - - Incorporated prior experience with GLSL fragment and vertex shaders.
+      - - Planning to rewrite this example in late 2020 to keep up with the graphics world.
