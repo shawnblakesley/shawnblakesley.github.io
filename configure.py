@@ -34,6 +34,7 @@ async def build(path):
     # cp -R src/images/* dist/images/
     for subpath in ["images", "css", "js", "data", "samples"]:
         copy_from(path, subpath)
+    await run(f"npx postcss {path}/css/ --dir dist/css/")
     # npx sass src/styles.scss dist/styles.css
     await run(f"npx sass --style compressed {path}/styles.scss dist/css/styles.css")
     # npx yaml2json src/data.yml > build/data.json
