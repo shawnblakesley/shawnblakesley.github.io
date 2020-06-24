@@ -9,10 +9,15 @@ mixin infos(title, company, date, link)
     a.button.link(href=link) View
 
 
-mixin card(title, company, date, image, link)
+mixin card(title, company, date, image, link, backup_image)
   article.card
     if image
-      img.thumb(src="images/" + image)
+      if backup_image
+        picture
+          source.thumb(type="image/webp" srcset="images/" + image)
+          img.thumb(src="images/" + backup_image alt="a butterfly")
+      else
+        img.thumb(src="images/" + image)
       .infos
         +infos(title, company, date, link)
           block
@@ -30,11 +35,11 @@ html
     meta(name="author" content="Shawn Blakesley")
     meta(name="description" content="The home page of a full-stack engineer with additional NLP and embedded experience.")
     meta(name="viewport" content="width=device-width, initial-scale=1")
-    meta(name="twitter:card" content="summary")
+    meta(name="twitter:card" content="summary_large_image")
     meta(name="twitter:site" content="@BlakesleyShawn")
     meta(name="twitter:title" content="Shawn of the Dev")
     meta(name="twitter:description" content="The home page of a full-stack engineer with additional NLP and embedded experience")
-    meta(name="twitter:image" content="https://shawnofthe.dev/images/teacups_new.jpg")
+    meta(name="twitter:image" content="https://shawnofthe.dev/images/carousel.jpg")
     link(rel="shortcut icon" href="favicon.ico" type="image/x-icon")
     link(rel="stylesheet" href="css/styles.css")
   body
@@ -52,7 +57,7 @@ html
           h2 Values
           .cards
             each value in values
-              +card(value.title, "", value.subtitle, value.image)
+              +card(value.title, "", value.subtitle, value.image, "", value.backup_image)
                 each line in value.lines
                   p.txt= line
       if skills
@@ -61,7 +66,7 @@ html
           .cards
             each skill, index in skills
               div(class="flipped" + index % 4)
-                +card(skill.title, "", skill.subtitle, skill.image)
+                +card(skill.title, "", skill.subtitle, skill.image, "", skill.backup_image)
                   .flex
                     each spec in skill.list
                         p.chip= spec
@@ -70,7 +75,7 @@ html
           h2 Jobs
           .cards
             each job in jobs
-              +card(job.title, job.company, (job.start?job.start + " - ":"") + job.end, job.image)
+              +card(job.title, job.company, (job.start?job.start + " - ":"") + job.end, job.image, "", job.backup_image)
                 each line in job.description
                   p.txt= line
       if education
@@ -78,7 +83,7 @@ html
           h2 Education
           .cards
             each degree in education
-              +card(degree.major, degree.school, (degree.start?degree.start + " - ":"") + degree.end, degree.image)
+              +card(degree.major, degree.school, (degree.start?degree.start + " - ":"") + degree.end, degree.image, "", degree.backup_image)
                 each line in degree.description
                   p.txt= line
       if projects
@@ -86,7 +91,7 @@ html
           h2 Projects
           .cards
             each project in projects
-              +card(project.title, project.subtitle, project.date, project.image, project.link)
+              +card(project.title, project.subtitle, project.date, project.image, project.link, project.backup_image)
                 each line in project.description
                   p.txt= line
     h5.footer ~ Made with love by Shawn Blakesley ~

@@ -21,6 +21,7 @@ values:
       - Whether teaching high-school students or helping colleages, I find my passion for programming is always growing.
       - Solving complex problems brings me great joy.
   - image: ballpit.webp
+    backup_image: ballpit.jpg
     title: quality
     subtitle: high personal standards
     lines:
@@ -71,6 +72,7 @@ jobs:
     start: Jun. 2019
     end: Jun. 2020
     image: sonos.webp
+    backup_image: sonos.gif
     description:
       - >
         - Worked in a strike team to migrate our API gateway from Layer7
@@ -95,6 +97,7 @@ jobs:
     start: Sept. 2017
     end: Feb. 2019
     image: vector.webp
+    backup_image: vector.gif
     description:
       - >
         - Worked on the Cozmo Code Lab, and made quality of life
@@ -148,6 +151,7 @@ jobs:
     start: Fall 2011
     end: Spring 2013
     image: matrix.webp
+    backup_image: matrix.gif
     description:
       - - Created dynamic lessons to supplement the professors' lectures.
       - - Worked one-on-one with students during office hours.
@@ -193,6 +197,7 @@ projects:
     subtitle: Pug / Sass / Go / Docker
     date: Jun. 2020
     image: inception.webp
+    backup_image: inception.gif
     link: index.html
     description:
       - - Redesigned this website from scratch over one weekend.
