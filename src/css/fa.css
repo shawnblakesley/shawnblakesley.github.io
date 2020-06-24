@@ -1,0 +1,54 @@
+/*!
+ * Font Awesome Free 5.13.1 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+.fab {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1
+}
+
+@font-face {
+    font-family: "Font Awesome 5 Brands";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url(../data/fa-brands-400.eot);
+    src: url(../data/fa-brands-400-iefix.eot) format("embedded-opentype"),
+        url(../data/fa-brands-400.woff2) format("woff2"),
+        url(../data/fa-brands-400.woff) format("woff"),
+        url(../data/fa-brands-400.ttf) format("truetype"),
+        url(../data/fa-brands-400.svg) format("svg")
+}
+
+.fab {
+    font-family: "Font Awesome 5 Brands";
+}
+
+.fa-github:before {
+    content: "\f09b"
+}
+
+.fa-github-alt:before {
+    content: "\f113"
+}
+
+.fa-github-square:before {
+    content: "\f092"
+}
+
+.fa-linkedin:before {
+    content: "\f08c"
+}
+
+.fa-linkedin-in:before {
+    content: "\f0e1"
+}
+
+.fa-stack-overflow:before {
+    content: "\f16c"
+}
