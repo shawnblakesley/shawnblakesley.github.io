@@ -238,8 +238,8 @@ projects:
     subtitle: HTML / JavaScript / CSS
     date: 2018
     image:
-      url: alphabet.gif
-      alt: The alphabet letters being drawn out in order
+      url: alphabet.jpg
+      alt: Letters of the english alphabet
     link: samples/alphabet_game.html
     description:
       - - Created an alphabet game for my autistic son.
