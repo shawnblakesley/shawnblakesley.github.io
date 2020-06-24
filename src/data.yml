@@ -25,8 +25,8 @@ values:
       - Whether teaching high-school students or helping colleages, I find my passion for programming is always growing.
       - Solving complex problems brings me great joy.
   - image:
-      url: ballpit.webp
-      backup: ballpit.jpg
+      url: park.webp
+      backup: park.jpg
       alt: My son playing at the park
     title: quality
     subtitle: high personal standards
