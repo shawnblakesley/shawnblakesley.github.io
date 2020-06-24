@@ -7,21 +7,27 @@ icons:
   - class: fab fa-stack-overflow
     link: https://careers.stackoverflow.com/shawnblakesley
 values:
-  - image: carousel.jpg
+  - image:
+      url: carousel.jpg
+      alt: My son and me after a long day at Disneyland
     title: expertise
     subtitle: programming polyglot
     lines:
       - Professional experience with a wide range of languages, libraries and frameworks, and a drive to learn more of each.
       - In the past I taught intro courses and have worked with Medical Software, Games and SAAS companies of all different shapes and sizes.
-  - image: windy.jpg
+  - image:
+      url: windy.jpg
+      alt: My wife's wedding dress blowing in the wind
     title: passion
     subtitle: following my dreams
     lines:
       - A passion for programming, and a desire to share that passion with others.
       - Whether teaching high-school students or helping colleages, I find my passion for programming is always growing.
       - Solving complex problems brings me great joy.
-  - image: ballpit.webp
-    backup_image: ballpit.jpg
+  - image:
+      url: ballpit.webp
+      backup: ballpit.jpg
+      alt: My son playing at the park
     title: quality
     subtitle: high personal standards
     lines:
@@ -71,8 +77,10 @@ jobs:
     title: Sr. Cloud Platform
     start: Jun. 2019
     end: Jun. 2020
-    image: sonos.webp
-    backup_image: sonos.gif
+    image:
+      url: sonos.webp
+      backup: sonos.gif
+      alt: Sound filling a room
     description:
       - >
         - Worked in a strike team to migrate our API gateway from Layer7
@@ -83,7 +91,9 @@ jobs:
     title: Cloud NLP Specialist
     start: Feb. 2019
     end: May 2019
-    image: vector.jpg
+    image:
+      url: vector.jpg
+      alt: A woman whispering to Vector
     description:
       - >
         - Developed a laughter detector for Cozmo during hackweek
@@ -96,8 +106,10 @@ jobs:
     title: Vector SDK Engineer
     start: Sept. 2017
     end: Feb. 2019
-    image: vector.webp
-    backup_image: vector.gif
+    image:
+      url: vector.webp
+      backup: vector.gif
+      alt: Vector peeking out of a shaggy rug
     description:
       - >
         - Worked on the Cozmo Code Lab, and made quality of life
@@ -110,7 +122,9 @@ jobs:
     title: Infrastructure Engineer
     start: Nov. 2015
     end: Sept. 2017
-    image: barbie.jpg
+    image:
+      url: barbie.jpg
+      alt: Hello Barbie
     description:
       - - Set up and managed a Bamboo build server.
       - - Joined the cloud team and migrated existing services to Docker.
@@ -119,7 +133,9 @@ jobs:
     title: Senior Software Engineer
     start: Apr. 2014
     end: Sept. 2015
-    image: enplug.jpg
+    image:
+      url: enplug.jpg
+      alt: Enplug digital signage
     description:
       - - Developed new technologies for the Enplug SDK such as the video renderer and browser support.
       - - Designed, developed and deployed two apps and maintained a third.
@@ -128,7 +144,9 @@ jobs:
     title: Software Engineer 2
     start: Jun. 2012
     end: Jan. 2014
-    image: volcano.png
+    image:
+      url: volcano.png
+      alt: Volcano IVUS machine
     description:
       - >
         - Developer on the Maestro team (cutting-edge, touchscreen software platform) and
@@ -140,7 +158,9 @@ jobs:
   - company: ITEST
     title: Head Instructor
     end: Summer 2013
-    image: scratch.png
+    image:
+      url: scratch.png
+      alt: Scratch desktop app
     description:
       - - Taught game programming to McClatchy High School students.
       - >
@@ -150,8 +170,10 @@ jobs:
     title: Adjunct Facilitator
     start: Fall 2011
     end: Spring 2013
-    image: matrix.webp
-    backup_image: matrix.gif
+    image:
+      url: matrix.webp
+      backup: matrix.gif
+      alt: Flowing text from the matrix
     description:
       - - Created dynamic lessons to supplement the professors' lectures.
       - - Worked one-on-one with students during office hours.
@@ -161,7 +183,9 @@ education:
     major: Computer Science
     start: Fall 2011
     end: Fall 2013
-    image: campus-bridge.jpg
+    image:
+      url: campus-bridge.jpg
+      alt: The bridge from CSU Sacramento
     description:
       - - Primary concentration in artificial intelligence with a secondary concentration in security.
       - - Designed graphical representation and AI for 2D Java zombie path-finding project.
@@ -170,7 +194,9 @@ education:
     major: Computer Science
     start: Fall 2007
     end: Spring 2011
-    image: computer-science.jpg
+    image:
+      url: computer-science.jpg
+      alt: Code on a computer screen
     description:
       - - Programmed Java OpenGL 3D Engine.
       - - Headed UI and graphics for 3D Candy Collector Game using Java and OpenGL.
@@ -180,7 +206,9 @@ education:
     major: Physics
     start: Fall 2007
     end: Spring 2011
-    image: physics.jpg
+    image:
+      url: physics.jpg
+      alt: An orb with colorful electricity coming off its surface
     description:
       - - Used Wolfram Mathematica to solve complex physics problems.
       - - Wrote Fortran code to solve parametric equations.
@@ -188,7 +216,9 @@ education:
   - school: Udacity Nanodegree
     major: Deep Learning
     end: Jan. 2018
-    image: udacity.jpg
+    image:
+      url: udacity.jpg
+      alt: The udacity logo
     description:
       - - Used this course as a refresher to keep up to date with the Deep Learning world.
       - - Completed in free time while working full-time at Anki.
@@ -196,8 +226,10 @@ projects:
   - title: This Website
     subtitle: Pug / Sass / Go / Docker
     date: Jun. 2020
-    image: inception.webp
-    backup_image: inception.gif
+    image:
+      url: inception.webp
+      backup: inception.gif
+      alt: A city folding in on itself from Inception
     link: index.html
     description:
       - - Redesigned this website from scratch over one weekend.
@@ -205,7 +237,9 @@ projects:
   - title: Alphabet Game
     subtitle: HTML / JavaScript / CSS
     date: 2018
-    image: alphabet.gif
+    image:
+      url: alphabet.gif
+      alt: The alphabet letters being drawn out in order
     link: samples/alphabet_game.html
     description:
       - - Created an alphabet game for my autistic son.
@@ -213,7 +247,9 @@ projects:
   - title: Procedurally Texture
     subtitle: WebGL / GLSL / JavaScript
     date: ~2013
-    image: webgl.jpg
+    image:
+      url: webgl.jpg
+      alt: A colorful teapot
     link: samples/webgl.html
     description:
       - - Used WebGL after taking an Udacity course on the subject.
