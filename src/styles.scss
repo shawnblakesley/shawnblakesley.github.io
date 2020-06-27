@@ -17,6 +17,11 @@ $black:#000;
 $lite-grey:rgba($black, .2);
 $lite-big-stone:rgba($big-stone, .7);
 
+$controls-width:550px;
+$controls-height:400px;
+$controls-width-small:90vw;
+$controls-height-small:480px;
+
 $card-width:350px;
 $card-height:350px;
 
@@ -33,6 +38,7 @@ $transition: cubic-bezier(.17, .67, .5, 1.03);
 $timing-1:.3s .20s;
 $timing-2:.2s .15s;
 $timing-3:.4s .25s;
+$timing-4:.5s .35s;
 
 $grotesque-black:'Grotesque Black',
 sans-serif;
@@ -225,7 +231,6 @@ a.button {
     padding: 1.0em;
     border-radius: $border-radius;
     text-shadow: $dark-box-shadow;
-    box-shadow: $button-shadow;
     width: 100%;
     font-size: 1.1em;
     margin: auto;
@@ -321,4 +326,89 @@ article.card {
         }
 
     }
+}
+
+// For sample pages
+.sample-description {
+    pointer-events: none;
+
+    article.card {
+        @include size($controls-width, $controls-height);
+
+        @media screen and (max-width: 550px) {
+            @include size($controls-width-small, $controls-height-small);
+        }
+
+        .infos-no-hover,
+        .infos {
+            @include size(auto, $controls-height);
+
+            @media screen and (max-width: 550px) {
+                @include size(auto, $controls-height-small);
+            }
+
+            pointer-events: none;
+        }
+    }
+
+    position: absolute;
+    left: 10px;
+
+    opacity: 0;
+    visibility: visible;
+    top: -550px;
+    transition: $timing-4 $transition;
+
+    &.show {
+        opacity: 1;
+        top: 30px;
+        transition: $timing-4 $transition;
+
+        article.card {
+
+            .infos-no-hover,
+            .infos {
+                pointer-events: auto;
+            }
+        }
+    }
+}
+
+.sample-description-button {
+    position: absolute;
+    left: 10px;
+    opacity: 1;
+    visibility: visible;
+    top: 60px;
+    background-color: $maroon-flush;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+
+    svg {
+        margin: auto;
+    }
+
+    transition: $timing-2 $transition;
+    box-shadow: $box-shadow;
+    // box-shadow: $icon-shadow;
+
+    &:hover {
+        border-radius: $border-radius;
+        box-shadow: $button-shadow;
+    }
+}
+
+.sample-button {
+    background-color: $maroon-flush;
+    color: $white;
+    width: 100%;
+    padding: 5px;
+    border-radius: $border-radius;
+    text-transform: uppercase;
+    font-size: .9em;
+    margin: 10px 0px;
 }

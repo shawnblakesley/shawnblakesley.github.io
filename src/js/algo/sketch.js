@@ -1,64 +1,98 @@
 let canvas;
 let canvasSize;
-let button;
 let sel;
+let paused = false;
 
 let mazeDef = {
     setup_function: setupMaze,
     draw_function: drawMaze,
+    short_name: "maze",
 }
 let golDef = {
     setup_function: setupGOL,
     draw_function: drawGOL,
     pressed_function: spawnMouse,
+    short_name: "gol",
 }
 let testDef = {
     setup_function: () => console.log("Entering the test"),
     draw_function: () => background(0),
+    short_name: "test",
 }
 
 let algo_name;
 let algorithms;
 
+function regenerate() {
+    setAlgorithm(algo_name);
+}
+
+function togglePause() {
+    paused = !paused;
+    for (const elem of document.getElementsByClassName("sample-pause")) {
+        if (paused) {
+            elem.textContent = "Resume";
+        } else {
+            elem.textContent = "Pause";
+        }
+    }
+}
+
 function setAlgorithm(algo) {
+    if (paused) {
+        togglePause();
+    }
+    hide();
     if (algorithms.has(algo)) {
         algo_name = algo;
-        console.log("Chosen algorithm:", algo_name);
         algorithms.get(algo_name).setup_function();
-        button.mousePressed(() => setAlgorithm(algo_name));
     } else {
         console.error("Could not find algorithm:", algo_name)
     }
 }
+
+function autoClose(evt) {
+    let elem = document.getElementById(`${algorithms.get(algo_name).short_name}-description`);
+    if (!elem.contains(evt.target) && elem.classList.contains("show")) {
+        hide();
+    }
+}
+
+function show() {
+    hide();
+    let id = `${algorithms.get(algo_name).short_name}-description`
+    let elem = document.getElementById(id);
+    elem.classList.add("show"); // TODO: make just show
+
+    setTimeout(() => window.addEventListener('click', autoClose), 200);
+}
+
+function hide() {
+    window.removeEventListener('click', autoClose, false);
+    if (algo_name) {
+        elem = document.getElementById(`${algorithms.get(algo_name).short_name}-description`);
+        elem.classList.remove("show");
+    }
+}
+
 
 function setup() {
     algorithms = new Map();
     algorithms.set("game of life", golDef);
     algorithms.set("maze", mazeDef);
     algorithms.set("some other really long named thing", testDef);
-    console.log(algorithms);
 
     sel = createSelect();
-    // sel.position(10, 75);
     for (const key of algorithms.keys()) {
         console.log(key);
         sel.option(key);
     }
     sel.changed(() => setAlgorithm(sel.value()));
     sel.style("font-size", "1.3em");
-    sel.style("width", "150px");
-    sel.style("position", "absolute");
-    sel.style("right", "10px");
-    sel.style("top", "75px");
+    sel.style("width", "250px");
+    sel.parent("algo-picker");
 
-    button = createButton('regenerate');
-    button.style("font-size", "1.3em");
-    button.style("width", "150px");
-    button.style("position", "absolute");
-    button.style("right", "10px");
-    button.style("top", "45px");
-
-    canvas = createCanvas(windowWidth, windowHeight - 175);
+    canvas = createCanvas(windowWidth, windowHeight - 185);
     canvas.parent("p5");
     setAlgorithm("game of life");
 }
@@ -76,7 +110,7 @@ function draw() {
 }
 
 function windowResized() {
-    canvas = createCanvas(windowWidth, windowHeight - 175);
+    canvas = createCanvas(windowWidth, windowHeight - 185);
     canvas.parent("p5");
     setAlgorithm(algo_name);
 }
@@ -102,7 +136,7 @@ function makeMaze(cols, rows) {
     for (let i = 0; i < cols; i++) {
         arr[i] = new Array(rows);
         for (let j = 0; j < rows; j++) {
-            arr[i][j] = floor(random(2)) * random(255) - 1;
+            arr[i][j] = floor(random(2)) * random(2097152) - 1;
         }
     }
     return arr;
@@ -140,9 +174,9 @@ function drawSquareMaze(col, row) {
     if (maze[col][row] == -1) {
         fill(50);
     } else {
-        fill(value * 3 % 20 + 235, value * 2 % 50 + 205, value % 75 + 180);
+        fill(value / 16384 + 64, value % 16384 / 128 + 64, value % 128 + 64);
     }
-    rect(x, y, resolution - 1, resolution - 1);
+    rect(x, y, resolution, resolution);
 }
 
 function drawMaze() {
@@ -184,6 +218,10 @@ function drawSquareGOL(col, row) {
     let y = row * resolution;
     if (gol[col][row] == 1) {
         fill(50, 20, 30);
+    } else if (gol[col][row] == 2) {
+        fill(50, 220, 130);
+    } else if (gol[col][row] == -1) {
+        fill(160, 20, 60);
     } else {
         fill(255);
     }
@@ -191,20 +229,20 @@ function drawSquareGOL(col, row) {
 }
 
 function computeNext(col, row) {
-    let state = gol[col][row];
+    let state = max(min(gol[col][row], 1), 0);
     let live = -state;
     for (let i = -1; i < 2; i++) {
         for (let j = -1; j < 2; j++) {
             let x = (col + i + cols) % cols;
             let y = (row + j + rows) % rows;
-            live += gol[x][y];
+            live += max(min(gol[x][y], 1), 0);
         }
     }
     next[col][row] = state;
     if (state == 0 && live == 3) {
-        next[col][row] = 1;
+        next[col][row] = 2;
     } else if (state == 1 && (live < 2 || live > 3)) {
-        next[col][row] = 0;
+        next[col][row] = -1;
     }
 }
 
@@ -212,16 +250,16 @@ function drawGOL() {
     background(0);
     forEachSquare(gol, drawSquareGOL);
 
-    forEachSquare(gol, computeNext);
-
-    let temp = gol;
-    gol = next;
-    next = temp;
+    if (!paused) {
+        forEachSquare(gol, computeNext);
+        let temp = gol;
+        gol = next;
+        next = temp;
+    }
 }
 
 function spawnMouse() {
     if (mouseIsPressed) {
-        console.log("mouse is pressed...");
         let x = floor(mouseX / resolution);
         let y = floor(mouseY / resolution);
 

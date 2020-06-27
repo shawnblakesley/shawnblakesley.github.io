@@ -1,7 +1,7 @@
 include ../../includes/mixins
 
 doctype html
-html(lang="en" style="overflow: hidden;")
+html(lang="en")
   head
     include ../../includes/head
     title AI - Shawn Of The Dev
@@ -12,4 +12,26 @@ html(lang="en" style="overflow: hidden;")
   body
     include ../../includes/header
     #p5
+    .sample-description-button(onclick="show()")
+      svg(viewBox="0 0 100 80" width="20" height="20")
+        g(color="white")
+          rect(width="100" height="15" rx="8" fill="currentcolor")
+          rect(y="30" width="100" height="15" rx="8" fill="currentcolor")
+          rect(y="60" width="100" height="15" rx="8" fill="currentcolor")
+
+
+    #gol-description.sample-description
+      +card("Game of Life")
+        p This example follows the basic rules from Conway's Game of Life.
+        p - If a dead cell is neighboring exactly 3 living cells it will come back to life.
+        p - If a living cell is neighboring less that 2 or greater than 3 live cells it will die.
+        p Red <span style="color: rgb(160, 20, 60);font-size: 1.5em;">&#9632;</span> indicates a recent cell death, and green <span style="color: rgb(50, 220, 130);font-size: 1.5em;">&#9632;</span> indicates a new cell birth.
+        button.sample-button.sample-pause(onclick="togglePause(this)") Pause
+        button.sample-button(onclick="regenerate()") Regenerate
+    #maze-description.sample-description
+      +card("Maze")
+        button.sample-button(onclick="regenerate()") Regenerate
+    #test-description.sample-description
+      +card("Test")
+    #algo-picker
     include ../../includes/footer
