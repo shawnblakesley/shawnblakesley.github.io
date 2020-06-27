@@ -3,24 +3,24 @@ let canvasSize;
 let sel;
 let paused = false;
 
-let mazeDef = {
-    setup_function: setupMaze,
-    draw_function: drawMaze,
-    short_name: "maze",
-    next: "test",
-}
 let golDef = {
     setup_function: setupGOL,
     draw_function: drawGOL,
     pressed_function: spawnMouse,
     short_name: "gol",
+    next: "game of life 3D",
+}
+let gol3DDef = {
+    setup_function: setupGOL3D,
+    draw_function: drawGOL3D,
+    short_name: "gol3D",
     next: "maze",
 }
-let testDef = {
-    setup_function: () => console.log("Entering the test"),
-    draw_function: () => background(0),
-    short_name: "test",
-    next: "some other really long named thing",
+let mazeDef = {
+    setup_function: setupMaze,
+    draw_function: drawMaze,
+    short_name: "maze",
+    next: "game of life",
 }
 
 let algo_name;
@@ -41,11 +41,23 @@ function togglePause() {
     }
 }
 
+function toggleOrtho(elem) {
+    ortho_view = !ortho_view;
+    if (ortho_view) {
+        elem.textContent = "Show Perspective View";
+    } else {
+        elem.textContent = "Show Orthographic View";
+    }
+}
+
 function nextAlgorithm() {
     setAlgorithm(algorithms.get(algo_name).next);
 }
 
 function setAlgorithm(algo) {
+    canvas = createCanvas(windowWidth, windowHeight - 185, P2D);
+    canvas.parent("p5");
+    canvas.style("display", "block");
     if (paused) {
         togglePause();
     }
@@ -88,8 +100,8 @@ function hide() {
 function setup() {
     algorithms = new Map();
     algorithms.set("game of life", golDef);
+    algorithms.set("game of life 3D", gol3DDef);
     algorithms.set("maze", mazeDef);
-    algorithms.set("some other really long named thing", testDef);
 
     sel = createSelect();
     for (const key of algorithms.keys()) {
@@ -100,9 +112,8 @@ function setup() {
     sel.style("width", "250px");
     sel.parent("algo-picker");
 
-    canvas = createCanvas(windowWidth, windowHeight - 185);
-    canvas.parent("p5");
-    setAlgorithm("game of life");
+    algo_name = "game of life";
+    setAlgorithm(algo_name);
 }
 
 function draw() {
@@ -118,14 +129,30 @@ function draw() {
 }
 
 function windowResized() {
-    canvas = createCanvas(windowWidth, windowHeight - 185);
-    canvas.parent("p5");
     setAlgorithm(algo_name);
 }
 
 function mousePressed() {
     if (algorithms.has(algo_name) && algorithms.get(algo_name).pressed_function) {
         algorithms.get(algo_name).pressed_function();
+    }
+}
+
+function forEachSquare(arr, func) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+            func(i, j);
+        }
+    }
+}
+
+function forEachCube(arr, func) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+            for (let k = 0; k < arr[i][j].length; k++) {
+                func(i, j, k);
+            }
+        }
     }
 }
 
@@ -165,14 +192,6 @@ function setupMaze() {
     cols = floor(width / resolution);
     rows = floor(height / resolution);
     maze = makeMaze(cols, rows);
-}
-
-function forEachSquare(arr, func) {
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr[i].length; j++) {
-            func(i, j);
-        }
-    }
 }
 
 function drawSquareMaze(col, row) {
@@ -215,7 +234,6 @@ function setupGOL() {
     frameRate(30);
     noStroke();
     resolution = max(ceil(sqrt(max(width, height)) / 3), 10);
-    console.log("resolution", resolution);
     cols = ceil(width / resolution);
     rows = ceil(height / resolution);
     gol = makeGOL(cols, rows);
@@ -275,4 +293,135 @@ function spawnMouse() {
         gol[x][y] = 1;
         next[x][y] = 1;
     }
+}
+
+
+////////////////////////////////
+// functions for game of life 3D
+
+let webgl;
+
+let gol3D;
+let next3D;
+
+let spacing;
+let cube_size;
+let pages;
+let skip_tick_mod = 3;
+let mouse_follow = true;
+let shape = "cube";
+let ortho_view = false;
+
+function makeGOL3D() {
+    let arr = new Array(cols);
+    for (let i = 0; i < cols; i++) {
+        arr[i] = new Array(rows);
+        for (let j = 0; j < rows; j++) {
+            arr[i][j] = new Array(pages);
+            for (let k = 0; k < pages; k++) {
+                arr[i][j][k] = floor(random(2));
+            }
+        }
+    }
+    return arr;
+}
+
+function setupGOL3D() {
+    webgl = createGraphics(windowWidth, windowHeight - 185, WEBGL);
+    if (ortho_view) {
+        webgl.ortho(-width / 2, width / 2, height / 2, -height / 2, 1500, -1500);
+        webgl.noStroke();
+    }
+    frameRate(60);
+    noStroke();
+    resolution = 15;
+    cube_size = 20;
+    spacing = 5;
+    cols = resolution;
+    rows = resolution;
+    pages = resolution;
+    gol3D = makeGOL3D();
+    next3D = makeGOL3D();
+}
+
+function drawCubeGOL(col, row, page) {
+    let x = col * (cube_size + spacing) - (cube_size + spacing) * resolution / 2;
+    let y = row * (cube_size + spacing) - (cube_size + spacing) * resolution / 2;
+    let z = page * (cube_size + spacing) - (cube_size + spacing) * resolution / 2;
+    let val = gol3D[col][row][page];
+    if (val == 0) {
+        return;
+    }
+    if (val == 1) {
+        webgl.emissiveMaterial(255, 255, 255, 190);
+    } else if (val == 2) {
+        webgl.emissiveMaterial(50, 220, 130, 220);
+    } else if (val == -1) {
+        webgl.emissiveMaterial(160, 20, 60, 160);
+    }
+
+    webgl.push();
+    webgl.translate(x, y, z);
+    if (shape == "sphere") {
+        webgl.sphere(cube_size / 2);
+    } else {
+        webgl.box(cube_size);
+    }
+    webgl.pop();
+}
+
+function computeNext3D(col, row, page) {
+    let state = max(min(gol3D[col][row][page], 1), 0);
+    let live = -state;
+    for (let i = -1; i < 2; i++) {
+        for (let j = -1; j < 2; j++) {
+            for (let k = -1; k < 2; k++) {
+                let x = (col + i + cols) % cols;
+                let y = (row + j + rows) % rows;
+                let z = (page + k + pages) % pages;
+                live += max(min(gol3D[x][y][z], 1), 0);
+            }
+        }
+    }
+    next3D[col][row][page] = state;
+    if (state == 0 && live < 10 && live > 6) {
+        next3D[col][row][page] = 2;
+    } else if (state == 1 && (live <= 5 || live >= 9) && live != 0) {
+        next3D[col][row][page] = -1;
+    }
+    if (floor(random(20)) >= 19) {
+        if (state == 0) {
+            next3D[col][row][page] = floor(random(2)) * 2;
+        } else if (state == 1) {
+            next3D[col][row][page] = -1;
+        }
+    }
+}
+
+function drawGOL3D() {
+    background(0);
+    webgl.reset();
+    if (shape == "sphere") {
+        webgl.noStroke();
+    }
+    webgl.background(0);
+    if (ortho_view) {
+        webgl.rotateX(PI / 16);
+        webgl.rotateY(-PI / 8);
+    } else if (mouse_follow) {
+        yRotation = mouseX / windowWidth * 2 * PI;
+        xRotation = mouseY / windowHeight * 2 * PI;
+        webgl.rotateY(yRotation);
+        webgl.rotateX(xRotation);
+    }
+
+    forEachCube(gol3D, drawCubeGOL);
+
+    if (!paused && frameCount % skip_tick_mod == 0) {
+        forEachCube(gol3D, computeNext3D);
+        let temp = gol3D;
+        gol3D = next3D;
+        next3D = temp;
+    }
+    image(webgl, 0, 0);
 }

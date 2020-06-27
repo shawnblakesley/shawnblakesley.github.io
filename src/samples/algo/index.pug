@@ -28,11 +28,19 @@ html(lang="en")
         p Red <span style="color: rgb(160, 20, 60);font-size: 1.5em;">&#9632;</span> indicates a recent cell death, and green <span style="color: rgb(50, 220, 130);font-size: 1.5em;">&#9632;</span> indicates a new cell birth.
         button.sample-button.sample-pause(onclick="togglePause(this)") Pause
         button.sample-button(onclick="regenerate()") Regenerate
-        // button.sample-next(onclick="nextAlgorithm()") Maze // TODO: make this into a button that takes to the next algorithm
+        // button.sample-next(onclick="nextAlgorithm()") Game Of Life 3D // TODO: make this into a button that takes to the next algorithm
     #maze-description.sample-description
       +card("Maze")
         button.sample-button(onclick="regenerate()") Regenerate
-    #test-description.sample-description
-      +card("Test")
+    #gol3D-description.sample-description
+      +card("Game of Life 3D")
+        p This example converted Conway's Game of Life to 3 Dimensions.
+        p - Spawn cell if head and  9 >= live neighbors >= 5.
+        p - Kill cell if living and 9 < live neighbors or live neighbors < 5.
+        p Red indicates a recent cell death, and green indicates a new cell birth.
+        button.sample-button.sample-pause(onclick="togglePause()") Pause
+        button.sample-button(onclick="toggleOrtho(this)") Orthographic View
+        button.sample-button(onclick="regenerate()") Regenerate
+        // button.sample-next(onclick="nextAlgorithm()") Game Of Life 3D // TODO: make this into a button that takes to the next algorithm
     #algo-picker
     include ../../includes/footer
