@@ -3,7 +3,8 @@
 import argparse
 import asyncio
 import os
-import shutil
+from pathlib import Path
+from shutil import copytree, ignore_patterns, rmtree
 
 from rich import print
 from watchgod import awatch
@@ -18,7 +19,7 @@ async def run(command):
 def clean(*paths):
     for path in paths:
         print(f"Cleaning [green]{path}[/green]")
-        shutil.rmtree(path, ignore_errors=True)
+        rmtree(path, ignore_errors=True)
         os.makedirs(path)
 
 
@@ -26,7 +27,11 @@ def copy_from(path, subpath):
     print(
         f"Copying {subpath} from [green]{path}/{subpath}/[/green] to [green]./dist/{subpath}/[/green]"
     )
-    shutil.copytree(f"{path}/{subpath}/", f"./dist/{subpath}/")
+    copytree(
+        f"{path}/{subpath}/",
+        f"./dist/{subpath}/",
+        ignore=ignore_patterns("*.pug", "*.scss"),
+    )
 
 
 async def build(path):
@@ -40,7 +45,21 @@ async def build(path):
     # npx yaml2json src/data.yml > build/data.json
     await run(f"npx yaml2json {path}/data.yml > build/data.json")
     # npx pug -P -O build/data.json src/index.pug --out dist
-    await run(f"npx pug -s -O build/data.json {path}/index.pug --out dist")
+
+    # find {path} -name '*.pug' | xargs npx pug -s -O build/data.json {path}/{subpath} --out dist/{subpath}
+    pug_files = []
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            if file.endswith(".pug"):
+                if "includes" not in root:
+                    subpath = root.replace(path, "")
+                    if subpath.startswith("/"):
+                        subpath = subpath[1:]
+                    pug_files.append(Path(subpath, file))
+    for subpath in pug_files:
+        await run(
+            f"npx pug -s -O build/data.json {path}/{subpath} --out dist/{subpath.parent}"
+        )
 
 
 async def main(path):
@@ -57,8 +76,6 @@ async def main(path):
 
 
 if __name__ == "__main__":
-    import os
-
     abspath = os.path.abspath(__file__)
     dname = os.path.dirname(abspath)
     os.chdir(dname)

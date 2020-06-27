@@ -223,14 +223,25 @@ education:
       - - Used this course as a refresher to keep up to date with the Deep Learning world.
       - - Completed in free time while working full-time at Anki.
 projects:
+  - title: Algorithm Visuals
+    subtitle: p5.js
+    date: Jun. 2020
+    image:
+      url: maze.webp
+      backup: maze.gif
+      alt: maze filling with color
+    link: /samples/algo/
+    description:
+      - - Fun visualizations for algorithms.
+      - - Created using p5.js for rendering, so I could focus on the code over the display.
   - title: This Website
     subtitle: Pug / Sass / Go / Docker
     date: Jun. 2020
     image:
       url: inception.webp
       backup: inception.gif
-      alt: A city folding in on itself from Inception
-    link: index.html
+      alt: city folding in on itself from Inception
+    link: /index.html
     description:
       - - Redesigned this website from scratch over one weekend.
       - - Made the main page generated from a template and data so adding content is purely data-driven.
@@ -240,7 +251,7 @@ projects:
     image:
       url: alphabet.jpg
       alt: Letters of the english alphabet
-    link: samples/alphabet_game.html
+    link: /samples/alphabet_game/
     description:
       - - Created an alphabet game for my autistic son.
       - - The first of hopefully many games I can make to help bridge the communication gap with him.
@@ -249,9 +260,9 @@ projects:
     date: ~2013
     image:
       url: webgl.jpg
-      alt: A colorful teapot
-    link: samples/webgl.html
+      alt: colorful teapot
+    link: /samples/webgl/
     description:
       - - Used WebGL after taking an Udacity course on the subject.
       - - Incorporated prior experience with GLSL fragment and vertex shaders.
-      - - Planning to rewrite this example in late 2020 to keep up with the graphics world.
+      - - Currently working on a rewrite of this.

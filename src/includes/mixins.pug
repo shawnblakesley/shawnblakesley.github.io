@@ -1,0 +1,28 @@
+mixin infos(title, company, date, link)
+  h3.title= title
+  if company
+    h3.company= company
+  if date
+    h3.date= date
+  block
+  if link
+    a.button.link(href=link) View Project
+
+
+mixin card(title, company, date, image, link, backup_image)
+  article.card
+    if image
+      if image.backup
+        picture
+          source.thumb(type="image/webp" srcset="/images/" + image.url)
+          img.thumb(src="/images/" + image.backup alt=image.alt)
+      else
+        img.thumb(src="/images/" + image.url alt=image.alt)
+      .infos
+        +infos(title, company, date, link)
+          block
+    else
+      img.thumb-no-hover(src="/images/physics.jpg" alt="placeholder")
+      .infos-no-hover
+        +infos(title, company, date, link)
+          block

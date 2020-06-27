@@ -1,57 +1,13 @@
-mixin infos(title, company, date, link)
-  h3.title= title
-  if company
-    h3.company= company
-  if date
-    h3.date= date
-  block
-  if link
-    a.button.link(href=link) View
-
-
-mixin card(title, company, date, image, link, backup_image)
-  article.card
-    if image
-      if image.backup
-        picture
-          source.thumb(type="image/webp" srcset="images/" + image.url)
-          img.thumb(src="images/" + image.backup alt=image.alt)
-      else
-        img.thumb(src="images/" + image.url alt=image.alt)
-      .infos
-        +infos(title, company, date, link)
-          block
-    else
-      img.thumb-no-hover(src="images/physics.jpg" alt="placeholder")
-      .infos-no-hover
-        +infos(title, company, date, link)
-          block
+include includes/mixins
 
 doctype html
-html
+html(lang="en")
   head
-    title Shawn Of The Dev
-    meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
-    meta(name="author" content="Shawn Blakesley")
+    include includes/head
+    title Shawn Of The Dev - Homepage
     meta(name="description" content="The home page of a full-stack engineer with additional NLP and embedded experience.")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    meta(name="twitter:card" content="summary_large_image")
-    meta(name="twitter:site" content="@BlakesleyShawn")
-    meta(name="twitter:title" content="Shawn of the Dev")
-    meta(name="twitter:description" content="The home page of a full-stack engineer with additional NLP and embedded experience")
-    meta(name="twitter:image" content="https://shawnofthe.dev/images/carousel.jpg")
-    link(rel="shortcut icon" href="images/favicon.png" type="image/x-icon")
-    link(rel="stylesheet" href="css/styles.css" media="screen")
-    //- link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" media="all" crossorigin="anonymous")
-    link(rel="stylesheet" href="css/fa.css" media="all")
   body
-    .header
-      nav.white(role="navigator")
-          h1 Shawn of the Dev
-          .icons-bar
-            each icon in icons
-              a.icon(href=icon.link)
-                i(class=icon.class style="color: #fff;")
+    include includes/header
     .main
       if values
         section.values
@@ -73,7 +29,7 @@ html
                         p.chip= spec
       if jobs
         section.jobs
-          h2 Jobs
+          h2 Work Experience
           .cards
             each job in jobs
               +card(job.title, job.company, (job.start?job.start + " - ":"") + job.end, job.image)
@@ -95,4 +51,4 @@ html
               +card(project.title, project.subtitle, project.date, project.image, project.link)
                 each line in project.description
                   p.txt= line
-    h5.footer ~ Made with love by Shawn Blakesley ~
+    include includes/footer

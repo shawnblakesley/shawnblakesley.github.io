@@ -1,0 +1,9 @@
+
+.header
+  nav.white(role="navigator")
+    h1 
+      a(href="/index.html") Shawn of the Dev
+    .icons-bar
+      each icon in icons
+        a.icon(href=icon.link)
+          i(class=icon.class style="color: #fff;")

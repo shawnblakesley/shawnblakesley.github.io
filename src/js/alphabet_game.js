@@ -10,7 +10,7 @@
   function loadJSON(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', '../data/alphabet_game.json', true); // Replace 'my_data' with the path to your file
+    xobj.open('GET', '/data/alphabet_game.json', true); // Replace 'my_data' with the path to your file
     xobj.onreadystatechange = function () {
       if (xobj.readyState == 4 && xobj.status == "200") {
         // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
@@ -85,7 +85,7 @@
       if (item.type) {
         type = item.type;
       }
-      var url = "../images/alphabet_game/" + item.name.toLowerCase() + "." + type;
+      var url = "/images/alphabet_game/" + item.name.toLowerCase() + "." + type;
 
       if (is_debug) {
         console.log(letter, "is for", item.name, "(/" + item.phonetic + "/)", ":", url);

@@ -1,0 +1,102 @@
+CSc 180 -- Fall 2010
+Intelligent Systems
+2010 Tournament Results - "Schmesh"
+
+
+The 9th Annual CSc-180 Two-Player Strategy Board Game Programming Contest
+took place the first week in November.  It featured 25 programs battling
+it out in the game of "SCHMESH", a newly-invented game patterned loosely
+after the old Milton Bradley game of "Smess" from the 1960s.  Players try
+to capture their opponent's king on a 5x8 board -- more importantly,
+every time a piece moves, it changes to another type of piece.
+The two-day competition included programs written in Java, C, and C++.
+
+For only the second time in 9 years, the contest was won by a program
+written in Java.  Mitch Heer's "Chubs" won a clear first in a nail-biting
+finish, which came down to the final game.  Going into the very last round
+against the instructor's program "Numbskull", Chubs needed only one win
+out of two games to secure a victory.  But Numbskull won the first game,
+and the outcome was to be decided by the result of their second game.
+Chubs pulled it out with a complex combination which had onlookers
+saying "he'll win, no he'll win" ... back and forth before Numbskull
+first reported that with correct play it should lose.  Chubs played
+the winning line, and became the 9th champion, much to the relief of
+Mitch, who had grown understandably nervous!  Tied in the final round
+with Numbskull, but one game off the pace in the quarters, was Michael
+Braden's "a.out", a clean program with fewer heuristics but written
+in C and built for speed.  Finishing in 4th, having been in the lead
+right up until the final round was David Bettencourt's "Saternine".
+
+Chubs was arguably the program which employed the most heuristics
+among the competitors, utilizing minimax and alpha-beta pruning,
+iterative deepening, sophisticated move ordering, killer move,
+key squares heuristics, and aspiration windows to search 9+ plies deep.
+Besides Numbskull, only two other programs managed to get a game off
+of Chubs ("a.out" and "Zelduck").
+
+There were many other strong programs.  Of particular note were two
+entrants which "evolved" their heuristics - Abe Sturman's "Random Champ"
+and Daniel Chally's "Schmeschmaster", which battled for 5th with Shawn
+Blakesley's "Brain Muncher".  Al Bueche's "\{^_^}/" featured a spectacular
+graphical user interface with selectable skins and sound (and retro-Smess
+pieces!).  It also played well, winning individual games against
+Numbskull and a.out before ultimately finishing in 8th place.
+
+The "most improved" program during the two-day contest was Chris Rippel's
+"Fainting Goat", which went from playing miserably on day one, to nearly
+winning the quarter-final consolation bracket.  Chris improved his program
+immensely during the intervening day off, and captured the tournament's
+coveted "Grand Hamster" award.
+
+Here are the complete results, showing prelims, quarters, semis,
+and finals, as well as consolation rounds:
+
+      Program        Author         F   S   Q   P  cons rds  total
+      ------------------------------------------------------------
+ 1.   Chubs         (Heer)         4-2 3-1 4-0 4-0           15-3
+ 2    Numbskull     (Gordon)       3-3 4-2                    7-5
+ 3.   a.out         (Braden)       3-3 3-3 4-0 4-0           14-6
+ 4.   Saternine     (Bettencourt)  2-4 5-1 4-0 4-0           15-5
+ 5    Schmeshmaster (Chally)           3-3 3-1 4-0           10-4
+ 6.   Brain Muncher (Blakesley)        4-2 2-2 3-1            9-5
+(tie) Random Champ  (Sturman)          3-3 3-1 3-1            9-5
+ 8.   \{^_^}/       (Bueche)           2-4 3-1 4-0            9-5
+ 9.   Skittles      (Hansen)           2-2 2-2 4-0            8-4
+10.   Zelduck       (Donnelly)         1-3 2-2 4-0            7-5
+11.   Ame           (DelaCruz)         0-6 3-1 2-2            5-9
+12.   Cortana       (Khoury)               0-4 2-2  4-0 4-0  10-6
+13.   Fainting Goat (Rippel)                   0-4  3-1 2-2   5-7  [GH]
+14.   Foxbat        (Kudelich)             4-4 2-2  3-1       9-7
+15.   Vizzini T.S.* (Bryant)               0-4 2-2  2-2       4-8
+16.   Seppuku       (Martine)              0-4 2-2  0-4       2-10
+17.   W.O.P.R.      (Landsborough)             0-4  6-2       6-6
+18.   PGEOM         (Truong)                   0-4  3-3       3-7
+19.   Real Bad      (Tsukiji)                  1-3  2-2       3-5
+(tie) The Rope      (Acheson)              0-4 1-3  0-4       1-11
+21.   Betsy         (Davidek)                  0-2  0-2       0-4
+(tie) WashedUp      (Reynolds)                 0-2  0-2       0-4
+(tie) Gainford God  (Gainford)                 0-2  0-2       0-4
+(tie) Game Over     (Luc)                      0-2  0-2       0-4
+(tie) Epic Fail     (Jonsson)                  0-2  0-2       0-4
+
+* Vizzini's full name was "Vizzini The Sicilian".
+
+We had many spectators for Thursday's final rounds including several
+students checking out the 180 class, as well as Dean Emir Macari and
+department chair Cui Zhang.
+
+A HUGE thanks to Dwayne Alexander (author of 2008 Grand Hamster "The Tick")
+for generously volunteering his time both days.  He basically ran the
+tournament from start to finish.  The event ran smoothly largely because
+of Dwayne's help, and he received a well-deserved round of applause from
+the room full of competitors at the end of the week!
+
+Thanks also to students Andrew Merkner for proctoring "Numbskull", and
+John Tran for proctoring "Skittles".
+
+The game of Schmesh turned out to be a tense, tactical one, with sudden
+and often unforseen forced wins requiring deep search.  There were many 
+disagreements regarding whether it was an advantage to move first or
+second.  And, although the top 15 or so programs all regularly defeat
+their authors, as of yet the game of Schmesh remains - unsolved.
+

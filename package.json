@@ -8,15 +8,14 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "pug": "^3.0.0",
-    "pug-cli": "^1.0.0-alpha6",
-    "sass": "^1.26.8",
-    "yamljs": "^0.3.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "cssnano": "^4.1.10",
     "cwebp-bin": "^6.1.1",
-    "postcss-cli": "^7.1.1"
+    "postcss-cli": "^7.1.1",
+    "pug-cli": "^1.0.0-alpha6",
+    "pug": "^3.0.0",
+    "sass": "^1.26.8",
+    "yamljs": "^0.3.0"
   }
 }

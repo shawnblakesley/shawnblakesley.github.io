@@ -25,7 +25,10 @@ $thumb-height:260px;
 $margin:12px;
 $border-radius:5px;
 $box-shadow:0 1px 4px rgba($black, .3);
-$icon-shadow:0 4px 6px rgba($maroon-flush, .5);
+$dark-box-shadow:0 1px 4px rgba($black, .5);
+$button-shadow:0px 10px 10px rgba($black, .9);
+$icon-shadow:0 4px 6px rgba($maroon-flush, .4);
+$icon-shadow-hover:0 4px 12px rgba($maroon-flush, .6);
 $transition: cubic-bezier(.17, .67, .5, 1.03);
 $timing-1:.3s .20s;
 $timing-2:.2s .15s;
@@ -70,6 +73,18 @@ sans-serif;
     box-sizing: border-box;
 }
 
+.header a {
+    text-decoration: none;
+    color: $white;
+    text-shadow: $icon-shadow;
+    transition: $timing-2 $transition;
+
+    &:hover {
+        color: $white;
+        text-shadow: $icon-shadow-hover;
+    }
+}
+
 html,
 body {
     font-size: 100%;
@@ -97,6 +112,7 @@ body {
     margin-top: 2em;
     margin-bottom: 0.5em;
     text-align: center;
+    font-size: .6em;
 }
 
 h1,
@@ -147,7 +163,6 @@ body {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    // background-color: $lite-big-stone;
 
     border-top: solid;
     border-width: thin;
@@ -200,20 +215,24 @@ body {
 }
 
 a.button {
+    font-family: $merriweather;
     appearance: button;
     text-decoration: none;
     text-transform: uppercase;
     text-align: center;
     color: $white;
-    background-color: $lite-big-stone;
-    padding: 5px 10px;
+    background-color: $maroon-flush;
+    padding: 1.0em;
     border-radius: $border-radius;
-    text-shadow: $box-shadow;
-    box-shadow: $box-shadow;
+    text-shadow: $dark-box-shadow;
+    box-shadow: $button-shadow;
+    width: 100%;
+    font-size: 1.1em;
+    margin: auto;
 }
 
 a.link {
-    @include pos(absolute, null, null, 24px, 5px);
+    @include pos(absolute, null, null, 0px, -2.2em);
     transform: translate(0%, -100%) translateZ(0);
 }
 
