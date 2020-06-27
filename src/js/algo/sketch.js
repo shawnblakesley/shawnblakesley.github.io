@@ -332,7 +332,7 @@ function setupGOL3D() {
         webgl.ortho(-width / 2, width / 2, height / 2, -height / 2, 1500, -1500);
         webgl.noStroke();
     }
-    frameRate(60);
+    frameRate(30);
     noStroke();
     resolution = 15;
     cube_size = 20;
@@ -352,16 +352,18 @@ function drawCubeGOL(col, row, page) {
     if (val == 0) {
         return;
     }
+    webgl.push();
+    webgl.translate(x, y, z);
     if (val == 1) {
         webgl.emissiveMaterial(255, 255, 255, 190);
     } else if (val == 2) {
+        webgl.scale(0.9);
         webgl.emissiveMaterial(50, 220, 130, 220);
     } else if (val == -1) {
+        webgl.scale(0.6);
         webgl.emissiveMaterial(160, 20, 60, 160);
     }
 
-    webgl.push();
-    webgl.translate(x, y, z);
     if (shape == "sphere") {
         webgl.sphere(cube_size / 2);
     } else {
