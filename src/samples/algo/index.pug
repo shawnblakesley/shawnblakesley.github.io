@@ -4,7 +4,7 @@ doctype html
 html(lang="en")
   head
     include ../../includes/head
-    title AI - Shawn Of The Dev
+    title Algorithms - Shawn Of The Dev
     meta(name="description" content="Algorithm visualizations for fun and practice.")
 
     script(language="javascript" type="text/javascript" src="/js/p5.min.js")
@@ -28,6 +28,7 @@ html(lang="en")
         p Red <span style="color: rgb(160, 20, 60);font-size: 1.5em;">&#9632;</span> indicates a recent cell death, and green <span style="color: rgb(50, 220, 130);font-size: 1.5em;">&#9632;</span> indicates a new cell birth.
         button.sample-button.sample-pause(onclick="togglePause(this)") Pause
         button.sample-button(onclick="regenerate()") Regenerate
+        // button.sample-next(onclick="nextAlgorithm()") Maze // TODO: make this into a button that takes to the next algorithm
     #maze-description.sample-description
       +card("Maze")
         button.sample-button(onclick="regenerate()") Regenerate

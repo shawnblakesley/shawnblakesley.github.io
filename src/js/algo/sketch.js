@@ -7,17 +7,20 @@ let mazeDef = {
     setup_function: setupMaze,
     draw_function: drawMaze,
     short_name: "maze",
+    next: "test",
 }
 let golDef = {
     setup_function: setupGOL,
     draw_function: drawGOL,
     pressed_function: spawnMouse,
     short_name: "gol",
+    next: "maze",
 }
 let testDef = {
     setup_function: () => console.log("Entering the test"),
     draw_function: () => background(0),
     short_name: "test",
+    next: "some other really long named thing",
 }
 
 let algo_name;
@@ -38,11 +41,17 @@ function togglePause() {
     }
 }
 
+function nextAlgorithm() {
+    setAlgorithm(algorithms.get(algo_name).next);
+}
+
 function setAlgorithm(algo) {
     if (paused) {
         togglePause();
     }
-    hide();
+    if (algo != algo_name) {
+        hide();
+    }
     if (algorithms.has(algo)) {
         algo_name = algo;
         algorithms.get(algo_name).setup_function();
@@ -84,7 +93,6 @@ function setup() {
 
     sel = createSelect();
     for (const key of algorithms.keys()) {
-        console.log(key);
         sel.option(key);
     }
     sel.changed(() => setAlgorithm(sel.value()));
@@ -150,10 +158,10 @@ function setupMaze() {
     // inp = createInput('Input here');
     // inp.parent("p5");
 
-    frameRate(10);
+    frameRate(30);
     noStroke();
 
-    resolution = 20;
+    resolution = max(ceil(sqrt(max(width, height)) / 3), 10);
     cols = floor(width / resolution);
     rows = floor(height / resolution);
     maze = makeMaze(cols, rows);
@@ -204,11 +212,12 @@ function makeGOL(cols, rows) {
 
 function setupGOL() {
     canvas.mouseMoved(spawnMouse);
-    frameRate(10);
+    frameRate(30);
     noStroke();
-    resolution = 15;
-    cols = floor(width / resolution);
-    rows = floor(height / resolution);
+    resolution = max(ceil(sqrt(max(width, height)) / 3), 10);
+    console.log("resolution", resolution);
+    cols = ceil(width / resolution);
+    rows = ceil(height / resolution);
     gol = makeGOL(cols, rows);
     next = makeGOL(cols, rows);
 }

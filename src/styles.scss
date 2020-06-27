@@ -407,7 +407,7 @@ article.card {
     color: $white;
     width: 100%;
     padding: 5px;
-    border-radius: $border-radius;
+    border-radius: 2 * $border-radius;
     text-transform: uppercase;
     font-size: .9em;
     margin: 10px 0px;
