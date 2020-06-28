@@ -8,7 +8,9 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "phaser": "^3.23.0"
+  },
   "devDependencies": {
     "cssnano": "^4.1.10",
     "cwebp-bin": "^6.1.1",

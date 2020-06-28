@@ -1,0 +1,16 @@
+include ../../includes/mixins
+
+doctype html
+html(lang="en" oncontextmenu="return false;")
+  head
+    include ../../includes/head
+    title Algorithms - Shawn Of The Dev
+    meta(name="description" content="Algorithm visualizations for fun and practice.")
+    script(language="javascript" type="text/javascript" src="/js/p5.min.js")
+    script(language="javascript" type="text/javascript" src="/js/p5.easycam.js")
+  body
+    include ../../includes/header
+    #p5
+    #sample-picker
+    include ../../includes/footer
+    script(language="javascript" type="text/javascript" src="/js/graphics/sketch.js")

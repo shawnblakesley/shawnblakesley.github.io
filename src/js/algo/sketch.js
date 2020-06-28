@@ -307,10 +307,13 @@ let next3D;
 let spacing;
 let cube_size;
 let pages;
-let skip_tick_mod = 3;
+let target_compute;
+let target_rate;
 let mouse_follow = true;
 let shape = "cube";
 let ortho_view = false;
+let compute_delay = 0;
+let frames_since_compute = 0;
 
 function makeGOL3D() {
     let arr = new Array(cols);
@@ -332,17 +335,20 @@ function setupGOL3D() {
         webgl.ortho(-width / 2, width / 2, height / 2, -height / 2, 1500, -1500);
         webgl.noStroke();
     }
-    frameRate(30);
+    target_rate = 30
+    frameRate(target_rate);
     noStroke();
-    resolution = 15;
-    cube_size = 20;
+    resolution = 12;
+    cube_size = 25;
     spacing = 5;
+    target_compute = 20;
     cols = resolution;
     rows = resolution;
     pages = resolution;
     gol3D = makeGOL3D();
     next3D = makeGOL3D();
 }
+
 
 function drawCubeGOL(col, row, page) {
     let x = col * (cube_size + spacing) - (cube_size + spacing) * resolution / 2;
@@ -357,10 +363,10 @@ function drawCubeGOL(col, row, page) {
     if (val == 1) {
         webgl.emissiveMaterial(255, 255, 255, 190);
     } else if (val == 2) {
-        webgl.scale(0.9);
+        webgl.scale(0.3 + 0.8 * compute_delay);
         webgl.emissiveMaterial(50, 220, 130, 220);
     } else if (val == -1) {
-        webgl.scale(0.6);
+        webgl.scale(0.7 - 0.8 * compute_delay);
         webgl.emissiveMaterial(160, 20, 60, 160);
     }
 
@@ -400,6 +406,74 @@ function computeNext3D(col, row, page) {
     }
 }
 
+
+
+function computeNext3DAlt(col, row, page) {
+    let state = max(min(gol3D[col][row][page], 1), 0);
+    let live = 0;
+    for (let i = 0; i < 2; i++) {
+        let x = (col + i * 2 - 1 + cols) % cols;
+        let y = row;
+        let z = page;
+        live += max(min(gol3D[x][y][z], 1), 0);
+    }
+    for (let j = 0; j < 2; j++) {
+        let x = col;
+        let y = (row + j * 2 - 1 + rows) % rows;
+        let z = page;
+        live += max(min(gol3D[x][y][z], 1), 0);
+    }
+    for (let k = 0; k < 2; k++) {
+        let x = col;
+        let y = row;
+        let z = (page + k * 2 - 1 + pages) % pages;
+        live += max(min(gol3D[x][y][z], 1), 0);
+    }
+    next3D[col][row][page] = state;
+    if (state == 0 && live == 3) {
+        next3D[col][row][page] = 2;
+    } else if (state == 1 && (live < 2 || live > 3)) {
+        next3D[col][row][page] = -1;
+    }
+}
+
+
+
+function computeNext3DAlt2(col, row, page) {
+    let state = max(min(gol3D[col][row][page], 1), 0);
+    let live = 0;
+    for (let i = -1; i < 2; i++) {
+        for (let j = -1; j < 2; j++) {
+            for (let k = -1; k < 2; k++) {
+                let x = (col + i + cols) % cols;
+                let y = (row + j + rows) % rows;
+                let z = (page + k + pages) % pages;
+                var box_value = max(min(gol3D[x][y][z], 1), 0);
+                if (x == col && y == row && z == page) {
+                    continue;
+                }
+                if (x != col) {
+                    box_value /= 2.0;
+                }
+                if (y != row) {
+                    box_value /= 2.0;
+                }
+                if (z != page) {
+                    box_value /= 2.0;
+                }
+                live += box_value * 2;
+            }
+        }
+    }
+    next3D[col][row][page] = state;
+    live = ceil(live);
+    if (state == 0 && live < 5 && live > 3) {
+        next3D[col][row][page] = 2;
+    } else if (state == 1 && (live < 3 || live > 5)) {
+        next3D[col][row][page] = -1;
+    }
+}
+
 function drawGOL3D() {
     background(0);
     webgl.reset();
@@ -417,13 +491,17 @@ function drawGOL3D() {
         webgl.rotateX(xRotation);
     }
 
-    forEachCube(gol3D, drawCubeGOL);
-
-    if (!paused && frameCount % skip_tick_mod == 0) {
-        forEachCube(gol3D, computeNext3D);
+    frames_since_compute += (deltaTime / 1000.0) * target_rate;
+    console.log(frames_since_compute, target_compute)
+    if (!paused && frames_since_compute > target_compute) {
+        frames_since_compute -= target_compute;
+        frames_since_compute = 0;
+        forEachCube(gol3D, computeNext3DAlt2);
         let temp = gol3D;
         gol3D = next3D;
         next3D = temp;
     }
+    compute_delay = sqrt(frames_since_compute / target_compute);
+    forEachCube(gol3D, drawCubeGOL);
     image(webgl, 0, 0);
 }

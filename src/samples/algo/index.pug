@@ -6,12 +6,11 @@ html(lang="en")
     include ../../includes/head
     title Algorithms - Shawn Of The Dev
     meta(name="description" content="Algorithm visualizations for fun and practice.")
-
     script(language="javascript" type="text/javascript" src="/js/p5.min.js")
-    script(language="javascript" type="text/javascript" src="/js/algo/sketch.js")
+    script(language="javascript" type="text/javascript" src="/js/p5.easycam.min.js")
   body
     include ../../includes/header
-    #p5
+    #p5(oncontextmenu="return false;")
     .sample-description-button(onclick="show()")
       svg(viewBox="0 0 100 80" width="20" height="20")
         g(color="white")
@@ -44,3 +43,4 @@ html(lang="en")
         // button.sample-next(onclick="nextAlgorithm()") Game Of Life 3D // TODO: make this into a button that takes to the next algorithm
     #algo-picker
     include ../../includes/footer
+    script(language="javascript" type="text/javascript" src="/js/algo/sketch.js")
