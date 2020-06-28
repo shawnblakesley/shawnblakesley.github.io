@@ -363,10 +363,10 @@ function drawCubeGOL(col, row, page) {
     if (val == 1) {
         webgl.emissiveMaterial(255, 255, 255, 190);
     } else if (val == 2) {
-        webgl.scale(0.3 + 0.8 * compute_delay);
+        webgl.scale(min(0.3 + 0.8 * compute_delay, 1.0));
         webgl.emissiveMaterial(50, 220, 130, 220);
     } else if (val == -1) {
-        webgl.scale(0.7 - 0.8 * compute_delay);
+        webgl.scale(max(0.7 - 0.8 * compute_delay, 0.0));
         webgl.emissiveMaterial(160, 20, 60, 160);
     }
 
