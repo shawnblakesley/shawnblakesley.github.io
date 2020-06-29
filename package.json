@@ -6,8 +6,8 @@
   "scripts": {
     "build": "node configure.js",
     "start": "npm run local",
-    "local": "concurrently \"node configure.js -w\" \"http-server dist -a localhost -p 8000\"",
-    "open": "concurrently \"node configure.js -w\" \"http-server dist -a localhost -p 8000\" \"sleepms 2000 && open http://localhost:8000/index.html\""
+    "local": "concurrently \"node configure.js -w\" \"http-server dist -c-1 -a localhost -p 8000\"",
+    "open": "concurrently \"node configure.js -w\" \"http-server dist -c-1 -a localhost -p 8000\" \"sleepms 2000 && open http://localhost:8000/index.html\""
   },
   "author": "Shawn Blakesley",
   "license": "ISC",
