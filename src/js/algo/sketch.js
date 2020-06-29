@@ -14,14 +14,9 @@ let gol3DDef = {
     setup_function: setupGOL3D,
     draw_function: drawGOL3D,
     short_name: "gol3D",
-    next: "maze",
+    next: "hex maze generator",
 }
-let mazeDef = {
-    setup_function: setupMaze,
-    draw_function: drawMaze,
-    short_name: "maze",
-    next: "game of life",
-}
+let mazeDef = new HexMaze("game of life");
 
 let algo_name;
 let algorithms;
@@ -101,7 +96,7 @@ function setup() {
     algorithms = new Map();
     algorithms.set("game of life", golDef);
     algorithms.set("game of life 3D", gol3DDef);
-    algorithms.set("maze", mazeDef);
+    algorithms.set("hex maze generator", mazeDef);
 
     sel = createSelect();
     for (const key of algorithms.keys()) {
@@ -157,66 +152,14 @@ function forEachCube(arr, func) {
 }
 
 
-/////////////////////
-// functions for maze
-
-let maze;
-let cols;
-let rows;
-let resolution;
-let inp;
-
-function makeMaze(cols, rows) {
-    let arr = new Array(cols);
-    for (let i = 0; i < cols; i++) {
-        arr[i] = new Array(rows);
-        for (let j = 0; j < rows; j++) {
-            arr[i][j] = floor(random(2)) * random(2097152) - 1;
-        }
-    }
-    return arr;
-}
-
-function setupMaze() {
-    // TODO: make controls for each algorithm
-    if (inp) {
-        inp.remove();
-    }
-    // inp = createInput('Input here');
-    // inp.parent("p5");
-
-    frameRate(30);
-    noStroke();
-
-    resolution = max(ceil(sqrt(max(width, height)) / 3), 10);
-    cols = floor(width / resolution);
-    rows = floor(height / resolution);
-    maze = makeMaze(cols, rows);
-}
-
-function drawSquareMaze(col, row) {
-    let x = col * resolution;
-    let y = row * resolution;
-    let value = maze[col][row];
-    if (maze[col][row] == -1) {
-        fill(50);
-    } else {
-        fill(value / 16384 + 64, value % 16384 / 128 + 64, value % 128 + 64);
-    }
-    rect(x, y, resolution, resolution);
-}
-
-function drawMaze() {
-    background(0);
-    forEachSquare(maze, drawSquareMaze);
-}
-
-
 /////////////////////////////
 // functions for game of life
 
 let gol;
 let next;
+let cols;
+let rows;
+let resolution;
 
 function makeGOL(cols, rows) {
     let arr = new Array(cols);
@@ -492,7 +435,6 @@ function drawGOL3D() {
     }
 
     frames_since_compute += (deltaTime / 1000.0) * target_rate;
-    console.log(frames_since_compute, target_compute)
     if (!paused && frames_since_compute > target_compute) {
         frames_since_compute -= target_compute;
         frames_since_compute = 0;
