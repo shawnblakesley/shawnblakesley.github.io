@@ -11,9 +11,11 @@ var current_cell = {
     y: 0,
 };
 
-function Cell(x, y) {
+function Cell(x, y, width, height) {
     this.x = x;
     this.y = y;
+    this.width = width;
+    this.height = height;
 
     this.visited = false;
 
@@ -32,6 +34,33 @@ function Cell(x, y) {
     this.visiting_list = [];
 
     this.previous = undefined;
+
+    let row_height = this.y * 0.83;
+    let offset = 0.5 * (this.y % 2);
+    this.top_left = {
+        x: (this.x + offset - 1 / 2) * this.width,
+        y: (row_height - 1 / 3) * this.height,
+    }
+    this.top = {
+        x: (this.x + offset) * this.width,
+        y: (row_height - 1 / 2) * this.height,
+    }
+    this.top_right = {
+        x: (this.x + offset + 1 / 2) * this.width,
+        y: this.top_left.y,
+    }
+    this.bottom_left = {
+        x: this.top_left.x,
+        y: (row_height + 1 / 3) * this.height,
+    }
+    this.bottom = {
+        x: this.top.x,
+        y: (row_height + 1 / 2) * this.height,
+    }
+    this.bottom_right = {
+        x: this.top_right.x,
+        y: this.bottom_left.y,
+    }
 
     this.fill_neighbors = function (cells) {
         let x = this.x;
@@ -132,10 +161,67 @@ function Cell(x, y) {
             current_cell = undefined;
         }
     }
+
+    this.draw = function () {
+        if (this.visited) {
+            // Inside
+            strokeWeight(2);
+            stroke(this.floor.r, this.floor.g, this.floor.b);
+            fill(this.floor.r, this.floor.g, this.floor.b);
+            beginShape();
+            vertex(this.top_left.x, this.top_left.y);
+            vertex(this.top.x, this.top.y);
+            vertex(this.top_right.x, this.top_right.y);
+            vertex(this.bottom_right.x, this.bottom_right.y);
+            vertex(this.bottom.x, this.bottom.y);
+            vertex(this.bottom_left.x, this.bottom_left.y);
+            endShape();
+
+            // Walls
+            stroke(this.color.r, this.color.g, this.color.b);
+            beginShape(LINES);
+            // top-left to top
+            if (this.walls.top_left) {
+                vertex(this.top_left.x, this.top_left.y);
+                vertex(this.top.x, this.top.y);
+            }
+
+            // top to top-right
+            if (this.walls.top_right) {
+                vertex(this.top.x, this.top.y);
+                vertex(this.top_right.x, this.top_right.y);
+            }
+
+            // top-right to bottom-right
+            if (this.walls.right) {
+                vertex(this.top_right.x, this.top_right.y);
+                vertex(this.bottom_right.x, this.bottom_right.y);
+            }
+
+            // bottom-right to bottom
+            if (this.walls.bottom_right) {
+                vertex(this.bottom_right.x, this.bottom_right.y);
+                vertex(this.bottom.x, this.bottom.y);
+            }
+
+            // bottom to bottom-left
+            if (this.walls.bottom_left) {
+                vertex(this.bottom.x, this.bottom.y);
+                vertex(this.bottom_left.x, this.bottom_left.y);
+            }
+
+            // bottom-left to top-left
+            if (this.walls.left) {
+                vertex(this.bottom_left.x, this.bottom_left.y);
+                vertex(this.top_left.x, this.top_left.y);
+            }
+            endShape();
+        }
+    }
 }
 
 function HexMaze(next) {
-    this.cell_height = 40;
+    this.cell_height = 32;
     this.short_name = "maze";
     this.next = next;
 
@@ -144,7 +230,7 @@ function HexMaze(next) {
     this.magic_height_number = 0.83;
 
     this.setup_function = function () {
-        frameRate(30);
+        frameRate(60);
         this.cell_width = sqrt(3 / 2) * this.cell_height;
         this.cols = floor(width / this.cell_width - 1);
         this.rows = floor(height / (this.cell_height * this.magic_height_number) - 1);
@@ -156,7 +242,7 @@ function HexMaze(next) {
         for (var i = 0; i < this.cols; i++) {
             this.cells[i] = new Array(this.rows);
             for (var j = 0; j < this.rows; j++) {
-                this.cells[i][j] = new Cell(i, j);
+                this.cells[i][j] = new Cell(i, j, this.cell_width, this.cell_height);
             }
         }
         for (var i = 0; i < this.cols; i++) {
@@ -174,89 +260,9 @@ function HexMaze(next) {
     this.draw_function = function () {
         translate(this.cell_width, this.cell_height);
         background(0);
-        for (var j = 0; j < this.rows; j++) {
-            let row_height = j * this.magic_height_number;
-            let offset = 0.5 * (j % 2);
-            for (var i = 0; i < this.cols; i++) {
-                var cell = this.cells[i][j];
-
-                var top_left = {
-                    x: (i + offset - 1 / 2) * this.cell_width,
-                    y: (row_height - 1 / 3) * this.cell_height,
-                }
-                var top = {
-                    x: (i + offset) * this.cell_width,
-                    y: (row_height - 1 / 2) * this.cell_height,
-                }
-                var top_right = {
-                    x: (i + offset + 1 / 2) * this.cell_width,
-                    y: top_left.y,
-                }
-                var bottom_left = {
-                    x: top_left.x,
-                    y: (row_height + 1 / 3) * this.cell_height,
-                }
-                var bottom = {
-                    x: top.x,
-                    y: (row_height + 1 / 2) * this.cell_height,
-                }
-                var bottom_right = {
-                    x: top_right.x,
-                    y: bottom_left.y,
-                }
-
-                // Inside
-                strokeWeight(2);
-                stroke(cell.floor.r, cell.floor.g, cell.floor.b);
-                fill(cell.floor.r, cell.floor.g, cell.floor.b);
-                beginShape();
-                vertex(top_left.x, top_left.y);
-                vertex(top.x, top.y);
-                vertex(top_right.x, top_right.y);
-                vertex(bottom_right.x, bottom_right.y);
-                vertex(bottom.x, bottom.y);
-                vertex(bottom_left.x, bottom_left.y);
-                endShape();
-
-                // Walls
-                stroke(cell.color.r, cell.color.g, cell.color.b);
-                beginShape(LINES);
-                // top-left to top
-                if (cell.walls.top_left) {
-                    vertex(top_left.x, top_left.y);
-                    vertex(top.x, top.y);
-                }
-
-                // top to top-right
-                if (cell.walls.top_right) {
-                    vertex(top.x, top.y);
-                    vertex(top_right.x, top_right.y);
-                }
-
-                // top-right to bottom-right
-                if (cell.walls.right) {
-                    vertex(top_right.x, top_right.y);
-                    vertex(bottom_right.x, bottom_right.y);
-                }
-
-                // bottom-right to bottom
-                if (cell.walls.bottom_right) {
-                    vertex(bottom_right.x, bottom_right.y);
-                    vertex(bottom.x, bottom.y);
-                }
-
-                // bottom to bottom-left
-                if (cell.walls.bottom_left) {
-                    vertex(bottom.x, bottom.y);
-                    vertex(bottom_left.x, bottom_left.y);
-                }
-
-                // bottom-left to top-left
-                if (cell.walls.left) {
-                    vertex(bottom_left.x, bottom_left.y);
-                    vertex(top_left.x, top_left.y);
-                }
-                endShape();
+        for (var i = 0; i < this.cols; i++) {
+            for (var j = 0; j < this.rows; j++) {
+                this.cells[i][j].draw();
             }
         }
         if (current_cell) {
