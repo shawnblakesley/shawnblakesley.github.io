@@ -7,6 +7,7 @@ const yaml = require('yamljs');
 const yargs = require('yargs');
 const minify = require('@node-minify/core');
 const cssnano = require('@node-minify/cssnano');
+const uglifyES = require('@node-minify/uglify-es');
 
 const watch_delay_ms = 500;
 
@@ -109,6 +110,16 @@ function configure(root, out) {
         apply: function (source, target) {
             minify({
                 compressor: cssnano,
+                input: source,
+                output: target
+            });
+            console.log("\x1b[35m>\x1b[0m %s \x1b[32m=>\x1b[0m %s", source, target);
+        }
+    }, {
+        regex: /^((?!min).)+\.js$/g,
+        apply: function (source, target) {
+            minify({
+                compressor: uglifyES,
                 input: source,
                 output: target
             });
