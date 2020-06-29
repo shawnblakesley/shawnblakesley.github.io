@@ -16,12 +16,7 @@ let gol3DDef = {
     short_name: "gol3D",
     next: "maze",
 }
-let mazeDef = {
-    setup_function: setupMaze,
-    draw_function: drawMaze,
-    short_name: "maze",
-    next: "game of life",
-}
+let mazeDef = new HexMaze();
 
 let algo_name;
 let algorithms;
@@ -492,7 +487,6 @@ function drawGOL3D() {
     }
 
     frames_since_compute += (deltaTime / 1000.0) * target_rate;
-    console.log(frames_since_compute, target_compute)
     if (!paused && frames_since_compute > target_compute) {
         frames_since_compute -= target_compute;
         frames_since_compute = 0;
