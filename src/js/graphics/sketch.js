@@ -53,6 +53,8 @@ function draw() {
 
     push();
     scale(2);
+    rotateX(sin(frameCount / 50.0) / 1.5);
+    rotateY(cos(frameCount / 100.0) / 1.5);
     model(modelMap[selected]);
     pop();
 }

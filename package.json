@@ -20,7 +20,6 @@
     "@node-minify/core": "^6.0.0",
     "@node-minify/cssnano": "^6.0.0",
     "@node-minify/uglify-es": "^6.0.0",
-    "@node-minify/uglify-js": "^6.0.0",
     "concurrently": "^5.2.0",
     "http-server": "^0.12.3",
     "postcss-js": "^2.0.3",
