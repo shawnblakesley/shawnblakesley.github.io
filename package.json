@@ -1,23 +1,30 @@
 {
-  "name": "temp-website-test",
-  "version": "1.0.0",
+  "name": "shawn-of-the-dev",
+  "version": "1.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "configure.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node configure.js",
+    "start": "npm run local",
+    "local": "concurrently \"node configure.js -w\" \"http-server dist -a localhost -p 8000\"",
+    "open": "concurrently \"node configure.js -w\" \"http-server dist -a localhost -p 8000\" \"sleepms 2000 && open http://localhost:8000/index.html\""
   },
-  "author": "",
+  "author": "Shawn Blakesley",
   "license": "ISC",
   "dependencies": {
-    "phaser": "^3.23.0"
+    "node-watch": "^0.6.4",
+    "phaser": "^3.23.0",
+    "yargs": "^15.3.1"
   },
   "devDependencies": {
-    "cssnano": "^4.1.10",
-    "cwebp-bin": "^6.1.1",
-    "postcss-cli": "^7.1.1",
-    "pug-cli": "^1.0.0-alpha6",
+    "@node-minify/core": "^6.0.0",
+    "@node-minify/cssnano": "^6.0.0",
+    "concurrently": "^5.2.0",
+    "http-server": "^0.12.3",
+    "postcss-js": "^2.0.3",
     "pug": "^3.0.0",
     "sass": "^1.26.9",
+    "sleep-ms": "^2.0.1",
     "yamljs": "^0.3.0"
   }
 }

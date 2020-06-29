@@ -162,7 +162,11 @@ body {
 
 .main {
     margin: auto;
-    width: min(100%, calc(80% + 100px));
+    width: 85%;
+
+    @media screen and (max-width: 480px) {
+        width: 100%;
+    }
 }
 
 .cards {
