@@ -8,7 +8,6 @@ const yargs = require('yargs');
 const minify = require('@node-minify/core');
 const cssnano = require('@node-minify/cssnano');
 
-
 const watch_delay_ms = 500;
 
 const argv = yargs
@@ -84,7 +83,8 @@ function configure(root, out) {
     // fs.readdirSync(root).forEach(file => {
     //     console.log(file);
     // });
-    let locals = yaml.load(path.join(root, 'data.yml'));
+    let pug_data_file = path.join(root, "data", 'data.yml');
+    let locals = yaml.load(pug_data_file);
     copyTree(root, out, [{
         regex: /.*\.pug/g,
         apply: function (source, target) {
@@ -119,8 +119,9 @@ function configure(root, out) {
         recursive: true
     });
     console.log("\x1b[31mX\x1b[0m Removed %s", path.join(out, "includes"));
-    fs.unlinkSync(path.join(out, "data.yml"));
-    console.log("\x1b[31mX\x1b[0m Removed %s", path.join(out, "data.yml"));
+    let pug_out_file = pug_data_file.replace(root, out);
+    fs.unlinkSync(pug_out_file);
+    console.log("\x1b[31mX\x1b[0m Removed %s", pug_out_file);
     console.log("🎉 ~ finished configure ~ 🎉");
 }
 

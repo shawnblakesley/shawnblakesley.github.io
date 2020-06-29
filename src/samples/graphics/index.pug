@@ -1,7 +1,7 @@
 include ../../includes/mixins
 
 doctype html
-html(lang="en" oncontextmenu="return false;")
+html(lang="en")
   head
     include ../../includes/head
     title Algorithms - Shawn Of The Dev
@@ -10,7 +10,7 @@ html(lang="en" oncontextmenu="return false;")
     script(language="javascript" type="text/javascript" src="/js/p5.easycam.js")
   body
     include ../../includes/header
-    #p5
+    #p5(oncontextmenu="return false;")
     #sample-picker
     include ../../includes/footer
-    script(language="javascript" type="text/javascript" src="/js/graphics/sketch.js")
+    script(async language="javascript" type="text/javascript" src="/js/graphics/sketch.js")

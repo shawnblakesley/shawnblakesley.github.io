@@ -234,6 +234,15 @@ projects:
     description:
       - - Fun visualizations for algorithms.
       - - Created using p5.js for rendering, so I could focus on the code over the display.
+  - title: Graphics Samples
+    subtitle: GLSL / JavaScript
+    date: Originally ~2013, Updated 2020
+    image:
+      url: teapot.png
+      alt: colorful teapot
+    link: /samples/graphics/
+    description:
+      - Samples of work with GLSL fragment and vertex shaders.
   - title: This Website
     subtitle: Pug / Sass / Go / Docker
     date: Jun. 2020
@@ -255,14 +264,3 @@ projects:
     description:
       - - Created an alphabet game for my autistic son.
       - - The first of hopefully many games I can make to help bridge the communication gap with him.
-  - title: Procedurally Texture
-    subtitle: WebGL / GLSL / JavaScript
-    date: ~2013
-    image:
-      url: webgl.jpg
-      alt: colorful teapot
-    link: /samples/webgl/
-    description:
-      - - Used WebGL after taking an Udacity course on the subject.
-      - - Incorporated prior experience with GLSL fragment and vertex shaders.
-      - - Currently working on a rewrite of this.

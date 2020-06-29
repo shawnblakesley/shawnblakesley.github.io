@@ -17,6 +17,14 @@ html(lang="en")
               +card(value.title, "", value.subtitle, value.image)
                 each line in value.lines
                   p.txt= line
+      if projects
+        section.projects
+          h2 Samples
+          .cards
+            each project in projects
+              +card(project.title, project.subtitle, project.date, project.image, project.link)
+                each line in project.description
+                  p.txt= line
       if skills
         section.skills
           h2 Skills
@@ -42,13 +50,5 @@ html(lang="en")
             each degree in education
               +card(degree.major, degree.school, (degree.start?degree.start + " - ":"") + degree.end, degree.image)
                 each line in degree.description
-                  p.txt= line
-      if projects
-        section.projects
-          h2 Projects
-          .cards
-            each project in projects
-              +card(project.title, project.subtitle, project.date, project.image, project.link)
-                each line in project.description
                   p.txt= line
     include includes/footer
