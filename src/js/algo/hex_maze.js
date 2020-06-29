@@ -221,7 +221,7 @@ function Cell(x, y, width, height) {
 }
 
 function HexMaze(next) {
-    this.cell_height = 32;
+    this.base_cell_height = 32;
     this.short_name = "maze";
     this.next = next;
 
@@ -231,6 +231,7 @@ function HexMaze(next) {
 
     this.setup_function = function () {
         frameRate(60);
+        this.cell_height = ceil(this.base_cell_height * sqrt(min(width / 1920, height / 833)));
         this.cell_width = sqrt(3 / 2) * this.cell_height;
         this.cols = floor(width / this.cell_width - 1);
         this.rows = floor(height / (this.cell_height * this.magic_height_number) - 1);
