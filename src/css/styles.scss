@@ -408,6 +408,7 @@ $range-label-color: $dark-maroon-flush;
                 }
 
                 label {
+                    font-family: $merriweather;
                     background-color: $maroon-flush;
                     border-radius: 2 * $border-radius;
                     color: $white;
@@ -417,6 +418,17 @@ $range-label-color: $dark-maroon-flush;
                     padding: 2px;
                     text-align: center;
                     text-transform: uppercase;
+                    font-size: .8em;
+                }
+
+                .sample-select {
+                    flex-basis: 100%;
+
+                    select {
+                        text-transform: uppercase;
+                        font-size: .8em;
+                        width: 100%;
+                    }
                 }
 
                 .controls-next {
@@ -434,12 +446,17 @@ $range-label-color: $dark-maroon-flush;
                     margin-top: 10px;
                 }
 
-
                 input {
+                    flex-basis: 79%;
+                }
+
+                .color-input {}
+
+
+                .slide-input {
                     -webkit-appearance: none;
                     background-color: $smalt-blue;
                     border-radius: 5px;
-                    flex-basis: 69%;
                     height: 10px;
                     margin: auto auto;
                     outline: none;

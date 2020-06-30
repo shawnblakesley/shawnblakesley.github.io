@@ -4,6 +4,11 @@ let currentShader;
 let state;
 var canvas;
 var easycam;
+var primarySelector = document.getElementById("toon-primary");
+var secondarySelector = document.getElementById("toon-secondary");
+var shineSelector = document.getElementById("toon-shine");
+var sizeSelector = document.getElementById("toon-size");
+var borderSelector = document.getElementById("toon-border");
 
 function preload() {
     // Load model with normalize parameter set to true
@@ -24,7 +29,6 @@ function setup() {
     }), 0);
     easycam.state_reset = easycam.state.copy();
     sel = createSelect();
-    sel.position(10, 10);
     sel.option('teapot');
     sel.option('suzanne');
     sel.option('bunny');
@@ -32,20 +36,18 @@ function setup() {
         selected = sel.value();
         easycam.reset(1000);
     });
+    sel.parent("toon-model-select");
     noStroke();
 
     shader(currentShader);
-    currentShader.setUniform('uShine', 0.5);
-    currentShader.setUniform('uCheckerSize', 10.0);
-    currentShader.setUniform('uBorder', 0.5);
-    currentShader.setUniform('uPrimaryColor', [1.0, 0.0, 0.0]);
-    currentShader.setUniform('uSecondaryColor', [1.0, 0.65, 0.0]);
+    updateUniforms();
 }
 
 function draw() {
     background(0);
 
     shader(currentShader);
+    updateUniforms();
     let dirX = (mouseX / width - 0.5) * 2;
     let dirY = (mouseY / height - 0.5) * 2;
     directionalLight(255, 204, 204, dirX, dirY, -1);
@@ -62,4 +64,28 @@ function draw() {
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight - 185);
     resizeEasyCam();
+}
+
+function asColorArray(colorCode) {
+    var colors = [];
+    for (let i = 0; i < 3; i++) {
+        colors.push(parseInt(colorCode.slice(2 * i + 1, 2 * i + 3), 16) / 255.0);
+    }
+    return colors;
+}
+
+function updateUniforms() {
+    currentShader.setUniform('uShine', shineSelector.value);
+    currentShader.setUniform('uCheckerSize', sizeSelector.value);
+    currentShader.setUniform('uBorder', borderSelector.value);
+    currentShader.setUniform('uPrimaryColor', asColorArray(primarySelector.value));
+    currentShader.setUniform('uSecondaryColor', asColorArray(secondarySelector.value));
+}
+
+function reset() {
+    shineSelector.value = 0.5;
+    sizeSelector.value = 10.0;
+    borderSelector.value = 0.5;
+    primarySelector.value = "#ff0000";
+    secondarySelector.value = "#ffAA00";
 }

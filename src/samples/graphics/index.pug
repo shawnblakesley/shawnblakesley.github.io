@@ -11,6 +11,25 @@ html(lang="en")
   body
     include ../../includes/header
     #p5(oncontextmenu="return false;")
-    #sample-picker
+    #controls.sample-controls
+      #toon-controls()
+        +card("Toon Shader")
+          .controls-list
+            #toon-model-select.sample-select
+            .break-line
+            label#toon-primary-label(for="toon-primary") Color 1
+            input.color-input#toon-primary(type="color" name="toon-primary" value="#ff0000")
+            label#toon-secondary-label(for="toon-secondary") Color 2
+            input.color-input#toon-secondary(type="color" name="toon-primary" value="#ffAA00")
+            .break-line
+            label#toon-shine-label(for="toon-shine") Shine
+            input.slide-input#toon-shine(type="range" min="0.0" max="1.0" value="0.5" step="0.01" class="slider")
+            label#toon-size-label(for="toon-size") Size
+            input.slide-input#toon-size(type="range" min="1.0" max="100.0" value="10.0" step="0.5" class="slider")
+            label#toon-border-label(for="toon-border") Border
+            input.slide-input#toon-border(type="range" min="0.0" max="1.0" value="0.5" step="0.01" class="slider")
+            .break-line
+            button.sample-button(onclick="reset()") Reset
+    #sample-description
     include ../../includes/footer
     script(async language="javascript" type="text/javascript" src="/js/graphics/sketch.js")

@@ -23,7 +23,7 @@ html(lang="en")
         +card("3D Game of Life")
           .controls-list
             label#cube-count-label Count 12
-            input#cube-count(type="range" min="2" max="8" value="6" class="slider" onchange="updateCubeResolution(this);")
+            input.slide-input#cube-count(type="range" min="2" max="8" value="6" class="slider" onchange="updateCubeResolution(this);")
             button.sample-button(onclick="togglePause()") Pause
             button.sample-button(onclick="toggleOrtho(this)") Orthographic View
             button.sample-button(onclick="regenerate()") Regenerate
@@ -33,7 +33,7 @@ html(lang="en")
         +card("Hex Maze Generation")
           .controls-list
             label#cell-size-label Size 32
-            input#cell-size(type="range" min="25" max="50" value="32" class="slider" onchange="updateCellSize(this);")
+            input.slide-input#cell-size(type="range" min="25" max="50" value="32" class="slider" onchange="updateCellSize(this);")
             button.sample-button(onclick="toggleQuickGeneration(this)") Enable Quick Generation
             button.sample-button(onclick="regenerate()") Regenerate
             .break-line
