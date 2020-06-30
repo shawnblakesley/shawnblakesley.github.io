@@ -11,6 +11,32 @@ var current_cell = {
     y: 0,
 };
 
+var default_cell_label;
+
+function updateCellSize(input_elem) {
+    var label = document.getElementById(`${input_elem.id}-label`);
+    label.textContent = `Size ${input_elem.value}`
+
+    if (algo_name == "hex maze generator" && algorithms.has(algo_name)) {
+        let hex = algorithms.get(algo_name);
+        hex.base_cell_height = input_elem.value;
+        hex.setup_function();
+    }
+}
+
+function toggleQuickGeneration(elem) {
+    if (algo_name == "hex maze generator" && algorithms.has(algo_name)) {
+        let hex = algorithms.get(algo_name);
+        hex.instant = !hex.instant;
+        if (hex.instant) {
+            elem.textContent = "Enable Step-by-Step";
+        } else {
+            elem.textContent = "Enable Quick Generation";
+        }
+        hex.setup_function(hex.instant);
+    }
+}
+
 function Cell(x, y, width, height) {
     this.x = x;
     this.y = y;
@@ -18,6 +44,7 @@ function Cell(x, y, width, height) {
     this.height = height;
 
     this.visited = false;
+    this.render = false;
 
     this.color = {
         r: 0,
@@ -62,26 +89,30 @@ function Cell(x, y, width, height) {
         y: this.bottom_left.y,
     }
 
-    this.fill_neighbors = function (cells) {
+    this.setup = function (cells) {
         let x = this.x;
         let y = this.y;
         let offset = y % 2;
-        this.neighbors = {
-            top_left: x - 1 + offset >= 0 && y - 1 >= 0 ? cells[x - 1 + offset][y - 1] : null,
-            top_right: x + offset < cells.length && y - 1 >= 0 ? cells[x + offset][y - 1] : null,
-            right: x + 1 < cells.length ? cells[x + 1][y] : null,
-            bottom_right: x + offset < cells.length && y + 1 < cells[0].length ? cells[x + offset][y + 1] : null,
-            bottom_left: x - 1 + offset >= 0 && y + 1 < cells[0].length ? cells[x - 1 + offset][y + 1] : null,
-            left: x - 1 >= 0 ? cells[x - 1][y] : null,
-        };
-        this.walls = {
-            top_left: true,
-            top_right: true,
-            right: true,
-            bottom_right: true,
-            bottom_left: true,
-            left: true,
-        };
+        this.visited = false;
+        this.previous = undefined;
+        if (!this.neighbors) {
+            this.neighbors = {
+                top_left: x - 1 + offset >= 0 && y - 1 >= 0 ? cells[x - 1 + offset][y - 1] : null,
+                top_right: x + offset < cells.length && y - 1 >= 0 ? cells[x + offset][y - 1] : null,
+                right: x + 1 < cells.length ? cells[x + 1][y] : null,
+                bottom_right: x + offset < cells.length && y + 1 < cells[0].length ? cells[x + offset][y + 1] : null,
+                bottom_left: x - 1 + offset >= 0 && y + 1 < cells[0].length ? cells[x - 1 + offset][y + 1] : null,
+                left: x - 1 >= 0 ? cells[x - 1][y] : null,
+            };
+            this.walls = {
+                top_left: true,
+                top_right: true,
+                right: true,
+                bottom_right: true,
+                bottom_left: true,
+                left: true,
+            };
+        }
         if (this.neighbors.top_left != null) {
             this.visiting_list.push([this.neighbors.top_left, "top_left"]);
         }
@@ -134,6 +165,7 @@ function Cell(x, y, width, height) {
             b: 93,
         };
         this.visited = true;
+        this.render = true;
         this.floor = {
             r: 100,
             g: 205,
@@ -163,7 +195,7 @@ function Cell(x, y, width, height) {
     }
 
     this.draw = function () {
-        if (this.visited) {
+        if (this.render) {
             // Inside
             strokeWeight(2);
             stroke(this.floor.r, this.floor.g, this.floor.b);
@@ -220,10 +252,18 @@ function Cell(x, y, width, height) {
     }
 }
 
-function HexMaze(next) {
-    this.base_cell_height = 32;
+function HexMaze(next, base_cell_height = 32, passes = 1, instant = false) {
+    console.log("New hex?");
+    this.base_cell_height = base_cell_height;
     this.short_name = "maze";
     this.next = next;
+    this.description = `
+        <p>A hex maze generator using a slightly modified recursive backtracker algorithm.</p>
+    `
+
+    this.visit_count = 0;
+    this.max_visit_cycles = passes;
+    this.instant = instant;
 
     this.cells = new Array();
 
@@ -231,14 +271,11 @@ function HexMaze(next) {
 
     this.setup_function = function () {
         frameRate(60);
+        this.visit_count = 0;
         this.cell_height = ceil(this.base_cell_height * sqrt(min(width / 1920, height / 833)));
         this.cell_width = sqrt(3 / 2) * this.cell_height;
         this.cols = floor(width / this.cell_width - 1);
         this.rows = floor(height / (this.cell_height * this.magic_height_number) - 1);
-        current_cell = {
-            x: floor(random(this.cols)),
-            y: floor(random(this.rows)),
-        };
         this.cells = new Array(this.cols);
         for (var i = 0; i < this.cols; i++) {
             this.cells[i] = new Array(this.rows);
@@ -246,16 +283,29 @@ function HexMaze(next) {
                 this.cells[i][j] = new Cell(i, j, this.cell_width, this.cell_height);
             }
         }
-        for (var i = 0; i < this.cols; i++) {
-            for (var j = 0; j < this.rows; j++) {
-                this.cells[i][j].fill_neighbors(this.cells);
+        this.new_cycle();
+        if (this.instant) {
+            while (this.visit_count <= this.max_visit_cycles) {
+                this.new_cycle();
+                while (current_cell) {
+                    this.cells[current_cell.x][current_cell.y].visit_next();
+                }
             }
         }
+    }
+
+    this.new_cycle = function () {
+        this.visit_count += 1;
+        for (var i = 0; i < this.cols; i++) {
+            for (var j = 0; j < this.rows; j++) {
+                this.cells[i][j].setup(this.cells);
+            }
+        }
+        current_cell = {
+            x: floor(random(this.cols)),
+            y: floor(random(this.rows)),
+        };
         this.cells[current_cell.x][current_cell.y].visit("none");
-        // // NOTE: use this to quick-generate. TODO: make this into a clickable function.
-        // while (current_cell) {
-        //     this.cells[current_cell.x][current_cell.y].visit_next();
-        // }
     }
 
     this.draw_function = function () {
@@ -268,6 +318,8 @@ function HexMaze(next) {
         }
         if (current_cell) {
             this.cells[current_cell.x][current_cell.y].visit_next();
+        } else if (this.visit_count < this.max_visit_cycles) {
+            this.new_cycle();
         }
     }
 }

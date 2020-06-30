@@ -12,12 +12,13 @@ $big-stone:#152536;
 $big-stone-dark:#071218;
 $white: #f0f0ff;
 $smalt-blue:#4e758b;
+$dark-maroon-flush:#A31331;
 $maroon-flush:#C32361;
 $black:#000;
 $lite-grey:rgba($black, .2);
 $lite-big-stone:rgba($big-stone, .7);
 
-$controls-width:550px;
+$controls-width:500px;
 $controls-height:400px;
 $controls-width-small:90vw;
 $controls-height-small:480px;
@@ -332,87 +333,163 @@ article.card {
     }
 }
 
+
 // For sample pages
-.sample-description {
-    pointer-events: none;
+#sample-description {
+    color: white;
+    font-size: 1.2em;
+    margin: auto;
+    max-width: 400px;
+}
+
+// Range Slider
+$range-handle-color: $dark-maroon-flush;
+$range-handle-color-hover: $maroon-flush;
+$range-handle-size: 20px;
+
+$range-track-color: $maroon-flush;
+$range-label-color: $dark-maroon-flush;
+
+.sample-controls {
+    clip-path: circle(20px at top 40px left 40px);
+    filter: blur(1px);
+    left: 0px;
+    position: absolute;
+    top: 40px;
+    transition: $timing-4 $transition;
+
+    &:hover {
+        transition: $timing-4 $transition;
+        clip-path: circle(100% at center);
+        filter: blur(0px);
+    }
 
     article.card {
-        @include size($controls-width, $controls-height);
+        @include size($controls-width, auto);
 
         @media screen and (max-width: 550px) {
-            @include size($controls-width-small, $controls-height-small);
+            @include size($controls-width-small, auto);
+        }
+
+        .thumb-no-hover,
+        .thumb {
+            @include size(100%, 20px);
+            object-fit: cover;
+            background-size: cover;
+            border-radius: $border-radius $border-radius 0 0;
+            transition: $timing-1 $transition;
+        }
+
+        .infos-no-hover,
+        &:hover .infos {
+            transform: translateY(0);
         }
 
         .infos-no-hover,
         .infos {
-            @include size(auto, $controls-height);
+            @include size(auto, auto);
 
             @media screen and (max-width: 550px) {
-                @include size(auto, $controls-height-small);
+                @include size(auto, auto);
             }
 
-            pointer-events: none;
-        }
-    }
+            .controls-list {
+                display: flex;
+                flex-wrap: wrap;
 
-    position: absolute;
-    left: 10px;
+                button {
+                    background-color: $maroon-flush;
+                    border-radius: 2 * $border-radius;
+                    color: $white;
+                    flex-basis: 50%;
+                    font-size: .8em;
+                    padding: 6px;
+                    text-transform: uppercase;
+                }
 
-    opacity: 0;
-    visibility: visible;
-    top: -550px;
-    transition: $timing-4 $transition;
+                label {
+                    background-color: $maroon-flush;
+                    border-radius: 2 * $border-radius;
+                    color: $white;
+                    flex-basis: 20%;
+                    margin-bottom: 4px;
+                    margin-top: 4px;
+                    padding: 2px;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
 
-    &.show {
-        opacity: 1;
-        top: 30px;
-        transition: $timing-4 $transition;
+                .controls-next {
+                    margin-left: auto;
+                    text-transform: none;
+                }
 
-        article.card {
+                .break-line {
+                    align-content: center;
+                    background-color: $big-stone-dark;
+                    flex-basis: 100%;
+                    height: 1px;
+                    width: 90%;
+                    margin-bottom: 5px;
+                    margin-top: 10px;
+                }
 
-            .infos-no-hover,
-            .infos {
-                pointer-events: auto;
+
+                input {
+                    -webkit-appearance: none;
+                    background-color: $smalt-blue;
+                    border-radius: 5px;
+                    flex-basis: 69%;
+                    height: 10px;
+                    margin: auto auto;
+                    outline: none;
+
+                    // Range Handle
+                    &::-webkit-slider-thumb {
+                        appearance: none;
+                        width: $range-handle-size;
+                        height: $range-handle-size;
+                        border-radius: 50%;
+                        background: $range-handle-color;
+                        cursor: pointer;
+                        transition: background .15s ease-in-out;
+
+                        &:hover {
+                            background: $range-handle-color-hover;
+                        }
+                    }
+
+                    &:active::-webkit-slider-thumb {
+                        background: $range-handle-color-hover;
+                    }
+
+                    &::-moz-range-thumb {
+                        width: $range-handle-size;
+                        height: $range-handle-size;
+                        border: 0;
+                        border-radius: 50%;
+                        background: $range-handle-color;
+                        cursor: pointer;
+                        transition: background .15s ease-in-out;
+
+                        &:hover {
+                            background: $range-handle-color-hover;
+                        }
+                    }
+
+                    &:active::-moz-range-thumb {
+                        background: $range-handle-color-hover;
+                    }
+
+                    // Focus state
+                    &:focus {
+                        &::-webkit-slider-thumb {
+                            box-shadow: 0 0 0 3px $smalt-blue,
+                                0 0 0 6px $maroon-flush;
+                        }
+                    }
+                }
             }
         }
     }
-}
-
-.sample-description-button {
-    position: absolute;
-    left: 10px;
-    opacity: 1;
-    visibility: visible;
-    top: 60px;
-    background-color: $maroon-flush;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-
-    svg {
-        margin: auto;
-    }
-
-    transition: $timing-2 $transition;
-    box-shadow: $box-shadow;
-    // box-shadow: $icon-shadow;
-
-    &:hover {
-        border-radius: $border-radius;
-        box-shadow: $button-shadow;
-    }
-}
-
-.sample-button {
-    background-color: $maroon-flush;
-    color: $white;
-    width: 100%;
-    padding: 5px;
-    border-radius: 2 * $border-radius;
-    text-transform: uppercase;
-    font-size: .9em;
-    margin: 10px 0px;
 }

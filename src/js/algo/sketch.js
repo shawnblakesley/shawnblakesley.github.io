@@ -1,6 +1,6 @@
 let canvas;
 let canvasSize;
-let sel;
+// let sel;
 let paused = false;
 
 let golDef = {
@@ -8,12 +8,24 @@ let golDef = {
     draw_function: drawGOL,
     pressed_function: spawnMouse,
     short_name: "gol",
+    description: `
+        <p> This example follows the basic rules from Conway's Game of Life.</p>
+        <p> - If a dead cell is neighboring exactly 3 living cells it will come back to life.</p>
+        <p> - If a living cell is neighboring less that 2 or greater than 3 live cells it will die.</p>
+        <p>Red <span style="color: rgb(160, 20, 60);font-size: 1.5em;">&#9632;</span> indicates a recent cell death, and green <span style="color: rgb(50, 220, 130);font-size: 1.5em;">&#9632;</span> indicates a new cell birth.</p>
+    `,
     next: "game of life 3D",
 }
 let gol3DDef = {
     setup_function: setupGOL3D,
     draw_function: drawGOL3D,
     short_name: "gol3D",
+    description: `
+        <p>This example converted Conway's Game of Life to 3 Dimensions.</p>
+        <p>- Spawn cell if head and  9 >= live neighbors >= 5.</p>
+        <p>- Kill cell if living and 9 < live neighbors or live neighbors < 5.</p>
+        <p>Red indicates a recent cell death, and green indicates a new cell birth.</p>
+    `,
     next: "hex maze generator",
 }
 let mazeDef = new HexMaze("game of life");
@@ -25,14 +37,12 @@ function regenerate() {
     setAlgorithm(algo_name);
 }
 
-function togglePause() {
+function togglePause(elem) {
     paused = !paused;
-    for (const elem of document.getElementsByClassName("sample-pause")) {
-        if (paused) {
-            elem.textContent = "Resume";
-        } else {
-            elem.textContent = "Pause";
-        }
+    if (paused) {
+        elem.textContent = "Resume";
+    } else {
+        elem.textContent = "Pause";
     }
 }
 
@@ -53,6 +63,7 @@ function setAlgorithm(algo) {
     canvas = createCanvas(windowWidth, windowHeight - 185, P2D);
     canvas.parent("p5");
     canvas.style("display", "block");
+    var description = document.getElementById("sample-description");
     if (paused) {
         togglePause();
     }
@@ -61,33 +72,25 @@ function setAlgorithm(algo) {
     }
     if (algorithms.has(algo)) {
         algo_name = algo;
-        algorithms.get(algo_name).setup_function();
+        show();
+        var algo_ref = algorithms.get(algo_name)
+        description.innerHTML = algo_ref.description;
+        algo_ref.setup_function();
     } else {
         console.error("Could not find algorithm:", algo_name)
     }
 }
 
-function autoClose(evt) {
-    let elem = document.getElementById(`${algorithms.get(algo_name).short_name}-description`);
-    if (!elem.contains(evt.target) && elem.classList.contains("show")) {
-        hide();
-    }
-}
-
 function show() {
-    hide();
-    let id = `${algorithms.get(algo_name).short_name}-description`
+    let id = `${algorithms.get(algo_name).short_name}-controls`
     let elem = document.getElementById(id);
-    elem.classList.add("show"); // TODO: make just show
-
-    setTimeout(() => window.addEventListener('click', autoClose), 200);
+    elem.style.display = "block";
 }
 
 function hide() {
-    window.removeEventListener('click', autoClose, false);
     if (algo_name) {
-        elem = document.getElementById(`${algorithms.get(algo_name).short_name}-description`);
-        elem.classList.remove("show");
+        let elem = document.getElementById(`${algorithms.get(algo_name).short_name}-controls`);
+        elem.style.display = "none";
     }
 }
 
@@ -98,16 +101,7 @@ function setup() {
     algorithms.set("game of life 3D", gol3DDef);
     algorithms.set("hex maze generator", mazeDef);
 
-    sel = createSelect();
-    for (const key of algorithms.keys()) {
-        sel.option(key);
-    }
-    sel.changed(() => setAlgorithm(sel.value()));
-    sel.style("font-size", "1.3em");
-    sel.style("width", "250px");
-    sel.parent("algo-picker");
-
-    algo_name = "game of life";
+    algo_name = "hex maze generator";
     setAlgorithm(algo_name);
 }
 
@@ -258,6 +252,13 @@ let ortho_view = false;
 let compute_delay = 0;
 let frames_since_compute = 0;
 
+function updateCubeResolution(input_elem) {
+    var label = document.getElementById(`${input_elem.id}-label`);
+    label.textContent = `Count ${input_elem.value * 2}`
+
+    setAlgorithm(algo_name);
+}
+
 function makeGOL3D() {
     let arr = new Array(cols);
     for (let i = 0; i < cols; i++) {
@@ -273,7 +274,7 @@ function makeGOL3D() {
 }
 
 function setupGOL3D() {
-    webgl = createGraphics(windowWidth, windowHeight - 185, WEBGL);
+    webgl = createGraphics(width, height, WEBGL);
     if (ortho_view) {
         webgl.ortho(-width / 2, width / 2, height / 2, -height / 2, 1500, -1500);
         webgl.noStroke();
@@ -281,7 +282,10 @@ function setupGOL3D() {
     target_rate = 30
     frameRate(target_rate);
     noStroke();
-    resolution = 12;
+    var elem = document.getElementById("cube-count");
+    resolution = elem.value * 2;
+    var label = document.getElementById(`${elem.id}-label`);
+    label.textContent = `Count ${resolution}`
     cube_size = 25;
     spacing = 5;
     target_compute = 20;
@@ -294,9 +298,9 @@ function setupGOL3D() {
 
 
 function drawCubeGOL(col, row, page) {
-    let x = col * (cube_size + spacing) - (cube_size + spacing) * resolution / 2;
-    let y = row * (cube_size + spacing) - (cube_size + spacing) * resolution / 2;
-    let z = page * (cube_size + spacing) - (cube_size + spacing) * resolution / 2;
+    let x = floor(col * (cube_size + spacing) - (cube_size + spacing) * resolution / 2);
+    let y = floor(row * (cube_size + spacing) - (cube_size + spacing) * resolution / 2);
+    let z = floor(page * (cube_size + spacing) - (cube_size + spacing) * resolution / 2);
     let val = gol3D[col][row][page];
     if (val == 0) {
         return;
@@ -428,8 +432,8 @@ function drawGOL3D() {
         webgl.rotateX(PI / 16);
         webgl.rotateY(-PI / 8);
     } else if (mouse_follow) {
-        yRotation = mouseX / windowWidth * 2 * PI;
-        xRotation = mouseY / windowHeight * 2 * PI;
+        yRotation = mouseX / width * 2 * PI;
+        xRotation = mouseY / height * 2 * PI;
         webgl.rotateY(yRotation);
         webgl.rotateX(xRotation);
     }

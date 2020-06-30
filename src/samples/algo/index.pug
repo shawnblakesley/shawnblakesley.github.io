@@ -8,40 +8,37 @@ html(lang="en")
     meta(name="description" content="Algorithm visualizations for fun and practice.")
     script(language="javascript" type="text/javascript" src="/js/p5.min.js")
     script(language="javascript" type="text/javascript" src="/js/p5.easycam.min.js")
-  body
+  body(style="overflow-x: hidden;")
     include ../../includes/header
     #p5(oncontextmenu="return false;")
-    .sample-description-button(onclick="show()")
-      svg(viewBox="0 0 100 80" width="20" height="20")
-        g(color="white")
-          rect(width="100" height="15" rx="8" fill="currentcolor")
-          rect(y="30" width="100" height="15" rx="8" fill="currentcolor")
-          rect(y="60" width="100" height="15" rx="8" fill="currentcolor")
-
-
-    #gol-description.sample-description
-      +card("Game of Life")
-        p This example follows the basic rules from Conway's Game of Life.
-        p - If a dead cell is neighboring exactly 3 living cells it will come back to life.
-        p - If a living cell is neighboring less that 2 or greater than 3 live cells it will die.
-        p Red <span style="color: rgb(160, 20, 60);font-size: 1.5em;">&#9632;</span> indicates a recent cell death, and green <span style="color: rgb(50, 220, 130);font-size: 1.5em;">&#9632;</span> indicates a new cell birth.
-        button.sample-button.sample-pause(onclick="togglePause(this)") Pause
-        button.sample-button(onclick="regenerate()") Regenerate
-        // button.sample-next(onclick="nextAlgorithm()") Game Of Life 3D // TODO: make this into a button that takes to the next algorithm
-    #maze-description.sample-description
-      +card("Maze")
-        button.sample-button(onclick="regenerate()") Regenerate
-    #gol3D-description.sample-description
-      +card("Game of Life 3D")
-        p This example converted Conway's Game of Life to 3 Dimensions.
-        p - Spawn cell if head and  9 >= live neighbors >= 5.
-        p - Kill cell if living and 9 < live neighbors or live neighbors < 5.
-        p Red indicates a recent cell death, and green indicates a new cell birth.
-        button.sample-button.sample-pause(onclick="togglePause()") Pause
-        button.sample-button(onclick="toggleOrtho(this)") Orthographic View
-        button.sample-button(onclick="regenerate()") Regenerate
-        // button.sample-next(onclick="nextAlgorithm()") Game Of Life 3D // TODO: make this into a button that takes to the next algorithm
-    #algo-picker
+    #controls.sample-controls
+      #gol-controls(style="display:none;")
+        +card("Conway's Game of Life")
+          .controls-list
+            button.controls-button(onclick="togglePause(this)") Pause
+            button.controls-button(onclick="regenerate()") Regenerate
+            .break-line
+            button.controls-next(onclick="nextAlgorithm()") To Game Of Life 3D >>
+      #gol3D-controls(style="display:none;")
+        +card("3D Game of Life")
+          .controls-list
+            label#cube-count-label Count 12
+            input#cube-count(type="range" min="2" max="8" value="6" class="slider" onchange="updateCubeResolution(this);")
+            button.sample-button(onclick="togglePause()") Pause
+            button.sample-button(onclick="toggleOrtho(this)") Orthographic View
+            button.sample-button(onclick="regenerate()") Regenerate
+            .break-line
+            button.controls-next(onclick="nextAlgorithm()") To Hex Maze Generation >>
+      #maze-controls(style="display:none;")
+        +card("Hex Maze Generation")
+          .controls-list
+            label#cell-size-label Size 32
+            input#cell-size(type="range" min="25" max="50" value="32" class="slider" onchange="updateCellSize(this);")
+            button.sample-button(onclick="toggleQuickGeneration(this)") Enable Quick Generation
+            button.sample-button(onclick="regenerate()") Regenerate
+            .break-line
+            button.controls-next(onclick="nextAlgorithm()") To Game Of Life >>
+    #sample-description
     include ../../includes/footer
     script(language="javascript" type="text/javascript" src="/js/algo/hex_maze.js")
     script(language="javascript" type="text/javascript" src="/js/algo/sketch.js")
