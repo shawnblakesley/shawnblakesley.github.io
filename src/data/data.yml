@@ -235,7 +235,7 @@ projects:
       - - Fun visualizations for algorithms.
       - - Created using p5.js for rendering, so I could focus on the code over the display.
   - title: Graphics Samples
-    subtitle: GLSL / JavaScript
+    subtitle: WebGL / GLSL / JavaScript
     date: Originally ~2013, Updated 2020
     image:
       url: teapot.png
