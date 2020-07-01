@@ -4,6 +4,7 @@ var composer = require('gulp-uglify/composer');
 var cssnano = require('gulp-cssnano');
 var del = require('del');
 var gulp = require('gulp');
+var imagemin = require('gulp-imagemin');
 var path = require('path');
 var pug = require('gulp-pug');
 var sass = require('gulp-sass');
@@ -58,6 +59,12 @@ function pug_task() {
     .pipe(gulp.dest('dist'));
 }
 
+function alphabet_images_task() {
+  return gulp.src('src/images/alphabet_game/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('dist/images/alphabet_game'));
+}
+
 function files_task() {
   return gulp.src(['src/**', '!src/**/*.pug', '!src/**/*.scss', '!src/**/*.js', '!src/**/*.css'])
     .pipe(gulp.dest('dist'));
@@ -73,14 +80,15 @@ function webserver_task() {
 }
 
 // exports.open = series(clean, parallel(sass, css, js, pug, files));
-exports.default = gulp.series(clean, gulp.parallel(css_task, sass_task, js_task, js_min_task, pug_task, files_task));
+exports.default = gulp.series(clean, gulp.parallel(alphabet_images_task, css_task, sass_task, js_task, js_min_task, pug_task, files_task));
 
 function watch_all() {
   gulp.watch('src/**/*.js', gulp.series(js_task, js_min_task));
   gulp.watch('src/**/*.scss', sass_task);
   gulp.watch('src/**/*.css', css_task);
   gulp.watch(['src/**/*.pug', pug_data_file], pug_task);
-  gulp.watch(['src/**', '!src/**/*.pug', '!src/**/*.scss', '!src/**/*.js', `!${pug_data_file}`], files_task);
+  gulp.watch('src/images/alphabet_game/*', alphabet_images_task);
+  gulp.watch(['src/**', 'src/images/alphabet_game/*', '!src/**/*.pug', '!src/**/*.scss', '!src/**/*.js', `!${pug_data_file}`], files_task);
 };
 exports.watch = watch_all;
 
