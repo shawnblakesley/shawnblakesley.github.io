@@ -28,3 +28,13 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: shawnblakesley/server
           tags: latest
+      - name: webfactory/ssh-agent
+        uses: webfactory/ssh-agent@v0.4.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Update live server's script
+        uses: bash
+        run: scp tools/update_server.sh github@${{ secrets.SERVER_IP }}:/home/github/update_server.sh
+      - name: Update live server
+        uses: bash
+        run: ssh -t github@${{ secrets.SERVER_IP }} ./update_server.sh "${{ secrets.DOCKER_USERNAME }}" "${{ secrets.DOCKER_PASSWORD }}"
