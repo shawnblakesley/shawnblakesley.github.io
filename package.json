@@ -8,7 +8,11 @@
     "start": "gulp dev",
     "watch": "gulp watch",
     "go": "cd go_root; go build server",
-    "docker": "docker build ."
+    "docker": "npm run docker-stop && npm run docker-build && npm run docker-launch",
+    "docker-build": "docker build -t blakesley .",
+    "docker-launch": "docker run -v /tmp/server_logs:/var/log/server -p 8000:80 --name cool_cucumber --detach --rm blakesley && open http://localhost:8000",
+    "docker-stop": "docker stop cool_cucumber",
+    "all": "npm run build && npm run docker"
   },
   "author": "Shawn Blakesley",
   "license": "ISC",
