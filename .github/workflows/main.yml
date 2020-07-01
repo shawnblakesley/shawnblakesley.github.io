@@ -2,9 +2,9 @@ name: Resume Website CI
 
 on:
   push:
-    branches: [action-playground]
+    branches: [main]
   pull_request:
-    branches: [action-playground]
+    branches: [main]
 
 jobs:
   main:
