@@ -33,6 +33,10 @@ jobs:
           cat <<EOF > .ssh_secret_file
           ${{ secrets.SSH_PRIVATE_KEY }}
           EOF
+      - name: ssh tricks++
+        run: head .ssh_secret_file
+      - name: ssh tricks--
+        run: tail .ssh_secret_file
       - name: Update live server's script
         run: scp -i .ssh_secret_file tools/update_server.sh github@${{ secrets.SERVER_IP }}:/home/github/update_server.sh
       - name: Update live server
