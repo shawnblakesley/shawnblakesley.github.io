@@ -60,13 +60,13 @@ function pug_task() {
 }
 
 function alphabet_images_task() {
-  return gulp.src('src/images/alphabet_game/*')
+  return gulp.src('src/images/**/*')
     .pipe(imagemin())
-    .pipe(gulp.dest('dist/images/alphabet_game'));
+    .pipe(gulp.dest('dist/images/'));
 }
 
 function files_task() {
-  return gulp.src(['src/**', '!src/**/*.pug', '!src/**/*.scss', '!src/**/*.js', '!src/**/*.css'])
+  return gulp.src(['src/**', '!src/**/*.pug', '!src/**/*.scss', '!src/**/*.js', '!src/**/*.css', '!src/images/**/*'])
     .pipe(gulp.dest('dist'));
 }
 
@@ -88,7 +88,7 @@ function watch_all() {
   gulp.watch('src/**/*.css', css_task);
   gulp.watch(['src/**/*.pug', pug_data_file], pug_task);
   gulp.watch('src/images/alphabet_game/*', alphabet_images_task);
-  gulp.watch(['src/**', 'src/images/alphabet_game/*', '!src/**/*.pug', '!src/**/*.scss', '!src/**/*.js', `!${pug_data_file}`], files_task);
+  gulp.watch(['src/**', '!src/images/**/*', '!src/**/*.pug', '!src/**/*.scss', '!src/**/*.js', `!${pug_data_file}`], files_task);
 };
 exports.watch = watch_all;
 
