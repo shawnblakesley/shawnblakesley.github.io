@@ -2,7 +2,9 @@ FROM alpine
 
 RUN apk update && apk add --update alpine-sdk go
 ENV GOPATH=/gopath
-COPY go_root/src /gopath/src
+COPY go_root /gobuild
+WORKDIR /gobuild
+RUN go mod download
 RUN go install server
 
 FROM alpine
