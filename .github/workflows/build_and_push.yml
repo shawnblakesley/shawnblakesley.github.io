@@ -5,9 +5,9 @@ name: Resume Website CI
 
 on:
   push:
-    branches: [main]
+    branches: [*]
   pull_request:
-    branches: [main]
+    branches: [*]
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
       - run: npm run build --if-present
   push:
     runs-on: ubuntu-latest
-    if: github.event_name == push
+    if: github.event_name == pull_request
     needs: build
     steps:
       - name: Build and push Docker image
