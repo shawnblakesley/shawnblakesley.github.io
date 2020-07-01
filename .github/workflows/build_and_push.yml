@@ -34,10 +34,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY }}
           EOF
       - name: ssh tricks++
-        run: head .ssh_secret_file
-      - name: ssh tricks--
-        run: tail .ssh_secret_file
-      # - name: Update live server's script
-      #   run: scp -i .ssh_secret_file tools/update_server.sh github@${{ secrets.SERVER_IP }}:/home/github/update_server.sh
+        run: chmod 600 .ssh_secret_file
+      - name: Update live server's script
+        run: scp -i .ssh_secret_file tools/update_server.sh github@${{ secrets.SERVER_IP }}:/home/github/update_server.sh
       - name: Update live server
-        run: ssh -i .ssh_secret_file -t github@${{ secrets.SERVER_IP }} "echo we did it"# ./update_server.sh "${{ secrets.DOCKER_PASSWORD }}"
+        run: ssh -i .ssh_secret_file -t github@${{ secrets.SERVER_IP }} ./update_server.sh "${{ secrets.DOCKER_PASSWORD }}"
