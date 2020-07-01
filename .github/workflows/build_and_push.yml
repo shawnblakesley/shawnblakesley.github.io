@@ -1,7 +1,7 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+name: Resume Website CI
 
 on:
   push:
@@ -28,11 +28,11 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: shawnblakesley/server
           tags: latest
-      - name: webfactory/ssh-agent
+      - name: ssh-agent
         uses: webfactory/ssh-agent@v0.4.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Update live server's script
-        run: scp tools/update_server.sh github@${{ secrets.SERVER_IP }}:/home/github/update_server.sh
+        run: scp -A tools/update_server.sh github@${{ secrets.SERVER_IP }}:/home/github/update_server.sh
       - name: Update live server
-        run: ssh -t github@${{ secrets.SERVER_IP }} ./update_server.sh "${{ secrets.DOCKER_USERNAME }}" "${{ secrets.DOCKER_PASSWORD }}"
+        run: ssh -A -t github@${{ secrets.SERVER_IP }} ./update_server.sh "${{ secrets.DOCKER_USERNAME }}" "${{ secrets.DOCKER_PASSWORD }}"
