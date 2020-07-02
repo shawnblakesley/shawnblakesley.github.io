@@ -21,8 +21,8 @@ function draw() {
     colorMode(RGB);
     background(0);
     noStroke();
-    let from = color(218, 165, 32);
-    let to = color(172, 61, 139);
+    let from = color(218, 165, 32 + 50 * sin(frameCount / 50));
+    let to = color(172, 61, 139 + 50 * cos(frameCount / 100));
     for (let i = 0; i < 200; i++) {
         let inter = lerpColor(from, to, i / 200);
         fill(inter);
