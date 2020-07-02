@@ -4,16 +4,17 @@ var current;
 var data;
 const letterRegex = /^[a-zA-Z]$/;
 let img;
+let visitTracker = new Array(26);
 
 function preload() {
     data = loadJSON("/data/alphabet_game.json");
 }
 
 function setup() {
+
     canvas = createCanvas(windowWidth, windowHeight);
     noStroke();
     img = getImage(currentLetter, data[currentLetter]);
-    console.log(img);
 }
 
 function draw() {
@@ -52,7 +53,6 @@ function draw() {
 }
 
 function keyPressed() {
-    console.log("tests", key);
     if (letterRegex.test(key)) {
         loadLetter(key);
     }
@@ -65,14 +65,22 @@ function loadLetter(letter) {
 }
 
 function getImage(letter, items) {
-    let item = items[floor(random(items.length))];
+    let index = letter.charCodeAt(0) - 'A'.charCodeAt(0);
+    if (!visitTracker[index]) {
+        visitTracker[index] = new Array(items.length);
+        visitTracker[index].fill(0);
+    }
+    let minVal = Math.min(...visitTracker[index]);
+    let itemIndex = visitTracker[index].indexOf(minVal);
+    visitTracker[index][itemIndex] += 1;
+
+    let item = items[itemIndex];
     if (!item.type) {
         item.type = "jpg";
     }
     current = item;
     voice.cancel();
     voice.speak(`${letter}: is for ${sanitizeName(item.name)}`);
-    console.log(`Loading... /images/alphabet_game/${item.name.toLowerCase()}.${item.type}`);
     return loadImage(`/images/alphabet_game/${item.name.toLowerCase()}.${item.type}`);
 }
 
