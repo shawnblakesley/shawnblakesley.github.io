@@ -48,7 +48,7 @@ function draw() {
     textSize(60);
     fill(128, 128, 255);
     text(`${currentLetter} is for...`, x + 10, y + 70);
-    text(current.name.split("_")[0], x + w - 200, y + h - 10);
+    text(sanitizeName(current.name), x + w - 200, y + h - 10);
 }
 
 function keyPressed() {
@@ -71,9 +71,14 @@ function getImage(letter, items) {
     }
     current = item;
     voice.cancel();
-    voice.speak(`${letter}: is for ${item.name.split("_")[0]}`);
+    voice.speak(`${letter}: is for ${sanitizeName(item.name)}`);
     console.log(`Loading... /images/alphabet_game/${item.name.toLowerCase()}.${item.type}`);
     return loadImage(`/images/alphabet_game/${item.name.toLowerCase()}.${item.type}`);
+}
+
+function sanitizeName(name) {
+    let regex = /_[0-9]$/;
+    return name.replace(regex, "").replace("_", " ");
 }
 
 function windowResized() {
