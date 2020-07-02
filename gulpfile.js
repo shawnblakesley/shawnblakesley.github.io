@@ -1,18 +1,20 @@
 'use strict';
 
-var composer = require('gulp-uglify/composer');
-var cssnano = require('gulp-cssnano');
-var del = require('del');
-var gulp = require('gulp');
-var imagemin = require('gulp-imagemin');
-var path = require('path');
-var pug = require('gulp-pug');
-var sass = require('gulp-sass');
-var uglifyjs = require('uglify-es');
-var webserver = require('gulp-webserver');
-var yaml = require('yamljs');
+const composer = require('gulp-uglify/composer');
+const cssnano = require('gulp-cssnano');
+const del = require('del');
+const gulp = require('gulp');
+const gulpif = require('gulp-if');
+const imagemin = require('gulp-imagemin');
+const options = require('gulp-options');
+const path = require('path');
+const pug = require('gulp-pug');
+const sass = require('gulp-sass');
+const uglifyjs = require('uglify-es');
+const webserver = require('gulp-webserver');
+const yaml = require('yamljs');
 
-var minify = composer(uglifyjs, console);
+const minify = composer(uglifyjs, console);
 
 sass.compiler = require('node-sass');
 
@@ -23,25 +25,23 @@ function clean() {
   return del('dist');
 }
 
-// function sass() {}
-
 function sass_task() {
   return gulp.src('src/**/*.scss')
     .pipe(sass({
-      outputStyle: 'compressed'
+      outputStyle: options.has('dev') ? 'expanded' : 'compressed'
     }).on('error', sass.logError))
     .pipe(gulp.dest('dist'));
 }
 
 function css_task() {
   return gulp.src('src/**/*.css')
-    .pipe(cssnano())
+    .pipe(gulpif(!options.has('dev'), cssnano()))
     .pipe(gulp.dest('dist'));
 }
 
 function js_min_task() {
   return gulp.src(['src/**/*.js', '!src/**/*.min.js'])
-    .pipe(minify({}))
+    .pipe(gulpif(!options.has('dev'), minify({})))
     .pipe(gulp.dest('dist'));
 }
 
@@ -61,7 +61,7 @@ function pug_task() {
 
 function alphabet_images_task() {
   return gulp.src('src/images/**/*')
-    .pipe(imagemin())
+    .pipe(gulpif(!options.has('dev'), imagemin()))
     .pipe(gulp.dest('dist/images/'));
 }
 

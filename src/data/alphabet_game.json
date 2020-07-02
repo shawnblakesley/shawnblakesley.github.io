@@ -1,6 +1,5 @@
 {
-  "A": [
-    {
+  "A": [{
       "name": "Apple",
       "phonetic": "\u02c8\u00e6p\u0259l"
     },
@@ -49,8 +48,7 @@
       "phonetic": ""
     }
   ],
-  "B": [
-    {
+  "B": [{
       "name": "Bear",
       "phonetic": "b\u025br"
     },
@@ -127,8 +125,7 @@
       "phonetic": ""
     }
   ],
-  "C": [
-    {
+  "C": [{
       "name": "Cat",
       "phonetic": "k\u00e6t"
     },
@@ -214,8 +211,7 @@
       "phonetic": ""
     }
   ],
-  "D": [
-    {
+  "D": [{
       "name": "Dog",
       "phonetic": "d\u0254g"
     },
@@ -226,11 +222,6 @@
     {
       "name": "Duck",
       "phonetic": "d\u0259k"
-    },
-    {
-      "name": "Dance",
-      "phonetic": "",
-      "type": "gif"
     },
     {
       "name": "Dollhouse",
@@ -273,8 +264,7 @@
       "phonetic": ""
     }
   ],
-  "E": [
-    {
+  "E": [{
       "name": "Elephant",
       "phonetic": "\u02c8\u025bl\u0259f\u0259nt"
     },
@@ -311,8 +301,7 @@
       "phonetic": ""
     }
   ],
-  "F": [
-    {
+  "F": [{
       "name": "Fish",
       "phonetic": "f\u026a\u0283"
     },
@@ -357,8 +346,7 @@
       "phonetic": ""
     }
   ],
-  "G": [
-    {
+  "G": [{
       "name": "Goat",
       "phonetic": "go\u028at"
     },
@@ -403,8 +391,7 @@
       "phonetic": ""
     }
   ],
-  "H": [
-    {
+  "H": [{
       "name": "Hippo",
       "phonetic": "\u02c8h\u026apo\u028a"
     },
@@ -442,8 +429,7 @@
       "phonetic": ""
     }
   ],
-  "I": [
-    {
+  "I": [{
       "name": "Ice_Cream",
       "phonetic": "a\u026as krim"
     },
@@ -480,8 +466,7 @@
       "phonetic": ""
     }
   ],
-  "J": [
-    {
+  "J": [{
       "name": "Jump",
       "phonetic": "\u02a4\u028cmp"
     },
@@ -518,8 +503,7 @@
       "phonetic": ""
     }
   ],
-  "K": [
-    {
+  "K": [{
       "name": "Kangaroo",
       "phonetic": "\u02cck\u00e6\u014bg\u0259\u02c8ru"
     },
@@ -544,8 +528,7 @@
       "phonetic": ""
     }
   ],
-  "L": [
-    {
+  "L": [{
       "name": "Lion",
       "phonetic": "\u02c8la\u026a\u0259n"
     },
@@ -570,8 +553,7 @@
       "phonetic": ""
     }
   ],
-  "M": [
-    {
+  "M": [{
       "name": "Monkey",
       "phonetic": "\u02c8m\u028c\u014bki"
     },
@@ -612,8 +594,7 @@
       "phonetic": ""
     }
   ],
-  "N": [
-    {
+  "N": [{
       "name": "Newt",
       "phonetic": "nut"
     },
@@ -644,8 +625,7 @@
       "type": "png"
     }
   ],
-  "O": [
-    {
+  "O": [{
       "name": "Octopus",
       "phonetic": "\u02c8\u0251kt\u0259\u02ccp\u028as"
     },
@@ -666,8 +646,7 @@
       "phonetic": ""
     }
   ],
-  "P": [
-    {
+  "P": [{
       "name": "Puppy",
       "phonetic": "\u02c8p\u028cpi"
     },
@@ -712,8 +691,7 @@
       "phonetic": ""
     }
   ],
-  "Q": [
-    {
+  "Q": [{
       "name": "Queen",
       "phonetic": "kwin"
     },
@@ -722,8 +700,7 @@
       "phonetic": "kwe\u026al"
     }
   ],
-  "R": [
-    {
+  "R": [{
       "name": "Robot",
       "phonetic": "\u02c8ro\u028a\u02ccb\u0251t",
       "type": "gif"
@@ -757,8 +734,7 @@
       "phonetic": ""
     }
   ],
-  "S": [
-    {
+  "S": [{
       "name": "Snake",
       "phonetic": "sne\u026ak"
     },
@@ -833,8 +809,7 @@
       "phonetic": ""
     }
   ],
-  "T": [
-    {
+  "T": [{
       "name": "Toucan",
       "phonetic": "\u02c8tu\u02d0k\u00e6n"
     },
@@ -891,8 +866,7 @@
       "phonetic": ""
     }
   ],
-  "U": [
-    {
+  "U": [{
       "name": "Umbrella",
       "phonetic": "\u0259m\u02c8br\u025bl\u0259"
     },
@@ -922,8 +896,7 @@
       "phonetic": ""
     }
   ],
-  "V": [
-    {
+  "V": [{
       "name": "Van",
       "phonetic": "v\u00e6n"
     },
@@ -952,8 +925,7 @@
       "phonetic": ""
     }
   ],
-  "W": [
-    {
+  "W": [{
       "name": "Whale",
       "phonetic": "we\u026al"
     },
@@ -1002,8 +974,7 @@
       "phonetic": ""
     }
   ],
-  "X": [
-    {
+  "X": [{
       "name": "Xylophone",
       "phonetic": "\u02c8za\u026al\u0259\u02ccfo\u028an"
     },
@@ -1016,8 +987,7 @@
       "phonetic": ""
     }
   ],
-  "Y": [
-    {
+  "Y": [{
       "name": "Yak",
       "phonetic": "j\u00e6k"
     },
@@ -1042,8 +1012,7 @@
       "phonetic": ""
     }
   ],
-  "Z": [
-    {
+  "Z": [{
       "name": "Zebra",
       "phonetic": "\u02c8zibr\u0259"
     },
