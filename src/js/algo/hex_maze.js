@@ -253,7 +253,6 @@ function Cell(x, y, width, height) {
 }
 
 function HexMaze(next, base_cell_height = 32, passes = 1, instant = false) {
-    console.log("New hex?");
     this.base_cell_height = base_cell_height;
     this.short_name = "maze";
     this.next = next;

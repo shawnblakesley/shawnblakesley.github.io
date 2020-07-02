@@ -83,7 +83,8 @@ function webserver_task() {
 exports.default = gulp.series(clean, gulp.parallel(alphabet_images_task, css_task, sass_task, js_task, js_min_task, pug_task, files_task));
 
 function watch_all() {
-  gulp.watch('src/**/*.js', gulp.series(js_task, js_min_task));
+  gulp.watch('src/**/*.min.js', js_task)
+  gulp.watch('src/**/*.js', js_min_task);
   gulp.watch('src/**/*.scss', sass_task);
   gulp.watch('src/**/*.css', css_task);
   gulp.watch(['src/**/*.pug', pug_data_file], pug_task);
