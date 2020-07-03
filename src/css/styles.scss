@@ -352,19 +352,41 @@ $range-label-color: $dark-maroon-flush;
 
 .sample-controls {
     clip-path: circle(20px at top 40px left 40px);
-    filter: blur(1px);
     left: 0px;
     position: absolute;
     top: 40px;
-    transition: $timing-4 $transition;
+    transition: $timing-1 $transition;
+
+    svg {
+        color: $maroon-flush;
+        transition: $timing-2 $transition;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        z-index: 100;
+        top: 28px;
+        left: 28px;
+        opacity: 1;
+    }
 
     &:hover {
-        transition: $timing-4 $transition;
+        opacity: 1;
         clip-path: circle(100% at center);
-        filter: blur(0px);
+
+        article.card {
+            background-color: $maroon-flush;
+            opacity: 1;
+        }
+
+        svg {
+            opacity: 0;
+        }
     }
 
     article.card {
+        opacity: 0;
+        transition: $timing-3 $transition;
+        background-color: $white;
         @include size($controls-width, auto);
 
         @media screen and (max-width: 550px) {
