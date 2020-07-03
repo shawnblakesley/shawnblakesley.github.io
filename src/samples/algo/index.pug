@@ -22,22 +22,32 @@ html(lang="en")
         +card("3D Game of Life")
           .controls-list
             label#cube-count-label Count 12
-            input.slide-input#cube-count(type="range" min="2" max="8" value="6" class="slider" onchange="updateCubeResolution(this);")
-            button.sample-button(onclick="togglePause()") Pause
-            button.sample-button(onclick="toggleOrtho(this)") Orthographic View
+            input.slide-input#cube-count(type="range" min="2" max="8" value="6" class="slider" onchange="gol_3d.updateCubeResolution(this);")
+            button.sample-button(onclick="togglePause(this)") Pause
             button.sample-button(onclick="regenerate()") Regenerate
+            button.sample-button(onclick="gol_3d.toggleOrtho(this)") Show Orthographic View
+            button.sample-button(onclick="gol_3d.toggleMouseFollow(this)") Enable Mouse Follow
             .break-line
             button.controls-next(onclick="nextAlgorithm()") To Hex Maze Generation >>
       #maze-controls(style="display:none;")
         +card("Hex Maze Generation")
           .controls-list
             label#cell-size-label Size 32
-            input.slide-input#cell-size(type="range" min="25" max="50" value="32" class="slider" onchange="updateCellSize(this);")
-            button.sample-button(onclick="toggleQuickGeneration(this)") Enable Quick Generation
+            input.slide-input#cell-size(type="range" min="25" max="50" value="32" class="slider" onchange="hex_maze.updateCellSize(this);")
+            button.sample-button(onclick="hex_maze.toggleQuickGeneration(this)") Enable Quick Generation
             button.sample-button(onclick="regenerate()") Regenerate
+            .break-line
+            button.controls-next(onclick="nextAlgorithm()") To Pathfinder >>
+      #path-controls(style="display:none;")
+        +card("Hex Maze Generation")
+          .controls-list
+            button.sample-button(onclick="regenerate()") Reset
             .break-line
             button.controls-next(onclick="nextAlgorithm()") To Game Of Life >>
     #sample-description
     include ../../includes/footer
+    script(language="javascript" type="text/javascript" src="/js/algo/hex_path.js")
     script(language="javascript" type="text/javascript" src="/js/algo/hex_maze.js")
+    script(language="javascript" type="text/javascript" src="/js/algo/gol_simple.js")
+    script(language="javascript" type="text/javascript" src="/js/algo/gol_3d.js")
     script(language="javascript" type="text/javascript" src="/js/algo/sketch.js")

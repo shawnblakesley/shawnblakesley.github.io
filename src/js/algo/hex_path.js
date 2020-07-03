@@ -1,4 +1,4 @@
-const hex_maze = (function () {
+const hex_path = (function () {
     function shuffle(a) {
         for (let i = a.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -11,30 +11,6 @@ const hex_maze = (function () {
         x: 0,
         y: 0,
     };
-
-    function updateCellSize(input_elem) {
-        let label = document.getElementById(`${input_elem.id}-label`);
-        label.textContent = `Size ${input_elem.value}`
-
-        if (algo_name == "hex maze generator" && algorithms.has(algo_name)) {
-            let hex = algorithms.get(algo_name);
-            hex.base_cell_height = input_elem.value;
-            hex.setup();
-        }
-    }
-
-    function toggleQuickGeneration(elem) {
-        if (algo_name == "hex maze generator" && algorithms.has(algo_name)) {
-            let hex = algorithms.get(algo_name);
-            hex.instant = !hex.instant;
-            if (hex.instant) {
-                elem.textContent = "Enable Step-by-Step";
-            } else {
-                elem.textContent = "Enable Quick Generation";
-            }
-            hex.setup(hex.instant);
-        }
-    }
 
     function Cell(x, y, width, height) {
         this.x = x;
@@ -251,17 +227,16 @@ const hex_maze = (function () {
         }
     }
 
-    function HexMaze(next, base_cell_height = 32, passes = 1, instant = false) {
-        this.base_cell_height = base_cell_height;
-        this.short_name = "maze";
+    function HexPath(next, passes = 3) {
+        this.base_cell_height = 40;
+        this.short_name = "path";
         this.next = next;
         this.description = `
-        <p>A hex maze generator using a slightly modified recursive backtracker algorithm.</p>
-    `
+            <p>A pathfinding algorithm to navigate through a hex maze.</p>
+        `
 
         this.visit_count = 0;
         this.max_visit_cycles = passes;
-        this.instant = instant;
 
         this.cells = new Array();
 
@@ -282,12 +257,10 @@ const hex_maze = (function () {
                 }
             }
             this.new_cycle();
-            if (this.instant) {
-                while (this.visit_count <= this.max_visit_cycles) {
-                    this.new_cycle();
-                    while (current_cell) {
-                        this.cells[current_cell.x][current_cell.y].visit_next();
-                    }
+            while (this.visit_count <= this.max_visit_cycles) {
+                this.new_cycle();
+                while (current_cell) {
+                    this.cells[current_cell.x][current_cell.y].visit_next();
                 }
             }
         }
@@ -323,8 +296,6 @@ const hex_maze = (function () {
     }
 
     return {
-        HexMaze: HexMaze,
-        updateCellSize: updateCellSize,
-        toggleQuickGeneration: toggleQuickGeneration,
+        HexPath: HexPath,
     }
 })();
