@@ -5,7 +5,7 @@ let paused = false;
 let pathDef = new hex_path.HexPath("game of life");
 let golDef = new gol.Gol("game of life 3D");
 let gol3DDef = new gol_3d.GameOfLife("hex maze generator");
-let mazeDef = new hex_maze.HexMaze("game of life"); //"pathfinder");
+let mazeDef = new hex_maze.HexMaze("pathfinder");
 
 let algo_name;
 let algorithms;
@@ -70,7 +70,7 @@ function setup() {
     algorithms.set("hex maze generator", mazeDef);
     algorithms.set("pathfinder", pathDef);
 
-    algo_name = "hex maze generator";
+    algo_name = "pathfinder";
     setAlgorithm(algo_name);
 }
 

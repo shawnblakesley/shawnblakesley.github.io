@@ -34,7 +34,7 @@ const hex_path = (function () {
         this.scaleValue = 0;
 
         this.color = color(0);
-        this.floor = color(64, 128, 255);
+        this.floor = color(64, 128, 172);
 
         this.visiting_list = [];
 
@@ -71,7 +71,7 @@ const hex_path = (function () {
 
         this.setSource = function () {
             this.isSource = true;
-            this.floor = color(64, 255, 172);
+            this.floor = color(64, 172, 172);
             this.distance = 0;
             this.show = true;
             this.weight = 0;
@@ -83,7 +83,19 @@ const hex_path = (function () {
             this.floor = color(255, 255, 172);
             this.scaleValue = 1;
             this.show = true;
-            this.weight = 0;
+        }
+
+        this.clear = function () {
+            this.floor = color(64, 128, 172);
+            this.isSource = false;
+            this.isDestination = false;
+            this.visited = false;
+            this.distance = Infinity;
+            this.isChecked = false;
+            this.pathVisited = false;
+            this.show = false;
+            this.scaleValue = 0;
+            this.weight = floor(pow(random(1.5), 3)) + 1;
         }
 
         this.setup = function (cells) {
@@ -157,8 +169,15 @@ const hex_path = (function () {
                 y: this.y,
             };
             this.color = color(237, 34, 93);
-            this.color = color(255);
             this.visited = true;
+        }
+
+        this.pathVisit = function (previous, distance) {
+            let newDistance = distance + this.weight;
+            if (newDistance < this.distance) {
+                this.previous = previous;
+                this.distance = newDistance;
+            }
         }
 
         this.visit_next = function () {
@@ -286,32 +305,40 @@ const hex_path = (function () {
             strokeWeight(2);
             stroke(0);
             fill(255);
-            text(this.weight, 0, 0);
+            if (this.distance < Infinity) {
+                text(this.weight, 0, -10);
+                stroke(255);
+                fill(0);
+                text(this.distance, 0, 10);
+            } else {
+                text(this.weight, 0, 0);
+            }
             pop();
         }
     }
 
-    function HexPath(next, passes = 3) {
+    function HexPath(next, passes = 2) {
         this.base_cell_height = 60;
         this.short_name = "path";
         this.next = next;
         this.description = `
-            <p>A pathfinding algorithm to navigate through a hex maze.</p>
+        <p>Using dijkstra's algorithm to navigate through a hex maze.</p>
+        <p>White text represents the weight of the hex.</p>
+        <p>Black text represents the calculated distance to the hex.</p>
+        <p>Blue means a hex has been visited.</p>
+        <p>White means a hex is part of the optimal path.</p>
+        <p>Gold means the hex is the goal space.</p>
+        <p>Teal means that a space is the starting location.</p>
         `
 
         this.visit_count = 0;
         this.max_visit_cycles = passes;
+        this.interrupted = false;
 
         this.cells = new Array();
 
         this.magic_height_number = 0.83;
-
-        this.pathfind = async function () {
-            while (true) {
-                await sleep(10);
-                this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))].show = true;
-            }
-        }
+        this.runningPath;
 
         this.setup = function () {
             frameRate(60);
@@ -337,18 +364,112 @@ const hex_path = (function () {
                 }
             }
 
+            this.runAlgorithm();
+        }
+
+        this.runAlgorithm = async function () {
+            if (this.runningPath) {
+                this.interrupted = true;
+                await this.runningPath;
+                this.interrupted = false;
+            }
+            for (let i = 0; i < this.cells.length; i++) {
+                for (let j = 0; j < this.cells[0].length; j++) {
+                    this.cells[i][j].clear();
+                }
+            }
             this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))].setSource();
             let dest = this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))];
             while (dest.isSource) {
                 dest = this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))]
             }
             dest.setDestination();
+            this.runningPath = this.dijkstra();
+        }
+
+        // Comments from Wikipedia
+        this.dijkstra = async function () {
+            // 1. Mark all nodes unvisited.
+            //    Create a set of all the unvisited nodes called the unvisited set.
+            // 2. Assign to every node a tentative distance value:
+            //    set it to zero for our initial node and to infinity for all other 
+            //    nodes.
+            //    Set the initial node as current.[14]
+            let unvisited = [];
+            let current;
             for (let i = 0; i < this.cells.length; i++) {
                 for (let j = 0; j < this.cells[0].length; j++) {
-                    this.cells[i][j].visited = false;
+                    let cell = this.cells[i][j];
+                    cell.distance = Infinity;
+                    if (cell.isSource) {
+                        cell.distance = 0;
+                        current = cell;
+                        current.show = true;
+                    }
+                    unvisited.push(cell);
                 }
             }
-            this.pathfind();
+            let found = false;
+            while (unvisited && !found) {
+                // 3. For the current node, consider all of its unvisited neighbours
+                //    and calculate their tentative distances through the current node.
+                //    Compare the newly calculated tentative distance to the current
+                //    assigned value and assign the smaller one.
+                //    For example, if the current node A is marked with a distance of 6,
+                //    and the edge connecting it with a neighbour B has length 2,
+                //    then the distance to B through A will be 6 + 2 = 8.
+                //    If B was previously marked with a distance greater than 8
+                //    then change it to 8.
+                //    Otherwise, the current value will be kept.
+                await sleep(10);
+                if (this.interrupted) {
+                    return;
+                }
+                let directions = ["top_left", "top_right", "left", "right", "bottom_left", "bottom_right"]
+                for (let i = 0; i < directions.length; i++) {
+                    let index = directions[i];
+                    if (!current.walls[index]) {
+                        let neighbor = current.neighbors[index];
+                        if (neighbor) {
+                            neighbor.pathVisit(current, current.distance);
+                            if (neighbor.isDestination) {
+                                found = true;
+                            }
+                        }
+                    }
+                }
+
+                // 4. When we are done considering all of the unvisited neighbours of
+                //    the current node, mark the current node as visited and remove it
+                //    from the unvisited set.
+                //    A visited node will never be checked again.
+                unvisited.sort((a, b) => a.distance - b.distance);
+                unvisited.shift();
+                current.visited = true;
+
+                // 5. If the destination node has been marked visited (when planning a
+                //    route between two specific nodes) or if the smallest tentative
+                //    distance among the nodes in the unvisited set is infinity
+                //    (when planning a complete traversal; occurs when there is no
+                //    connection between the initial node and remaining unvisited nodes),
+                //    then stop.
+                //    The algorithm has finished.
+                if (found) {
+                    // Color the path
+                    while (!current.isSource) {
+                        await sleep(10);
+                        current.floor = color(255);
+                        current = current.previous;
+                    }
+                    return;
+                }
+
+                // 6. Otherwise, select the unvisited node that is marked with the smallest
+                //    tentative distance, set it as the new "current node", and go back to
+                //    step 3.
+                current = unvisited[0];
+                current.show = true;
+            }
         }
 
         this.new_cycle = function () {
