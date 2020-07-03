@@ -1,9 +1,8 @@
 let canvas;
 let canvasSize;
-// let sel;
 let paused = false;
 
-// let pathDef = new hex_path.HexPath("game of life");
+let pathDef = new hex_path.HexPath("game of life");
 let golDef = new gol.Gol("game of life 3D");
 let gol3DDef = new gol_3d.GameOfLife("hex maze generator");
 let mazeDef = new hex_maze.HexMaze("game of life"); //"pathfinder");
@@ -69,9 +68,9 @@ function setup() {
     algorithms.set("game of life", golDef);
     algorithms.set("game of life 3D", gol3DDef);
     algorithms.set("hex maze generator", mazeDef);
-    // algorithms.set("pathfinder", pathDef);
+    algorithms.set("pathfinder", pathDef);
 
-    algo_name = "hex maze generator"; //"pathfinder";
+    algo_name = "hex maze generator";
     setAlgorithm(algo_name);
 }
 

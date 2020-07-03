@@ -12,56 +12,78 @@ const hex_path = (function () {
         y: 0,
     };
 
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     function Cell(x, y, width, height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.weight = floor(pow(random(1.5), 3)) + 1;
 
+        this.isSource = false;
+        this.isDestination = false;
         this.visited = false;
-        this.render = false;
+        this.distance = Infinity;
+        this.isChecked = false;
+        this.pathVisited = false;
+        this.show = false;
+        this.scaleValue = 0;
 
-        this.color = {
-            r: 0,
-            g: 0,
-            b: 0
-        };
-
-        this.floor = {
-            r: 0,
-            g: 0,
-            b: 0
-        };
+        this.color = color(0);
+        this.floor = color(64, 128, 255);
 
         this.visiting_list = [];
 
         this.previous = undefined;
 
-        let row_height = this.y * 0.83;
-        let offset = 0.5 * (this.y % 2);
         this.top_left = {
-            x: (this.x + offset - 1 / 2) * this.width,
-            y: (row_height - 1 / 3) * this.height,
+            x: -this.width / 2,
+            y: -this.height / 3,
         }
         this.top = {
-            x: (this.x + offset) * this.width,
-            y: (row_height - 1 / 2) * this.height,
+            x: 0,
+            y: -this.height / 2,
         }
         this.top_right = {
-            x: (this.x + offset + 1 / 2) * this.width,
+            x: this.width / 2,
             y: this.top_left.y,
         }
         this.bottom_left = {
             x: this.top_left.x,
-            y: (row_height + 1 / 3) * this.height,
+            y: this.height / 3,
         }
         this.bottom = {
             x: this.top.x,
-            y: (row_height + 1 / 2) * this.height,
+            y: this.height / 2,
         }
         this.bottom_right = {
             x: this.top_right.x,
             y: this.bottom_left.y,
+        }
+        this.center = {
+            x: (this.x + this.y % 2 * 1 / 2) * this.width,
+            y: (this.y * 0.83) * this.height,
+        }
+
+        this.setSource = function () {
+            this.isSource = true;
+            this.floor = color(64, 255, 172);
+            this.distance = 0;
+            this.show = true;
+            this.weight = 0;
+            this.pathVisited = true;
+        }
+
+        this.setDestination = function () {
+            this.isDestination = true;
+            this.floor = color(255, 255, 172);
+            this.scaleValue = 1;
+            this.show = true;
+            this.weight = 0;
         }
 
         this.setup = function (cells) {
@@ -134,26 +156,12 @@ const hex_path = (function () {
                 x: this.x,
                 y: this.y,
             };
-            this.color = {
-                r: 237,
-                g: 34,
-                b: 93,
-            };
+            this.color = color(237, 34, 93);
+            this.color = color(255);
             this.visited = true;
-            this.render = true;
-            this.floor = {
-                r: 100,
-                g: 205,
-                b: 160,
-            }
         }
 
         this.visit_next = function () {
-            this.floor = {
-                r: 255,
-                g: 255,
-                b: 255,
-            }
             if (this.visiting_list.length > 0) {
                 let neighbor = this.visiting_list.pop();
                 if (!neighbor[0].visited) {
@@ -170,11 +178,26 @@ const hex_path = (function () {
         }
 
         this.draw = function () {
-            if (this.render) {
-                // Inside
-                strokeWeight(2);
-                stroke(this.floor.r, this.floor.g, this.floor.b);
-                fill(this.floor.r, this.floor.g, this.floor.b);
+            push();
+            translate(this.center.x, this.center.y);
+            push();
+            // Inside
+            noStroke();
+            fill(30);
+            beginShape();
+            vertex(this.top_left.x, this.top_left.y);
+            vertex(this.top.x, this.top.y);
+            vertex(this.top_right.x, this.top_right.y);
+            vertex(this.bottom_right.x, this.bottom_right.y);
+            vertex(this.bottom.x, this.bottom.y);
+            vertex(this.bottom_left.x, this.bottom_left.y);
+            endShape();
+            if (this.show) {
+                scale(this.scaleValue);
+                if (this.scaleValue < 1) {
+                    this.scaleValue = min(pow(this.scaleValue + deltaTime / 1000, .7), 1);
+                }
+                fill(this.floor);
                 beginShape();
                 vertex(this.top_left.x, this.top_left.y);
                 vertex(this.top.x, this.top.y);
@@ -183,52 +206,93 @@ const hex_path = (function () {
                 vertex(this.bottom.x, this.bottom.y);
                 vertex(this.bottom_left.x, this.bottom_left.y);
                 endShape();
-
-                // Walls
-                stroke(this.color.r, this.color.g, this.color.b);
-                beginShape(LINES);
-                // top-left to top
-                if (this.walls.top_left) {
-                    vertex(this.top_left.x, this.top_left.y);
-                    vertex(this.top.x, this.top.y);
-                }
-
-                // top to top-right
-                if (this.walls.top_right) {
-                    vertex(this.top.x, this.top.y);
-                    vertex(this.top_right.x, this.top_right.y);
-                }
-
-                // top-right to bottom-right
-                if (this.walls.right) {
-                    vertex(this.top_right.x, this.top_right.y);
-                    vertex(this.bottom_right.x, this.bottom_right.y);
-                }
-
-                // bottom-right to bottom
-                if (this.walls.bottom_right) {
-                    vertex(this.bottom_right.x, this.bottom_right.y);
-                    vertex(this.bottom.x, this.bottom.y);
-                }
-
-                // bottom to bottom-left
-                if (this.walls.bottom_left) {
-                    vertex(this.bottom.x, this.bottom.y);
-                    vertex(this.bottom_left.x, this.bottom_left.y);
-                }
-
-                // bottom-left to top-left
-                if (this.walls.left) {
-                    vertex(this.bottom_left.x, this.bottom_left.y);
-                    vertex(this.top_left.x, this.top_left.y);
-                }
-                endShape();
             }
+            pop();
+
+            let blankWallColor = color(30); //lerpColor(color(30), this.floor, this.scaleValue);
+            // Walls
+            beginShape(LINES);
+            // top-left to top
+            if (this.walls.top_left) {
+                stroke(this.color);
+                strokeWeight(3);
+            } else {
+                stroke(blankWallColor);
+                strokeWeight(2);
+            }
+            vertex(this.top_left.x, this.top_left.y);
+            vertex(this.top.x, this.top.y);
+
+            // top to top-right
+            if (this.walls.top_right) {
+                stroke(this.color);
+                strokeWeight(3);
+            } else {
+                stroke(blankWallColor);
+                strokeWeight(2);
+            }
+            vertex(this.top.x, this.top.y);
+            vertex(this.top_right.x, this.top_right.y);
+
+
+            // top-right to bottom-right
+            if (this.walls.right) {
+                stroke(this.color);
+                strokeWeight(3);
+            } else {
+                stroke(blankWallColor);
+                strokeWeight(2);
+            }
+            vertex(this.top_right.x, this.top_right.y);
+            vertex(this.bottom_right.x, this.bottom_right.y);
+
+
+            // bottom-right to bottom
+            if (this.walls.bottom_right) {
+                stroke(this.color);
+                strokeWeight(3);
+            } else {
+                stroke(blankWallColor);
+                strokeWeight(2);
+            }
+            vertex(this.bottom_right.x, this.bottom_right.y);
+            vertex(this.bottom.x, this.bottom.y);
+
+
+            // bottom to bottom-left
+            if (this.walls.bottom_left) {
+                stroke(this.color);
+                strokeWeight(3);
+            } else {
+                stroke(blankWallColor);
+                strokeWeight(2);
+            }
+            vertex(this.bottom.x, this.bottom.y);
+            vertex(this.bottom_left.x, this.bottom_left.y);
+
+
+            // bottom-left to top-left
+            if (this.walls.left) {
+                stroke(this.color);
+                strokeWeight(3);
+            } else {
+                stroke(blankWallColor);
+                strokeWeight(2);
+            }
+            vertex(this.bottom_left.x, this.bottom_left.y);
+            vertex(this.top_left.x, this.top_left.y);
+
+            endShape();
+            strokeWeight(2);
+            stroke(0);
+            fill(255);
+            text(this.weight, 0, 0);
+            pop();
         }
     }
 
     function HexPath(next, passes = 3) {
-        this.base_cell_height = 40;
+        this.base_cell_height = 60;
         this.short_name = "path";
         this.next = next;
         this.description = `
@@ -242,8 +306,17 @@ const hex_path = (function () {
 
         this.magic_height_number = 0.83;
 
+        this.pathfind = async function () {
+            while (true) {
+                await sleep(10);
+                this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))].show = true;
+            }
+        }
+
         this.setup = function () {
             frameRate(60);
+            textAlign(CENTER, CENTER);
+            textSize(16);
             this.visit_count = 0;
             this.cell_height = ceil(this.base_cell_height * sqrt(min(width / 1920, height / 833)));
             this.cell_width = sqrt(3 / 2) * this.cell_height;
@@ -263,6 +336,19 @@ const hex_path = (function () {
                     this.cells[current_cell.x][current_cell.y].visit_next();
                 }
             }
+
+            this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))].setSource();
+            let dest = this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))];
+            while (dest.isSource) {
+                dest = this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))]
+            }
+            dest.setDestination();
+            for (let i = 0; i < this.cells.length; i++) {
+                for (let j = 0; j < this.cells[0].length; j++) {
+                    this.cells[i][j].visited = false;
+                }
+            }
+            this.pathfind();
         }
 
         this.new_cycle = function () {
@@ -280,7 +366,7 @@ const hex_path = (function () {
         }
 
         this.draw = function () {
-            translate(this.cell_width, this.cell_height);
+            translate(ceil(this.cell_width * .75), ceil(this.cell_height * .75));
             background(0);
             for (var i = 0; i < this.cols; i++) {
                 for (var j = 0; j < this.rows; j++) {
