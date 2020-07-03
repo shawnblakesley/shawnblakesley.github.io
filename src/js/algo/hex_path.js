@@ -196,13 +196,7 @@ const hex_path = (function () {
             }
         }
 
-        this.draw = function () {
-            push();
-            translate(this.center.x, this.center.y);
-            push();
-            // Inside
-            noStroke();
-            fill(30);
+        this.drawFill = function () {
             beginShape();
             vertex(this.top_left.x, this.top_left.y);
             vertex(this.top.x, this.top.y);
@@ -211,30 +205,31 @@ const hex_path = (function () {
             vertex(this.bottom.x, this.bottom.y);
             vertex(this.bottom_left.x, this.bottom_left.y);
             endShape();
+        }
+
+        this.draw = function () {
+            push();
+            translate(this.center.x, this.center.y);
+            // Inside
             if (this.show) {
+                push();
+                noStroke();
                 scale(this.scaleValue);
                 if (this.scaleValue < 1) {
                     this.scaleValue = min(pow(this.scaleValue + deltaTime / 1000, .7), 1);
                 }
                 fill(this.floor);
-                beginShape();
-                vertex(this.top_left.x, this.top_left.y);
-                vertex(this.top.x, this.top.y);
-                vertex(this.top_right.x, this.top_right.y);
-                vertex(this.bottom_right.x, this.bottom_right.y);
-                vertex(this.bottom.x, this.bottom.y);
-                vertex(this.bottom_left.x, this.bottom_left.y);
-                endShape();
+                this.drawFill();
+                pop();
             }
-            pop();
 
-            let blankWallColor = color(30); //lerpColor(color(30), this.floor, this.scaleValue);
+            let blankWallColor = color(30, 30, 60); //lerpColor(color(30), this.floor, this.scaleValue);
             // Walls
             beginShape(LINES);
             // top-left to top
             if (this.walls.top_left) {
                 stroke(this.color);
-                strokeWeight(3);
+                strokeWeight(2);
             } else {
                 stroke(blankWallColor);
                 strokeWeight(2);
@@ -245,7 +240,7 @@ const hex_path = (function () {
             // top to top-right
             if (this.walls.top_right) {
                 stroke(this.color);
-                strokeWeight(3);
+                strokeWeight(2);
             } else {
                 stroke(blankWallColor);
                 strokeWeight(2);
@@ -257,7 +252,7 @@ const hex_path = (function () {
             // top-right to bottom-right
             if (this.walls.right) {
                 stroke(this.color);
-                strokeWeight(3);
+                strokeWeight(2);
             } else {
                 stroke(blankWallColor);
                 strokeWeight(2);
@@ -269,7 +264,7 @@ const hex_path = (function () {
             // bottom-right to bottom
             if (this.walls.bottom_right) {
                 stroke(this.color);
-                strokeWeight(3);
+                strokeWeight(2);
             } else {
                 stroke(blankWallColor);
                 strokeWeight(2);
@@ -281,7 +276,7 @@ const hex_path = (function () {
             // bottom to bottom-left
             if (this.walls.bottom_left) {
                 stroke(this.color);
-                strokeWeight(3);
+                strokeWeight(2);
             } else {
                 stroke(blankWallColor);
                 strokeWeight(2);
@@ -293,7 +288,7 @@ const hex_path = (function () {
             // bottom-left to top-left
             if (this.walls.left) {
                 stroke(this.color);
-                strokeWeight(3);
+                strokeWeight(2);
             } else {
                 stroke(blankWallColor);
                 strokeWeight(2);
@@ -306,10 +301,10 @@ const hex_path = (function () {
             stroke(0);
             fill(255);
             if (this.distance < Infinity) {
-                text(this.weight, 0, -10);
+                text(this.weight, 0, -this.height / 4);
                 stroke(255);
                 fill(0);
-                text(this.distance, 0, 10);
+                text(this.distance, 0, this.height / 4);
             } else {
                 text(this.weight, 0, 0);
             }
@@ -343,9 +338,10 @@ const hex_path = (function () {
         this.setup = function () {
             frameRate(60);
             textAlign(CENTER, CENTER);
-            textSize(16);
             this.visit_count = 0;
             this.cell_height = ceil(this.base_cell_height * sqrt(min(width / 1920, height / 833)));
+            console.log(this.cell_height);
+            textSize(this.cell_height / 4);
             this.cell_width = sqrt(3 / 2) * this.cell_height;
             this.cols = floor(width / this.cell_width - 1);
             this.rows = floor(height / (this.cell_height * this.magic_height_number) - 1);
