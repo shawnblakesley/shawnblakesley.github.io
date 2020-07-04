@@ -38,12 +38,9 @@ func waitForEscape() {
 }
 
 func redirect(w http.ResponseWriter, req *http.Request) {
-	// remove/add not default ports from req.Host
-	target := "https://" + req.Host + req.URL.Path
-	if len(req.URL.RawQuery) > 0 {
-		target += "?" + req.URL.RawQuery
-	}
-	log.Printf("redirect to: %s", target)
+	original := "http://" + req.Host + req.RequestURI
+	target := "https://blakesley.dev" + req.RequestURI
+	log.Printf("redirect from %s to: %s", original, target)
 	http.Redirect(w, req, target, http.StatusTemporaryRedirect)
 }
 
@@ -97,6 +94,5 @@ func main() {
 }
 
 func serveAPI(w http.ResponseWriter, r *http.Request) {
-	log.Println("Api access")
 	w.Write([]byte("This will be an api for... something...\n"))
 }
