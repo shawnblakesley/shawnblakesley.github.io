@@ -418,6 +418,7 @@ const hex_path = (function () {
                 }
             }
             let found = false;
+            let maxDistance = 0; // Used for final path coloring
             while (unvisited && !found) {
                 // 3. For the current node, consider all of its unvisited neighbours
                 //    and calculate their tentative distances through the current node.
@@ -442,6 +443,7 @@ const hex_path = (function () {
                             neighbor.pathVisit(current, current.distance);
                             if (neighbor.isDestination) {
                                 found = true;
+                                maxDistance = neighbor.distance;
                             }
                         }
                     }
@@ -466,7 +468,7 @@ const hex_path = (function () {
                     // Color the path
                     while (!current.isSource) {
                         await sleep(10);
-                        current.floor = color(255);
+                        current.floor = lerpColor(color(64, 172, 172), color(255, 255, 172), current.distance / maxDistance);
                         current = current.previous;
                     }
                     return;
