@@ -10,7 +10,7 @@
     "go": "cd go_root; go build server",
     "docker": "npm run docker-stop && npm run docker-build && npm run docker-launch",
     "docker-build": "docker build -t blakesley .",
-    "docker-launch": "docker run -v /tmp/server_logs:/var/log/server -p 8000:80 --name cool_cucumber --detach --rm blakesley && open http://localhost:8000",
+    "docker-launch": "docker run -v $(pwd)/dist/images:/static/images -v /tmp/server_logs:/var/log/server -p 8000:80 --name cool_cucumber --detach --rm blakesley && open http://localhost:8000",
     "docker-stop": "docker stop cool_cucumber ; test 1",
     "docker-push": "docker tag blakesley shawnblakesley/server && docker login && docker push shawnblakesley/server",
     "all": "npm run build && npm run docker",
