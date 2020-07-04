@@ -90,8 +90,8 @@ function windowResized() {
     setAlgorithm(algo_name);
 }
 
-function mousePressed() {
+function mousePressed(event) {
     if (algorithms.has(algo_name) && algorithms.get(algo_name).pressed) {
-        algorithms.get(algo_name).pressed();
+        algorithms.get(algo_name).pressed(event);
     }
 }

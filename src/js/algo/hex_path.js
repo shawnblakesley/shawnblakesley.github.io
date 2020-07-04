@@ -74,7 +74,6 @@ const hex_path = (function () {
             this.floor = color(64, 172, 172);
             this.distance = 0;
             this.show = true;
-            this.weight = 0;
             this.pathVisited = true;
         }
 
@@ -95,7 +94,6 @@ const hex_path = (function () {
             this.pathVisited = false;
             this.show = false;
             this.scaleValue = 0;
-            this.weight = floor(pow(random(1.5), 3)) + 1;
         }
 
         this.setup = function (cells) {
@@ -355,7 +353,17 @@ const hex_path = (function () {
             this.runAlgorithm();
         }
 
-        this.runAlgorithm = async function () {
+        this.setWallPasses = function (passes) {
+            this.max_visit_cycles = 6 - passes;
+            this.setup();
+        }
+
+        this.setCellSize = function (size) {
+            this.base_cell_height = size;
+            this.setup();
+        }
+
+        this.runAlgorithm = async function (source = undefined, dest = undefined) {
             if (this.runningPath) {
                 this.interrupted = true;
                 await this.runningPath;
@@ -363,15 +371,27 @@ const hex_path = (function () {
             }
             for (let i = 0; i < this.cells.length; i++) {
                 for (let j = 0; j < this.cells[0].length; j++) {
-                    this.cells[i][j].clear();
+                    let cell = this.cells[i][j];
+                    cell.clear();
+                    // Reset weights only if we're resetting the algorithm
+                    if (!source || !dest) {
+                        cell.weight = floor(pow(random(1.5), 3)) + 1;
+                    }
                 }
             }
-            this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))].setSource();
-            let dest = this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))];
-            while (dest.isSource) {
-                dest = this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))]
+            if (!source) {
+                source = this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))];
+            }
+            source.setSource();
+            this.source = source;
+            if (!dest) {
+                dest = this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))];
+                while (dest.isSource) {
+                    dest = this.cells[floor(random(this.cells.length))][floor(random(this.cells[0].length))];
+                }
             }
             dest.setDestination();
+            this.dest = dest;
             this.runningPath = this.dijkstra();
         }
 
@@ -490,6 +510,22 @@ const hex_path = (function () {
             }
             pop();
             image(this.wallGraphics, 0, 0);
+        }
+
+        this.pressed = function (event) {
+            console.log("Mouse press is working.", event);
+            if (event.target.className == "p5Canvas") {
+                let y = round((event.y - event.target.offsetTop) / (this.cell_height * .83) - .75);
+                let x = round(event.x / this.cell_width - .75 - y % 2 / 2);
+                if (x >= 0 && x < this.cells.length && y >= 0 && y < this.cells[0].length) {
+                    cell = this.cells[x][y];
+                    if (mouseButton === LEFT) {
+                        this.runAlgorithm(cell, this.dest);
+                    } else {
+                        this.runAlgorithm(this.source, cell);
+                    }
+                }
+            }
         }
     }
 

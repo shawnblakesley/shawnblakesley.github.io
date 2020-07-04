@@ -45,6 +45,10 @@ html(lang="en")
         +gear
         +card("Dijkstra's Algorithm")
           .controls-list
+            label#wall-label Walls
+            input.slide-input#wall(type="range" min="1" max="5" value="4" class="slider" onchange="pathDef.setWallPasses(this.value);")
+            label#size-label Cell Size
+            input.slide-input#size(type="range" min="40" max="75" value="45" class="slider" onchange="pathDef.setCellSize(this.value);")
             button.sample-button(onclick="regenerate()") Reset
             .break-line
             button.controls-next(onclick="nextAlgorithm()") To Game Of Life >>

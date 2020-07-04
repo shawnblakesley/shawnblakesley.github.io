@@ -430,6 +430,7 @@ $range-label-color: $dark-maroon-flush;
                 }
 
                 label {
+                    font-size: .8em;
                     font-family: $merriweather;
                     background-color: $maroon-flush;
                     border-radius: 2 * $border-radius;
@@ -437,7 +438,7 @@ $range-label-color: $dark-maroon-flush;
                     flex-basis: 20%;
                     margin-bottom: 4px;
                     margin-top: 4px;
-                    padding: 2px;
+                    padding: .8em 2px;
                     text-align: center;
                     text-transform: uppercase;
                     font-size: .8em;
