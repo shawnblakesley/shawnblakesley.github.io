@@ -46,7 +46,7 @@ function setup() {
     modelSelect.option('suzanne');
     modelSelect.option('bunny');
     modelSelect.changed(() => {
-        selected = sel.value();
+        selected = modelSelect.value();
         easycam.reset(1000);
     });
     modelSelect.parent("model-select");
