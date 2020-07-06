@@ -1,14 +1,15 @@
 let selected = "teapot";
 let modelMap;
+let shaderMap;
 let currentShader;
 let state;
-var canvas;
-var easycam;
-var primarySelector = document.getElementById("toon-primary");
-var secondarySelector = document.getElementById("toon-secondary");
-var shineSelector = document.getElementById("toon-shine");
-var sizeSelector = document.getElementById("toon-size");
-var borderSelector = document.getElementById("toon-border");
+let canvas;
+let easycam;
+const primarySelector = document.getElementById("primary");
+const secondarySelector = document.getElementById("secondary");
+const shineSelector = document.getElementById("shine");
+const sizeSelector = document.getElementById("size");
+const borderSelector = document.getElementById("border");
 
 function preload() {
     // Load model with normalize parameter set to true
@@ -17,7 +18,10 @@ function preload() {
         "bunny": loadModel('/data/bunny.obj', true),
         "suzanne": loadModel('/data/suzanne.obj', true)
     }
-    currentShader = loadShader('/shaders/toon.vert', '/shaders/toon.frag');
+    shaderMap = {
+        "toon": loadShader('/shaders/toon.vert', '/shaders/toon.frag'),
+        "procedural_toon": loadShader('/shaders/procedural_toon.vert', '/shaders/procedural_toon.frag'),
+    }
 }
 
 function setup() {
@@ -28,15 +32,24 @@ function setup() {
         angles_xyz: [PI, PI, 0]
     }), 0);
     easycam.state_reset = easycam.state.copy();
-    sel = createSelect();
-    sel.option('teapot');
-    sel.option('suzanne');
-    sel.option('bunny');
-    sel.changed(() => {
+    let shaderSelect = createSelect();
+    shaderSelect.option('procedural_toon');
+    shaderSelect.option('toon');
+    shaderSelect.changed(() => {
+        currentShader = shaderMap[shaderSelect.value()];
+        easycam.reset(1000);
+    });
+    shaderSelect.parent("shader-select");
+    currentShader = shaderMap[shaderSelect.value()];
+    let modelSelect = createSelect();
+    modelSelect.option('teapot');
+    modelSelect.option('suzanne');
+    modelSelect.option('bunny');
+    modelSelect.changed(() => {
         selected = sel.value();
         easycam.reset(1000);
     });
-    sel.parent("toon-model-select");
+    modelSelect.parent("model-select");
     noStroke();
 
     shader(currentShader);

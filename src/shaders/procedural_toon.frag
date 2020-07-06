@@ -21,8 +21,21 @@ void main() {
     float specular;
     float diffuse;
     float shine;
-    vec3 color = uMaterialColor * uPrimaryColor;
+    vec3 color = uMaterialColor;
     vec3 position = vSurfacePos / uCheckerSize;
+    if(fract(position.x) < 0.5 && fract(position.z) < 0.5){
+        color *= uPrimaryColor;
+    }
+    else if(fract(position.z) < 0.5){
+        color *= uSecondaryColor;
+    }
+    else if(fract(position.x) < 0.5)
+    {
+        color *= uPrimaryColor.yzx * 0.3;
+    }
+    else{
+        color *= uSecondaryColor.yzx * 0.3;
+    }
     vec4 lDirection = uViewMatrix * vec4( vVertLightDir, 0.0 );
     vec3 lVector = normalize( lDirection.xyz );
     vec3 normal = normalize( vNormal );

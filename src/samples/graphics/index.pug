@@ -12,23 +12,24 @@ html(lang="en")
     include ../../includes/header
     #p5(oncontextmenu="return false;")
     #controls.sample-controls
-      #toon-controls()
+      #controls()
         +gear
-        +card("Toon Shader")
+        +card("Shader")
           .controls-list
-            #toon-model-select.sample-select
+            #shader-select.sample-select
+            #model-select.sample-select
             .break-line
-            label#toon-primary-label(for="toon-primary") Color 1
-            input.color-input#toon-primary(type="color" name="toon-primary" value="#ff0000")
-            label#toon-secondary-label(for="toon-secondary") Color 2
-            input.color-input#toon-secondary(type="color" name="toon-primary" value="#ffAA00")
+            label#primary-label(for="primary") Color 1
+            input.color-input#primary(type="color" name="primary" value="#ff0000" style="height: auto;margin: 8px 0;")
+            label#secondary-label(for="secondary") Color 2
+            input.color-input#secondary(type="color" name="primary" value="#ffAA00" style="height: auto;margin: 8px 0;")
             .break-line
-            label#toon-shine-label(for="toon-shine") Shine
-            input.slide-input#toon-shine(type="range" min="0.0" max="1.0" value="0.5" step="0.01" class="slider")
-            label#toon-size-label(for="toon-size") Size
-            input.slide-input#toon-size(type="range" min="1.0" max="100.0" value="10.0" step="0.5" class="slider")
-            label#toon-border-label(for="toon-border") Border
-            input.slide-input#toon-border(type="range" min="0.0" max="1.0" value="0.5" step="0.01" class="slider")
+            label#shine-label(for="shine") Shine
+            input.slide-input#shine(type="range" min="0.0" max="1.0" value="0.5" step="0.01" class="slider")
+            label#size-label(for="size") Size
+            input.slide-input#size(type="range" min="1.0" max="100.0" value="10.0" step="0.5" class="slider")
+            label#border-label(for="border") Border
+            input.slide-input#border(type="range" min="0.0" max="1.0" value="0.5" step="0.01" class="slider")
             .break-line
             button.sample-button(onclick="reset()") Reset
     #sample-description
