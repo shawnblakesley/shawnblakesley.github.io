@@ -34,7 +34,10 @@ func exists(path string) (bool, error) {
 
 func waitForEscape() {
 	reader := bufio.NewReader(os.Stdin)
-	reader.ReadString('\n')
+	_, err := reader.ReadString('\n')
+	if err != nil {
+		log.Println("Error reading newline:", err)
+	}
 }
 
 func redirect(w http.ResponseWriter, req *http.Request) {
@@ -70,7 +73,12 @@ func main() {
 	http.Handle("/api/", http.HandlerFunc(serveAPI))
 	http.Handle("/", gziphandler.GzipHandler(maxAgeHandler(http.FileServer(http.Dir(*dir)))))
 	if *debug {
-		go http.ListenAndServe(*port, nil)
+		go func(){
+			err := http.ListenAndServe(*port, nil)
+			if err != nil {
+				panic(err)
+			}
+		}()
 		waitForEscape()
 	} else {
 		cert := path.Join(certPath, "cert.pem")
@@ -78,7 +86,12 @@ func main() {
 		certExists, _ := exists(cert)
 		keyExists, _ := exists(key)
 		if certExists && keyExists {
-			go http.ListenAndServe(*port, http.HandlerFunc(redirect))
+			go func(){
+				err := http.ListenAndServe(*port, http.HandlerFunc(redirect))
+				if err != nil {
+					panic(err)
+				}
+			}()
 			err := http.ListenAndServeTLS(":443", cert, key, nil)
 			if err != nil {
 				log.Println("ListenAndServeTLS: ", err)
@@ -94,5 +107,8 @@ func main() {
 }
 
 func serveAPI(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("This will be an api for... something...\n"))
+	_, err := w.Write([]byte("This will be an api for... something...\n"))
+	if err != nil {
+		log.Println("Error serving api:", err)
+	}
 }
