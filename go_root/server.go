@@ -9,15 +9,17 @@ import (
 	"os"
 	"path"
 	"strings"
+	"time"
 
 	"github.com/NYTimes/gziphandler"
+	"github.com/gorilla/mux"
 )
 
 var (
 	logPath  = "/var/log/server/server.log"
 	certPath = "/etc/letsencrypt/live/shawn.blakesley.io/"
 	debug    = flag.Bool("debug", false, "run in debug mode")
-	port     = flag.String("port", ":80", "which port to run the server on")
+	port     = flag.String("port", ":443", "which port to run the server on")
 	dir      = flag.String("dir", "/static/", "http directory to use")
 )
 
@@ -33,6 +35,7 @@ func exists(path string) (bool, error) {
 }
 
 func waitForEscape() {
+	log.Println("Waiting for newline...")
 	reader := bufio.NewReader(os.Stdin)
 	_, err := reader.ReadString('\n')
 	if err != nil {
@@ -57,53 +60,60 @@ func maxAgeHandler(h http.Handler) http.Handler {
 	})
 }
 
+func setupServer() *http.Server {
+	router := mux.NewRouter()
+	router.Handle("/api/", http.HandlerFunc(serveAPI))
+	getRouter := router.Methods("GET").Subrouter()
+	getRouter.PathPrefix("/").Handler(gziphandler.GzipHandler(maxAgeHandler(http.FileServer(http.Dir(*dir)))))
+	srv := &http.Server{
+		Handler:      router,
+		Addr:         *port,
+		WriteTimeout: 15 * time.Second,
+		ReadTimeout:  15 * time.Second,
+	}
+	return srv
+}
+
+func launchServer(server *http.Server) {
+	cert := path.Join(certPath, "cert.pem")
+	key := path.Join(certPath, "privkey.pem")
+	certExists, _ := exists(cert)
+	keyExists, _ := exists(key)
+	if certExists && keyExists {
+		log.Println("Server is listening on", server.Addr)
+		go func() { log.Fatal(http.ListenAndServe(":80", http.HandlerFunc(redirect))) }()
+		log.Fatal(server.ListenAndServeTLS(cert, key))
+	} else {
+		server.Addr = ":80"
+		log.Println("Warning: certs not found. Running on http", server.Addr)
+		log.Fatal(server.ListenAndServe())
+	}
+}
+
+func launchDebugServer(server *http.Server) {
+	log.Println("DEBUG server is listening on", server.Addr)
+	go func() { log.Fatal(server.ListenAndServe()) }()
+	waitForEscape()
+}
+
 func main() {
 	flag.Parse()
+	log.Println("Serving static files from", *dir)
+	var f *os.File
 	if *debug {
-		logPath = "logs/server.log"
+		log.SetOutput(os.Stdout)
+		srv := setupServer()
+		launchDebugServer(srv)
+		return
 	}
 	f, err := os.OpenFile(logPath, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer f.Close()
 	log.SetOutput(f)
-	log.Println("Serving static files from", *dir)
-	log.Println("Server is listening on port", *port)
-	http.Handle("/api/", http.HandlerFunc(serveAPI))
-	http.Handle("/", gziphandler.GzipHandler(maxAgeHandler(http.FileServer(http.Dir(*dir)))))
-	if *debug {
-		go func(){
-			err := http.ListenAndServe(*port, nil)
-			if err != nil {
-				panic(err)
-			}
-		}()
-		waitForEscape()
-	} else {
-		cert := path.Join(certPath, "cert.pem")
-		key := path.Join(certPath, "privkey.pem")
-		certExists, _ := exists(cert)
-		keyExists, _ := exists(key)
-		if certExists && keyExists {
-			go func(){
-				err := http.ListenAndServe(*port, http.HandlerFunc(redirect))
-				if err != nil {
-					panic(err)
-				}
-			}()
-			err := http.ListenAndServeTLS(":443", cert, key, nil)
-			if err != nil {
-				log.Println("ListenAndServeTLS: ", err)
-			}
-		} else {
-			log.Println("Warning: certs not found. Running on http")
-			err := http.ListenAndServe(*port, nil)
-			if err != nil {
-				log.Println("ListenAndServe: ", err)
-			}
-		}
-	}
+	defer f.Close()
+	srv := setupServer()
+	launchServer(srv)
 }
 
 func serveAPI(w http.ResponseWriter, r *http.Request) {
