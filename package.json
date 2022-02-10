@@ -32,7 +32,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-webserver": "^0.9.1",
     "gulpclass": "^0.2.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.1",
     "uglify-es": "^3.3.9",
     "yamljs": "^0.3.0"
   }
