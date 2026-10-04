@@ -1,15 +1,19 @@
-mixin infos(title, company, date, link)
+mixin infos(title, company, date, link, source)
   h3.title= title
   if company
     h3.company= company
   if date
     h3.date= date
   block
-  if link
+  if link && source
+    .links
+      a.button(href=link) View Project
+      a.button(href=source) View Source
+  else if link
     a.button.link(href=link) View Project
 
 
-mixin card(title, company, date, image, link, backup_image)
+mixin card(title, company, date, image, link, source)
   article.card
     if image
       if image.backup
@@ -19,12 +23,12 @@ mixin card(title, company, date, image, link, backup_image)
       else
         img.thumb(src="/images/" + image.url alt=image.alt)
       .infos
-        +infos(title, company, date, link)
+        +infos(title, company, date, link, source)
           block
     else
       img.thumb-no-hover(src="/images/physics.jpg" alt="placeholder")
       .infos-no-hover
-        +infos(title, company, date, link)
+        +infos(title, company, date, link, source)
           block
 
 mixin gear

@@ -22,7 +22,7 @@ html(lang="en")
           h2 Samples
           .cards
             each project in projects
-              +card(project.title, project.subtitle, project.date, project.image, project.link)
+              +card(project.title, project.subtitle, project.date, project.image, project.link, project.source)
                 each line in project.description
                   p.txt= line
       if skills

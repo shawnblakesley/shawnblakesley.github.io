@@ -247,6 +247,21 @@ a.link {
     transform: translate(0%, -100%) translateZ(0);
 }
 
+// Two buttons (project + source) share the slot a single a.link uses.
+.links {
+    @include pos(absolute, 0px, null, 0px, -2.2em);
+    transform: translate(0%, -100%) translateZ(0);
+    display: flex;
+    gap: 4px;
+    font-size: 1.1em; // same em basis as a.button/a.link, so it sits in the same spot
+
+    a.button {
+        width: 50%;
+        font-size: 1em; // same height as a single a.link button
+        padding: 1em 0.4em;
+    }
+}
+
 article.card {
     @include size($card-width, $card-height);
     transform: translate(0%, 0%) translateZ(0);

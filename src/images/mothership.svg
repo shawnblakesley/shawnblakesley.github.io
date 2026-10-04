@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-label="Green CRT terminal showing a station computer denying access">
+  <defs>
+    <radialGradient id="glass" cx="50%" cy="50%" r="70%">
+      <stop offset="0" stop-color="#0b1a0f"/>
+      <stop offset="0.75" stop-color="#050a06"/>
+      <stop offset="1" stop-color="#000"/>
+    </radialGradient>
+    <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#000" opacity="0.28"/>
+    </pattern>
+    <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="480" height="320" fill="#000"/>
+  <rect x="10" y="10" width="460" height="300" rx="26" fill="url(#glass)"/>
+  <g font-family="'Courier New', monospace" font-size="15" fill="#3bff7a" filter="url(#glow)">
+    <text x="36" y="48" font-size="13">KESTREL-9 // HV-CORE OS v4.1</text>
+    <rect x="36" y="56" width="408" height="1.5" fill="#1d8a43"/>
+    <text x="36" y="84" fill="#1d8a43">GUEST@KESTREL-9&gt; OPEN CARGO BAY</text>
+    <text x="36" y="110">ACCESS DENIED.</text>
+    <text x="36" y="130">DECK 3 UNDER QUARANTINE SEAL.</text>
+    <text x="36" y="160" fill="#9fd3ff">INTERCOM: Doctor Salk to med bay...</text>
+    <rect x="36" y="178" width="300" height="46" fill="none" stroke="#3bff7a" stroke-width="1.2"/>
+    <text x="46" y="198">ATTENTION ALL PERSONNEL.</text>
+    <text x="46" y="216">DECK 3 LOCKDOWN IN EFFECT.</text>
+    <text x="36" y="250" fill="#ff5a5a">???: i can hear you breathing.</text>
+    <text x="36" y="282">GUEST@KESTREL-9&gt; <tspan>█</tspan></text>
+  </g>
+  <rect x="10" y="10" width="460" height="300" rx="26" fill="url(#scan)"/>
+  <rect x="10" y="10" width="460" height="300" rx="26" fill="none" stroke="#000" stroke-width="10" opacity="0.6"/>
+</svg>

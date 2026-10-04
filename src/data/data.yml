@@ -223,6 +223,17 @@ education:
       - - Used this course as a refresher to keep up to date with the Deep Learning world.
       - - Completed in free time while working full-time at Anki.
 projects:
+  - title: Mothership Terminal
+    subtitle: Node / WebSockets / LLM agents / Web Audio
+    date: Oct. 2026
+    image:
+      url: mothership.svg
+      alt: Green CRT terminal showing a station computer denying access
+    link: /mothership/
+    source: https://github.com/shawnblakesley/mothership-terminal
+    description:
+      - - An AI-voiced station terminal for the Mothership RPG, steered live by the Warden.
+      - - Multi-session, bring-your-own-key, with neural voices and screen effects.
   - title: Algorithm Visuals
     subtitle: p5.js
     date: Jun. 2020
